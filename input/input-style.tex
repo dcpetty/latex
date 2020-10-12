@@ -1,0 +1,47 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\setlength{\columnsep}{1cm}%
+\setlength{\parindent}{0cm}%
+\setlength{\parskip}{0.5\baselineskip}%
+\setstretch{1.25}
+\setlist{nolistsep}%
+\setenumerate{leftmargin=*, label={\arabic*)}}%
+\setdescription{style=multiline, leftmargin=3cm}%
+\setitemize{leftmargin=*, label={\tiny$\blacktriangleright$}}%
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+\numberwithin{equation}{section}%
+\numberwithin{equation}{subsection}%
+% https://tex.stackexchange.com/questions/245979/numberwithinequationsubsection-fails-for-subsections-0
+\renewcommand*{\theequation}{%
+  \ifnum\value{section}=0 %
+    \arabic{equation}%
+  \else
+    \ifnum\value{subsection}=0 %
+      \thesection
+    \else
+      \thesubsection
+    \fi
+    .\arabic{equation}%
+  \fi
+}
+\allowdisplaybreaks
+
+% http://www.terminally-incoherent.com/blog/2007/09/19/latex-squeezing-the-vertical-white-space/
+%\titlespacing{\section}{0pt}{*0}{*0}
+%\titlespacing{\subsection}{0pt}{*0}{*0}
+%\titlespacing{\subsubsection}{0pt}{*0}{*0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% tcolorbox style
+\tcbset{colback=white,boxrule=1pt,sharp corners=all}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Listing style
+%When not using multicols, use basicstyle=\singlespacing\ttfamily\small,numberstyle=\ttfamily\small,
+\lstset{% general command to set parameter(s) for listings
+  language=Java,
+  tabsize=4,
+  basicstyle=\singlespacing\ttfamily\fontsize{5}{6}\selectfont,
+  keywordstyle=\bfseries,
+  numbers=left,
+  numberstyle=\fontsize{5}{6}\selectfont,
+  frame=tb,
+  captionpos=b,
+}

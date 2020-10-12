@@ -1,0 +1,122 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\prob}[1]{\vspace{4pt}\noindent\textbf{\normalsize{#1}}\\}
+\newcommand{\statement}[1]{\emph{#1}}
+\newcommand{\divider}{\vskip4pt\hrule\vskip2pt}
+\newcommand{\hwnote}[1]{\begin{tcolorbox}[colback=gray!5!white,colframe=BrickRed,title=\textsc{\textbf{Note}}]\textcolor{BrickRed}{#1}\end{tcolorbox}}
+
+\def\foreign{\em}
+\def\etc{{\foreign etc.}}
+\def\eg{{\foreign e.g.}}
+\def\ie{{\foreign i.e.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Math
+\newcommand*{\dx}{\,dx}
+\newcommand*{\bb}[1]{\mathbb{#1}}
+\newcommand*{\N}{\bb{N}}
+\newcommand*{\primes}{\bb{P}}
+\newcommand*{\Q}{\bb{Q}}
+\newcommand*{\R}{\bb{R}}
+\newcommand*{\U}{\bb{U}}
+\newcommand*{\Z}{\bb{Z}}
+\newcommand*{\RZ}{\bb{R}_{\ge0}}
+\DeclareMathOperator{\rref}{RREF}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\refl}{ref}
+\DeclareMathOperator{\imag}{im}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\cm}{comatrix}
+\DeclareMathOperator{\minor}{minor}
+
+\newcommand*\xor{\oplus}
+
+%https://tex.stackexchange.com/questions/235118/making-a-thicker-cdot-for-dot-product-that-is-thinner-than-bullet
+\makeatletter
+\newcommand*\adot{\mathpalette\adot@{.5}}
+\newcommand*\adot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/33519/vertical-line-in-matrix-using-latexit
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+% https://tex.stackexchange.com/questions/295293/vec-command-produces-tilde-instead-of-arrow
+\def\vec{\mathaccent "017E\relax }
+% https://tex.stackexchange.com/questions/199789/which-bold-style-is-recommended-for-matrix-notation
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\matinv}[1]{\mathbf{#1}^{-1}}
+\newcommand{\trans}[1]{\xrightarrow{\text{#1}}}
+\newcommand{\Trans}[2]{\xrightarrow[#2]{\text{#1}}}
+\newcommand{\vecn}[2]{\vec{\ifx#2\empty#1\else#1_{#2}\fi}}
+
+% https://tex.stackexchange.com/questions/33401/a-version-of-colorbox-that-works-inside-math-environments
+% \highlight[<colour>]{<stuff>}
+\newcommand{\highlight}[2][yellow]{\mathchoice%
+  {\colorbox{#1}{$\displaystyle#2$}}%
+  {\colorbox{#1}{$\textstyle#2$}}%
+  {\colorbox{#1}{$\scriptstyle#2$}}%
+  {\colorbox{#1}{$\scriptscriptstyle#2$}}}%
+
+% https://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+\def\UrlOrds{\do\*\do\~\do\'\do\"\do\-\do\_}%
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Linear Algebra
+\newcommand{\RR}{\R^{2}}
+\newcommand{\RRR}{\R^{3}}
+\newcommand{\RN}{\R^{n}}
+
+% Matrices for A, B, C, In
+\newcommand{\matA}{\mat{A}}
+\newcommand{\matB}{\mat{B}}
+\newcommand{\matC}{\mat{C}}
+\newcommand{\matD}{\mat{D}}
+\newcommand{\matI}{\mat{I}}
+\newcommand{\matIn}{\mat{I_{n}}}
+\newcommand{\matQ}{\mat{Q}}
+\newcommand{\matR}{\mat{R}}
+\newcommand{\matS}{\mat{S}}
+\newcommand{\matSinv}{\matinv{S}}
+
+% Vectors for e, u, v, w, x, y, z
+\newcommand{\vecen}[1]{\vecn{e}{#1}}
+\newcommand{\vece}{\vecen{}}
+\newcommand{\vecun}[1]{\vecn{u}{#1}}
+\newcommand{\vecu}{\vecun{}}
+\newcommand{\vecvn}[1]{\vecn{v}{#1}}
+\newcommand{\vecv}{\vecvn{}}
+\newcommand{\vecwn}[1]{\vecn{w}{#1}}
+\newcommand{\vecw}{\vecwn{}}
+\newcommand{\vecxn}[1]{\vecn{x}{#1}}
+\newcommand{\vecx}{\vecxn{}}
+\newcommand{\vecyn}[1]{\vecn{y}{#1}}
+\newcommand{\vecy}{\vecyn{}}
+\newcommand{\veczn}[1]{\vecn{z}{#1}}
+\newcommand{\vecz}{\veczn{}}
+
+% Bases for B, E, U
+\newcommand{\basisB}{\mathcal{B}}
+\newcommand{\basisE}{\mathcal{E}}
+\newcommand{\basisU}{\mathcal{U}}
+
+% Eigenvalues
+\DeclareMathOperator{\am}{AM}
+\DeclareMathOperator{\gm}{GM}
+\newcommand{\lIA}{\lambda\matI-\matA}
+\newcommand{\kerlIA}{\ker\left(\lIA\right)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Classes
+\def\apcs{{\bf AP Computer Science}}
+\def\apcsp{{\bf AP Computer Science Principles}}
+\def\ga{{\bf Geometry Advanced}}
+\def\ig{{\bf Informal Geometry}}
+\def\ia{{\bf Integrated Analysis}}
+\def\pcone{{\bf Precalculus Part 1}}

@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document type
+%\def\docmath{}
+%\def\dochomework{}
+%\def\docletter{}
+%\def\docdcppaper{}
+%\def\docbhsletter{}
+%\def\docpsbletter{}
+%\def\docbhspaper{}
+%\def\docpsbpaper{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Work data
+\def\docauthor{David C. Petty} % Change document author
+\def\doctitle{Computing / Robotics Teacher} % Change document title
+\def\docemail{david\_petty@psbma.org} % Change document e-mail
+\def\docphone{+1.617.331.2345} % Change document phone
+
+\def\linkemail{\ifx\docemail\empty \else\texttt{\textless{\href{mailto:\docemail}{\docemail}}\textgreater}\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\def\docclass{CHANGE CLASS} % Change document class
+\def\docdate{2018--2019} % Change document date
+\def\docname{CHANGE NAME} % Change document name
+\def\docnumber{CHANGE NUMBER} % Change document number
+\def\docversion{} % Change document version
+
+\def\docdistrict{Winchester Public Schools}
+\def\docschool{Winchester High School} %
+\def\docdepartment{\href{https://sites.google.com/winchesterps.org/mathematics/}{Mathematics}} %
+\def\docschooladdress{80 Skillings Road} %
+\def\docschoolcitystate{Winchester MA} %
+\def\docschoolzip{01890-2850 USA} %
+\def\docschoolphone{(781) 721-7020} %
+\def\docschoolfax{(781) 721-7042} %
+
+\def\docdistrict{Public Schools of Brookline}
+\def\docschool{Brookline High School} %
+\def\docdepartment{\href{http://bhs.brookline.k12.ma.us/career--technology-education.html}{Career \& Technology Education}} %
+\def\docschooladdress{115 Greenough Street} %
+\def\docschoolcitystate{Brookline MA} %
+\def\docschoolzip{02445-6151 USA} %
+\def\docschoolphone{617-713-5000} %
+\def\docschoolfax{617-713-5005} %
+
+\def\fschooldept{\docschool\ifx\docdepartment\empty \else\ \textbullet\ \docdepartment\fi}
+\def\fpoints{\ifx\docpoints\empty \else\docpoints\ points\fi}
+\def\fversion{\ifx\docversion\empty \else v\docversion\\\fi}
+\def\docblock{Name: \vbox{\hrule width 5cm}\\% Empty for no block
+Date: \vbox{\hrule width 2.5cm}\makebox[1.7cm][r]{Block: }\vbox{\hrule width 0.8cm}}
+
+\def\doclogofile{../felix-350x350.png}
+\def\hlogo{\includegraphics*[scale = 0.10]{\doclogofile}}
+
+\def\docpoints{\pointsonpage{\thepage}}% Empty for no points
+\def\doccc{\href{http://creativecommons.org/licenses/by-nc-sa/4.0/}{Some rights reserved.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Letter data
+\def\docinit{dcp}%
+\def\docfrom{David C. Petty}%
+\def\docaddress{POBox 400222}%
+\def\doccitystate{Cambridge MA}%
+\def\doczip{02140-0003 USA}%
+\def\docdate{}%

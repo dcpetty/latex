@@ -1,0 +1,243 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers: exam
+\makeatletter\@ifclassloaded{exam}{
+\pagestyle{headandfoot}%
+%%%%%%%%%% TODO: area height slightly larger 
+%\extraheadheight{-.25in}%
+%\extrafootheight{-.25in}%
+\firstpageheader%
+ {\bf\baselineskip=1.2\baselineskip\docdate\\\docclass}%
+ {\bf\baselineskip=1.2\baselineskip\docname\\\docnumber}%
+ {\bf\baselineskip=1.2\baselineskip\docblock}%
+\runningheader%
+ {\bf\baselineskip=1.2\baselineskip\docdate\\\docclass}%
+ {\bf\baselineskip=1.2\baselineskip\docname\\\docnumber}%
+ {\bf\baselineskip=1.2\baselineskip}%
+\firstpagefooter%
+ {\scriptsize\bf\fschooldept\\\doccc}%
+ {\scriptsize\bf--- Page \thepage\ of \numpages\ ---\\\fpoints}%
+ {\scriptsize\bf\fversion%\jobname.pdf
+}%
+\runningfooter%
+ {\scriptsize\bf\fschooldept\\\doccc}%
+ {\scriptsize\bf--- Page \thepage\ of \numpages\ ---\\\fpoints}%
+ {\scriptsize\bf\fversion%\jobname.pdf
+}%
+\headrule \footrule
+}{
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers: NOT exam
+
+\setlength{\headsep}{0.2in}
+\setlength{\textheight}{9.2in}
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% docletter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\docletter % Letter template: include \def\docletter{} in document
+
+%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\textbullet \ \linkemail\ \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone\ \fi }
+\def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone\ \fi }
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\docname \ letter} %
+\fancyhead[R]{\docdate\\Page \thepage} %
+\fancyfoot[C]{\scriptsize {\it\docinit} \textbullet \
+\docaddress\ \textbullet\ \doccitystate\ \doczip\ \femail \fphone}% remove extra space after e-mail?!
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\fancyhead[L]{\begin{tabular}{ll}
+ {\bf\it\docinit} & \docfrom\\
+ \hskip 1cm \ & \docaddress
+ \end{tabular}} %
+\fancyhead[C]{\begin{tabular}{c}
+ {\small}\hemail\\\doccitystate % Readded \hemail
+ \end{tabular}} %
+\fancyhead[R]{\begin{tabular}{r}
+ \hphone\\\doczip % Readded \hphone
+ \end{tabular}} %
+}
+\fi%\ifdefined\docletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% docdcppaper %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\docdcppaper % dcp paper article template: include \def\docdcppaper{} in document
+
+%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\linkemail \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone \fi }
+\def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\bf\rightmark}%
+\fancyhead[R]{\bf\thepage} %
+\fancyfoot[L]{\scriptsize\bf\docauthor\\\femail\fphone}%
+\fancyfoot[R]{\scriptsize\docdate\\\jobname.pdf}%
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fi%\ifdefined\docdcppaper
+
+%%%%%%%%%%%%%%%%%%%% docbhsletter OR docpsbletter %%%%%%%%%%%%%%%%%%%%
+\ifboolexpr{test{\ifdef{\docbhsletter}} or test{\ifdef{\docpsbletter}}}{ % bhs / psb letter article template: include \def\docbhsletter{} OR \def\docpsbletter{} in document
+
+%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\textbullet \ \linkemail\ \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone\ \fi }
+\def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone\ \fi }
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\docname \ letter} %
+\fancyhead[R]{\docdate\\Page \thepage} %
+\fancyfoot[C]{\scriptsize\docfrom\ \textbullet \ \docschool\ \femail \fphone}% remove extra space after e-mail?!
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt}
+}
+}{}%\ifboolexpr{test{\ifdef{\docbhsletter}} or test{\ifdef{\docpsbletter}}}
+
+%%%%%%%%%%%%%%%%%%%% docwhsletter OR docwpsletter %%%%%%%%%%%%%%%%%%%%
+\ifboolexpr{test{\ifdef{\docwhsletter}} or test{\ifdef{\docwpsletter}}}{ % whs / wps letter article template: include \def\docwhsletter{} OR \def\docwpsletter{} in document
+
+%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\textbullet \ \linkemail\ \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone\ \fi }
+\def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone\ \fi }
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\docname \ letter} %
+\fancyhead[R]{\docdate\\Page \thepage} %
+\fancyfoot[C]{\scriptsize\docfrom\ \textbullet \ \docschool\ \femail \fphone}% remove extra space after e-mail?!
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt}
+}
+}{}%\ifboolexpr{test{\ifdef{\docwhsletter}} or test{\ifdef{\docwpsletter}}}
+
+%%%%%%%%%%%%%%%%%%%%% docbhspaper OR docpsbpaper %%%%%%%%%%%%%%%%%%%%%
+\ifboolexpr{test{\ifdef{\docbhspaper}} or test{\ifdef{\docpsbpaper}}}{ % bhs / psb paper article template: include \def\docbhspaper{} OR \def\docpsbpaper{} in document
+
+%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\linkemail \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone \fi }
+\def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
+\def\fdistrictschool{\ifx\docdistrict\empty \ifx\docschool\empty \else\docschool\ \textbullet \fi\else\docdistrict\ \textbullet \fi}
+\def\fversionfile{\ifx\docversion\empty \else v\docversion \fi%
+%\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
+}%
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\hlogo}% REMOVED \leftmark
+\fancyhead[C]{\docname}%
+\fancyhead[R]{\docdate\\\rightmark\ --\ Page \thepage} %
+\fancyfoot[C]{\scriptsize\textbf{\fdistrictschool\
+\docschooladdress\ \textbullet\ \docschoolcitystate\ \docschoolzip}\\\docauthor\ \textbullet\ \femail\fphone}%
+\fancyfoot[R]{\scriptsize~\\\fversionfile}%
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt}
+}
+}{}%\ifboolexpr{test{\ifdef{\docbhspaper}} or test{\ifdef{\docpsbpaper}}}
+
+%%%%%%%%%%%%%%%%%%%%% docwhspaper OR docwpspaper %%%%%%%%%%%%%%%%%%%%%
+\ifboolexpr{test{\ifdef{\docwhspaper}} or test{\ifdef{\docwpspaper}}}{ % whs / wps paper article template: include \def\docwhspaper{} OR \def\docwpspaper{} in document
+
+%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\linkemail \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone \fi }
+\def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
+\def\fdistrictschool{\ifx\docdistrict\empty \ifx\docschool\empty \else\docschool\ \textbullet \fi\else\docdistrict\ \textbullet \fi}
+\def\fversionfile{\ifx\docversion\empty \else v\docversion \fi%
+%\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
+}%
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\hlogo}% REMOVED \leftmark
+\fancyhead[C]{\docname}%
+\fancyhead[R]{\docdate\\\rightmark\ --\ Page \thepage} %
+\fancyfoot[C]{\scriptsize\textbf{\fdistrictschool\
+\docschooladdress\ \textbullet\ \docschoolcitystate\ \docschoolzip}\\\docauthor\ \textbullet\ \femail\fphone}%
+\fancyfoot[R]{\scriptsize~\\\fversionfile}%
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt}
+}
+}{}%\ifboolexpr{test{\ifdef{\docwhsletter}} or test{\ifdef{\docwpsletter}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% docmath %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\docmath % Math article template: include \def\docmath{} in document
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\bf\baselineskip=1.2\baselineskip\docdate\\\docclass} %
+\fancyhead[C]{\bf\baselineskip=1.2\baselineskip\docname} %
+\fancyhead[R]{\bf\baselineskip=1.2\baselineskip\rightmark} %
+\fancyfoot[L]{\scriptsize\bf\fschooldept\\\doccc} %
+\fancyfoot[C]{\scriptsize\bf--- Page \thepage\ of\ \pageref{LastPage}\ ---\\} %
+\fancyfoot[R]{\scriptsize\bf\fversion%\jobname.pdf
+}%
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header
+\fancypagestyle{first}{% for this to take effect, add \thispagestyle{first}
+%\fancyhead{} % clear all header fields
+\fancyhead[R]{\bf\baselineskip=1.2\baselineskip\docblock} %
+}
+\fi%\ifdefined\docmath
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% dochomework %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifdefined\dochomework % Homework template: include \def\dochomework{} in document
+
+\def\hhw{\ifx\hw\empty \else\hw\fi}
+\def\fhw{\docauthor\ifx\docemail\empty \else\ \textbullet\ \linkemail\fi\ifx\docphone\empty \else\ \textbullet\docphone\fi}
+
+\pagestyle{fancy}
+\lhead{\textbf{\hhw}}
+\chead{}
+\rhead{\docdate}
+\lfoot{}
+\cfoot{\fhw\\-- \thepage\ --}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fi%\ifdefined\dochomework
+
+}\makeatother%
