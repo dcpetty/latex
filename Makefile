@@ -1,9 +1,10 @@
 # Simple LaTeX makefile
 
-TEX_DIRS := bhs dlcs gre math templates white-papers
-OTHER_DIRS := apcs apcsp correspondence cv doc ga \
-	harvard-dce ia ig input jobs overleaf pc1 princeton \
+TEX_DIRS := doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates
+OTHER_DIRS := apcs apcsp correspondence cv ga harvard-dce ia ig \
+	jobs overleaf pc1 princeton \
 	robotics stanford-logic uml wps MassBay
+MAKEFILE := $(realpath ./Makefile)
 
 PDFLATEX := texi2dvi -p -q
 CLEAN := sh clean.sh
@@ -16,7 +17,8 @@ all : $(TEX_DIRS)
 
 $(TEX_DIRS) $(OTHER_DIRS) : FORCE
 	echo "## make $@"
-	$(MAKE) -C $@ --makefile=../makefile \
+	$(MAKE) -C $@ \
+	  --makefile=$(MAKEFILE) \
 	    $(patsubst %.tex,%.pdf,$(notdir $(wildcard $@/*.tex)))
 
 clean :
