@@ -22,9 +22,12 @@ $(TEX_DIRS) $(OTHER_DIRS) : FORCE
 clean :
 	for DIR in $(TEX_DIRS); do echo "## $$DIR"; $(CLEAN) -d $$DIR; done
 
-clean-all :
+clean-pdf :
 	for DIR in $(TEX_DIRS); do echo "## $$DIR"; $(CLEAN) -d $$DIR pdf; done
-	for DIR in $(OTHER_DIRS); do echo "## $$DIR"; $(CLEAN) -d $$DIR pdf; done
+
+clean-all :
+	for DIR in $(TEX_DIRS) $(OTHER_DIRS); \
+		do echo "## $$DIR"; $(CLEAN) -d $$DIR pdf; done
 
 FORCE :
 
