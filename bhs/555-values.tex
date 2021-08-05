@@ -1,0 +1,61 @@
+\documentclass[10pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\dochomework{}
+\def\hw{555 Values} % Change document homework header
+\def\docdate{2019/10/01} % Change document date
+\def\docphone{+1.772.444.2710} % Change document phone
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\setlength{\baselineskip}{1.2\baselineskip}%
+\begin{multicols*}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\prob{Formulas}
+\statement{The following formulas for resistor values in the astable comfiguration of a 555 timer are derived from one of many \href{https://circuitdigest.com/calculators/555-timer-astable-circuit-calculator}{on-line calculators} and are based on four parameters: \begin{itemize} \item $N$, the base note of the scale $[Hz]$; \item $D$, the degree of the scale on $[0, 12]$; \item $C_{1}$, the capacitance $[F]$; and \item $d$, the duty cycle of the square wave ($> \frac{1}{2}$).\end{itemize}}
+\begin{align}
+ T_{H} &= \ln(2) \times \left( R_{1} + R_{2} \right) \times C_{1} \\
+ T_{L} &= \ln(2) \times \left( R_{2} \right) \times C_{1} \\
+ T &= \frac{1}{\left( N \times {2}^{\frac{D}{12}} \right)} \\
+  &= T_{H} + T_{L} \\
+  &= \ln(2) \times \left( R_{1} + 2R_{2} \right) \times C_{1} \\
+ \therefore \left( R_{1} + 2R_{2} \right) &= \boxed{\frac{1}{\left( \ln(2) \times \left( N \times {2}^{\frac{D}{12}} \right) \times C_{1} \right)}} \\
+  \addlinespace\midrule\addlinespace
+ d &= \frac{T_{H}}{T_{H} + T_{L}} = \frac{\left( R_{1} + R_{2} \right)}{\left( R_{1} + 2R_{2} \right)} > \frac{1}{2}\\
+ d \left( R_{1} + 2R_{2} \right) &= \left( R_{1} + R_{2} \right) \\
+ d R_{1} + 2d R_{2} &= R_{1} + R_{2} \\
+ 2d R_{2} - R_{2} &= R_{1} - d R_{1} \\
+ \left( 2d - 1 \right) R_{2} &= \left( 1 - d \right) R_{1} \\
+ \therefore R_{2} &= \boxed{\frac{\left( 1 - d \right)}{\left( 2d - 1 \right)} R_{1}} \\
+  \addlinespace\midrule\addlinespace
+\left( R_{1} + 2R_{2} \right) &= R_{1} + 2 \frac{\left( 1 - d \right)}{\left( 2d - 1 \right)} R_{1} \\
+  &= \frac{{\left( 2d - 1 \right)}}{{\left( 2d - 1 \right)}} R_{1} + \frac{\left( 2 - 2d \right)}{\left( 2d - 1 \right)} R_{1} \\
+  &= \frac{1}{{\left( 2d - 1 \right)}} R_{1} \\
+ \therefore R_{1} &= \left( 2d - 1 \right) \left( R_{1} + 2R_{2} \right) \\
+  &= \boxed{\frac{\left( 2d - 1 \right)}{\left( \ln(2) \times \left( N \times {2}^{\frac{D}{12}} \right) \times C_{1} \right)}} \Omega
+\end{align}
+
+\divider
+
+\end{multicols*}
+\end{document}

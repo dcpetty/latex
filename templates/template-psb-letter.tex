@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docbhsletter{}
+\def\docname{Ansell}%
+\def\docdate{2020/07/16}%
+\def\docphone{+1.772.444.2710}%
+
+\def\docschooladdress{Brookline Town Hall\\333 Washington Street, 5\textsuperscript{th} Floor}
+\def\docschoolcitystate{Brookline, Massachusetts}
+\def\docschoolzip{02445-6853}
+\def\docschoolphone{617.730.2401}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\thispagestyle{first}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% WHS leterhead template
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.25in}{0.25in} % start everything near the top-left corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{32}(2,2)
+ \includegraphics*[scale = 0.175]{../images/TownofBrooklineLogo-400x400.png}
+\end{textblock}
+\begin{textblock}{32}(0,2)
+ \begin{minipage}{\linewidth}\setstretch{1.0}\centering
+  \large\textsc{The \docdistrict} \\
+  \normalsize{\docschooladdress} \\
+  \normalsize{\docschoolcitystate\ \docschoolzip} \\
+  \normalsize{\docschoolphone}
+ \end{minipage}
+\end{textblock}
+
+\begin{tabularx}{\textwidth}{@{}lXr@{}}\\[1.75cm]
+ \normalsize{\bf V. James Marini, Ed.D.} && \large\bf\textit{} \\[-0.5\parskip] % HACK
+ \normalsize{Interim Superintendent} && \large\bf\textit{}
+\end{tabularx}
+
+\vspace{1cm}%\docdate% wrapped \docdate
+%\medskip\docdate\medskip% wrapped \docdate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% to address & date
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lr}%
+  Seth ``Bob'' Ansell & \docdate \\
+  197 Vassal Lane \\
+  Cambridge MA 02138-6841
+\end{tabular*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% letter body
+\begin{multicols}{2}
+\lipsum[1-6]
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% closing
+\begin{paracol}{2}\switchcolumn
+Sincerely,
+
+% \includegraphics*[scale = 0.1]{../images/sig-dcp.png}  \\ % dcp signature
+ \docfrom \\
+ \doctitle\vspace{3ex}
+
+\hbox{
+\vtop{\hsize=0.1\linewidth p.s.}%
+\vtop{\hsize=0.9\linewidth \lipsum[7]}%
+}
+\end{paracol}
+
+\end{document}

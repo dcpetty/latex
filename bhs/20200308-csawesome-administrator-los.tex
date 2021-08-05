@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docbhsletter{}
+\def\docname{Infosys Foundation -- CSAwesome}%
+\def\docdate{2020/03/08}%
+\def\docphone{+1.617.713.5000}%
+\def\docfrom{Anthony Meyer}
+\def\doctitle{Head of School}
+\def\docemail{anthony\_meyer@psbma.org}
+\def\csawesome{\textbf{CS Awesome}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\thispagestyle{first}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% WHS leterhead template
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.25in}{0.25in} % start everything near the top-left corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{32}(1,0)
+ \includegraphics*[scale = 0.15]{../images/BHSLogoNavyRed-400x400.png}
+\end{textblock}
+\begin{textblock}{32}(0,1)
+ \begin{minipage}{\linewidth}\centering
+  \LARGE\textsc{\docschool} \\
+  \large{\docschooladdress} \\
+  \large{\docschoolcitystate\ \docschoolzip}
+ \end{minipage}
+\end{textblock}
+
+\begin{tabularx}{\textwidth}{@{}lXr@{}}\\[0.5cm]
+ \large\bf\textit{Anthony Meyer} && \large\bf\textit{\docschoolphone} \\
+ \large\bf\textit{Head of School} && \large\bf\textit{Fax: \docschoolfax}
+\end{tabularx}
+
+\medbreak\docdate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% to address & date
+%\medbreak\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lr}%
+%  Seth ``Bob'' Ansell & \docdate \\
+%  197 Vassal Lane \\
+%  Cambridge MA 02138-6841
+%\end{tabular*}
+%\medbreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% letter body
+\begin{multicols}{2}
+Dear \csawesome\ Team,
+
+I understand that David Petty is applying for \csawesome, a professional development course at the \href{https://www.csawesome.org/pathfinders}{Pathfinders Summer Institute 2020}. As \textit{Head of School} at \textit{Brookline High School}, I confirm my support for his participation.
+
+As part of that support:\begin{itemize}
+\item I will ensure that the \textit{Advanced Placement Computer Science A} course (including \csawesome) is placed in the 2020-2021 master school schedule. 
+\item I confirm that David Petty has my approval to implement the \csawesome\ curriculum in his \textit{AP CS A} class at \textit{Brookline High School} during the 2020-2021 academic year.
+%\item I understand that we are committing to participate in the \csawesome Research Project funded by Google. 
+\item I will work with the \textit{Brookline High School} staff to ensure that the demographics of the class reflect the demographics of the entire school population, including a gender balance of female and male students.
+\item I confirm that \textit{Brookline High School} has internet access and the necessary technology infrastructure to allow the implementation of \csawesome.
+\end{itemize}
+I am happy to respond to any questions about this letter of support.
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% closing
+\begin{paracol}{2}\switchcolumn
+Sincerely,\vspace{9ex}
+
+% \includegraphics*[scale = 0.1]{../sig-dcp.png}  \\ % dcp signature
+ \docfrom \\
+ \doctitle \\
+ \docschool \\
+ \docdate \\
+ \linkemail \\
+ \docphone \vspace{3ex}
+
+%\hbox{
+%\vtop{\hsize=0.1\linewidth p.s.}%
+%\vtop{\hsize=0.9\linewidth \lipsum[7]}%
+%}
+\end{paracol}
+
+\end{document}

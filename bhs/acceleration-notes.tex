@@ -1,0 +1,137 @@
+\documentclass[10pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\dochomework{}
+\def\hw{Notes on equations of motion} % Change document homework header
+\def\docdate{2020/10/10} % Change document date
+\def\docphone{+1.772.444.2710} % Change document phone
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\setlength{\baselineskip}{1.2\baselineskip}%
+\begin{multicols*}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\prob{Differential equations}
+\statement{\href{https://en.wikipedia.org/wiki/Equations_of_motion\#Constant_translational_acceleration_in_a_straight_line}{Equations of motion} with constant acceleration are based on the differential equations: $v(t) = \frac{d\,x(t)}{dt}$, $a(t) = \frac{d\,v(t)}{dt}$. Integrating for $a(t) = \text{constant}$:}
+\begin{align}
+ a(t) &= \text{constant} \\
+ v(t) &= \int a \, dt =  \boxed{at  + v_{0}} \\
+ x(t) &= \int v \, dt = \boxed{\frac{1}{2}at^{2} + v_{0}t + x_{0}}
+\end{align}
+For any interval $\left[ t_{1}, t_{2} \right]$ and for $\Delta t = \left( {t_{2}} - {t_{1}} \right)$...
+\begin{align}
+ x(t)\bigg\rvert_{t_{1}}^{t_{2}} = \int_{t_{1}}^{t_{2}} v \, dt &= \left( \frac{1}{2}a{t_{2}}^{2} + v_{0}{t_{2}} + x_{0} \right) \\ &- \left( \frac{1}{2}a{t_{1}}^{2} + v_{0}{t_{1}} + x_{0} \right) \\
+  &= \frac{1}{2}a\left( {t_{2}}^{2} - {t_{1}}^{2} \right) + v_{0}\left( {t_{2}} - {t_{1}} \right) \\
+  &= \frac{1}{2}a\left( {t_{2}} - {t_{1}} \right)\left( {t_{2}} + {t_{1}} \right) + v_{0}\left( {t_{2}} - {t_{1}} \right) \\
+  &= \boxed{\frac{1}{2}a\left( \Delta t \right)\left( {t_{2}} + {t_{1}} \right) + v_{0}\left( \Delta t \right)}
+\end{align}
+
+\divider
+
+\prob{Difference equations}
+\statement{To implement a difference equation version, calculate the initial versions of $x_{i}$, $v_{i}$, and $t_{i}$ based on $x_{0}$, $v_{0}$, and $t_{0}$. Then calculate the \textit{next} versions $x_{i + 1}$, $v_{i + 1}$, and $t_{i + 1}$ based on the \textit{current} versions $x_{i}$, $v_{i}$, and $t_{i}$ and previous time $t_{i - 1}$.}
+
+\begin{align}
+x_{i} &= x_{0} + v_{0} t_{0} + \frac{1}{2} a {t_{0}}^{2} \\
+v_{i} &= v_{0} + a t_{0} \\
+t_{i} &= t_{0}
+\end{align}
+For $\Delta t = \left( {t_{i}} - {t_{i - 1}} \right)$...
+\begin{align}
+x_{i + 1} &= x_{i} + v_{0} \left( \Delta t \right) + \frac{1}{2} a \left( \Delta t \right) \left( t_{i} + t_{i - 1} \right) \label{x-i1} \\
+v_{i + 1} &= v_{i} + a \left( \Delta t \right) \\
+t_{i + 1} &= t_{i} + \left( \Delta t \right)
+\end{align}
+
+\divider
+
+\prob{Code}
+\statement{The following \href{https://docs.python.org/3/}{Python} code (\texttt{accel.py}) demonstrates the instantaneous (continuous, differential) and recursive (discrete, difference) versions. They yield the same results.}
+
+\begin{lstlisting}
+#!/usr/bin/env python3
+#
+# accel.py
+#
+
+# initial values
+x0, v0, t0, dt, a, tot = 3, 5, 7, 2, 10, 20
+
+# instantaneous
+for t in range(t0, tot + t0 + dt, dt):
+    # print('*', t, x0, v0 * t, a * t * t / 2)            # debug print
+    x = x0 + v0 * t + a * t * t / 2
+    v = v0 + a * t
+    print(f"{x:6.1f} {v:6.1f} {t:6.1f}")
+
+print()
+
+# recursive
+xi, vi, ti = x0 + v0 * t0 + a * t0 * t0 / 2, v0 + a * t0, t0
+print(f"{xi:6.1f} {vi:6.1f} {ti:6.1f}")
+for t in range(t0 + dt, tot + t0 + dt, dt):
+    # print('*', ti, xi, v0 * dt, a * dt * (t + ti) / 2)  # debug print
+    # xi = xi + v0 * dt + a * dt * dt / 2                 # *not* dt ** 2
+    # xi = xi + v0 * dt + a * (t * t - ti * ti) / 2       # alternate version
+    xi = xi + v0 * dt + a * dt * (t + ti) / 2
+    vi = vi + a * dt
+    ti = ti + dt
+    print(f"{xi:6.1f} {vi:6.1f} {ti:6.1f}")
+
+\end{lstlisting}
+
+Which results (with these example initial values) in:
+
+\begin{lstlisting}
+ 283.0   75.0    7.0
+ 453.0   95.0    9.0
+ 663.0  115.0   11.0
+ 913.0  135.0   13.0
+1203.0  155.0   15.0
+1533.0  175.0   17.0
+1903.0  195.0   19.0
+2313.0  215.0   21.0
+2763.0  235.0   23.0
+3253.0  255.0   25.0
+3783.0  275.0   27.0
+
+ 283.0   75.0    7.0
+ 453.0   95.0    9.0
+ 663.0  115.0   11.0
+ 913.0  135.0   13.0
+1203.0  155.0   15.0
+1533.0  175.0   17.0
+1903.0  195.0   19.0
+2313.0  215.0   21.0
+2763.0  235.0   23.0
+3253.0  255.0   25.0
+3783.0  275.0   27.0
+>>> 
+\end{lstlisting}
+
+The code \texttt{xi = xi + v0 * dt + a * dt * dt / 2} (that uses ${\left( \Delta t \right)}^{2}$ and is commented out) is not correct. The discrete calculation must include the last term of equation \eqref{x-i1} to match the continuous calculation.
+
+If $a(t) \ne \text{constant}$, then this analysis does not apply .
+
+\end{multicols*}
+\end{document}

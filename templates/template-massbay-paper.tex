@@ -1,0 +1,182 @@
+\documentclass[11pt,twocolumn]{article}%
+\usepackage{amsmath,amsthm,array,comment,enumitem,fancyhdr,graphicx,hyperref,makeidx,palatino,verbatim}%
+\usepackage[psamsfonts]{amsfonts,amssymb,eucal}
+\usepackage{cmmib57,latexsym}% What about eufrak & euscript?
+\usepackage[paper=letterpaper, margin=3cm]{geometry}%
+\usepackage[small,compact]{titlesec}%
+%\usepackage[nottoc]{tocbibind}% Use \tableofcontents in {document} for TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\def\docauthor{David C. Petty}%
+\def\doctitle{This is the title}%
+\def\docdate{2006/07/04}%
+\def\docemail{patent@massbay.net}%
+\def\docphone{+1.253.559.1990}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\def\foreign{\em}
+\def\etc{{\foreign etc.}}
+\def\eg{{\foreign e.g.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers data
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\bf \leftmark}%
+\fancyhead[C]{\bf \includegraphics*[scale = 0.3]{../images/MassBayLogo1085x337.pdf}} %
+\fancyhead[R]{\bf \thepage} %
+\fancyfoot[L]{\scriptsize{\bf MassBay Consulting, LLC\\
+\url{http://massbay.net/}}}%
+\fancyfoot[C]{\scriptsize{\sc -- Confidential --}\\
+{\bf\docauthor \ \textbullet \ \texttt{\textless \docemail
+\textgreater} \textbullet \ \docphone}}%
+\fancyfoot[R]{\scriptsize \docdate\\\jobname.pdf}%
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\setlength{\columnsep}{1cm}%
+\setlength{\parindent}{0cm}%
+\setlength{\parskip}{\baselineskip}%
+\setlist{nolistsep, itemsep=.125\baselineskip}%
+\setenumerate{leftmargin=*, label={\arabic*)}}%
+\setdescription{style=multiline, leftmargin=3cm}%
+\setitemize{leftmargin=*, label={\tiny$\blacktriangleright$}}%
+\numberwithin{equation}{section}%
+\pagestyle{fancy}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibtex style
+\usepackage{natbib}% for \bibliographystyle{agsm}
+\bibliographystyle{alpha}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Dcoument
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title
+\title{{\bf \doctitle}}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Author(s) (including \thanks)
+\author{\docauthor %
+%\thanks{The author wishes to thank his family.}%
+\\%
+{\small \texttt{\textless\docemail\textgreater} \textbullet \ \docphone}\\%
+\href{http://massbay.net/}
+{\includegraphics*[scale=0.75]{../images/MassBayLogo1085x337.pdf}}\\%
+{\bf\sc Confidential}}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Date
+\date{ } %
+
+\maketitle
+
+\begin{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Keywords & Abstract
+
+{\em Keywords: keyword1, keyword2, keyword3 %
+
+In this paper there are examples of all the useful things you can do
+with \LaTeX. This document includes settings and examples for using
+the following packages: {\tt amsmath, amsthm, comment, enumitem,
+fancyhdr, geometry, graphicx, hyperref, makeidx, natbib, palatino,
+titlesec, totcbibind, \& verbatim} plus the font packages: {\tt
+amsfonts,amssymb, cmmib57, eucal, (eufrak, euscript), \& latexsym}.
+}
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of Contents
+%\tableofcontents %
+
+\baselineskip = 1.25\baselineskip % paragraph spacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Introduction
+\section{Introduction}
+\label{Introduction}
+
+This paper is a template for writing \LaTeX papers for
+\href{http://massbay.net}{MassBay Consulting, LLC} and other
+audiences.
+
+In this paper there are examples of all the useful things you can do
+with \LaTeX. This document includes settings and examples for using
+the following packages: {\tt amsmath, amsthm, comment, enumitem,
+fancyhdr, geometry, graphicx, hyperref, makeidx, natbib, palatino,
+titlesec, totcbibind, \& verbatim} plus the font packages: {\tt
+amsfonts,amssymb, cmmib57, eucal, (eufrak, euscript), \& latexsym}
+
+\subsection{The quick brown fox}
+\label{The quick brown fox}
+
+The quick\index{quick} brown\index{brown} fox\index{fox}
+jumps\index{jumps} over\index{over} the lazy\index{lazy}
+dog\index{dog}. The quick brown fox jumps over the lazy dog. The
+quick brown fox jumps over the lazy dog. The quick brown fox jumps
+over the lazy dog. The quick brown fox jumps over the lazy dog. The
+quick brown fox jumps over the lazy dog. The quick brown fox jumps
+over the lazy dog. The quick brown fox jumps over the lazy dog. The
+quick brown fox jumps over the lazy dog.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% This Section
+\section{This Section}
+\label{This Section}
+
+In section \ref{This Section} there are examples of the various
+types of lists\footnote{These correspond to the {\tt \textless
+dl\textgreater}, {\tt \textless ol\textgreater}, \& {\tt \textless
+ul\textgreater}\ HTML tags.}:
+
+\begin{description}
+\item[Item 1 header] This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item[Item 2 header] This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item[Item 3 header] This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\end{description}
+
+\begin{enumerate}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{enumerate}
+
+\begin{itemize}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% The Other Section
+\section{The Other Section}
+\label{The Other Section}
+
+In section \ref{The Other Section} there are examples of
+mathematics:\begin{align}
+y &= mx+b && \text{Linear} \\
+f(x) &= \int_{-\infty}^{+\infty} e^{i\theta} d\theta && \text{Integral} \\
+z &= 2^k-\binom{k}{1}2^{k-1}+\binom{k}{2}2^{k-2} &&\text{Binomial}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conclusion
+\section{Conclusion}
+\label{Conclusion}
+
+This last section provides a citation so that a bibliography is
+automatically included \cite{book:knr}, \cite{book:middlemarch}, \&
+\cite{book:engines-of-logic}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\bibliography{../templates/bib/dcpbibtex} % To update, delete *.bbl
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+%\printindex % To update, delete *.ind
+
+\end{document}

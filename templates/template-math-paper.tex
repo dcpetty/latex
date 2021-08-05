@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docmath{}
+\def\docclass{CLASS} % Change document class
+\def\docdate{2005-2006 Q1} % Change document date
+\def\docname{Paper 1} % Change document name
+\def\docnumber{123456} % Change document number
+\def\docversion{0.1} % Change document version
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+
+\begin{multicols*}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Introduction
+\section{Introduction}
+\label{Introduction}
+
+\lipsum[1-3]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% This Section
+\section{This Section}
+\label{This Section}
+
+In section \ref{This Section} there are examples of the various
+types of lists\footnote{These correspond to the {\tt \textless
+dl\textgreater}, {\tt \textless ol\textgreater}, \& {\tt \textless
+ul\textgreater}\ HTML tags.}:
+
+\begin{description}
+\item[Item 1 header] This is item one\dots The quick brown fox jumps
+over the lazy dog. The quick brown fox jumps over the lazy dog.
+\item[Item 2 header] This is item one\dots The quick brown fox jumps
+over the lazy dog. The quick brown fox jumps over the lazy dog.
+\item[Item 3 header] This is item one\dots The quick brown fox jumps
+over the lazy dog. The quick brown fox jumps over the lazy dog.
+\end{description}
+
+\begin{enumerate}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{enumerate}
+
+\begin{itemize}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% The Other Section
+\section{The Other Section}
+\label{The Other Section}
+
+In section \ref{The Other Section} there are examples of
+mathematics:\begin{align}
+ y &= mx+b && \text{Linear} \\
+ f(x) &= \int_{-\infty}^{+\infty} e^{i\theta} d\theta && \text{Integral} \\
+ z &= 2^k-\binom{k}{1}2^{k-1}+\binom{k}{2}2^{k-2} &&\text{Binomial} \\
+ f(n) &= \\
+ f(n) &= \\
+ {n \choose k} &= \begin{Bmatrix} 1 & {n \choose 0} \\ 1 & {n \choose n} \\ {n - 1 \choose k - 1} + {n - 1 \choose k} & 0 \le k \le n \end{Bmatrix} 
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% The Code Section
+\section{The Code Section}
+\label{The Code Section}
+
+\begin{lstlisting}[language=Python,caption=\code{foo} method,label=foo]
+//345678901234567890123456789012345678901234567890123456789012345678901234567890
+  public static String foo() {
+    return "FOO";
+  }
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conclusion
+\section{Conclusion}
+\label{Conclusion}
+
+This last section provides a citation so that a bibliography is
+automatically included \citep{book:linear-algebra}.
+
+\begin{itemize}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{itemize}
+
+
+This is item three\dots The quick brown fox jumps
+over the lazy dog. This is item three\dots The quick brown fox jumps over the lazy dog. This is item three\dots The quick brown fox jumps over the lazy dog. This is item three\dots The quick brown fox jumps over the lazy dog.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\bibliography{../templates/bib/dcpbibtex} % To update, delete *.blb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+\printindex % To update, delete *.ind
+
+\end{multicols*}
+
+\end{document}

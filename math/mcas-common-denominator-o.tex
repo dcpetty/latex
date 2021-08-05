@@ -1,0 +1,145 @@
+\documentclass[12pt]{exam}%
+\usepackage{amsmath,amsthm,array,comment,enumitem,graphicx,hyperref,makeidx,multicol,verbatim}%
+\usepackage[psamsfonts]{amsfonts,amssymb,eucal}% ftp://ftp.ams.org/pub/tex/doc/amsfonts/amsfndoc.pdf
+\usepackage{cmmib57,latexsym}%
+\usepackage[small,compact]{titlesec}%
+%\usepackage[nottoc]{tocbibind}% Use \tableofcontents in {document} for TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\def\docclass{MCAS Preparation} % Change document class
+\def\docdate{2005-2006 Q3} % Change document date
+\def\docname{Common Denominator} % Change document name
+\def\docnumber{902349} % Change document number
+\def\docversion{0.1} % Change document version
+\def\docschool{Winchester High School \textbullet\
+\href{http://mail.winchester.k12.ma.us/whs/math/}{Mathematics}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\def\foreign{\em}
+\def\etc{{\foreign etc.}}
+\def\eg{{\foreign e.g.}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\primes}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\Z}{\mathbb{Z}}
+\def\probskip{\vspace{2cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\addpoints \boxedpoints \pointsinrightmargin%
+\setlength\answerskip{1ex} \setlength\answerlinelength{6cm}%
+%\printanswers% to print solutions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\extrawidth{.5in}%
+\pagestyle{headandfoot}%
+%\extraheadheight{-.25in}%
+%\extrafootheight{-.25in}%
+\firstpageheader%
+ {\bf \baselineskip = 1.5\baselineskip \docdate\\\docclass}%
+ {\bf \baselineskip = 1.5\baselineskip \docname\\\docnumber}%
+ {\bf \baselineskip = 1.5\baselineskip Name: \vbox{\hrule width 2in}\\
+Date: \vbox{\hrule width 2in}}%
+\runningheader%
+ {\bf \baselineskip = 1.5\baselineskip \docdate\\\docclass}%
+ {\bf \baselineskip = 1.5\baselineskip \docname\\\docnumber}%
+ {\bf \baselineskip = 1.5\baselineskip {\sc\bf SHOW ALL WORK}}%
+\firstpagefooter%
+ {\scriptsize \bf \docschool\\
+ \href{http://creativecommons.org/licenses/by-nc-sa/2.0/}{Some rights reserved.}}%
+ {\scriptsize \bf --- Page \thepage\ of \numpages\ ---\\\pointsonpage{\thepage} points}%
+ {\scriptsize \bf \ifx\docversion\empty \else v\docversion\\\fi%\jobname.pdf
+ }%
+\runningfooter%
+ {\scriptsize \bf \docschool\\
+ \href{http://creativecommons.org/licenses/by-nc-sa/2.0/}{Some rights reserved.}}%
+ {\scriptsize \bf --- Page \thepage\ of \numpages\ ---\\\pointsonpage{\thepage} points}%
+ {\scriptsize \bf \ifx\docversion\empty \else v\docversion\\\fi%\jobname.pdf
+ }%
+\headrule \footrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of Contents
+%\tableofcontents %
+
+\center{\sc\bf SHOW ALL WORK}
+
+\begin{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question[10] Find the common denominator for the following
+fractions:
+
+\begin{multicols}{2}
+\begin{parts}
+\part \( \frac{1}{3} \hspace{1cm} \frac{1}{2} \)
+\probskip
+\part \( \frac{1}{4} \hspace{1cm} \frac{1}{3} \)
+\probskip
+\part \( \frac{1}{2} \hspace{1cm} \frac{1}{4} \)
+\probskip
+\part \( \frac{1}{3} \hspace{1cm} \frac{1}{9} \)
+\probskip
+\part \( \frac{1}{5} \hspace{1cm} \frac{1}{3} \)
+\probskip \columnbreak
+\part \( \frac{1}{7} \hspace{1cm} \frac{1}{5} \)
+\probskip
+\part \( \frac{1}{2} \hspace{1cm} \frac{1}{8} \)
+\probskip
+\part \( \frac{1}{6} \hspace{1cm} \frac{1}{10} \)
+\probskip
+\part \( \frac{1}{15} \hspace{1cm} \frac{1}{9} \)
+\probskip
+\part \( \frac{1}{21} \hspace{1cm} \frac{1}{12} \)
+\probskip
+\fullwidth{%
+\begin{solution}[2cm]\begin{align*}
+ 123
+\end{align*}\end{solution}}
+\end{parts}
+\end{multicols}
+
+\break
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question[10] Find the common denominator for the following
+fractions, convert each fraction to the common denominator, and add
+them:
+
+\begin{multicols}{2}
+\begin{parts}
+\part \( \frac{2}{3} + \frac{1}{2} \)
+\probskip
+\part \( \frac{3}{4} + \frac{1}{3} \)
+\probskip
+\part \( \frac{4}{5} + \frac{2}{3} \)
+\probskip
+\part \( \frac{1}{2} + \frac{5}{8} \)
+\probskip \columnbreak
+\part \( \frac{3}{7} + \frac{2}{9} \)
+\probskip
+\part \( \frac{1}{6} + \frac{7}{10} \)
+\probskip
+\part \( \frac{1}{7} + \frac{1}{5} \)
+\probskip
+\part \( \frac{11}{12} + \frac{14}{15} \)
+\probskip
+\fullwidth{%
+\begin{solution}[2cm]\begin{align*}
+ 123
+\end{align*}\end{solution}}
+\end{parts}
+\end{multicols}
+
+\end{questions}
+
+%\vspace{2cm}\hrule
+%
+%\begin{center}
+%\small \cellwidth{1em} \gradetable[h][questions]
+%\end{center}
+
+\end{document}

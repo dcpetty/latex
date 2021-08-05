@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+\floatstyle{boxed}
+\restylefloat{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docwpspaper{}
+\def\docauthor{David C. Petty}%
+\def\docemail{dpetty@winchesterps.org}%
+\def\docphone{+1.781.629.9778}%
+\def\docto{Winchester Public Schools}%
+\def\docname{Career \& Technology Education}%
+\def\docdate{2018/08/31}%
+\def\docversion{0.1}%
+
+\def\docdistrict{Winchester Public Schools}
+\def\docschooladdress{40 Samoset Road} %
+\def\docschoolcitystate{Winchester MA} %
+\def\docschoolzip{01890-3442} %
+\def\docschoolphone{(781) 721-7004} %
+\def\docschoolfax{(781) 721-0016} %
+
+\def\doclogofile{../images/seal-winchester-ma-301x301-color.png}
+\def\hlogo{\includegraphics*[scale = 0.15]{\doclogofile}}
+\def\doclogo{\href{http://www.winchesterps.org/}{\includegraphics*[scale = 0.45]{\doclogofile}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+\def\cte{\textit{\docname}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Logo in top-right corner
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{6.125in}{0.25in} % start everything near the top-right corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{32}(1,0)
+ \doclogo
+\end{textblock}
+
+\thispagestyle{first}
+
+\begin{center}{\large\bf White Paper}\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header
+\begin{minipage}{.5\linewidth}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf To:}%
+\vtop{\hsize=0.75\linewidth\docto}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf From:}%
+\vtop{\hsize=0.75\linewidth\docauthor}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Subject:}%
+\vtop{\hsize=0.75\linewidth\docname}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Date:}%
+\vtop{\hsize=0.75\linewidth\docdate}%
+}\ % new line
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{center}
+% This is the right column...
+\end{center}
+\end{minipage}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% memo body
+\begin{multicols}{2}
+\section{Background}
+During the 2012-2013 academic year, I worked closely with Technology / Engineering Teacher Rich Monagle and Interim Assistant Superintendent Dick Robbat to develop a comprehensive plan for education involving science, technology, engineering, and mathematics (STEM) in the Winchester public schools, grades K-12. 
+
+\subsection{Technology}
+The word `technology' is fraught. It comes from the Greek word $\tau\acute{\epsilon}\chi\eta\nu$, meaning both {\em art} and {\em craft}, and the Greek suffix $\lambda o\gamma\acute{\iota}\alpha$, meaning {\em system of} --- hence the English definition: {\em the practical application of knowledge, or a capability so enabled, or a specialized aspect of it}.
+
+\end{multicols}
+
+\begin{figure}[H]\centering\includegraphics*[width = 0.75\textwidth]{./cte-organization.png}\caption[\textit{CTE} Organization]{\cte\ Organization}\label{fig-organization}\end{figure}
+
+\begin{multicols}{2}
+\lipsum[1-2] In Figure \ref{fig-organization}.
+\end{multicols}
+
+\begin{figure}[H]\centering
+ \begin{tabu}to\textwidth{X | X | X | X | X | X}
+  \textbf{FOO} & \textbf{FOO} & \textbf{FOO} & \textbf{FOO} & \textbf{FOO} & \textbf{FOO} \\\hline
+  \begin{itemize}
+   \item FOO
+   \item BAR
+  \end{itemize} &
+  \begin{itemize}
+   \item FOO
+   \item BAR
+  \end{itemize} &
+  \begin{itemize}
+   \item FOO
+   \item BAR
+  \end{itemize} &
+  A & B & C
+ \end{tabu}
+ \caption[\textit{CTE} Courses]{\cte\ Course Sequences}\label{fig-courses}
+\end{figure}
+
+\begin{multicols}{2}
+\section{Acknowledgments}
+Thanks to Rich Monagle and Dick Robbat for many thoughtful meetings and the many hours of work that resulted in this plan.
+
+\listoffigures
+\end{multicols}
+
+\end{document}

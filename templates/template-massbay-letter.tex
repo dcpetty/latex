@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}%
+\usepackage{amsmath,amsthm,array,comment,enumitem,fancyhdr,graphicx,hyperref,makeidx,multicol,palatino,verbatim}%
+\usepackage[psamsfonts]{amsfonts,amssymb,eucal}% ftp://ftp.ams.org/pub/tex/doc/amsfonts/amsfndoc.pdf
+\usepackage{cmmib57,latexsym}%
+\usepackage[paper=letterpaper, margin=1in, includeheadfoot, top=0.25in, bottom=0.5in, head=0.5in]{geometry}%
+\usepackage[small,compact]{titlesec}%
+%\usepackage[nottoc]{tocbibind}% Use \tableofcontents in {document} for TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% document data
+\def\docinit{\includegraphics*[scale = 0.5]{../images/MassBayLogo1085x337.pdf}}%
+\def\docfrom{MassBay Consulting, LLC}%
+\def\docaddress{POBox 400222}%
+\def\doccitystate{Cambridge MA}%
+\def\doczip{02140-0003 USA}%
+\def\docemail{info@massbay.net}%
+\def\docphone{+1.253.559.1990}%
+\def\docname{Ansell}%
+\def\docdate{2005/07/16}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% macros
+\def\foreign{\em}
+\def\etc{{\foreign etc.}}
+\def\eg{{\foreign e.g.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\textbullet \ \hemail \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone \fi }
+\def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone \fi }
+
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\docname \ letter} %
+\fancyhead[R]{\docdate\\Page \thepage} %
+\fancyfoot[C]{\scriptsize \bf \docfrom\ \textbullet \
+\docaddress\ \textbullet\ \doccitystate\ \doczip\ \femail \fphone}% remove extra space after e-mail?!
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% first page header
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\fancyhead[L]{\begin{tabular}{l}
+ \docinit
+ \end{tabular}} %
+\fancyhead[C]{\begin{tabular}{l}
+ \small\docfrom\\\small\docaddress\\\small\doccitystate\ \doczip
+ \end{tabular}} %
+\fancyhead[R]{\begin{tabular}{r}
+ \small\url{http://massbay.net/}\\\small\hemail\\\small\hphone
+ \end{tabular}} %
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\setlength{\columnsep}{1cm}%
+\setlength{\parindent}{0cm}%
+\setlength{\parskip}{\baselineskip}%
+\raggedright
+\setlist{nolistsep, itemsep=.125\baselineskip}%
+\setenumerate{leftmargin=*, label={\arabic*)}}%
+\setdescription{style=multiline, leftmargin=3cm}%
+\setitemize{leftmargin=*, label={\tiny$\blacktriangleright$}}%
+\numberwithin{equation}{section}%
+\pagestyle{fancy}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibtex style
+\usepackage{natbib}% for \bibliographystyle{agsm}
+\bibliographystyle{alpha}
+
+%\input supp-vis \showmakeup
+
+\begin{document}
+
+\thispagestyle{first}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% date & to address
+
+\docdate
+
+ Seth ``Bob'' Ansell \\
+ 197 Vassal Lane \\
+ Cambridge MA 02138-6841
+
+Dear Bob:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% letter body
+\begin{multicols}{2}
+
+The quick brown fox jumps over the lazy dog. The quick brown fox
+jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox
+jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox
+jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog.
+
+The quick brown fox jumps over the lazy dog. The quick brown fox
+jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox
+jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox
+jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog.
+
+
+The quick brown fox jumps over the lazy dog. The quick brown fox
+jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog. The quick brown fox jumps over the lazy
+dog. The quick brown fox jumps over the lazy dog. The quick brown
+fox jumps over the lazy dog.
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% closing
+Sincerely,
+
+\vspace{1cm}
+
+David C. Petty
+
+\vspace{3ex}
+
+\hbox{
+\vtop{\hsize=0.1\linewidth p.s.}%
+\vtop{\hsize=0.9\linewidth The quick brown fox jumps over the lazy dog.}%
+}
+
+\end{document}

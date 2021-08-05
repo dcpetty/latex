@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docletter{}
+\def\docemail{dcp@mail.com}%
+\def\docphone{+1.617.331.2345}%
+\def\docname{Ansell}%
+\def\docdate{2005/07/16}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\thispagestyle{first}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% to address & date
+\docdate
+\medskip
+
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lr}%
+  Seth ``Bob'' Ansell &\\
+  197 Vassal Lane \\
+  Cambridge MA 02138-6841
+\end{tabular*}
+\medskip
+
+Dear Bob:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% letter body
+\begin{multicols}{2}
+
+\lipsum[2-5]
+
+\begin{itemize}
+\item \lipsum[6]
+\item \lipsum[7]
+\end{itemize}
+
+\lipsum[8-9]
+
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% closing
+Love,
+
+\vspace{1cm}
+
+{\large $\Lambda, \Delta, \delta, \& \chi$}
+
+\vspace{3ex}
+
+\hbox{
+\vtop{\hsize=0.1\linewidth p.s.}%
+\vtop{\hsize=0.9\linewidth \lipsum[10]}%
+}
+
+\end{document}

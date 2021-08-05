@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+\newcommand*{\fancyfont}{\fontfamily{pzc}\selectfont}
+\DeclareTextFontCommand{\textfancyfont}{\fancyfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docwpsletter{}
+\def\docfrom{David C. Petty}%
+\def\doctitle{STEM Coordinator}%
+\def\docemail{dpetty@winchesterps.org}%
+\def\docphone{+1.781.629.9778}%
+\def\docname{Ansell}%
+\def\docdate{2018/07/16}%
+
+\def\docschooladdress{40 Samoset Road} %
+\def\docschoolcitystate{Winchester MA} %
+\def\docschoolzip{01890-3442} %
+\def\docschoolphone{(781) 721-7004} %
+\def\docschoolfax{(781) 721-0016} %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\thispagestyle{first}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% WHS leterhead template
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.25in}{0.25in} % start everything near the top-left corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{31}(1,0)
+ \includegraphics*[scale = 0.3]{../images/seal-winchester-ma-301x301-color.png}
+\end{textblock}
+\begin{textblock}{31}(0,1)
+ \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ccc}
+  \begin{minipage}{0.25\linewidth}\ \end{minipage} &
+  \begin{minipage}{0.5\linewidth}\centering
+   {\fontsize{30pt}{40}\em\textfancyfont{\docdistrict}} 
+   \LARGE\textfancyfont{Dr. Judith Evans, Superintendent} \\
+   \Large\textfancyfont{jevans@winchesterps.org}
+  \end{minipage} &
+  \begin{minipage}{0.2\linewidth}% should be 0.25
+  \begin{flushright}
+   \textfancyfont{\docschooladdress} \\
+   \textfancyfont{\docschoolcitystate\ \docschoolzip} \\
+   \textfancyfont{Phone: \docschoolphone} \\
+   \textfancyfont{Facsimile: \docschoolfax}
+  \end{flushright}
+  \end{minipage} 
+ \end{tabular*}
+\end{textblock}
+
+\vspace*{10mm} % HACK TO SPACE PAST LOGO
+\begin{spacing}{1.2}\textfancyfont{\large\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}cccc}
+Dr. Jennifer Elineema & Pamela Girouard & Laurie Kirby & Ellen Whittemore \\
+Assitant Superintendent & Director of Special Education & Director of Personnel & Director of Finance \\
+jelineema@winchesterps.org & pgirouard@winchesterps.org & lkirby@winchesterps.org & ewhittemore@winchesterps.org
+\end{tabular*}}\end{spacing}
+
+\medskip%\docdate\medskip% wrapped \docdate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% to address & date
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lr}%
+  Seth ``Bob'' Ansell & \docdate \\
+  197 Vassal Lane \\
+  Cambridge MA 02138-6841
+\end{tabular*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% letter body
+\begin{multicols}{2}
+\lipsum[1-6]
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% closing
+\begin{paracol}{2}\switchcolumn
+Sincerely,
+
+% \includegraphics*[scale = 0.1]{../images/sig-dcp.png}  \\ % dcp signature
+ \docfrom \\
+ \doctitle\vspace{3ex}
+
+\hbox{
+\vtop{\hsize=0.1\linewidth p.s.}%
+\vtop{\hsize=0.9\linewidth \lipsum[7]}%
+}
+\end{paracol}
+
+\end{document}

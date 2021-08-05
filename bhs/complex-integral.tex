@@ -1,0 +1,105 @@
+\documentclass[10pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\dochomework{}
+\def\hw{Complex integral} % Change document homework header
+\def\docdate{2020/06/10} % Change document date
+\def\docphone{+1.772.444.2710} % Change document phone
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\setlength{\baselineskip}{1.2\baselineskip}%
+%\begin{multicols*}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\prob{Given...}
+\statement{$\int_{z}^{q}{(x+axi+bi) e^{-2\cdot \pi \cdot i \cdot n \cdot x} \dx}$, with $a$, $b$, $n$, $q$, $z$ constant:}
+\begin{align}
+f(x, a, b, n, q, z) &= \int_{z}^{q}{\left( x+axi+bi \right) e^{-2 n \pi i x} \dx} \\
+ &= \int_{z}^{q}{\left( Ax + B \right) e^{Cx} \dx} &\text{where:} \\
+ && A = 1 + ai \\
+ && B = bi \\
+ && C = -2n \pi i \\
+ && \text{and:} \\
+ && C^{2} = -4n^{2} \pi^{2} \\
+ &= \int_{z}^{q}{Ax e^{Cx} \dx} + \int_{z}^{q}{B e^{Cx} \dx}
+\end{align}
+
+\divider
+
+From \href{http://isbn.nu/}{Dwight}:
+\begin{align}
+ \int{e^{ax} \dx} &= \frac{1}{a} e^{ax} & \text{565.1} \\
+ \int{xe^{ax} \dx} &= e^{ax}\left[ \frac{x}{a} - \frac{1}{a^{2}} \right] & \text{567.1}
+\end{align}
+
+\divider
+
+Therefore:
+\begin{align}
+A \int{x e^{Cx} \dx} + B\int{e^{Cx} \dx} &= Ae^{Cx} \left[ \frac{x}{C} - \frac{1}{C^{2}}\right] + B \frac{1}{C} e^{Cx} + K \\
+ &= \left[ \frac{Ax + B}{C} - \frac{A}{C^{2}}\right] e^{Cx} + K \\
+ &= \left[ \frac{ACx + BC - A}{C^{2}}\right] e^{Cx} + K \\
+ &= \left[ \frac{\left(1 + ai\right)\left(-2n \pi i\right)x + \left(bi\right)\left(-2n \pi i\right) - \left(1 + ai\right)}{\left(-4n^{2}\pi^{2}\right)} \right] e^{\left(-2n \pi i\right)x} + K \\
+ &= \left[ \frac{\left(-2n\pi\right)xi - \left(-2n\pi\right)ax - \left(-2n\pi\right)b - 1 - ai}{\left(-4n^{2}\pi^{2}\right)} \right] e^{i\left(-2n\pi\right)x} + K \\
+ &= \left[ \left(\frac{\left(-2n\pi\right)x - a}{\left(-4n^{2}\pi^{2}\right)} \right) i - \left(\frac{\left(-2n\pi\right)\left(ax + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \right] \left[ \cos{\left(-2n\pi\right)x} + i\sin{\left(-2n\pi\right)x}\right] + K \\
+ &= \left[ \left(\frac{\left(-2n\pi\right)x - a}{\left(-4n^{2}\pi^{2}\right)} \right) \cos{\left(-2n\pi\right)x} 
+ - \left(\frac{\left(-2n\pi\right)\left(ax + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \sin{\left(-2n\pi\right)x} \right] i \\
+ &- \left[ \left(\frac{\left(-2n\pi\right)x - a}{\left(-4n^{2}\pi^{2}\right)} \right) \sin{\left(-2n\pi\right)x} 
+ + \left(\frac{\left(-2n\pi\right)\left(ax + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \cos{\left(-2n\pi\right)x} \right] + K
+\end{align}
+
+\divider
+
+And the definite integral evaluates to:
+\begin{align}
+A \int_{z}^{q}{e^{Cx} \dx} + B\int_{z}^{q}{x e^{Cx} \dx} =
+ &+ \left[ \left(\frac{\left(-2n\pi\right)q - a}{\left(-4n^{2}\pi^{2}\right)} \right) \cos{\left(-2n\pi\right)q} 
+ - \left(\frac{\left(-2n\pi\right)\left(aq + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \sin{\left(-2n\pi\right)q} \right] i \\
+ &- \left[ \left(\frac{\left(-2n\pi\right)q - a}{\left(-4n^{2}\pi^{2}\right)} \right) \sin{\left(-2n\pi\right)q} 
+ + \left(\frac{\left(-2n\pi\right)\left(aq + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \cos{\left(-2n\pi\right)q} \right] \\
+ &- \left[ \left(\frac{\left(-2n\pi\right)z - a}{\left(-4n^{2}\pi^{2}\right)} \right) \cos{\left(-2n\pi\right)z} 
+ - \left(\frac{\left(-2n\pi\right)\left(az + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \sin{\left(-2n\pi\right)z} \right] i \\
+ &+ \left[ \left(\frac{\left(-2n\pi\right)z - a}{\left(-4n^{2}\pi^{2}\right)} \right) \sin{\left(-2n\pi\right)z} 
+ + \left(\frac{\left(-2n\pi\right)\left(az + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \cos{\left(-2n\pi\right)z} \right]
+\end{align}
+
+\divider
+
+So, for real and imaginary parts of $f(x, a, b, n, q, z)$:
+\begin{align}
+\operatorname{Re}\left(f(x, a, b, n, q, z)\right) = &- \left[ \left(\frac{\left(-2n\pi\right)q - a}{\left(-4n^{2}\pi^{2}\right)} \right) \sin{\left(-2n\pi\right)q} 
+ + \left(\frac{\left(-2n\pi\right)\left(aq + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \cos{\left(-2n\pi\right)q} \right] \\
+ &+ \left[ \left(\frac{\left(-2n\pi\right)z - a}{\left(-4n^{2}\pi^{2}\right)} \right) \sin{\left(-2n\pi\right)z} 
+ + \left(\frac{\left(-2n\pi\right)\left(az + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \cos{\left(-2n\pi\right)z} \right] \\
+\operatorname{Im}\left(f(x, a, b, n, q, z)\right) = &+ \left[ \left(\frac{\left(-2n\pi\right)q - a}{\left(-4n^{2}\pi^{2}\right)} \right) \cos{\left(-2n\pi\right)q} 
+ - \left(\frac{\left(-2n\pi\right)\left(aq + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \sin{\left(-2n\pi\right)q} \right] \\
+ &- \left[ \left(\frac{\left(-2n\pi\right)z - a}{\left(-4n^{2}\pi^{2}\right)} \right) \cos{\left(-2n\pi\right)z} 
+ - \left(\frac{\left(-2n\pi\right)\left(az + b\right) + 1}{\left(-4n^{2}\pi^{2}\right)}\right) \sin{\left(-2n\pi\right)z} \right]
+\end{align}
+
+\divider
+
+Is it really this complicated?! Where did I go wrong?
+
+%\end{multicols*}
+\end{document}

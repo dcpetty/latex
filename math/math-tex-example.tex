@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}%
+\usepackage{amsmath,amsthm,comment,enumitem,fancyhdr,graphicx,hyperref,makeidx,multicol,verbatim}%
+\usepackage[psamsfonts]{amsfonts,amssymb,eucal}% ftp://ftp.ams.org/pub/tex/doc/amsfonts/amsfndoc.pdf
+\usepackage{cmmib57,latexsym}%
+\usepackage[paper=letterpaper, top=0.25in, bottom=0.5in, left=0.75in, right=0.75in, includeheadfoot, head=0.5in]{geometry}
+\usepackage[small,compact]{titlesec}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\def\docclass{328-DP} % Change document class
+\def\docdate{2005-2006 Q1} % Change document date
+\def\docname{Quiz 1} % Change document name
+\def\docnumber{1234567} % Change document number
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\def\foreign{\em}
+\def\etc{{\foreign etc.}}
+\def\eg{{\foreign e.g.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers data
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\bf \baselineskip = 1.5\baselineskip \docdate\\\docclass}%
+\fancyhead[C]{\bf \baselineskip = 1.5\baselineskip \docname\\\docnumber}%
+\fancyhead[R]{\bf \baselineskip = 1.5\baselineskip Name: \vbox{\hrule width 2in}\\
+Date: \vbox{\hrule width 2in}}%
+\fancyfoot[L]{\scriptsize \bf David C. Petty\\POBox 400222
+\textbullet \ Cambridge MA 02140-0003 USA \textbullet \
+\texttt{\textless dcp@mail.com\textgreater} \textbullet \
++1.617.331.2345}%
+\fancyfoot[C]{\scriptsize \bf }%
+\fancyfoot[R]{\scriptsize \bf \ \thepage\\\jobname.pdf}%
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\setlength{\columnsep}{1cm}%
+\setlength{\parindent}{0cm}%
+\setlength{\parskip}{\baselineskip}%
+\setlist{nolistsep, itemsep=.125\baselineskip}%
+\setenumerate{leftmargin=*, label={\arabic*)}}%
+\setdescription{style=multiline, leftmargin=3cm}%
+\setitemize{leftmargin=*, label={\tiny$\blacktriangleright$}}%
+%\numberwithin{equation}{section}%
+\pagestyle{fancy}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+
+Isn't \TeX \ cool? This document shows how you can use the
+typographic system \TeX \ to write stuff like: If $\rho$ and
+$\theta$ are both positive, then $f(\theta) -{\mit \Gamma}_{\theta}
+< f(\rho)-{\mit \Gamma}_{\rho}$.
+
+To write a formula, you use backslash control sequences (like {\tt
+$\backslash$root} and {\tt $\backslash$frac}) and various types of
+braces (like {\tt \{\}}) to create formulas that are then typeset
+beautifully. There are many quickie guides on the net', {\em e.g.}
+\url{http://www-math.mit.edu/18.821/short-math-guide.pdf} \&
+\url{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf} \&
+\url{http://www.bitjungle.com/~isoent/isoent-ref.pdf}.
+
+Here's another example:
+\begin{align}
+ r &= \frac{-b \pm \root \of {b^2-4ac}}{2a} &\text{The Quadratic Formula}
+\end{align}
+To typeset the quadratic formula (above), use this `code:'
+\begin{verbatim}
+ r &= \frac{-b \pm \root \of {b^2-4ac}}{2a} &\text{The Quadratic Formula}
+\end{verbatim}
+To understand how that `code' results in the typeset formula you
+need to know that the {\tt $\backslash$frac} control sequence takes
+two arguments, {\tt $\backslash$pm} inserts plus-or-minus, the `{\tt
+\&}' characters tell \TeX \ where to line up the columns, {\tt
+$\backslash$of} is part of {\tt $\backslash$root}, {\em etc.}
+
+Here are some more examples:
+\begin{align}
+y &= \left[
+  \begin{array}{ c c c }
+    x_{00} & x_{01} & x_{02} \\
+    x_{10} & x_{11} & x_{12} \\
+    x_{20} & x_{21} & x_{22}
+  \end{array} \right]
+  & \text{This is an example of an array with subscripts.}
+\end{align}
+
+And this ia an example of `{\em Solve for x}:'
+\begin{align*}
+ x + 3 &= 2x - 4 \\
+ x + 3 + 4 &= 2x - 4 + 4 &&\text{Add 4 to both sides.} \\
+ x + 7 &= 2x &&\text{Combine like terms.} \\
+ x + 7 - x &= 2x - x &&\text{Subtract x from both sides.} \\
+ 7 &= x &&\text{Combine like terms.}
+\intertext{Check your results\dots}
+\left( 7 \right) + 3 &= 2\left( 7 \right) - 4 &&\text{Substitute 7 for x.} \\
+ 10 &= 14 - 4 &&\text{Simplify.} \\
+ 10 &= 10 &&\text{\checkmark}
+ \end{align*}
+
+%\begin{align*}A&B\\M&N\end{align*}
+%\begin{align*}A&B&C\\M&N&O\end{align*}
+%\begin{align*}A&B&C&D\\M&N&O&P\end{align*}
+%\begin{align*}A&B&C&D&E\\M&N&O&P&Q\end{align*}
+%\begin{align*}A&B&C&D&E&F\\M&N&O&P&Q&R\end{align*}
+
+\end{document}

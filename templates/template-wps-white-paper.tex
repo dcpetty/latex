@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docwpspaper{}
+\def\docauthor{David C. Petty}%
+\def\docemail{dpetty@winchesterps.org}%
+\def\docphone{+1.781.629.9778}%
+\def\docto{The powers that be}%
+\def\docdate{2018/07/16}%
+\def\docversion{0.1}%
+
+\def\docdistrict{Winchester Public Schools}
+\def\docschooladdress{40 Samoset Road} %
+\def\docschoolcitystate{Winchester MA} %
+\def\docschoolzip{01890-3442} %
+\def\docschoolphone{(781) 721-7004} %
+\def\docschoolfax{(781) 721-0016} %
+
+\def\doclogofile{../images/seal-winchester-ma-301x301-color.png}
+\def\hlogo{\includegraphics*[scale = 0.15]{\doclogofile}}
+\def\doclogo{\href{http://www.winchesterps.org/}{\includegraphics*[scale = 0.45]{\doclogofile}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Logo in top-right corner
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{6.125in}{0.25in} % start everything near the top-right corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{32}(1,0)
+ \doclogo
+\end{textblock}
+
+\thispagestyle{first}
+
+\begin{center}{\large\bf White Paper}\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header
+\begin{minipage}{.5\linewidth}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf To:}%
+\vtop{\hsize=0.75\linewidth\docto}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf From:}%
+\vtop{\hsize=0.75\linewidth\docauthor}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Subject:}%
+\vtop{\hsize=0.75\linewidth\docname}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Date:}%
+\vtop{\hsize=0.75\linewidth\docdate}%
+}\ % new line
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{center}
+% This is the right column...
+\end{center}
+\end{minipage}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% memo body
+\begin{multicols}{2}
+\section{Foo}
+\lipsum[1-4]
+\begin{itemize}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+\end{itemize}
+\subsection{Bar}
+\lipsum[5-8]
+\section{Blap}
+\lipsum[1-4]
+\subsection{Frab}
+\lipsum[5-8]
+\section{Cruft}
+\lipsum[1-4]
+\subsection{Grok}
+\lipsum[5-8]
+\end{multicols}
+
+\end{document}

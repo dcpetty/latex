@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docwhspaper{}
+\def\docauthor{David C. Petty}%
+\def\docemail{dpetty@winchesterps.org}%
+\def\docphone{+1.781.629.9778}%
+\def\docto{The powers that be}%
+\def\docdate{2018/07/16}%
+\def\docversion{0.1}%
+
+\def\docdistrict{}
+\def\docschool{Winchester High School}
+\def\docschooladdress{80 Skillings Road} %
+\def\docschoolcitystate{Winchester MA} %
+\def\docschoolzip{01890-2850 USA} %
+\def\docschoolphone{(781) 721-7020} %
+\def\docschoolfax{(781) 721-7042} %
+
+\def\doclogofile{../images/whs-logo-1024x1024.png}
+\def\hlogo{\includegraphics*[scale = 0.05]{\doclogofile}}
+\def\doclogo{\href{http://winchesterps.org/schools/winchester_high_school/}{\includegraphics*[scale = 0.075]{../images/2013-blue-ribbon-school-1775x1775.png}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Logo in top-right corner
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{6.125in}{0.25in} % start everything near the top-right corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{32}(1,0)
+ \doclogo
+\end{textblock}
+
+\thispagestyle{first}
+
+\begin{center}{\large\bf White Paper}\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header
+\begin{minipage}{.5\linewidth}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf To:}%
+\vtop{\hsize=0.75\linewidth\docto}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf From:}%
+\vtop{\hsize=0.75\linewidth\docauthor}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Subject:}%
+\vtop{\hsize=0.75\linewidth\docname}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Date:}%
+\vtop{\hsize=0.75\linewidth\docdate}%
+}\ % new line
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{center}
+% This is the right column...
+\end{center}
+\end{minipage}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% memo body
+\begin{multicols}{2}
+\section{Foo}
+\lipsum[1-4]
+\subsection{Bar}
+\lipsum[5-8]
+\section{Blap}
+\lipsum[1-4]
+\subsection{Frab}
+\lipsum[5-8]
+\section{Cruft}
+\lipsum[1-4]
+\subsection{Grok}
+\lipsum[5-8]
+\end{multicols}
+
+\end{document}

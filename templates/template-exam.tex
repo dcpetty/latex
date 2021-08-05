@@ -1,0 +1,214 @@
+\documentclass[12pt]{exam}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docclass{CLASS} % Change document class
+\def\docdate{2018--2019 Q1} % Change document date
+\def\docname{Quiz 1} % Change document name
+\def\docnumber{1234567} % Change document number
+\def\docversion{0.1} % Change document version
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+\def\ig{{\bf Informal Geometry}}
+\def\ia{{\bf Integrated Analysis}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+\printanswers% to print solutions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of Contents
+%\tableofcontents %
+
+% a box...
+\framebox{
+ \hbox{
+   \vbox{\vskip .02\linewidth % above
+     \hbox{\hskip .02\linewidth % left
+       \vbox{ \hsize = .915\linewidth \raggedright \noindent % why .915?
+
+{\bf Please read directions carefully and answer each question completely. You must show work and check your solutions on the diagrams to receive credit. Write legibly and use correct geometric notation in your solutions. Express numerical solutions as exact results unless specifically asked for rounded decimal equivalents. Always include units where necessary. Circle your solution if no solution line is provided. {\em Diagrams may not be drawn to scale}.}
+
+       }%
+     \hskip .02\linewidth} % right
+   \vskip .02\linewidth} % below
+ }
+}
+
+\begin{questions}
+
+\begin{minipage}{\linewidth} 
+\begin{wrapfigure}{r}{6cm}
+\vspace{-1cm} 
+\includegraphics[width=6cm]{../dwg/includegraphics.pdf}
+\caption{A wrapped figure going nicely inside the text.}\label{wrap-fig:1}
+\end{wrapfigure}
+%\begin{figure}[h]\includegraphics*[scale = 0.5]{../dwg/includegraphics.pdf}\end{figure}
+
+\question What is the color of George Washington's white horse?
+\begin{parts}
+\part[10] Who is buried in Grant's Tomb?
+\fullwidth{
+\begin{solution}[2in]
+Once upon a midnight dreary, while I pondered, weak and weary, Over
+many a quaint and curious volume of forgotten lore --- While I
+nodded, nearly napping, suddenly there came a tapping, As of some
+one gently rapping, rapping at my chamber door. ``\,`Tis some
+visitor,'' I muttered, ``tapping at my chamber door --- Only this
+and nothing more.''
+\end{solution}}
+
+\part[15] And this is an example of `{\em Solve for x}:'
+\begin{align*}
+ x + 3 &= 2x - 4 \\
+ x + 3 + 4 &= 2x - 4 + 4 &&\text{Add 4 to both sides.} \\
+ x + 7 &= 2x &&\text{Combine like terms.} \\
+ x + 7 - x &= 2x - x &&\text{Subtract x from both sides.} \\
+ 7 &= x &&\text{Combine like terms.}
+\intertext{Check your results\dots}
+\left( 7 \right) + 3 &= 2\left( 7 \right) - 4 &&\text{Substitute 7 for x.} \\
+ 10 &= 14 - 4 &&\text{Simplify.} \\
+ 10 &= 10 &&\text{\checkmark}
+\end{align*}
+\end{parts}
+\end{minipage}
+
+\question[5] What is \(1+1\)? The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. Whatever. \answerline%
+
+\question[5] What is \(2+2\)? \answerline%
+\fullwidth{\begin{solution}\(4\)\end{solution}}
+
+\question[5] What is \(3+3\)? \answerline%
+
+\fullwidth{\begin{solution}\(6\)\end{solution}}
+
+\question[5] What is \(4+4\)? \answerline%
+
+\fullwidth{\begin{solution}\(8\)\end{solution}}
+
+\question[5] What is \(5+5\)? \answerline%
+
+\fullwidth{\begin{solution}\(10\)\end{solution}}
+
+\question[5] What is \(6+6\)? \answerline%
+
+\fullwidth{\begin{solution}\(12\)\end{solution}}
+
+\question[5] What is \(7+7\)? \answerline%
+
+\fullwidth{\begin{solution}\(14\)\end{solution}}
+
+\question Answer the following parts:
+\begin{parts}
+\part[5] What is \(8+8\)? \answerline%
+\part[5] What is \(9+9\)? \answerline%
+\part[5] What is \(10+10\)? \answerline%
+\end{parts}
+
+\question[6] What is \(e^{x}\ dx\ dx\)? \answerline%
+
+\question[6] What is \(e^{-x}\ dx\ dx\)? \answerline%
+
+\question[6] What is \(e^{i\theta}\ d\theta\)? \answerline%
+
+\question[6] What is \(e^{-i\theta}\ d\theta\)? \answerline%
+
+%\end{questions}
+
+\begin{multicols}{2}
+
+%\begin{questions}
+
+\question
+\includegraphics*[scale = 0.5]{../dwg/includegraphics.pdf}What is the color of George Washington's white horse?
+\begin{parts}
+\part[10] Who is buried in Grant's Tomb?
+\fullwidth{%
+\begin{solution}[2in]
+Once upon a midnight dreary, while I pondered, weak and weary,\\Over
+many a quaint and curious volume of forgotten lore---\\While I
+nodded, nearly napping, suddenly there came a tapping,\\As of some
+one gently rapping, rapping at my chamber door. ``'Tis some
+visitor,'' I muttered, ``tapping at my chamber door---\\Only this
+and nothing more.''
+\end{solution}}
+\part[15] And this is an example of `{\em Solve for x}:'
+\begin{align*}
+ x + 3 &= 2x - 4 \\
+ x + 3 + 4 &= 2x - 4 + 4 &&\text{Add 4 to both sides.} \\
+ x + 7 &= 2x &&\text{Combine like terms.} \\
+ x + 7 - x &= 2x - x &&\text{Subtract x from both sides.} \\
+ 7 &= x &&\text{Combine like terms.}
+\intertext{Check your results\dots}
+\left( 7 \right) + 3 &= 2\left( 7 \right) - 4 &&\text{Substitute 7 for x.} \\
+ 10 &= 14 - 4 &&\text{Simplify.} \\
+ 10 &= 10 &&\text{\checkmark}
+\end{align*}
+\end{parts}
+
+\question[5] What is \(1+1\)? The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. Whatever. \answerline%
+
+\question[5] What is \(2+2\)? \answerline%
+
+\fullwidth{\begin{solution}\(4\)\end{solution}}
+
+\question[5] What is \(3+3\)? \answerline%
+
+\fullwidth{\begin{solution}\(6\)\end{solution}}
+
+\question[5] What is \(4+4\)? \answerline%
+
+\fullwidth{\begin{solution}\(8\)\end{solution}}
+
+\question[5] What is \(5+5\)? \answerline%
+
+\fullwidth{\begin{solution}\(10\)\end{solution}}
+
+\question[5] What is \(6+6\)? \answerline%
+
+\fullwidth{\begin{solution}\(12\)\end{solution}}
+
+\question[5] What is \(7+7\)? \answerline%
+
+\fullwidth{\begin{solution}\(14\)\end{solution}}
+
+\question Answer the following parts:
+\begin{parts}
+\part[5] What is \(8+8\)? \answerline%
+\part[5] What is \(9+9\)? \answerline%
+\part[5] What is \(10+10\)? \answerline%
+\end{parts}
+
+\question[6] What is \(e^{x}\ dx\ dx\)? \answerline%
+
+\question[6] What is \(e^{-x}\ dx\ dx\)? \answerline%
+
+\question[6] What is \(e^{i\theta}\ d\theta\)? \answerline%
+
+\question[6] What is \(e^{-i\theta}\ d\theta\)? \answerline%
+
+\end{multicols}
+\end{questions}
+
+\hrule
+
+\begin{center}
+\small \cellwidth{1em} \gradetable[h][questions]
+\end{center}
+\end{document}
