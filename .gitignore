@@ -117,3 +117,10 @@ Thumbs.db
 .log
 .out
 .toc
+
+# Jekyll files #
+################
+_site
+.sass-cache
+.jekyll-metadata
+Gemfile.lock

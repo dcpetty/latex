@@ -154,7 +154,7 @@
 \fancyhf{} % clear all header and footer fields
 \fancyhead[L]{\hlogo}% REMOVED \leftmark
 \fancyhead[C]{\docname}%
-\fancyhead[R]{\docdate\\\rightmark\ --\ Page \thepage} %
+\fancyhead[R]{\docdate\\\if\rightmark\empty \else\rightmark\ --\fi\ Page \thepage} %
 \fancyfoot[C]{\scriptsize\textbf{\fdistrictschool\
 \docschooladdress\ \textbullet\ \docschoolcitystate\ \docschoolzip}\\\docauthor\ \textbullet\ \femail\fphone}%
 \fancyfoot[R]{\scriptsize~\\\fversionfile}%
@@ -186,7 +186,7 @@
 \fancyhf{} % clear all header and footer fields
 \fancyhead[L]{\hlogo}% REMOVED \leftmark
 \fancyhead[C]{\docname}%
-\fancyhead[R]{\docdate\\\rightmark\ --\ Page \thepage} %
+\fancyhead[R]{\docdate\\\if\rightmark\empty \else\rightmark\ --\fi\ Page \thepage} %
 \fancyfoot[C]{\scriptsize\textbf{\fdistrictschool\
 \docschooladdress\ \textbullet\ \docschoolcitystate\ \docschoolzip}\\\docauthor\ \textbullet\ \femail\fphone}%
 \fancyfoot[R]{\scriptsize~\\\fversionfile}%
