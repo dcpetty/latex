@@ -12,6 +12,10 @@
 \def\docphone{+1.772.444.2710}
 \def\docversion{0.1} % Change document version
 
+\def\doclogofile{../../images/CSTA-GreaterBoston-logo-500x100.png}
+\def\hlogo{\includegraphics*[scale = 0.11]{\doclogofile}}
+\def\doclogo{\href{https://greaterboston.csteachers.org/}{\includegraphics*[scale = 0.275]{\doclogofile}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
 \input ../../input/input-macros.tex
 
@@ -20,11 +24,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
 \input ../../input/input-style.tex
-
-\lstset{% general command to set parameter(s) for listings
-  basicstyle=\singlespacing\ttfamily\fontsize{5}{6}\selectfont,
-  numberstyle=\fontsize{5}{6}\selectfont,
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
 \input ../../input/input-toc-idx-bib.tex
@@ -52,6 +51,15 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Dcoument
 \begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Logo in top-right corner
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{6.125in}{0.25in} % start everything near the top-right corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{32}(1,0)
+ \doclogo
+\end{textblock}
 
 \maketitle
 
