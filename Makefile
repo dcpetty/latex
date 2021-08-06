@@ -1,4 +1,4 @@
-# Simple LaTeX makefile
+# Simple LaTeX makefile.
 
 TEX_DIRS := doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates
 OTHER_DIRS := apcs apcsp correspondence cv ga harvard-dce ia ig \
