@@ -1,0 +1,99 @@
+\documentclass[10pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../../input/input-packages.tex
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../../input/input-data.tex
+
+\def\dochomework{}
+\def\hw{Base conversion exercises} % Change document homework header
+\def\docdate{2019/10/11} % Change document date
+\def\docphone{} % Change document phone
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\setlength{\baselineskip}{1.2\baselineskip}%
+\begin{multicols*}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\prob{Conversions}
+\statement{Convert the following numbers to their representatives in base $2$, $16$, \& $10$.}
+
+$\begin{matrix}[rlrl]\hline
+\multicolumn{2}{l}{0110\;0100_{2}} \\
+\text{\quad} &= \boxed{64_{16}} &\multicolumn{2}{c}{\text{binary \textit{is} hex}} \\
+ &= 6 \times 16 + 4 \times 1 \\
+ &= \boxed{100_{10}} \\\hline
+
+\multicolumn{2}{l}{47_{16}} \\
+ &= \boxed{0100\;0111_{2}} &\multicolumn{2}{c}{\text{binary \textit{is} hex}} \\
+ &= 4 \times 16 + 7 \times 1 \\
+ &= \boxed{71_{10}} \\\hline
+
+\multicolumn{2}{l}{47_{10}} \\
+ &&47 \div 16 &= \boxed{2}R15 \\
+ &&15 \div 1 &= \boxed{15}R0 \\
+ &= \boxed{2\mathrm{F}_{16}} \\
+ &= \boxed{0010\;1111_{2}} &\multicolumn{2}{c}{\text{binary \textit{is} hex}} \\\hline
+
+\multicolumn{2}{l}{1010\;1010\;1010_{2}} \\
+ &= \boxed{\mathrm{AAA}_{16}} &\multicolumn{2}{c}{\text{binary \textit{is} hex}} \\
+ &= 2560 + 160 + 10 \\
+ &= \boxed{2730_{10}} \\\hline
+
+\multicolumn{2}{l}{7\mathrm{E}3_{16}} \\
+ &= \boxed{0111\;1110\;0011_{2}} &\multicolumn{2}{c}{\text{binary \textit{is} hex}} \\
+ &= 7 \times 256 + 14 \times 16 + 3 \times 1 \\
+ &= 1792 + 224 + 3 \\
+ &= \boxed{2019_{10}} \\\hline
+
+\multicolumn{2}{l}{999_{10}} \\
+ &&999 \div 256 &= \boxed{3}R231 \\
+ &&231 \div 16 &= \boxed{14}R7 \\
+ &&7 \div 1 &= \boxed{7}R0 \\
+ &= \boxed{3\mathrm{E}7_{16}} \\
+ &= \boxed{0011\;1110\;0111_{2}} \\\hline
+
+\multicolumn{2}{l}{1800_{10}} \\
+ &&1800 \div 256 &= \boxed{7}R8 \\
+ &&8 \div 16 &= \boxed{0}R8 \\
+ &&8 \div 1 &= \boxed{8}R0 \\
+ &= \boxed{708_{16}} \\
+ &= \boxed{0111\;0000\;1000_{2}} &\multicolumn{2}{c}{\text{binary \textit{is} hex}} \\\hline
+\end{matrix}$
+
+$\begin{matrix}[rlrl]\hline
+\multicolumn{4}{l}{1111\;1111\;1111\;1111\;1111\;1111\;1111\;1111_{2}} \\
+ &\multicolumn{3}{l}{= 2^{32} - 1 = \boxed{4,294,967,295}}\\
+\end{matrix}$
+
+\divider
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\prob{Bonus}
+\statement{Calculate the date that a fixed-point, 32-bit, 2's-complement number of seconds will not be enough to count the seconds from midnight 1970/01/01. (When is $2^{31}$ seconds from mindight 1970/01/01?)}
+\begin{align*}
+ 2^{31} \div 60 \div 60 \div 24 \div 365.25 + 1970 &\approx \boxed{2038.05} \\
+ \text{Since... } 0.05 \times 365.25 &\approx 18
+\end{align*}
+The fixed-point, 32-bit, 2's-complement number of seconds will overflow on 2038/01/19 (the so-called \textit{\href{https://en.wikipedia.org/wiki/Year_2038_problem}{Year 2038 Problem}}).
+\divider
+
+\end{multicols*}
+\end{document}

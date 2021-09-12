@@ -1,0 +1,1272 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../../input/input-packages.tex
+\SetTblrInner{colsep=0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../../input/input-data.tex
+
+\def\docmath{}
+\def\docclass{APCS} % Change document class
+\def\docdate{2021--2022} % Change document date
+\def\docname{Logic and Arithmetic} % Change document name
+\def\docnumber{} % Change document number
+\def\docversion{0.7} % Change document version
+\def\docpoints{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../../input/input-style.tex
+\lstset{% general command to set parameter(s)
+  basicstyle=\singlespacing\ttfamily\small,
+  numberstyle=\tiny,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+\setlength{\baselineskip}{1.1\baselineskip}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents
+%\tableofcontents % NOT in \documentclass{exam}
+
+\begin{multicols}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Introduction
+\section{Introduction}
+\label{Introduction}
+
+Boolean algebra and set theory were both developed in the $19^{th}$ century as approaches to formalizing mathematics. It was only one hundred years later that these foundations were used in computers and computing (hence the book called \textit{Engines of Logic} \citep{book:engines-of-logic}).
+
+These notes discuss the basics of and Boolean algebra and set theory, including definitions and notation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Set theory
+\section{Set theory}
+\label{Set}
+
+A \textbf{set} is a well-defined collection of elements, with no order and no repetition, that can be be finite or infinite. The empty set ($\emptyset$) is a set with zero elements.
+\begin{align*}
+ \{a, b, c\} &= \{b, c, a\}\\
+ \{1, 47, 18181\} &= \{\text{positive divisors of } 854,507\}\\
+ \emptyset &= \{\}
+\end{align*}
+
+There are three ways to enumerate the elements of a set: roster, descriptive, or set-builder notation. In the following examples, the roster (simply the list of the elements) is on the right and an example of descriptive followed by an example of set-builder notation is on the left of the equals sign. \begin{align*}
+ \{\text{letters in `mathematics'}\} &= \{m, a, t, h, e, i, c, s\}\\
+ &= \{a, c, e, h, i, m, s, t\}\\
+ \{x : x\text{ is a positive integer }<5\} &= \{1, 2, 3, 4\}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Vocabulary
+\subsection{Vocabulary}
+\label{Vocabulary}
+
+
+\begin{description}
+
+\item[element] The symbol `$\in$' means `is an element of,' `is a member
+of,' `belongs to,' `is in.'
+
+\item[equality] Two sets are equal if they have exactly the same
+elements.
+
+\item[universal set] The symbol `$\U$' represents the set that
+contains all the elements of all sets of interest.
+
+\item[cardinality] The number of elements in a set. The cardinality
+of $A$ is denoted $|A|$. The cardinality of the set of all subsets
+of $A = 2^{|A|}$.
+
+\item[subsets] The symbol `$\subset$' means `is a subset of,' `is
+contained in.' A \textit{proper subset} has zero or more elements of the set, but not the entire set. That is, \textsc{if}: $S \subset A$, \textsc{then}: $|S| < |A|$. An \textit{improper subset}, denoted `$\subseteq$,' can include the entire set, so $A \subseteq A$ is true. \includegraphics*[scale = 0.75]{../../images/venn-subset.pdf} 
+
+\item[complement] Denoted `$A'$,' `$A^c$,' `$a \notin A$' and is defined: `When all sets under consideration are\dots\ subsets of a given set $\U$, the \textit{absolute} complement of $A$ is the set of elements in $\U$ but not in $A$. The \textit{relative} complement of $A$ with respect to a set $B$, also termed the difference of sets $A$ and $B$, written $B \setminus A$, is the set of elements in $B$ but not in $A$.' \citep{wiki:complement-set-theory} (Or, $B \setminus A = \left\{ x \in B \mid x \notin A \right\}$.) \includegraphics*[scale = 0.75]{../../images/venn-complement.pdf}
+
+\item[intersection] The \textit{conjunction} or intersection of two sets $A$ and $B$ is the set of elements in both $A$ and $B$ and is denoted `$A \cap B$.' \includegraphics*[scale = 0.75]{../../images/venn-2-and.pdf}
+
+\item[union] The \textit{disjunction} or union of two sets $A$ and $B$ is the set of elements in at least one of $A$ or $B$ and is denoted `$A \cup B$.' \includegraphics*[scale = 0.75]{../../images/venn-2-or.pdf}
+
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Paradox
+\subsection{Paradox}
+\label{Paradox}
+
+So-called \textit{\href{https://en.wikipedia.org/wiki/Naive_set_theory}{na\"ive set theory}} \citep{wiki:naive-set-theory} (discussed here) can lead to paradoxes. The most common is \textit{\href{https://en.wikipedia.org/wiki/Russell's_paradox}{Russell's paradox}} \citep{wiki:russells-paradox}, which states, `Let $R$ be the set of all sets that are not members of themselves. If $R$ is not a member of itself, then its definition dictates that it must contain itself, and if it contains itself, then it contradicts its own definition as the set of all sets that are not members of themselves.'
+
+Another way to think of it is, the \textit{\href{https://en.wikipedia.org/wiki/Barber_paradox}{Barber paradox}} \citep{wiki:barber-paradox}: The barber is the ``...one who shaves all those, and only those, who do not shave themselves.'' The question is, does the barber shave himself?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Boolean Algebra
+\section{Boolean algebra}
+\label{Boolean}
+
+`\textbf{\href{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra}} \citep{wiki:boolean-algebra} was introduced by George Boole in his first book \textit{The Mathematical Analysis of Logic} \citep{book:mathematical-analysis-of-logic}\dots' It is a system of algebra based on two values: \textit{true} and \textit{false} (usually $1$ and $0$ respectively) and three functions: logical \textit{conjunction} (\textsc{and}) and logical \textit{disjunction} (\textsc{or}), and logical \textit{negation} (\textsc{not}).
+
+The three logic functions (\textsc{and}, \textsc{or}, \textsc{not}) are represented by different symbols in \href{https://en.wikipedia.org/wiki/Venn_diagram}{Venn diagram}s \citep{wiki:venn-diagram}, Boolean algebra, logic, and the programming languages \href{http://python.org/}{Python} and \href{https://java.oracle.com}{Java}.
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\small{\begin{tabularx}{1.0\linewidth}{@{}Y|Y|Y|Y|Y|Y@{}}
+Name & Venn & Boolean & Logic & Python & Java \\\hline
+\textsc{and} & $\cap$ & $\bullet$ & $\wedge$ & \code{and} & \code{\&\&} \\
+\textsc{or} & $\cup$ & $+$ & $\vee$ & \code{or} & \code{||} \\
+\textsc{not} & $^{c}$ & $'$ & $\neg$ & \code{not} & \code{!} \\
+\end{tabularx}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Functions
+\subsection{Functions}
+\label{Functions}
+
+The logic functions \textsc{and} and \textsc{or} are \href{https://en.wikipedia.org/wiki/Binary_operation}{binary} \href{https://en.wikipedia.org/wiki/Infix_notation}{infix} operations (of two operands where the operator is placed between the operands). The logic function \textsc{not} is a \href{https://en.wikipedia.org/wiki/Unary_operation}{unary} \href{https://en.wikipedia.org/wiki/Polish_notation}{prefix} operation (of one operand where the operator is placed before the operand).
+
+Logic functions can be fully specified by their truth tables as follows:
+
+\begin{tabularx}{\linewidth}{@{}YYX@{}}
+\textsc{and} & \[\begin{array}{cc||c}
+ A & B & A \bullet B \\\hline
+ 0 & 0 & 0 \\
+ 0 & 1 & 0 \\
+ 1 & 0 & 0 \\
+ 1 & 1 & 1 \\
+\end{array}\] & `Only \code{true} if both are \code{true}' \\
+\end{tabularx}
+\begin{tabularx}{\linewidth}{@{}YYX@{}}
+\textsc{or} & \[\begin{array}{cc||c}
+ A & B & A + B \\\hline
+ 0 & 0 & 0 \\
+ 0 & 1 & 1 \\
+ 1 & 0 & 1 \\
+ 1 & 1 & 1 \\
+\end{array}\] & `Only \code{false} if both are \code{false}' \\
+\end{tabularx}
+\begin{tabularx}{\linewidth}{@{}YYX@{}}
+\textsc{not} & \[\begin{array}{c||c}
+ A & A' = \neg A = \overline{A} \\\hline
+ 0 & 1 \\
+ 1 & 0 \\
+\end{array}\] &  \\
+\end{tabularx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Identities
+\subsection{Identities}
+\label{Identities}
+
+In Boolean algebra the algebraic properties of equality (reflexive, symmetric, transitive, and substitution) hold. Boolean algebra also has identities, just as Euclidean algebra. Every Boolean algebra identity has a \textit{dual} --- one in the \textsc{and} form and one in the \textsc{or} form.
+
+\begin{tabularx}{\linewidth}{@{}Y|Y|Y@{}}
+\textbf{Law} & \textbf{\textsc{and} Form} & \textbf{\textsc{or} Form} \\\hline\hline
+Identity & $1 \bullet A = A$ & $0 + A = A$ \\\hline
+Null & $0 \bullet A = 0$ & $1 + A = 1$  \\\hline
+Idempotent & $A \bullet A = A$ & $A + A = A$ \\\hline
+Complement & $A \bullet \overline{A} = 0$ & $A + \overline{A} = 1$ \\\hline
+Commutative & $A \bullet B = B \bullet A$ & $A + B = B + A$ \\\hline
+Associative & $\left( A \bullet B \right) \bullet C = A \bullet \left( B \bullet C \right)$ & $\left( A + B \right) + C = A + \left( B + C \right)$ \\\hline
+Distributive & $A + \left( B \bullet C \right) = \left( A + B \right) \bullet \left( A + C \right)$ & $A \bullet \left( B + C \right) = \left( A \bullet B \right) + \left( A \bullet C \right)$ \\\hline
+Absorption & $A \bullet \left( A + B \right) = A$ & $A + \left( A \bullet B \right) = A$ \\\hline
+\multirow{2}{*}{De Morgan's\footnote{To convert Boolean expressions using De Morgan's laws, ``change \textsc{and} to \textsc{or} / \textsc{or}  to \textsc{and}, complement the inputs, complement the outputs.''}} & $\overline{\left( A \bullet B \right)} = \overline{A} + \overline{B}$ & $\overline{\left( A + B \right)} = \overline{A} \bullet \overline{B}$ \\
+ & $A \bullet B = \overline{\left( \overline{A} + \overline{B} \right)} $ & $ A + B = \overline{\left( \overline{A} \bullet \overline{B} \right)} $ \\\hline
+Double Complement & \multicolumn{2}{c}{$\overline{\overline{A}} = A$} \\\hline
+\end{tabularx}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Proofs
+\subsection{Proofs}
+\label{Proofs}
+
+Boolean algebra proofs are easier than other types of proofs, because they involve using truth tables. There are a finite number of possible input combinations and, if the truth table for one expression matches the truth table for the other expression, then the assertions are equal!
+
+Prove the \textit{Associative Law for \textsc{and}} of Boolean algebra: $$\left( A \bullet B \right) \bullet C = A \bullet \left( B \bullet C \right)$$
+
+\small{
+\begin{tabularx}{1.05\linewidth}{@{}Y||Y|Y|Y|Y@{}}
+$ABC$ & $A \bullet B$ & $\left( A \bullet B \right) \bullet C$ & $B \bullet C$ & $A \bullet \left( B \bullet C \right)$ \\\hline
+$000$ & $0$ & $0$ & $0$ & $0$ \\
+$001$ & $0$ & $0$ & $0$ & $0$ \\
+$010$ & $0$ & $0$ & $0$ & $0$ \\
+$011$ & $0$ & $0$ & $1$ & $0$ \\
+$100$ & $0$ & $0$ & $0$ & $0$ \\
+$101$ & $0$ & $0$ & $0$ & $0$ \\
+$110$ & $1$ & $0$ & $0$ & $0$ \\
+$111$ & $1$ & $1$ & $1$ & $1$ \\
+\end{tabularx}}
+
+Since every output of the $\left( A \bullet B \right) \bullet C$ column is equal to every output of the $A \bullet \left( B \bullet C \right)$ column for every \textit{possible} combination of inputs, the two statements are equivalent, so the \textit{Associative Law for \textsc{and}} of Boolean algebra is proven.
+
+Now \textit{you} prove the \textit{Associative Law for \textsc{or}} of Boolean algebra.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Proof of De Morgan's laws
+\subsubsection{Proof of De Morgan's laws}
+\label{DeMorgan}
+
+\begin{center}
+$\begin{tblr}{X[1,c,m]|*5{|X[1,c,m]}}
+ AB & A \bullet B & \boxed{\overline{\left( A \bullet B \right)}} & \overline{A} & \overline{B} & \boxed{\overline{A} + \overline{B}} \\\hline
+ 00 &  0 & 1 & 1 & 1 & 1 \\
+ 01 &  0 & 1 & 1 & 0 & 1 \\
+ 10 &  0 & 1 & 0 & 1 & 1 \\
+ 11 &  1 & 0 & 0 & 0 & 0 \\
+\end{tblr}$
+
+\textbf{De Morgan's Law --- \textsc{and} Form}
+\end{center}
+
+\begin{center}
+$\begin{tblr}{X[1,c,m]|*5{|X[1,c,m]}}
+ AB & A + B & \boxed{\overline{\left( A + B \right)}} & \overline{A} & \overline{B} & \boxed{\overline{A} \bullet \overline{B}} \\\hline
+ 00 &  0 & 1 & 1 & 1 & 1 \\
+ 01 &  1 & 0 & 1 & 0 & 0 \\
+ 10 &  1 & 0 & 0 & 1 & 0 \\
+ 11 &  1 & 0 & 0 & 0 & 0 \\
+\end{tblr}$
+
+\textbf{De Morgan's Law --- \textsc{or} Form}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Arithmetic
+\section{Arithmetic}
+\label{Arithmetic}
+
+Arithmetic can be carried out using only logic. That is the foundation of calculation in a computer.
+
+The basic unit of information capable of distinguishing two values (\eg\ \textit{true} and \textit{false}) is the \textbf{\href{https://en.wikipedia.org/wiki/Bit}{bit}} \citep{wiki:bit} (or \textit{binary digit}) --- the answer to one yes-no question. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Positional number systems
+\subsection{Positional number systems}
+\label{Positional}
+
+\AtBeginEnvironment{tabu}{\setlength{\tabcolsep}{2pt}}
+\AtBeginEnvironment{array}{\setlength{\arraycolsep}{2pt}}
+
+A \href{https://en.wikipedia.org/wiki/Positional_notation}{positional number system} \citep{wiki:positional-notation} uses a fixed set of symbols (numerals) to represent numbers and their position within the written form to indicate their order of magnitude in the radix or base. In computing there are (typically) three radixes in use: decimal (base 10), binary (base 2), and hexadecimal (base 16). 
+
+\href{https://en.wikipedia.org/wiki/Positional_notation#/media/File:Positional_notation_glossary-en.svg}{%
+  \parbox{\linewidth}{%
+    \centering
+    \includegraphics*[scale = 0.30]{../../images/800px-Positional_notation_glossary-en-svg.png}}}
+
+For example, the decimal number $1125$:
+
+$\begin{tblr}{X[1,r,m]cX[4,l,m]}
+ 1125_{10} &=& \begin{array}{cccc}1 \times 10^{3} &+\ 1 \times 10^{2} &+\ 2 \times 10^{1} &+\ 5 \times 10^{0}\end{array} \\
+\end{tblr}$
+
+The \textit{numeral} $1$ in the $3^{\text{rd}}$ indexed position is the same as the \textit{numeral} $1$ in the $2^{\text{nd}}$ indexed position, but they represent different orders of magnitude --- $10^{3}$ and $10^{2}$, respectively.
+
+The number $71_{10}$ is represented in the three number bases ($10$, $2$, $16$) as:
+
+$\begin{tblr}{X[1,r,m]cX[4,l,m]}
+ 71_{10} &=& \begin{array}{cc}7 \times 10^{1} &+\ 1 \times 10^{0}\end{array} \\
+ 0100\ 0111_{2} &=& \begin{array}{cccc}1 \times 2^{6} &+\ 1 \times 2^{2} &+\ 1 \times 2^{1} &+\ 1 \times 2^{0}\end{array} \\
+ 47_{16} &=& \begin{array}{cc}4 \times 16^{1} &+\ 7 \times 16^{0}\end{array} \\
+\end{tblr}$
+
+It is important to realize that all three numeral forms (decimal, binary, hexadecimal) represent \textit{the same number}: the number we refer to in every-day language as `seventy-one.'
+
+Expressing numbers in different bases requires:
+\begin{itemize}
+\item In each radix there are \textit{radix} numerals (symbols).
+  \begin{itemize}
+  \item Binary (base $2$) has $2$: 0, 1
+  \item Decimal (base $10$) has $10$: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+  \item Hexadecimal (base $16$) has $16$: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+  \end{itemize}
+\item Zero and one in \textit{any} radix are equal to themselves.
+\item In radix $R$, $10_{R} = R$. ($10$ is the radix.)
+\end{itemize}
+
+Examples of representing numbers in different radixes (with their positional orders of magnitude) are:
+
+$\begin{tblr}{*3{X[c,b]}c*8{X[c,b]}c*2{X[c,b]}}
+ 10^{2}&10^{1}&10^{0} && 2^{7}&2^{6}&2^{5}&2^{4}&2^{3}&2^{2}&2^{1}&2^{0} && 16^{1}&16^{0}\\\hline
+ &&8_{10} &=& 0&0&0&0&1&0&0&0_{2} &=& &8_{16} \\
+ &1&3_{10} &=& 0&0&0&0&1&1&0&1_{2} &=& &D_{16} \\
+ &7&1_{10} &=& 0&1&0&0&0&1&1&1_{2} &=& 4&7_{16} \\
+ 1&9&2_{10} &=& 1&1&0&0&0&0&0&0_{2} &=& C&0_{16} \\
+ 2&5&5_{10} &=& 1&1&1&1&1&1&1&1_{2} &=& F&F_{16} \\
+\end{tblr}$
+
+Expressed in binary, $2^{N}$ consists of a single 1 in the $N^{\text{th}}$ index position, while $2^{N}-1$ consists of $N$ 1s in a row.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conversion
+\subsubsection{Conversion}
+\label{Conversion}
+
+To convert from hexadecimal to decimal, multiply each numeral of the number $H$ by it's appropriate power of 16. For example, for $H = \mathrm{4D2}_{16}$:
+
+$\begin{tblr}{X[1,r,m]cX[4,c,m]cX[1,l,m]}
+ \mathrm{4D2}_{16} &=& \begin{array}{ccc}4 \times 16^{2} &+\ 13 \times 16^{1} &+\ 2 \times 16^{0}\end{array} &=& 1234_{10} \\
+\end{tblr}$
+
+To convert from decimal to hexadecimal, divide the number $D$ by the largest power of 16 $< D$ --- accumulating the floor of the quotient as the hexadecimal representation --- continuing with the remainder until dividing by $16^{0}$. For example:
+
+\begin{align*}
+ 1234_{10} \div 16^{2} &= \boxed{4} R 210 \\
+ 210_{10} \div 16^{1} &= \boxed{13} R 2 \\
+ 2_{10} \div 16^{0} &= \boxed{2} R 0 \\
+ \therefore 1234_{10} &= \mathrm{4D2}_{16} \\
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Binary
+\subsubsection{Binary \textit{is} hexadecimal}
+\label{Binary}
+
+Hexadecimal (base 16) is another form of binary (base 2), because $16 = 2^{4}$ --- all of which are powers of two --- so one hex digit is the equivalent of four binary digits (bits). 
+
+To convert from binary $\xleftrightarrow{}$ hexadecimal simply break a binary number into \href{https://en.wikipedia.org/wiki/Nibble}{nybble}s \citep{wiki:nybble} (4-bits at a time) and write them as hexadecimal digits $\xleftrightarrow{}$ write the hexadecimal digits as binary nybbles following this pattern:
+
+\begin{center}
+$\begin{tblr}{*3{X[c]|}*3{|X[c]}}
+ \textbf{Decimal} & \textbf{Binary} & \textbf{Hex} & \textbf{Decimal} & \textbf{Binary} & \textbf{Hex} \\\hline
+ 0 & 0000 & 0 &  8 & 1000 & 8 \\
+ 1 & 0001 & 1 &  9 & 1001 & 9 \\
+ 2 & 0010 & 2 & 10 & 1010 & A \\
+ 3 & 0011 & 3 & 11 & 1011 & B \\
+ 4 & 0100 & 4 & 12 & 1100 & C \\
+ 5 & 0101 & 5 & 13 & 1101 & D \\
+ 6 & 0110 & 6 & 14 & 1110 & E \\
+ 7 & 0111 & 7 & 15 & 1111 & F \\
+\end{tblr}$
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Addition
+\subsection{Addition}
+\label{Addition}
+
+Let's add $92 + 33 = 125$ and, for the fun of it, perform the operations in all three radixes.
+
+$\begin{tblr}{X[c,b]*3{X[c,b]}c*8{X[c,b]}c*2{X[c,b]}}
+ &1 && && &&&&&&& && & \\
+ &&9&2_{10} &=& 0&1&0&1&1&1&0&0_{2} &=& 5&C_{16} \\
+ +&&3&3_{10} &=& 0&0&1&0&0&0&0&1_{2} &=& 2&1_{16} \\\hline
+ &1&2&5_{10} &=& 0&1&1&1&1&1&0&1_{2} &=& 7&D_{16} \\
+\end{tblr}$
+
+Is there a \textit{logical} operation that could be used to combine each bit? Bitwise \textsc{or} works in this example.
+
+Now let's add $92 + 57 = 149$ in all three radixes.
+
+$\begin{tblr}{X[c,b]*3{X[c,b]}c*8{X[c,b]}c*2{X[c,b]}}
+ &1&& && 1&1&1&1&&&& && 1& \\
+ &&9&2_{10} &=& 0&1&0&1&1&1&0&0_{2} &=& 5&C_{16} \\
+ \xor&&5&7_{10} &=& 0&0&1&1&1&0&0&1_{2} &=& 3&9_{16} \\\hline
+ &1&4&9_{10} &=& 1&0&0&1&0&1&0&1_{2} &=& 9&5_{16} \\
+\end{tblr}$
+
+Is there a logical operation that could be used to combine each bit? Yes! Bitwise three-input \textsc{xor} works in this example\footnote{To insure that it doesn't matter which order the carry is added, it is necessary to verify that $\left( A \xor B \right) \xor C = A \xor \left( B \xor C \right)$, the \textit{Associative Law for \textsc{xor}} of Boolean algebra.}.
+
+Here is the truth table for the $\Sigma$ and $\text{C}_{\text{out}}$ functions of a (one-bit) \href{https://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder}{full adder} \citep{wiki:adder-electronics}:
+
+\footnotesize{\begin{center}
+$\begin{tblr}{X[2,c,m]|X[3,c,m]|X[2,c,m]|X[3,c,m]|X[2,c,m]|X[1,c,m]}
+ \text{ABC}_{\text{in}} & \boxed{\text{A}\xor\text{B}\xor\text{C}_{\text{in}}} & \text{A}\xor\text{B} & \left(\text{A}\xor\text{B}\right)\bullet\text{C}_{\text{in}} & \text{A}\bullet\text{B} & \boxed{\text{C}_{\text{out}}} \\\hline
+ 000 & 0 & 0 & 0 & 0 & 0 \\
+ 010 & 1 & 1 & 0 & 0 & 0 \\
+ 110 & 0 & 0 & 0 & 1 & 1 \\
+ 100 & 1 & 1 & 0 & 0 & 0 \\\hline
+ 001 & 1 & 0 & 0 & 0 & 0 \\
+ 011 & 0 & 1 & 1 & 0 & 1 \\
+ 111 & 1 & 0 & 0 & 1 & 1 \\
+ 101 & 0 & 1 & 1 & 0 & 1 \\
+\end{tblr}$
+\end{center}}
+
+Here are $\Sigma$ and $\text{C}_{\text{out}}$ as functions of $\text{A}$, $\text{B}$, and $\text{C}_{\text{in}}$:
+
+\begin{align*}
+ \Sigma &= \text{A}\xor\text{B}\xor\text{C}_{\text{in}} \\
+ \text{C}_{\text{out}} &= \left( \text{A}\bullet\text{B} \right) + \left( \text{A}\bullet\text{C}_{\text{in}} \right) + \left( \text{B}\bullet\text{C}_{\text{in}} \right) \\
+ &= \left( \text{A}\bullet\text{B} \right) + \left( \left(\text{A}\xor\text{B}\right)\bullet\text{C}_{\text{in}} \right) \\
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bitwise operations
+\subsubsection{Bitwise operations}
+\label{Bitwise}
+
+For multi-bit cells (called bit strings or binary numerals), logical operations are defined between corresponding bits of the cells. A detailed discussion of \href{https://en.wikipedia.org/wiki/Bitwise_operation}{bitwise logical operations} is available on \href{https://en.wikipedia.org/}{Wikipedia} \citep{wiki:bitwise-operation}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fixed-point arithmetic
+\subsection{Fixed-point arithmetic}
+\label{Fixed-point}
+Computers often represent numbers using \href{https://en.wikipedia.org/wiki/Fixed-point_arithmetic}{fixed-point arithmetic} \citep{wiki:fixed-point-arithmetic}, \ie\ as integers. These number types differ from \href{https://en.wikipedia.org/wiki/Floating-point_arithmetic}{floating-point}\footnote{For further information, see Appendix \ref{FloatingPoint}.} \citep{wiki:floating-point-arithmetic} numbers in that:
+\begin{itemize}
+\item fixed-point numbers are exact (while floating-point numbers may be approximations of rational or irrational numbers);
+\item fixed-point numbers have `\href{https://en.wikipedia.org/wiki/Signedness}{signedness}' \citep{wiki:signedness} and can represent signed or unsigned numbers;
+\item fixed point numbers represent a finite number of different integers (with $n$ fixed digits in radix $R$ representing $R^{n}$ different integers).
+\end{itemize}
+
+In \href{https://en.wikibooks.org/wiki/Java_Programming/Primitive_Types}{Java} \citep{wiki:java-primitive-types}, there are four fixed-point data types: \code{byte} (8 bits), \code{short} (16 bits), \code{int} (32 bits), \code{long} (64 bits). The examples in this document limit themselves to 8-bit numbers, though the results are the same for any fixed-point data type.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Overflow
+\subsubsection{Overflow}
+\label{Overflow}
+
+In fixed-point arithmetic there will always be \href{https://en.wikipedia.org/wiki/Integer_overflow}{overflow} \citep{wiki:integer-overflow}, as in the (8-bit) example of $60_{16} + C0_{16}$.
+
+$\begin{tblr}{X[c,b]*3{X[c,b]}X[c,b]*9{X[c,b]}X[c,b]*3{X[c,b]}}
+ & && && {\color{Red}\boxed{1}}&1&&&&&&& && {\color{Red}\boxed{1}}&& \\
+ &&9&6_{10} &=& &0&1&1&0&0&0&0&0_{2} &=& &6&0_{16} \\
+ +&1&9&2_{10} &=& &1&1&0&0&0&0&0&0_{2} &=& &C&0_{16} \\\hline
+ &&3&2_{10} &=& &0&0&1&0&0&0&0&0_{2} &=& &2&0_{16} \\
+\end{tblr}$
+
+Clearly, $96_{10} + 192_{10} = 288_{10} \ne 32_{10}$, but $288_{10}$ cannot be represented in 8 bits, because 8 bits can only represent $2^{8}$ different numbers. The carry (shown in {\color{Red}red} in the ninth bit) has nowhere to go. That carry is known as an `overflow.'
+
+Every fixed-point arithmetic operation must consider overflow and restrict itself to operations whose results are within the representation of the integer.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Subtraction
+\subsection{Subtraction}
+\label{Subtraction}
+
+Making the connection between logic and arithmetic, addition is implemented by the \textsc{xor} Boolean logic function. Consider the result and overflow implications of the (8-bit) subtraction example $60_{16} - 20_{16}$.
+
+$\begin{tblr}{X[c,b]*3{X[c,b]}X[c,b]*9{X[c,b]}X[c,b]*3{X[c,b]}}
+ & && && &&&&&&&& && && \\
+ &&9&6_{10} &=& &0&1&1&0&0&0&0&0_{2} &=& &6&0_{16} \\
+ -&&3&2_{10} &=& &0&0&1&0&0&0&0&0_{2} &=& &2&0_{16} \\\hline
+ &&6&4_{10} &=& &0&1&0&0&0&0&0&0_{2} &=& &4&0_{16} \\
+\end{tblr}$
+
+The result is correct, beacuse $96_{10} \ge 32_{10}$. Now consider the (8-bit) example of $20_{16} - 60_{16}$.
+
+$\begin{tblr}{X[c,b]*3{X[c,b]}X[c,b]*9{X[c,b]}X[c,b]*3{X[c,b]}}
+ & && && &1&&&&&&& && && \\
+ & && && {\color{Red}\boxed{\cancel{1}}}&\cancel{10}&10&&&&&& && {\color{Red}\boxed{\cancel{1}}}&12& \\
+ &&3&2_{10} &=& &\cancel{0}&\cancel{0}&1&0&0&0&0&0_{2} &=& &\cancel{2}&0_{16} \\
+ -&&9&6_{10} &=& &0&1&1&0&0&0&0&0_{2} &=& &6&0_{16} \\\hline
+ &1&9&2_{10} &=& &1&1&0&0&0&0&0&0_{2} &=& &C&0_{16} \\
+\end{tblr}$
+
+Clearly, $32_{10} - 96_{10} = -64_{10} \ne 192_{10}$, but $-64_{10}$ cannot be represented by non-negative numbers. The borrow (shown in {\color{Red}red} in the ninth bit) --- sometimes called an integer `underflow' --- is related to integer overflow in addition. It is a bit that isn't there, but the result is incorrect without it (because $120_{16} - 60_{16}$ is, in fact, $C0_{16}$).
+
+There \textit{is} a way to interpret these results so that they make sense.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Two's complement
+\subsubsection{Two's complement}
+\label{TwosComplement}
+
+One way to implement signed arithmetic is with \textit{\href{https://en.wikipedia.org/wiki/Two's_complement}{two's complement}} \citep{wiki:twos-complement}. In $n$-bit fixed-point arithmetic the integer number line behaves as if it were a number circle,$\mod 2^{n}$. That is, all integers are non-negative and the next number after $2^{n}-1$ is \textit{zero}.
+
+The two's complement system breaks the number circle at a different point --- between $2^{n - 1} - 1$ and $2^{n - 1}$, treating half the integers on the number circle as negative and the other half as non-negative. Any $n$-bit integers on the \textit{unsigned} interval $[0, 2^{n}-1] \ge 2^{n-1}$ are negative and the others on $[0, 2^{n-1} - 1]$ are non-negative, as shown below.
+
+\end{multicols}\begin{center}
+\includegraphics*[scale = 0.75]{../../images/java-number-circle.pdf}
+ \\Java two's complement number circle
+\end{center}\begin{multicols}{2}
+
+The two's complement of an $n$-bit binary number $m$, defined as $2^{n} - m$, can be calculated as one more than the \href{https://en.wikipedia.org/wiki/Ones'_complement}{ones' complement} \citep{wiki:ones-complement} (the bit-wise complement of the binary representation) of $m$, ignoring overflow. Calculating that $+1$ in the binary representation of $m$ by hand can be tricky, as there can be up to $m$ carries. Consequently, the preferred algorithm for calculating the two's-complement of an $n$-bit binary number $m$ is:
+
+\begin{quote}\dots start at the least significant bit (LSB), and copy all the zeros, working from LSB toward the most significant bit (MSB) until the first 1 is reached; then copy that 1, and [complement] all the remaining bits (Leave the MSB as a 1 if the initial number was in sign-and-magnitude representation). This shortcut allows a person to convert a number to its two's complement without first forming its ones' complement. --- \href{https://en.wikipedia.org/wiki/Two's_complement#Working_from_LSB_towards_MSB}{Wikipedia}\end{quote}
+
+By interpreting $n$-bit binary numbers as their two's-complement representation, subtraction is implemented as unsigned addition of the two's-complement of the subtrahend to the minuend, ignoring overflow. Revisiting the examples from section \ref{Subtraction} and interpreting the numbers as two's complement, the operations between double lines are exactly that form of subtraction.
+
+Here is the example of $\left(+96_{10}\right) - \left(+32_{10}\right) = \left(+60_{16}\right) - \left(+20_{16}\right)$.
+
+$\begin{tblr}{X[c,b]*{3}{X[c,b]}*{3}{X[c,b]}*{9}{X[c,b]}*{3}{X[c,b]}*{3}{X[c,b]}X[c,b]}
+  &( +&9&6_{10} &)&=&(& +&0&1&1&0&0&0&0&0_{2} &)&=&(& +&6&0_{16} &) \\
+ -&( +&3&2_{10} &)&=&(& +&0&0&1&0&0&0&0&0_{2} &)&=&(& +&2&0_{16} &) \\\hline\hline
+  & && &&&& {\color{Red}\boxed{1}}&1&1&&&&&& &&&& && & \\
+  & && &&&& &0&1&1&0&0&0&0&0_{2} &&=&& &6&0_{16} & \\
+ +& && &&&& &1&1&1&0&0&0&0&0_{2} &&=&& &E&0_{16} & \\\hline
+  & && &&&& &0&1&0&0&0&0&0&0_{2} &&=&& &4&0_{16} & \\\hline\hline
+  &( +&6&4_{10} &)&=&(& +&0&1&0&0&0&0&0&0_{2} &)&=&(& +&4&0_{16} &) \\
+\end{tblr}$
+
+Here is the example of $\left(+32_{10}\right) - \left(+96_{10}\right) = \left(+20_{16}\right) - \left(+60_{16}\right)$.
+
+$\begin{tblr}{X[c,b]*{3}{X[c,b]}*{3}{X[c,b]}*{9}{X[c,b]}*{3}{X[c,b]}*{3}{X[c,b]}X[c,b]}
+  &( +&3&2_{10} &)&=&(& +&0&0&1&0&0&0&0&0_{2} &)&=&(& +&2&0_{16} &) \\
+ -&( +&9&6_{10} &)&=&(& +&0&1&1&0&0&0&0&0_{2} &)&=&(& +&6&0_{16} &) \\\hline\hline
+  & && &&&& &&1&&&&&& &&&& && & \\
+  & && &&&& &0&0&1&0&0&0&0&0_{2} &&=&& &2&0_{16} & \\
+ +& && &&&& &1&0&1&0&0&0&0&0_{2} &&=&& &A&0_{16} & \\\hline
+  & && &&&& &1&1&0&0&0&0&0&0_{2} &&=&& &C&0_{16} & \\\hline\hline
+  &( -&6&4_{10} &)&=&(& -&0&1&0&0&0&0&0&0_{2} &)&=&(& -&4&0_{16} &) \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Multiplication
+\subsection{Multiplication}
+\label{Multiplication}
+
+Multiplication is repeated addition --- as indicated by the English reading of $3 \times 4$ as, `three times four;' that is add four to itself three times. The standard \href{https://en.wikipedia.org/wiki/Multiplication_algorithm#Peasant_or_binary_multiplication}{multiplication algorithm} is a shortcut to repeated addition where, to obtain a product, '\dots multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.' \citep{wiki:multiplication-algorithm} Binary multiplication of $m \times n$ is easy, as there are only two values to multiply $m$ by in each digit of $n$: $0 \times m = 0$ and $1 \times m = m$. For example:
+
+\begin{minipage}{\linewidth}
+$7_{10} \times 6_{10} = 42_{10}$
+
+$\begin{tblr}{*{8}{X[c,b]}X[l,b]}
+ &&&&&0&1&1&1_{2}\\
+ \times&&&&&0&1&1&0_{2}\\\hline
+ &&&&&0&0&0&0\\
+ &&&&0&1&1&1&\\
+ &&&0&1&1&1&&\\
+ +&&0&0&0&0&&&\\\hline\hline
+ &0&0&1&0&1&0&1&0_{2}
+\end{tblr}$
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+$47_{10} \times 17_{10} = 799_{10}$
+
+$\begin{tblr}{*{16}{X[c,b]}X[l,b]}
+ &&&&&&&&&0&0&1&0&1&1&1&1_{2}\\
+ \times&&&&&&&&&0&0&0&1&0&0&0&1_{2}\\\hline
+ &&&&&&&&&0&0&1&0&1&1&1&1\\
+ &&&&&&&&0&0&0&0&0&0&0&0&\\
+ &&&&&&&0&0&0&0&0&0&0&0&&\\
+ &&&&&&0&0&0&0&0&0&0&0&&&\\
+ &&&&&0&0&1&0&1&1&1&1&&&&\\
+ &&&&0&0&0&0&0&0&0&0&&&&&\\
+ &&&0&0&0&0&0&0&0&0&&&&&&\\
+ +&&0&0&0&0&0&0&0&0&&&&&&&\\\hline\hline
+ &0&0&0&0&0&0&1&1&0&0&0&1&1&1&1&1_{2}
+\end{tblr}$
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+$127_{10} \times 127_{10} = 16129_{10}$
+
+$\begin{tblr}{*{16}{X[c,b]}X[l,b]}
+ &&&&&&&&&0&1&1&1&1&1&1&1_{2}\\
+ \times&&&&&&&&&0&1&1&1&1&1&1&1_{2}\\\hline
+ &&&&&&&&&0&1&1&1&1&1&1&1\\
+ &&&&&&&&0&1&1&1&1&1&1&1&\\
+ &&&&&&&0&1&1&1&1&1&1&1&&\\
+ &&&&&&0&1&1&1&1&1&1&1&&&\\
+ &&&&&0&1&1&1&1&1&1&1&&&&\\
+ &&&&0&1&1&1&1&1&1&1&&&&&\\
+ &&&0&1&1&1&1&1&1&1&&&&&&\\
+ +&&0&0&0&0&0&0&0&0&&&&&&&\\\hline\hline
+ &0&0&1&1&1&1&1&1&0&0&0&0&0&0&0&1_{2}
+\end{tblr}$
+\end{minipage}
+
+\begin{itemize}
+\item These examples exemplify products of two non-negative two's complement numbers. It is (of course) possible to multiply negative numbers, but it is more involved.\footnote{To multiply negative numbers, either add additional shifted values of the multiplicand due to sign extension of the multiplier, ignoring overflow, or multiply absolute values and adjust the sign of the result. \hwnote{Include example...}}
+\item The product of two $n$-bit numbers will, in general, be a $2n$-bit number.\item If this algorithm is limited to non-negative $n$-bit two's complement numbers, the maximum possible product is $2^{2\left(n - 1\right)} - \left( 2^{n} - 1 \right)$, though the maximum (positive) value of a $2n$-bit two's complement number is $2^{2n} - 1$.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Division
+\subsection{Division}
+\label{Division}
+
+Division is repeated subtraction, as described in the \href{https://en.wikipedia.org/wiki/Euclidean_division}{Euclidean algorithm} in \href{https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII1.html}{\textit{Euclid's Elements} Book VII Proposition I} \citep{book:elements-one-volume}.
+
+The long \href{https://en.wikipedia.org/wiki/Division_algorithm#Integer_division_(unsigned)_with_remainder}{division algorithm} is a shortcut to repeated subtraction where, to obtain a quotient and remainder, shift `\dots gradually from the left to the right end of the dividend, subtracting the largest possible multiple of the divisor at each stage; the multiples become the digits of the quotient, and the final difference is the remainder.' \citep{wiki:division-algorithm} Binary long division can be implemented as in the following examples (the underlined bits correspond in each row):
+
+\begin{minipage}{\linewidth}
+$7_{10} \div 3_{10} = 2_{10}\text{R}1_{10}\text{ (Note: }-3_{10} = 1101_{2}$\text{)}
+
+$\begin{tblr}{*{17}{X[c,b]}}
+ \multicolumn{4}{c}{N}&&\multicolumn{4}{c}{R}&&\multicolumn{4}{c}{Q}&K/R\\\hline\hline
+ \underline{0}&1&1&1& &0&0&0&\underline{0}& &&&&&\\
+ &&&& + &1&1&0&1&&&&&\\\cline{5-9}
+ &&&& &\underline{1}&1&0&1& &\underline{0}&&&&K\\\hline
+ 0&\underline{1}&1&1& &0&0&0&\underline{1}& &&&&&\\
+ &&&& + &1&1&0&1&&&&&\\\cline{5-9}
+ &&&& &\underline{1}&1&1&0& &0&\underline{0}&&&K\\\hline
+ 0&1&\underline{1}&1& &0&0&1&\underline{1}& &&&&&\\
+ &&&& + &1&1&0&1&&&&&\\\cline{5-9}
+ &&&& &\underline{0}&0&0&0& &0&0&\underline{1}&&R\\\hline
+ 0&1&1&\underline{1}& &0&0&0&\underline{1}& &&&&&\\
+ &&&& + &1&1&0&1&&&&&\\\cline{5-9}
+ &&&& &\underline{1}&1&1&0& &0&0&1&\underline{0}&K\\\hline\hline
+ &&&&&0&0&0&1&&0&0&1&0&&
+\end{tblr}$
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+$6_{10} \div 2_{10} = 3_{10}\text{R}0_{10}\text{ (Note: }-2_{10} = 1110_{2}$\text{)}
+
+$\begin{tblr}{*{17}{X[c,b]}}
+ \multicolumn{4}{c}{N}&&\multicolumn{4}{c}{R}&&\multicolumn{4}{c}{Q}&K/R\\\hline\hline
+ \underline{0}&1&1&0& &0&0&0&\underline{0}& &&&&&\\
+ &&&& + &1&1&1&0&&&&&\\\cline{5-9}
+ &&&& &\underline{1}&1&1&0& &\underline{0}&&&&K\\\hline
+ 0&\underline{1}&1&0& &0&0&0&\underline{1}& &&&&&\\
+ &&&& + &1&1&1&0&&&&&\\\cline{5-9}
+ &&&& &\underline{1}&1&1&1& &0&\underline{0}&&&K\\\hline
+ 0&1&\underline{1}&0& &0&0&1&\underline{1}& &&&&&\\
+ &&&& + &1&1&1&0&&&&&\\\cline{5-9}
+ &&&& &\underline{0}&0&0&1& &0&0&\underline{1}&&R\\\hline
+ 0&1&1&\underline{0}& &0&0&1&\underline{0}& &&&&&\\
+ &&&& + &1&1&1&0&&&&&\\\cline{5-9}
+ &&&& &\underline{0}&0&0&0& &0&0&1&\underline{1}&R\\\hline\hline
+ &&&&&0&0&0&0&&0&0&1&1&&
+\end{tblr}$
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+$127_{10} \div 10_{10} = 12_{10}\text{R}7_{10}\text{ (Note: }-10_{10} = 11110110_{2}$\text{)}
+
+$\begin{tblr}{*{29}{X[c,b]}}
+ \multicolumn{8}{c}{N}&&\multicolumn{8}{c}{R}&&\multicolumn{8}{c}{Q}&K/R\\\hline\hline
+ \underline{0}&1&1&1&1&1&1&1& &0&0&0&0&0&0&0&\underline{0}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{1}&1&1&1&0&1&1&0& &\underline{0}&&&&&&&&K\\\hline
+ 0&\underline{1}&1&1&1&1&1&1& &0&0&0&0&0&0&0&\underline{1}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{1}&1&1&1&0&1&1&1& &0&\underline{0}&&&&&&&K\\\hline
+ 0&1&\underline{1}&1&1&1&1&1& &0&0&0&0&0&0&1&\underline{1}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{1}&1&1&1&1&0&0&1& &0&0&\underline{0}&&&&&&K\\\hline
+ 0&1&1&\underline{1}&1&1&1&1& &0&0&0&0&0&1&1&\underline{1}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{1}&1&1&1&1&1&0&1& &0&0&0&\underline{0}&&&&&K\\\hline
+ 0&1&1&1&\underline{1}&1&1&1& &0&0&0&0&1&1&1&\underline{1}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{0}&0&0&0&0&1&0&1& &0&0&0&0&\underline{1}&&&&R\\\hline
+ 0&1&1&1&1&\underline{1}&1&1& &0&0&0&0&1&0&1&\underline{1}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{0}&0&0&0&0&0&0&1& &0&0&0&0&1&\underline{1}&&&R\\\hline
+ 0&1&1&1&1&1&\underline{1}&1& &0&0&0&0&0&0&1&\underline{1}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{1}&1&1&1&1&0&0&1& &0&0&0&0&1&1&\underline{0}&&K\\\hline
+ 0&1&1&1&1&1&1&\underline{1}& &0&0&0&0&0&1&1&\underline{1}& &&&&&&&&&\\
+ &&&&&&&& + &1&1&1&1&0&1&1&0&&&&&&&&&\\\cline{9-17}
+ &&&&&&&& &\underline{1}&1&1&1&1&1&0&1& &0&0&0&0&1&1&0&\underline{0}&K\\\hline\hline
+ &&&&&&&&&0&0&0&0&0&1&1&1&&0&0&0&0&1&1&0&0&&
+\end{tblr}$
+\end{minipage}
+
+\begin{itemize}
+\item In each step, shift bits of the dividend $N$ one at a time into the least-significant bit of remainder $R$ and subtract the divisor $D$ (shown here as adding its opposite).
+\item If the result of the subtraction is negative ($R < D$), the corresponding bit of the quotient $Q$ is zero and the remainder $R$ is kept for the next bit --- as signified by $K$ in the rightmost column.
+\item If the result of the subtraction is non-negative ($R \ge D$), the corresponding bit of the quotient $Q$ is one and the remainder $R$ is replaced by $R - D$ (already calculated as a result of the test) for the next bit --- as signified by $R$ in the rightmost column.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Circuits
+\section{Circuits}
+\label{Circuits}
+
+To implement logic functions in actual \textit{hardware}, designers use integrated circuits called \textit{\href{https://en.wikipedia.org/wiki/Logic_gate}{gate}s} \citep{wiki:logic-gate} and two voltage levels to represent `$0$' and `$1$.' The basics of these implement binary (two-input) logic functions (\eg\ \textsc{and}, \textsc{or}, \textsc{xor}) and the unary (one-input) logic function \textsc{not}. Symbols used on \href{https://en.wikipedia.org/wiki/Schematic#Electrical_and_electronic_industry}{schematic diagram}s of logic circuits (where lines represent electrical connections --- wires) are:
+
+\tikzset{dot/.style args={#1}{circle,draw=black,fill=black,inner sep=1pt,minimum size=3pt,label=#1}}
+
+\begin{center}
+\begin{tikzpicture}[thick]
+ \node[dot={left:{$A$}}] (A) at (0,1) {};
+ \node[dot={left:{$B$}}] (B) at (0,0) {};
+ \node[and gate US, draw, logic gate inputs=nn] at ($(A)+(1,-0.5)$) (And) {};
+ \node[dot={right:{$A \bullet B$}}] (A) at ($(And)+(1,0)$) (Q) {};
+ \draw (A) -- ($(A)+(0.25,0)$) |- (And.input 1);
+ \draw (B) -- ($(B)+(0.25,0)$) |- (And.input 2);
+ \draw (And.output) -- (Q);
+\end{tikzpicture}
+ \\\textsc{and} Gate
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[thick]
+ \node[dot={left:{$A$}}] (A) at (0,1) {};
+ \node[dot={left:{$B$}}] (B) at (0,0) {};
+ \node[or gate US, draw, logic gate inputs=nn] at ($(A)+(1,-0.5)$) (Or) {};
+ \node[dot={right:{$A + B$}}] (A) at ($(Or)+(1,0)$) (Q) {};
+ \draw (A) -- ($(A)+(0.25,0)$) |- (Or.input 1);
+ \draw (B) -- ($(B)+(0.25,0)$) |- (Or.input 2);
+ \draw (Or.output) -- (Q);
+\end{tikzpicture}
+ \\\textsc{or} Gate
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[thick]
+ \node[dot={left:{$A$}}] (A) at (0,0) {};
+ \node[not gate US, draw, logic gate inputs=n] at ($(A)+(0.5,0)$) (Not) {};
+ \node[dot={right:{$\overline{A}$}}] (A) at ($(Not)+(0.75,0)$) (Q) {};
+ \draw (A) -- (Not.input);
+ \draw (Not.output) -- (Q);
+\end{tikzpicture}
+ \\\textsc{not} Gate
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[thick]
+ \node[dot={left:{$A$}}] (A) at (0,1) {};
+ \node[dot={left:{$B$}}] (B) at (0,0) {};
+ \node[xor gate US, draw, logic gate inputs=nn] at ($(A)+(1,-0.5)$) (XOr) {};
+ \node[dot={right:{$A \xor B$}}] (A) at ($(XOr)+(1,0)$) (Q) {};
+ \draw (A) -- ($(A)+(0.25,0)$) |- (XOr.input 1);
+ \draw (B) -- ($(B)+(0.25,0)$) |- (XOr.input 2);
+ \draw (XOr.output) -- (Q);
+\end{tikzpicture}
+ \\\textsc{xor} Gate
+\end{center}
+
+The equations for a (one-bit) full adder \nocite{wiki:adder-electronics} (sum $\Sigma$ and carry $C_{out}$ as functions of two addend bits $A$ and $B$ and the carry from the next rightmost bit $C_{in})$ are:
+
+\begin{align*}
+ \Sigma &= \text{A}\xor\text{B}\xor\text{C}_{\text{in}} \\
+ \text{C}_{\text{out}} &= \left( \text{A}\bullet\text{B} \right) + \left( \left(\text{A}\xor\text{B}\right)\bullet\text{C}_{\text{in}} \right) \\
+\end{align*}
+
+The corresponding circuit for a (one-bit) full adder is:
+
+\begin{center}
+\begin{tikzpicture}[circuit logic US,thick,font=\small]
+\matrix[column sep=8mm,row sep={8mm,between origins}]
+{
+ \node[dot={left:$A$}] (A) {}; \\
+                                      & \node [xor gate] (XOR1) {}; \\
+ \node[dot={left:$B$}] (B) {};        &                             & \node [xor gate] (XOR2) {}; &                           & \node[dot={right:$\Sigma$}] (Sum) {}; \\
+                                      &                             & \node [and gate] (AND1) {}; \\
+ \node[dot={left:$C_{in}$}] (Cin) {}; &                             &                             & \node [or gate] (OR1) {}; & \node[dot={right:$C_{out}$}] (Cout) {}; \\
+                                      &                             & \node [and gate] (AND2) {}; \\
+};
+\draw (A.east) -- ++(right:6mm) |- (XOR1.input 1);
+\draw (A.east) -- ++(right:6mm) |- (AND1.input 1);
+\draw (B.east) -- ++(right:3mm) |- (XOR1.input 2);
+\draw (B.east) -- ++(right:3mm) |- (AND1.input 2);
+\draw (Cin.east) -- ++(right:18mm) |- (XOR2.input 2);
+\draw (Cin.east) -- ++(right:18mm) |- (AND2.input 2);
+\draw (XOR1.output) -- ++(right:3mm) |- (XOR2.input 1);
+\draw (XOR1.output) -- ++(right:3mm) |- (AND2.input 1);
+\draw (XOR2.output) -- (Sum);
+\draw (AND1.output) -- ++(right:3mm) |- (OR1.input 1);
+\draw (AND2.output) -- ++(right:3mm) |- (OR1.input 2);
+\draw (OR1.output) -- (Cout);
+
+\end{tikzpicture}
+\\Full Adder
+\end{center}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THIS IS EXTRA tikzpicture STUFF
+\begin{center}
+\begin{tikzpicture}[circuit logic US,
+        %Environment config
+        font=\small,
+        thick,
+        %Environment styles
+        GateCfg/.style={
+            logic gate inputs={normal,normal,normal},
+            draw,
+            scale=1,
+            on grid % Distances from shape centers
+        }
+    ]
+%
+% Define a few helper macros to save typing
+% The \spacer macro inserts a dummy node and defines the t (top) and
+% b (bottom) coordinates. t and b are used to align the pins
+\newcommand\spacer{%
+\node[anchor=south,minimum height=1cm,inner sep=0pt, outer sep=0pt] (tmp) {};%
+\path (tmp.north) coordinate (t) (tmp.south) coordinate (b);%
+}
+% Draw connecting pins. Note the use of the t and b coordinates defined
+% in the \spacer macro
+\newcommand\drawpins[1]{%
+\draw (#1.a) -- (t -| #1.a)
+      (#1.b) -- (t -| #1.b)
+      (#1.z) -- (b -| #1.z);
+}
+% Draw pins for a logic gate with tree inputs
+\newcommand\drawpinsiii[1]{%
+\draw (#1.a) -- (t -| #1.a)
+      (#1.b) -- (t -| #1.b)
+      (#1.c) -- (t -| #1.c)
+      (#1.z) -- (b -| #1.z);
+}
+
+\path % Place gate shapes using positioning commands
+        node[xor gate US,GateCfg](XOR1){} 
+        node[xor gate US,GateCfg,below right=.5 and 2 of XOR1](XOR2){}
+        node[and gate US,GateCfg,below=1 of XOR2](AND1){}
+        node[and gate US,GateCfg,below=1 of AND1](AND2){} 
+        node[or gate US,GateCfg, below right= 0.5 and 2 of AND1](OR1){};
+ \node[circle,draw=black,inner sep=1pt,minimum size=3pt,label=left:{$A$}] (A) at (0,2) {};
+ \node[circle,draw=black,inner sep=1pt,minimum size=3pt,label=left:{$B$}] (B) at (0,1) {};
+ \node[circle,draw=black,inner sep=1pt,minimum size=3pt,label=left:{$C_{in}$}] (Cin) at (0,0) {};
+ \node[circle,draw=black,inner sep=1pt,minimum size=3pt,label=right:{$\Sigma$}] (Sum) at (5,1) {};
+
+ \node[xor gate US, draw, logic gate inputs=nn] at ($(A)+(2,-0.5)$) (Xor1) {};
+ \node[xor gate US, draw, logic gate inputs=nn] at ($(B)+(4,0)$) (Xor2) {};
+ \node[and gate US, draw, logic gate inputs=nn] at ($(Cin)+(4,0)$) (And1) {};
+ \node[and gate US, draw, logic gate inputs=nn] at ($(Cin)+(2,-0.5)$) (And2) {};
+
+ \node[circle,draw=black,fill=black,inner sep=1pt,minimum size=3pt] (A1) at ($(A)+(0.5,0)$) {};
+ \node[circle,draw=black,fill=black,inner sep=1pt,minimum size=3pt] (B1) at ($(B)+(1,0)$) {};
+ \node[circle,draw=black,fill=black,inner sep=1pt,minimum size=3pt] (C1) at ($(Xor2.input 2)+(-0.5,0)$) {};
+ \node[circle,draw=black,fill=black,inner sep=1pt,minimum size=3pt] (X1) at ($(Xor2.input 1)+(-1,0)$) {};
+
+ \draw (A) -- ($(A1)+(0.5,0)$) |- (Xor1.input 1);
+ \draw (B) -- ($(B1)+(0,0)$) |- (Xor1.input 2);
+ \draw (Xor1.output) -- ($(Xor1.output)+(0.25,0)$)|- (X1) -- (Xor2.input 1);
+ \draw (Xor2.output) -- (Sum);
+ \draw (Cin) -- ($(Cin)+(2,0)$) |- (C1) -- (Xor2.input 2);
+ \draw (X1) |- (And1.input 2);
+ \draw (C1) |- (And1.input 1);
+
+\end{tikzpicture}
+ \\Full Adder
+\end{center}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Functional completeness
+\subsubsection{Functional completeness}
+\label{Completeness}
+
+Boolean logic is \href{https://www.geeksforgeeks.org/digital-logic-functionality-completeness/}{functionally complete} using \textsc{and}, \textsc{or}, and \textsc{not}, \textit{or} \textsc{nand} by itself, \textit{or} \textsc{nor} by itself. Proof of \href{https://en.wikipedia.org/wiki/Functional_completeness}{functional completeness} \nocite{wiki:functional-completeness} requires showing that all 16 two-input, one-output truth tables can be implemented using the specified logic functions.
+
+The proof of functional completeness for \textsc{and}, \textsc{or}, and \textsc{not} logic is:
+
+\begin{align*}
+%\text{\textbf{Outputs}} && \multicolumn{2}{c}{\text{\textbf{Equation}}}\\\hline
+ 0 &\leftrightarrow A \bullet \overline{A} \\
+ \overline{A + B} &\leftrightarrow \overline{A + B} \\
+ A < B &\leftrightarrow \overline{A} \bullet B \\
+ \overline{A} &\leftrightarrow \overline{A} \\
+ A > B &\leftrightarrow A \bullet \overline{B} \\
+ \overline{B} &\leftrightarrow \overline{B} \\
+ A \ne B &\leftrightarrow \left( A \bullet \overline{B} \right) + \left( \overline{A} \bullet B \right) \\
+ \overline{A \bullet B} &\leftrightarrow \overline{A \bullet B} \\
+ A \bullet B &\leftrightarrow A \bullet B \\
+ A = B &\leftrightarrow \overline{\left( A \bullet \overline{B} \right) + \left( \overline{A} \bullet B \right)} \\
+ B &\leftrightarrow B \\
+ A \le B &\leftrightarrow \overline{A \bullet \overline{B}} \\
+ A &\leftrightarrow A \\
+ A \ge B &\leftrightarrow \overline{\overline{A} \bullet B} \\
+ A + B &\leftrightarrow A + B \\
+ 1 &\leftrightarrow A + \overline{A} \\
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Functional completeness redux
+\subsubsection{Functional completeness redux}
+\label{CompletenessRedux}
+
+The proof of functional completeness for \href{https://en.wikipedia.org/wiki/NAND_logic}{\textsc{nand} logic} \nocite{wiki:nand-logic} is below (the proof for \href{https://en.wikipedia.org/wiki/NOR_logic}{\textsc{nor} logic} \nocite{wiki:nor-logic} is the dual of this proof):
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% False
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & 0 & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \& \node[nand gate] (I1) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[nand gate] (I2) {}; \& \node[dot={right:{$0$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 1);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 2);
+ \draw (I2.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 0 & \\
+10 & 0 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NOR
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & \overline{A + B} & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \& \node[nand gate] (I1) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[nand gate] (I2) {}; \& \node[dot={right:{$\overline{A + B}$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \& \node[nand gate] (I3) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I3.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I3.input 2);
+ \draw (I3.output) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 1);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 2);
+ \draw (I2.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1 & \\
+01 & 0 & \\
+10 & 0 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% <
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & A < B & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \& \node[nand gate] (I1) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[nand gate] (I2) {}; \& \node[dot={right:{$A < B$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 1);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 2);
+ \draw (I2.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 1 & \\
+10 & 0 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% !A
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & \overline{A} & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \node[nand gate] (I1) {}; \& \node[dot={right:{$\overline{A}$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1 & \\
+01 & 1 & \\
+10 & 0 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% >
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & A > B & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[nand gate] (I2) {}; \& \node[dot={right:{$A > B$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \& \node[nand gate] (I1) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 1);
+ \draw (N1.output) -- ++(right:2mm) |- (I2.input 2);
+ \draw (I2.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 0 & \\
+10 & 1 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% !B
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & \overline{B} & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \node[nand gate] (I1) {}; \& \node[dot={right:{$\overline{B}$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (B.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1 & \\
+01 & 0 & \\
+10 & 1 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% XOR
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & \parbox[c]{\linewidth}{$A \ne B \\ A \xor B$\smallskip} & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \&                           \& \node[nand gate] (N2) {}; \\
+                                  \& \node[nand gate] (N1) {}; \&                           \& \node[nand gate] (N3) {}; \& \node[dot={right:{$A \xor B$}}] (Q) {}; \\
+                                  \&                           \& \node[nand gate] (N4) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (N1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (N2.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (N1.input 2);
+ \draw (B.east) -- ++(right:2mm) |- (N4.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (N2.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (N4.input 1);
+ \draw (N2.output) -- ++(right:2mm) |- (N3.input 1);
+ \draw (N4.output) -- ++(right:2mm) |- (N3.input 2);
+ \draw (N3.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 1 & \\
+10 & 1 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NAND
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & \overline{A \bullet B} & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \node[nand gate] (N1) {}; \& \node[dot={right:{$\overline{A \bullet B}$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1 & \\
+01 & 1 & \\
+10 & 1 & \\
+11 & 0 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% AND
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & A \bullet B & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \node[nand gate] (N1) {}; \& \node[nand gate] (I1) {}; \& \node[dot={right:{$A \bullet B$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (I1.input 1);
+ \draw (N1.output) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 0 & \\
+10 & 0 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% XNOR
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & \parbox[c]{\linewidth}{$A = B \\ \overline{A \xor B}$\smallskip} & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=6mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \& \node[nand gate] (I1) {}; \\
+                                  \&                           \& \node[nand gate] (N1) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \& \node[nand gate] (I3) {}; \&                           \& \node[nand gate] (N2) {}; \& \node[dot={right:{$\overline{A \xor B}$}}] (Q) {}; \\
+                                  \&                           \& \node[nand gate] (N3) {}; \\
+ };
+ \draw (A.east) -- ++(right:4mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:4mm) |- (I1.input 2);
+ \draw (A.east) -- ++(right:4mm) |- ++(down:16mm) -- ++(right:12mm) |- (N3.input 1);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I3.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I3.input 2);
+ \draw (B.east) -- ++(right:2mm) |- ++(down:10mm) -- ++(right:16mm) |- (N3.input 2);
+ \draw (I3.output) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- ++(right:2mm) |- (N2.input 1);
+ \draw (N3.output) -- ++(right:2mm) |- (N2.input 2);
+ \draw (N2.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1& \\
+01 & 0 & \\
+10 & 0 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% B
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & B & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \node[dot={right:{$B$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (B.east) -- ++(right:2mm) |- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 1 & \\
+10 & 0 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% <=
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & A \le B & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[dot={right:{$A \le B$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \& \node[nand gate] (I1) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1 & \\
+01 & 1 & \\
+10 & 0 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% A
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & A & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \\
+                                  \& \node[dot={right:{$A$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 0 & \\
+10 & 1 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% >=
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & A \ge B & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \& \node[nand gate] (I1) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[dot={right:{$A \ge B$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1 & \\
+01 & 0 & \\
+10 & 1 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OR
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & A + B & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \& \node[nand gate] (I1) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[dot={right:{$A + B$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \& \node[nand gate] (I3) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I3.input 1);
+ \draw (B.east) -- ++(right:2mm) |- (I3.input 2);
+ \draw (I3.output) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 0 & \\
+01 & 1 & \\
+10 & 1 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TRUE
+$\begin{tblr}{X[1,c,b]||X[1,c,b]X[4,c,b]}
+AB & 1 & 
+\multirow{5}{*}{\begin{tikzpicture}[circuit logic US,thick,font=\small,ampersand replacement=\&]
+ \matrix[column sep=4mm,row sep={4mm,between origins}] {
+  \node[dot={left:{$A$}}] (A) {}; \& \node[nand gate] (I1) {}; \\
+                                  \& \& \node[nand gate] (N1) {}; \& \node[dot={right:{$1$}}] (Q) {}; \\
+  \node[dot={left:{$B$}}] (B) {}; \\
+ };
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (I1.input 2);
+ \draw (I1.output) -- ++(right:2mm) |- (N1.input 1);
+ \draw (A.east) -- ++(right:2mm) |- (N1.input 2);
+ \draw (N1.output) -- (Q);
+\end{tikzpicture}} \\\cline{1-2}
+00 & 1 & \\
+01 & 1 & \\
+10 & 1 & \\
+11 & 1 & \\
+\end{tblr}$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NAND logic half adder
+\subsubsection{\textsc{nand} logic half adder}
+\label{NANDLogicHalfAdder}
+
+As we have already seen, addition (using a \href{https://en.wikipedia.org/wiki/Adder_(electronics)#Half_adder}{half adder} \nocite{wiki:adder-electronics} for each bit) is implement with the Boolean logic function \textsc{xor}. Implementing  \textsc{xor} $\left( \left( {A}\adot\overline{B} \right) + \left( \overline{A}\adot{B} \right) \right)$ using only \href{https://en.wikipedia.org/wiki/Adder_(electronics)#/media/File:Half_adder_using_NAND_gates_only.jpg}{\texttt{NAND}} gates has a curious aspect. Each of the inputs $A$ and $B$ are \texttt{NAND}ed with $\overline{\left( {A}\adot{B} \right)}$, rather than \texttt{AND}ing each with the complement of the other. This approach actually {\em saves} gates (with one fewer inverter) while implementing the \texttt{XOR} logic as follows:
+\begin{align*}
+A \xor B &= \overline{\left( \overline{\left( \overline{\left( {A}\adot{B} \right)} \adot {A} \right)} \adot \overline{\left( \overline{\left( {A}\adot{B} \right)} \adot {B} \right)} \right) }\\
+ &= \overline{\left( \overline{\left( {\left( \overline{A}+\overline{B} \right)} \adot {A} \right)} \adot \overline{\left( \left( \overline{A}+\overline{B} \right) \adot {B} \right)} \right) }\\
+ &= \overline{\left( \overline{\left( {\left( {A}\adot\overline{A} \right)} + {\left( {A}\adot\overline{B} \right)} \right)} \adot \overline{\left( {\left( \overline{A}\adot{B} \right)} + {\left( {B}\adot\overline{B} \right)} \right)} \right) }\\
+ &= \overline{\left( \overline{\left( 0 + {\left( {A}\adot\overline{B} \right)} \right)} \adot \overline{\left( {\left( \overline{A}\adot{B} \right)} + 0 \right)} \right) }\\
+ &= \overline{\left( \overline{\left( {A}\adot\overline{B} \right)} \adot \overline{\left( \overline{A}\adot{B} \right)} \right) }\\
+ &= \left( {A}\adot\overline{B} \right) + \left( \overline{A}\adot{B} \right)
+\end{align*}
+
+\appendix
+\appendixpage
+\addappheadtotoc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Floating Point
+\section{Floating Point}
+\label{FloatingPoint}
+
+\hwnote{More \href{https://en.wikipedia.org/wiki/To_come_(publishing)}{tk} on floating point arithmetic.}
+
+The main standard for floating-point arithmetic is \href{https://en.wikipedia.org/wiki/IEEE_754}{IEEE 754} \citep{wiki:ieee-754}. This group of standards for various bit widths (\eg\ 16, 32, 64, 80, 128, 256-bit, \etc) represent numbers in scientific notation with a sign, significand, and exponent. 
+
+- hidden `1'
+
+- special numbers
+
+- rounding \url{https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems}
+
+- operations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Links
+\section{Links}
+\label{Links}
+
+\begin{itemize}
+
+\item \url{http://en.wikipedia.org/wiki/Naive_set_theory} Na\"ive set
+theory
+
+\item \url{https://www.andrews.edu/~calkins/math/webtexts/numball.pdf}
+Numbers... chapter 1 \textit{All about Sets}
+
+\item \url{https://www.cs.odu.edu/~toida/nerzic/content/set/basics.html} Basics of sets
+
+\item \url{http://mathforum.org/library/topics/set_theory/} The Math
+Forum @ Drexel: set theory
+
+\item \url{http://jeff560.tripod.com/set.html} Earliest uses of
+symbols of set theory and logic
+
+\item \url{http://www.combinatorics.org/Surveys/ds5/VennEJC.html}
+Venn diagrams
+
+\item \url{https://www.geeksforgeeks.org/digital-logic-functionality-completeness/} GeeksforGeeks: functional completeness
+
+\item \url{https://mathcs.clarku.edu/~djoyce/java/elements/elements.html} \textit{Euclid's Elements}
+
+\item \url{https://en.wikibooks.org/wiki/Java_Programming/Primitive_Types} Java primitive types
+
+\item \url{https://www.h-schmidt.net/FloatConverter/IEEE754.html} IEEE 754 Converter
+
+%\item \url{http://wordsmith.org/anagram/} Internet anagram server
+
+%\item \url{http://www.bckelk.ukfsn.org/words/etaoin.html} Letter frequencies (also \url{http://letterfrequency.org/})
+
+\end{itemize}
+
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\bibliography{../../bib/dcpbibtex} % To update, delete *.blb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+\printindex % To update, delete *.ind
+
+\end{document}
