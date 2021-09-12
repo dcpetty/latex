@@ -4,6 +4,10 @@
 \floatstyle{boxed}
 \restylefloat{figure}
 
+%https://tex.stackexchange.com/a/611992
+\UseTblrLibrary{varwidth}
+\SetTblrInner{measure=vbox}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
 \input ../../input/input-data.tex
 
@@ -101,7 +105,7 @@ The word `technology' is fraught. It comes from the Greek word $\tau\acute{\epsi
 \end{multicols}
 
 \begin{figure}[H]\centering
- \begin{tabu}to\textwidth{X | X | X | X | X | X}
+ \begin{tblr}{X | X | X | X | X | X}
   \textbf{FOO} & \textbf{FOO} & \textbf{FOO} & \textbf{FOO} & \textbf{FOO} & \textbf{FOO} \\\hline
   \begin{itemize}
    \item FOO
@@ -115,8 +119,8 @@ The word `technology' is fraught. It comes from the Greek word $\tau\acute{\epsi
    \item FOO
    \item BAR
   \end{itemize} &
-  A & B & C
- \end{tabu}
+  A & B & C \\
+ \end{tblr}
  \caption[\textit{CTE} Courses]{\cte\ Course Sequences}\label{fig-courses}
 \end{figure}
 
