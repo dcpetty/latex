@@ -85,7 +85,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Standards-Based Grading in Computing Education}
+\title{Standards-Based Grading: A Better Kind of Assessment}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -128,9 +128,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  Standards-based grading...
-
-  This document is in preparation for \url{https://sigcse2022.sigcse.org/} following the \url{https://sigcse2022.sigcse.org/authors/lightningtalks/} guidelines and is based on the ``acmart'' document class --- \url{https://www.acm.org/publications/proceedings-template}.
+The authors are implementing and evaluating the impact of standards-based grading (SBG) on student outcomes in courses involving computing for secondary-school students. SBG is an assessment system where students are evaluated only for their proficiency against agreed course standards at levels of emerging, developing, meeting proficiency, and exceeding proficiency, as opposed to traditional 0-100 point scales. SBG can provide clearer feedback on what students know and can do for teachers, students, and families. We are two K-12 educators implementing SBG at our middle and high schools in computer science and are at different stages in this implementation timeline. To evaluate the impact, we will analyze data from multiple school years including, but not limited to, standardized test scores, grade-point averages, recruitment and retention, and student performance in soft skills. We expect to present the methods of our implementation and the results of our evaluation after the 2021-2022 academic year.
 \end{abstract}
 
 %%
@@ -147,33 +145,67 @@
 </ccs2012>
 \end{CCSXML}
 
-\ccsdesc[500]{Applied computing~Education}
+%\ccsdesc[500]{Applied computing~Education}
+
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10003456.10003457.10003527.10003541</concept_id>
+       <concept_desc>Social and professional topics~K-12 education</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10003456.10003457.10003527.10003540</concept_id>
+       <concept_desc>Social and professional topics~Student assessment</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Social and professional topics~K-12 education}
+\ccsdesc[500]{Social and professional topics~Student assessment}
 
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{standards-based grading, computing education}
+\keywords{standards-based grading, K-12 education, assessment, equity}
+
+%\begin{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
 %% page.
 \begin{teaserfigure}\centering
-  \includegraphics[width=0.5\textwidth]{CSTA-GreaterBoston-logo-500x100.png}
-  \caption{Computer Science Teachers Association, Greater Boston chapter.}
+  \hfill\includegraphics[width=0.4\textwidth]{CSTA-GreaterBoston-logo-500x100.png}\hspace*{\fill}
+  %\caption{Computer Science Teachers Association, Greater Boston chapter.}
   \Description{Logotype of the CSTA, Greater Boston chapter.}
   \label{fig:teaser}
 \end{teaserfigure}
+
+%\end{comment}
 
 %%
 %% This command processes the author and affiliation and title
 %% information and builds the first part of the formatted document.
 \maketitle
 
-\section{Description}
+\section{Standards-Based Grading}
 
-Standards-based grading is wicked awesome! More \href{https://en.wikipedia.org/wiki/To_come_(publishing)}{TK}.
+Standards-based grading (SBG)\cite{book:grading-for-equity}\cite{book:standards-based-learning} is a system of grading where students are evaluated \textit{only} for their proficiency against agreed course standards, and is often adopted for its perceived benefits of equity and providing more detailed information about what students know and can do. Rather than a traditional 0-100 point scale, students are evaluated on each standard independently, often using a proficiency scale such as emerging, developing, meeting proficiency, exceeding proficiency. SBG aims to eliminate inequities in grading by removing compliance from assessment, \textit{e.g.} did students complete all classwork as required, did students complete homework, did students complete extra credit assignments \textit{etc.}
 
-\begin{comment}
+\section{The Work}
+
+We will implement and evaluate SBG in computer science at the middle and high school level at multiple institutions. This will include the process of preparing teachers and systems, implementation with students, and measurement of impact on student outcomes.
+
+Prospect Hill Academy, a college-prep charter school in Cambridge MA, has moved to adopt SBG in all classes across grade 7-12 in a multi-year process. The 2021-2022 academic year is the first year that SBG and reporting has been fully adopted. 
+
+Brookline High School, an urban high school in Brookline MA, is evaluating and piloting SBG in some project-based elective classes in the 2021-2022 academic year.
+
+\section{Evaluation}
+
+We plan to measure student outcomes quantitatively and qualitatively. Quantitative measures could include standardized-test scores, grade-point averages, recruitment and retention numbers within and across courses --- including demographic correlations. In addition, for collaborative, project-based courses we plan to independently measure the practices as well as the content standards. We are looking for input and collaborators to help define meaningful qualitative measures and how best to define and collect data to support them.
+
+\begin{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
 ACM's consolidated article template, introduced in 2017, provides a
@@ -667,10 +699,10 @@ The authors would like to acknowledge members of the \href{https://greaterboston
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
-%\bibliographystyle{ACM-Reference-Format}
-%\bibliography{sample-base}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{../../bib/dcpbibtex} 
 
-\begin{comment}
+\begin{comment} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% If your work has an appendix, this is the place to put it.
 \appendix
