@@ -9,7 +9,7 @@ LaTeX public documents, templates, bibtex, and inputs.
 | `bib` | Directory for [Bibtex](http://www.bibtex.org/) files |
 | `doc` | Directory for [my](https://github.com/dcpetty) working LaTeX documents |
 | `images` | Directory for images used in LaTeX documents. |
-| `input` | Directory for `\input` files unsed in LaTeX documents. |
+| `input` | Directory for `\input` files used in LaTeX documents. |
 | `templates` | Directory for template LaTeX documents of various kinds in various formats. |
 
 ## Files
