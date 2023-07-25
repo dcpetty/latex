@@ -32,5 +32,5 @@ done
 # Remove all files below ${dir} ending in any extension in ${exts}.
 for ext in ${exts}; do
 	echo \# .${ext}
-	find ${dir} -print |grep "[.]${ext}$" |xargs -n 1 -I {} -t rm {}
+	find ${dir} -print 2>&1 |grep "[.]${ext}$" |xargs -n 1 -I {} -t rm {}
 done
