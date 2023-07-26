@@ -27,6 +27,11 @@ LaTeX public documents, templates, bibtex, and inputs.
 
 `clean.sh` can be used standalone. Run by itself (`sh clean.sh`) it removes all LaTeX intermediate files in the current working directory (`.`) and below. Invoked with command-line arguments (*e.g.* `sh clean.sh -d templates pdf txt`) it starts at the directory specified by `-d` (*i.e.* `templates`) and includes any additional extensions (*i.e.* `.pdf` &amp; `.txt`). The standard LaTeX intermediate files removed by `clean.sh` (and `clean.bat`) are those with the extensions `aux`, `bbl`, `blg`, `cfg`, `cut`, `glo`, `gls`, `hd`, `idx`, `ilg`, `ind`, `lof`, `log`, `lot`, `out`, `toc`, `dvi`, `gz`, `ps`, `thm`, `tgz`, &amp; `zip`.
 
+## TODO
+
+- Update all documents to use `\input` files.
+- For each `.tex` file, include a corresponding `.pdf` file.
+
 <hr>
 
 [&#128279; permalink](https://dcpetty.github.io/latex/) and [&#128297; repository](https://github.com/dcpetty/latex/) for this page.
