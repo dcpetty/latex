@@ -1,0 +1,282 @@
+\documentclass{article}%
+\usepackage[fontsize=9.5pt]{scrextend}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../../input/input-data.tex
+
+\def\docmath{}
+\def\docclass{APCS-A} % Change document class
+\def\docdate{2022-2023} % Change document date
+\def\docname{\code{FractionMatrix}} % Change document name
+\def\docnumber{} % Change document number
+\def\docversion{0.3} % Change document version
+\def\docpoints{}
+\def\docblock{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../../input/input-style.tex
+%\lstset{% general command to set parameter(s)
+%  basicstyle=\singlespacing\ttfamily\small,
+%  numberstyle=\tiny,
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+\setlength{\baselineskip}{1.2\baselineskip}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents
+%\tableofcontents % NOT in \documentclass{exam}
+\begin{tcolorbox}[colback=Black,colframe=Black]\textcolor{LimeGreen}{\bf\code{Buckle your seatbelt Dorothy, 'cause Kansas... is going bye-bye!} --- \href{http://matrix.wikia.com/wiki/Cypher}{Cypher}}\end{tcolorbox}
+\begin{multicols}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Introduction
+\section{Introduction}
+\label{Introduction}
+
+``In mathematics, a {\em matrix\index{matrix}} is a rectangular array of numbers, symbols, or expressions, arranged in rows and columns,'' as discussed on \href{https://en.wikipedia.org/wiki/Matrix_(mathematics)}{Wikipedia}\footnote{As is usual with Wikipedia, the pages on mathematics and computer science are good sources of reliable information}. Matrices are widely used in \href{https://en.wikipedia.org/wiki/Linear_algebra}{linear algebra}, the branch of mathematics concerning linear relationships.
+
+This assignment is to write \code{public class FractionMatrix implements FractionMatrixI} to represent an immutable rectangular matrix of \code{Fraction}s. The class includes methods for the basic operations of addition, scalar multiplication, transposition, and matrix multiplication, as well as \href{https://en.wikipedia.org/wiki/Mutual_recursion}{mutually recursive} methods for calculating the {\em \href{http://en.wikipedia.org/wiki/Determinant}{determinant}} and {\em \href{https://en.wikipedia.org/wiki/Minor_(linear_algebra)\#Applications_of_minors_and_cofactors}{cofactors}} of a square matrix.
+
+The following links provide additional explication.
+\begin{itemize}\sloppy
+\item \url{http://en.wikipedia.org/wiki/Matrix_(mathematics)\#Basic_operations} --- Basic matrix operations.
+\item \url{http://en.wikipedia.org/wiki/Invertible_matrix\#Analytic_solution} --- Matrix inversion through calculation of the adjugate matrix.
+\item \url{http://en.wikipedia.org/wiki/Adjugate_matrix} --- Calculation of the adjugate matrix through the transpose of the cofactor matrix.
+\item \url{https://en.wikipedia.org/wiki/Determinant\#Laplace_expansion} --- Laplace expansion and the adjugate matrix.
+\item \url{http://en.wikipedia.org/wiki/Laplace_expansion} --- Calculation of the determinant by Laplace's expansion by cofactors.
+\item\url{https://www.khanacademy.org/math/linear-algebra/matrix-transformations/inverse-of-matrices/v/linear-algebra-3x3-determinant} --- Kahn Academy 3x3 example of Laplace's expansion.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Laplace expansion
+\section{Laplace expansion}
+\label{Laplaceexpansion}
+An $n \times n$ (square) matrix $\matA$ is {\em \href{https://en.wikipedia.org/wiki/Invertible_matrix}{invertible}} if there exists $\matA^{-1}$ such that
+\begin{gather}
+\matA\matA^{-1} = \matIn = \begin{bmatrix} 1&0&\dots&0 \\ 0&1&\dots&0 \\ \vdots&\vdots&\ddots&\vdots \\ 0&0&\dots&1\end{bmatrix}
+\end{gather}
+
+where $\matIn$ is the {\em\href{https://en.wikipedia.org/wiki/Identity_matrix}{identity matrix}} (an $n \times n$ matrix with ones on the main diagonal and zeros everywhere else).
+
+If it exists, the inverse matrix $\matA^{-1}$ can be calculated by:
+\begin{gather}
+\matA^{-1} = \frac{\adj(\matA)}{\det(\matA)} = \frac{\cm(\matA)^T}{\det(\matA)} \label{ainv}
+\end{gather}
+
+The cofactor matrix (or {\em comatrix}) of $\matA$ is the matrix of cofactors of $\matA$, where the element in the $i$th row and $j$th column is given by:
+\begin{gather}
+C_{ij}(\matA) = \det(\minor_{ij}(\matA)) ( -1 )^{i + j} 
+\end{gather}
+
+The minor matrix of $\matA$ for an $n \times n$ matrix is the $n - 1 \times n - 1$ matrix created by removing row $i$ and colums $j$ from $\matA$. (Note: $n > 1$ or the minor matrix is undefined.)
+
+In general, for an an $n \times n$ matrix:
+\begin{align}
+det(\matA) &= \sum_{j = 1}^{n} a_{ij} C_{ij} &\text{expansion on row $i$} \label{detgenerali} \\
+  &= \sum_{i = 1}^{n} a_{ij} C_{ij} &\text{expansion on column $j$} \label{detgeneralj} 
+\end{align}
+
+Because the calculation of the determinant by \href{http://en.wikipedia.org/wiki/Laplace_expansion}{Laplace's expansion by cofactors} is a \href{https://en.wikipedia.org/wiki/Mutual_recursion}{mutually recursive} algorithm (the determinant is defined in terms of the cofactor and the cofactor is defined in terms of the determinant of a smaller matrix) it requires \href{https://en.wikipedia.org/wiki/Recursion_(computer_science)\#Recursive_functions_and_algorithms}{base cases}.
+\begin{align}
+C_{ij}\left( \begin{bmatrix} a \end{bmatrix} \right) &= 1 &\text{for a $1 \times 1$ matrix} \label{cofactorbasecase} \\
+\det\left( \begin{bmatrix} a \end{bmatrix} \right) &= a &\text{for a $1 \times 1$ matrix} \label{detbasecase}
+\end{align}
+
+Base case (\ref{detbasecase}) is a consequence of base case (\ref{cofactorbasecase}) and definitions (\ref{detgenerali}) or (\ref{detgeneralj}) when there is only one row and one column. For a $1 \times 1$ matrix $\matA = \begin{bmatrix} a \end{bmatrix}$:
+
+\begin{align}
+ \det\left( \matA \right) =  a_{11} C_{11} = (a) (1)  = a
+\end{align}
+
+For a $2 \times 2$ matrix, the formula for the determinant is usually given as:
+\begin{align}
+\det\left(  \begin{bmatrix} a & b\\ c & d\\ \end{bmatrix} \right) &= ad - bc &\text{for a $2 \times 2$ matrix} \label{dettwoxtwo}
+\end{align}
+
+The general formulas (\ref{detgenerali}) and (\ref{detgeneralj}) for the determinant yield the same result as (\ref{dettwoxtwo}) for expansion on any row or column.
+\begin{align}
+\det\left (\begin{bmatrix} a & b\\ c & d\\ \end{bmatrix} \right)
+ &= +a \det\left(  \begin{bmatrix} d \end{bmatrix} \right) - b \det\left(  \begin{bmatrix} c \end{bmatrix} \right) &\text{row 1} \\
+ &= -c \det\left(  \begin{bmatrix} b \end{bmatrix} \right) + d \det\left(  \begin{bmatrix} a \end{bmatrix} \right) &\text{row 2} \\
+ &= +a \det\left(  \begin{bmatrix} d \end{bmatrix} \right) - c \det\left(  \begin{bmatrix} b \end{bmatrix} \right) &\text{column 1} \\
+ &= -b \det\left(  \begin{bmatrix} c \end{bmatrix} \right) +d \det\left(  \begin{bmatrix} a \end{bmatrix} \right) &\text{column 2} \\
+ &= ad - bc
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Example
+\section{Example}
+\label{Example}
+
+It is useful to explore Laplace's expansion through an example. Given the matrix:
+\begin{align}
+\matA &= \begin{bmatrix} 1& 2& 3\\ 4& 5& 6\\ 7& 8& 0\\ \end{bmatrix} \label{mA} \\
+\adj(\matA) &= \begin{bmatrix}
+ +\begin{vmatrix} 5& 6\\ 8& 0\\ \end{vmatrix} & 
+ -\begin{vmatrix} 4& 6\\ 7& 0\\ \end{vmatrix} & 
+ +\begin{vmatrix} 4& 5\\ 7& 8\\ \end{vmatrix}
+\vspace{1ex}\\
+ -\begin{vmatrix} 2& 3\\ 8& 0\\ \end{vmatrix} & 
+ +\begin{vmatrix} 1& 3\\ 7& 0\\ \end{vmatrix} & 
+ -\begin{vmatrix} 1& 2\\ 7& 8\\ \end{vmatrix}
+\vspace{1ex}\\
+ +\begin{vmatrix} 2& 3\\ 5& 6\\ \end{vmatrix} & 
+ -\begin{vmatrix} 1& 3\\ 4& 6\\ \end{vmatrix} & 
+ +\begin{vmatrix} 1& 2\\ 4& 5\\ \end{vmatrix}
+\end{bmatrix}^T \\
+ &= \begin{bmatrix}[rrr]
+-48& +42& -3\\ +24& -21& +6\\ -3& +6& -3\\
+\end{bmatrix}^T \label{cmA} \\
+ &= \begin{bmatrix}[rrr]
+-48& +24& -3\\ +42& -21& +6\\ -3& +6& -3\\
+\end{bmatrix}
+\end{align}
+
+Then calculate $\det(\matA)$ along the first row of matrix $\matA$ and $\cm{(\matA)}$ using (\ref{mA}) and (\ref{cmA}):
+\begin{align}
+\det(\matA) = (1 \times -48) + (2 \times +42) + (3 \times -3) = 27
+\end{align}
+
+Or, calculate $\det(\matA)$ along the third column\footnote{(\ref{detthirdcol}) is an example of where it is advantageous to calculate along a row or column with zeros, because there is no need to calculate the cofactor for the zero elements. That is a potential code optimization.}:
+\begin{align}
+\det(\matA) = (3 \times -3) + (6 \times +6) + 0 = 27 \label{detthirdcol}
+\end{align}
+
+Using (\ref{ainv}) yields:
+\begin{gather}
+\boxed{\matA^{-1} = \begin{bmatrix}[rrr]
+-\frac{48}{27}& +\frac{24}{27}& -\frac{3}{27}\\ +\frac{42}{27}& -\frac{21}{27}& +\frac{6}{27}\\ -\frac{3}{27}& +\frac{6}{27}& -\frac{3}{27}\\
+\end{bmatrix}}
+\end{gather}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Invertible matrix
+\section{Invertible matrix}
+\label{Invertiblematrix}
+
+An {\em \href{https://en.wikipedia.org/wiki/Invertible_matrix}{invertible}} $n \times n$ matrix $\matA$ has interesting properties.
+\begin{itemize}
+\item $\matA\matA^{-1} = \matA^{-1}\matA = \matIn$, \eg
+\begin{align}
+ \begin{bmatrix} 1& 2& 3\\ 4& 5& 6\\ 7& 8& 0\\ \end{bmatrix} \begin{bmatrix}[rrr]
+-\frac{48}{27}& +\frac{24}{27}& -\frac{3}{27}\\ +\frac{42}{27}& -\frac{21}{27}& +\frac{6}{27}\\ -\frac{3}{27}& +\frac{6}{27}& -\frac{3}{27}\\
+\end{bmatrix} &=\begin{bmatrix}[rrr] 1& 0& 0\\ 0& 1& 0\\ 0& 0& 1\\\end{bmatrix}
+\end{align}
+  \item The columns of $\matA$ (and $\therefore$ the rows of $\matA^T$) are linearly independent\footnote{$\therefore$ if $T(\vecx) = \matA\vecx$:
+\begin{align}
+  \matA = \begin{bmatrix}[ccc] \uparrow&\dots&\uparrow \\ \vecx_1&\dots&\vecx_n \\ \downarrow&\dots&\downarrow \\ \end{bmatrix} \implies \imag(A) = \spn\left\{ \vecx_1,\dots,\vecx_n \right\} = \RN
+\end{align}}.
+  \item The rows of $\matA$ (and $\therefore$ the columns of $\matA^T$) are linearly independent\footnote{$\therefore$ if $T(\vecx) = \matA\vecx$:
+\begin{align}
+  \matA = \begin{bmatrix}[ccc] \leftarrow&\vecx_1&\rightarrow \\ \vdots&\vdots&\vdots \\ \leftarrow&\vecx_n&\rightarrow \\ \end{bmatrix} \implies \imag(A) = \spn\left\{ \vecx_1,\dots,\vecx_n \right\} = \RN
+\end{align}}.
+  \item $\matA\vecx = \vec{b}$ has exactly one solution for each $\vec{b}$ in $\RN$ \footnote{$\therefore$ to solve 
+$\left\{ \begin{array}{rrrlr} x_1 &+2x_2 &+3x_3 &=& 18 \\ 4x_1 &+5x_2 &+6x_3 &=& 36 \\ 7x_1 &+8x_2 &&=& -9 \\ \end{array} \right\}$ for $\vecx$ where $\matA = \begin{bmatrix} 1& 2& 3\\ 4& 5& 6\\ 7& 8& 0\\ \end{bmatrix}$ and $\vec{b} = \begin{bmatrix} 18 \\ 36 \\ -9 \\ \end{bmatrix}$:
+\begin{align} \matA\vecx &= \vec{b} \\
+\matA^{-1}\matA\vecx &= \matA^{-1}\vec{b} \\
+\matI_{n}\vecx &= \matA^{-1}\vec{b} \\
+\vecx &= \matA^{-1} \vec{b} = 
+\begin{bmatrix}[rrr]
+-\frac{48}{27}& +\frac{24}{27}& -\frac{3}{27}\\ +\frac{42}{27}& -\frac{21}{27}& +\frac{6}{27}\\ -\frac{3}{27}& +\frac{6}{27}& -\frac{3}{27}\\
+\end{bmatrix} \begin{bmatrix}[rrr] 18\\36\\-9 \\ \end{bmatrix} = \begin{bmatrix}[rrr] 1 \\ -2 \\ 7 \\ \end{bmatrix} \text{is the solution, because $\left\{ \begin{array}{rrrlr} (1) &+2(-2) &+3(7) &=& 18 \\ 4(1) &+5(-2) &+6(7) &=& 36 \\ 7(1) &+8(-2) &&=& -9 \\ \end{array} \right\}$}.
+\end{align}.}.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Determinant
+\section{Determinant}
+\label{Determinant}
+
+The \href{http://en.wikipedia.org/wiki/Determinant}{determinant} of $n \times n$ matrix $\matA$ has interesting properties.
+\begin{itemize}
+  \item $\det(\matA)\ne 0 \iff \matA\text{ is invertible}$
+  \item $\det(\matA^T) = \det(\matA)$
+  \item $\det(\matA^{-1}) = \frac{1}{\det(\matA)} = \det(\matA)^{-1}\ \left( \det(\matA)\ne0 \right)$
+  \item $\det(\matA\matB) = \det(\matA) \det(\matB)\ \left( \matA, \matB \text{ are } n \times n \right)$
+ \item $\det(c\matA) = c^n\det(\matA)$
+\end{itemize}
+
+\section*{Appendix}
+
+This is the \code{\href{https://pastebin.com/y8sxqtmc}{FractionMatrixI.java}} interface file, including all the methods to be implemented in \code{FractionMatrix.java}. \\
+
+\begin{lstlisting}[caption=\code{\href{https://pastebin.com/y8sxqtmc}{FractionMatrixI.java}},label=FractionMatrixI]
+/*
+ * FractionMatrixI.java
+ *
+ * Interface for a matrix of fractions. http://www.thematrix101.com/
+ *
+ * @author David C. Petty // http://j.mp/psb_david_petty
+ */
+
+public interface FractionMatrixI
+{
+    int numberRows();                               // number of rows
+    int numberColumns();                            // number of columns
+    boolean isSquare();                             // true if matrix is square
+    int getDimension();                             // dimension of square matrix
+    Fraction get(int row, int col);                 // get element at [row][col]
+    FractionMatrix scalarMultiply(Fraction scalar); // matrix multiplied by scalar
+    FractionMatrix add(FractionMatrix that);        // matrix sum of this with that
+    FractionMatrix multiply(FractionMatrix that);   // matrix product of this with that
+    FractionMatrix transpose();                     // matrix transpose
+    FractionMatrix getMinor(int row, int col);      // minor matrix removing row and col
+    Fraction cofactor(int row, int col);            // cofactor for row and col
+    Fraction determinant();                         // matrix determinant
+    FractionMatrix adjugate();                      // matrix adjugate
+    FractionMatrix inverse();                       // matrix inverse
+}
+\end{lstlisting}
+
+This is the \code{\href{https://pastebin.com/5btYEgPs}{FractionI.java}} interface file, including all the methods to be implemented in \code{Fraction.java}. \\
+
+\begin{lstlisting}[caption=\code{\href{https://pastebin.com/5btYEgPs}{FractionI.java}},label=FractionI]
+/*
+ * FractionI.java
+ *
+ * Interface for Fraction.
+ *
+ * @author David C. Petty // http://j.mp/psb_david_petty
+ */
+
+public interface FractionI
+{
+    // instance methods
+    int getNumerator();
+    int getDenominator();
+    Fraction add(Fraction f);
+    Fraction add(int n);
+    Fraction multiply(Fraction f);
+    Fraction multiply(int n);
+    double doubleValue();
+
+    // instance methods to add
+    Fraction negate();
+    Fraction subtract(Fraction f);
+    Fraction subtract(int n);
+    Fraction reciprocal();
+    Fraction divide(Fraction f);
+    Fraction divide(int n);
+}
+\end{lstlisting}
+
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\bibliography{dcpbibtex} % To update, delete *.blb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+%\printindex % To update, delete *.ind
+
+\end{document}

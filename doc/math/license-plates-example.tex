@@ -1,0 +1,204 @@
+\documentclass[12pt]{exam}%
+\usepackage{amsmath,amsthm,array,comment,enumitem,graphicx,hyperref,makeidx,multicol,verbatim}%
+\usepackage[psamsfonts]{amsfonts,amssymb,eucal}% ftp://ftp.ams.org/pub/tex/doc/amsfonts/amsfndoc.pdf
+\usepackage{cmmib57,latexsym}%
+\usepackage[small,compact]{titlesec}%
+%\usepackage[nottoc]{tocbibind}% Use \tableofcontents in {document} for TOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\def\docclass{417 \textbullet\ Integrated Analysis} % Change document class
+\def\docdate{2007-2008 Q1} % Change document date
+\def\docname{License Plate Problem} % Change document name
+\def\docnumber{ } % Change document number
+\def\docversion{0.3} % Change document version
+\def\docschool{Winchester High School \textbullet\
+\href{http://winchester.k12.ma.us/whs/math/}{Mathematics}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\def\foreign{\em}
+\def\etc{{\foreign etc.}}
+\def\eg{{\foreign e.g.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\addpoints \boxedpoints \pointsinrightmargin%
+\setlength\answerskip{1ex} \setlength\answerlinelength{1in}%
+%\printanswers% to print solutions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\extrawidth{.5in}%
+\pagestyle{headandfoot}%
+%\extraheadheight{-.25in}%
+%\extrafootheight{-.25in}%
+\firstpageheader%
+ {\bf \baselineskip = 1.5\baselineskip \docdate\\\docclass}%
+ {\bf \baselineskip = 1.5\baselineskip \docname\\\docnumber}%
+ {\bf \baselineskip = 1.5\baselineskip }%
+\runningheader%
+ {\bf \baselineskip = 1.5\baselineskip \docdate\\\docclass}%
+ {\bf \baselineskip = 1.5\baselineskip \docname\\\docnumber}%
+ {\bf \baselineskip = 1.5\baselineskip }%
+\firstpagefooter%
+ {\scriptsize \bf \docschool\\
+ \href{http://creativecommons.org/licenses/by-nc-sa/3.0/}{Some rights reserved.}}%
+ {\scriptsize \bf --- Page \thepage\ of \numpages\ ---}%
+ {\scriptsize \bf \ifx\docversion\empty \else v\docversion\\\fi%\jobname.pdf
+ }%
+\runningfooter%
+ {\scriptsize \bf \docschool\\
+ \href{http://creativecommons.org/licenses/by-nc-sa/3.0/}{Some rights reserved.}}%
+ {\scriptsize \bf --- Page \thepage\ of \numpages\ ---}%
+ {\scriptsize \bf \ifx\docversion\empty \else v\docversion\\\fi%\jobname.pdf
+ }%
+\headrule \footrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\setlength{\columnsep}{1cm}%
+\setlength{\parindent}{0cm}%
+\setlength{\parskip}{\baselineskip}%
+\setlist{nolistsep, itemsep=.125\baselineskip}%
+\setenumerate{leftmargin=*, label={\arabic*)}}%
+\setdescription{style=multiline, leftmargin=3cm}%
+\setitemize{leftmargin=*, label={\tiny$\blacktriangleright$}}%
+\numberwithin{equation}{section}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibtex style
+\usepackage{natbib}% for \bibliographystyle{agsm}
+\bibliographystyle{alpha}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of Contents
+%\tableofcontents %
+
+\baselineskip = 1.25\baselineskip % paragraph spacing
+
+%\begin{multicols}{2}
+
+Problem: How many six-character license plates with letters or
+numbers in any position and with {\em at least} one `W' are
+possible? Start by counting the license plates for which there are
+{\em exactly} 1, 2, 3, 4, 5, \& 6 `Ws' and add them up.
+
+\begin{align*}
+ \intertext{License plates with exactly 1 {\em W}:}
+ \left.\begin{matrix}
+ W&\_&\_&\_&\_&\_\\
+ \_&W&\_&\_&\_&\_\\
+ \_&\_&W&\_&\_&\_\\
+ \_&\_&\_&W&\_&\_\\
+ \_&\_&\_&\_&W&\_\\
+ \_&\_&\_&\_&\_&W\\
+ \end{matrix}\right\} && \binom{6}{1} \left(35 ^ 5 \right) = 6 \times 52,521,875
+\end{align*}
+\begin{align*}
+ \intertext{License plates with exactly 2 {\em Ws}:}
+ \left.\begin{matrix}
+ W&W&\_&\_&\_&\_\\
+ W&\_&W&\_&\_&\_\\
+ W&\_&\_&W&\_&\_\\
+ W&\_&\_&\_&W&\_\\
+ W&\_&\_&\_&\_&W\\
+ \_&W&W&\_&\_&\_\\
+ \_&W&\_&W&\_&\_\\
+ \_&W&\_&\_&W&\_\\
+ \_&W&\_&\_&\_&W\\
+ \_&\_&W&W&\_&\_\\
+ \_&\_&W&\_&W&\_\\
+ \_&\_&W&\_&\_&W\\
+ \_&\_&\_&W&W&\_\\
+ \_&\_&\_&W&\_&W\\
+ \_&\_&\_&\_&W&W\\
+ \end{matrix}\right\} && \binom{6}{2} \left(35 ^ 4 \right) = 15 \times 1,500,625 
+\end{align*}
+\begin{align*}
+ \intertext{License plates with exactly 3 {\em Ws}:}
+ \left.\begin{matrix}
+ W&W&W&\_&\_&\_\\
+ W&W&\_&W&\_&\_\\
+ W&W&\_&\_&W&\_\\
+ W&W&\_&\_&\_&W\\
+ W&\_&W&W&\_&\_\\
+ W&\_&W&\_&W&\_\\
+ W&\_&W&\_&\_&W\\
+ W&\_&\_&W&W&\_\\
+ W&\_&\_&W&\_&W\\
+ W&\_&\_&\_&W&W\\
+ \_&W&W&W&\_&\_\\
+ \_&W&W&\_&W&\_\\
+ \_&W&W&\_&\_&W\\
+ \_&W&\_&W&W&\_\\
+ \_&W&\_&W&\_&W\\
+ \_&W&\_&\_&W&W\\
+ \_&\_&W&W&W&\_\\
+ \_&\_&W&W&\_&W\\
+ \_&\_&W&\_&W&W\\
+ \_&\_&\_&W&W&W&\\
+ \end{matrix}\right\} && \binom{6}{3} \left(35 ^ 3 \right) = 20 \times 42,875
+\end{align*}
+\begin{align*}
+ \intertext{License plates with exactly 4 {\em Ws}:}
+ \left.\begin{matrix}
+ W&W&W&W&\_&\_\\
+ W&W&W&\_&W&\_\\
+ W&W&W&\_&\_&W\\
+ W&W&\_&W&W&\_\\
+ W&W&\_&W&\_&W\\
+ W&W&\_&\_&W&W\\
+ W&\_&W&W&W&\_\\
+ W&\_&W&W&\_&W\\
+ W&\_&W&\_&W&W\\
+ W&\_&\_&W&W&W\\
+ \_&W&W&W&W&\_\\
+ \_&W&W&W&\_&W\\
+ \_&W&W&\_&W&W\\
+ \_&W&\_&W&W&W\\
+ \_&\_&W&W&W&W\\
+ \end{matrix}\right\} && \binom{6}{4} \left(35 ^ 2 \right) = 15 \times 1,225
+\end{align*}
+\begin{align*}
+ \intertext{License plates with exactly 5 {\em Ws}:}
+ \left.\begin{matrix}
+ W&W&W&W&W&\_\\
+ W&W&W&W&\_&W\\
+ W&W&W&\_&W&W\\
+ W&W&\_&W&W&W\\
+ W&\_&W&W&W&W\\
+ \_&W&W&W&W&W\\
+ \end{matrix}\right\} && \binom{6}{5} \left(35 ^ 1 \right) = 6 \times 35
+\end{align*}
+\begin{align*}
+ \intertext{License plates with exactly 6 {\em Ws}:}
+ \left.\begin{matrix}
+ W&W&W&W&W&W\\
+ \end{matrix}\right\} && \binom{6}{6} \left(35 ^ 0 \right) = 1 \times 1
+\end{align*}
+
+So, the total number of license plates with at least one {\em `W'}
+is:
+\begin{align*}
+N &= \binom{6}{1} \left(35 ^ 5 \right) + \binom{6}{2} \left(35 ^ 4 \right) + \binom{6}{3} \left(35 ^ 3 \right) + \binom{6}{4} \left(35 ^ 2 \right) + \binom{6}{5} \left(35 ^ 1 \right) + \binom{6}{6} \left(35 ^ 0 \right)\\
+ &= \left( 6 \times 52,521,875\right) + \left( 15 \times 1,500,625\right) + \left( 20 \times 42,875\right) + \left( 15 \times 1,225\right) + \left( 6 \times 35\right) + \left( 1 \times 1\right)\\
+ &= 315,131,250 + 22,509,375 + 857,500 + 18,375 + 210 + 1\\
+ &= 338,516,711
+\intertext{On the other hand, consider counting all the possible
+license plates and subtracting those that have {\em no Ws}!}
+N &= ( 36^6 ) - ( 35^6 )\\
+ &= 2,176,782,336 - 1,838,265,625\\
+ &= 338,516,711
+\end{align*}
+
+What do you notice?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+%\bibliography{dcpbibtex} % To update, delete *.blb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+%\printindex % To update, delete *.ind
+
+%\end{multicols}
+
+\end{document}

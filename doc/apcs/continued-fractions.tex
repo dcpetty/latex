@@ -1,0 +1,331 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../../input/input-data.tex
+
+\def\docmath{}
+\def\docclass{APCS-A} % Change document class
+\def\docdate{2022--2023} % Change document date
+\def\docname{Continued Fractions} % Change document name
+\def\docnumber{} % Change document number
+\def\docversion{0.9} % Change document version
+\def\docpoints{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../../input/input-style.tex
+\lstset{% general command to set parameter(s)
+  basicstyle=\singlespacing\ttfamily\small,
+  numberstyle=\tiny,
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+\setlength{\baselineskip}{1.2\baselineskip}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents
+%\tableofcontents % NOT in \documentclass{exam}
+
+%\begin{multicols}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Introduction
+\section{Introduction}
+\label{Introduction}
+
+{\em Continued fractions \index{continued fractions}} and their use in approximating rational numbers from decimal equivalents are discussed on \href{http://en.wikipedia.org/wiki/Continued_fraction#Best_rational_approximations}{Wikipedia}. The original problem is known as a \href{https://en.wikipedia.org/wiki/Diophantine_approximation}{Diophantine approximation} and dates from the third century CE.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Continued fraction for 2.375
+\section{Continued fraction for \(2.375\)}
+\label{ContinuedRational}
+
+Consider the exact decimal equivalent \(2.375\). It can be written as a continued fraction as follows:
+\begin{align}
+2.375 &= 2 + \cfrac{1}{2 + \cfrac{1}{1 + \cfrac{1}{1 + \cfrac{1}{1}}}} \\
+ &= 2 + \cfrac{1}{2 + \cfrac{1}{1 + \cfrac{1}{\left(\cfrac{2}{1}\right)}}} \\
+ &= 2 + \cfrac{1}{2 + \cfrac{1}{1 + \cfrac{1}{2}}} \\
+ &= 2 + \cfrac{1}{2 + \cfrac{1}{\left(\cfrac{3}{2}\right)}} \\
+ &= 2 + \cfrac{1}{2 + \cfrac{2}{3}} \\
+ &= 2 + \cfrac{1}{\left(\cfrac{8}{3}\right)} \\
+ &= 2 + \cfrac{3}{8} \\
+ &=\cfrac{19}{8} \\
+ &= [2; 2, 1, 1, 1]
+\end{align}
+
+Exact decimal equivalents for rational numbers, including repeating decimals, can be expressed as continued fractions with a finite number of denominators. Irrational numbers have decimal equivalents that can be expressed as continued fractions with an infinite number of denominators.
+
+Given an infinite continued fraction $[a_0; a_1, a_2, ... ]$ the rational numbers
+\begin{align}
+\frac{h_n}{k_n} &= [a_0; a_1, a_2, ..., a_n]
+\end{align}
+
+are called its {\em \href{https://en.wikipedia.org/wiki/Convergent_(continued_fraction)}{convergents}}. The $n$th convergent is always the best rational-number approximation to the infinite continued fraction which has a denominator $\le k_n$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Continued fraction for \pi
+\section{Continued fraction for \(\pi\)}
+\label{ContinuedIrrational}
+
+When calculating the convergents for an irrational number like \(\pi\), each successive convergent $h_n$ and $k_n$ is calculated as a function of $a_n$ (the $n$th coefficient)\footnote{The \href{http://en.wikipedia.org/wiki/Floor_and_ceiling_functions}{floor} of the reciprocal of the fractional part of the previous residual denominator.}, $d_n$ (the $n$th residual denominator), and $h_{n-2}$,  $k_{n-2}$,  $h_{n-1}$, and $k_{n-1}$ (the previous two convergents) so that:
+
+\begin{align}
+a_n &= \lfloor d_n \rfloor  \\
+ \frac{h_n}{k_n} &= \frac{a_nh_{n-1} + h_{n-2}}{a_nk_{n-1} + k_{n-2}} &h_{-1} = k_{-2} = 1, h_{-2} = k_{-1} = 0 \\
+ d_{n + 1} &= \frac{1}{d_n - a_n}
+\end{align} 
+
+The example for \(\pi\) is as follows:
+
+\begin{align}
+\pi &\approx 3.14159  \\
+ &\approx \lfloor 3.14159 \rfloor + ... &&\approx 3 &&= \cfrac{3}{1} &&= \frac{h_0}{k_0} \\
+ &\approx 3 + \cfrac{1}{\left\lfloor \cfrac{1}{0.14159} \right\rfloor + ...} &&\approx 3 + \cfrac{1}{7} &&= \cfrac{22}{7} &&= \frac{h_1}{k_1} \\
+ &\approx 3 + \cfrac{1}{7 + \cfrac{1}{\left\lfloor \cfrac{1}{0.06251} \right\rfloor + ...}} &&\approx 3 + \cfrac{1}{7 + \cfrac{1}{15}} &&= \cfrac{333}{106} &&= \frac{h_2}{k_2} \\
+ &\approx 3 + \cfrac{1}{7 + \cfrac{1}{15 + \cfrac{1}{\left\lfloor \cfrac{1}{0.99659} \right\rfloor + ...}}} &&\approx 3 + \cfrac{1}{7 + \cfrac{1}{15 + \cfrac{1}{1}}} &&= \cfrac{355}{113} &&= \frac{h_3}{k_3} \\
+ &\approx 3 + \cfrac{1}{7 + \cfrac{1}{15 + \cfrac{1}{1 + \cfrac{1}{\left\lfloor \cfrac{1}{0.00342} \right\rfloor + ...}}}} &&\approx 3 + \cfrac{1}{7 + \cfrac{1}{15 + \cfrac{1}{1 + \cfrac{1}{292}}}} &&= \cfrac{103,993}{33,102} &&= \frac{h_4}{k_4} \\
+ &= [3; 7, 15, 1, 292, ...] 
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Representation
+\section{Rational approximations of \(\pi\)}
+\label{Representation}
+
+The continued fraction convergents for any number can be calculated recursively based on \href{http://en.wikipedia.org/wiki/Continued_fraction#Some_useful_theorems}{Theorem 1}. As an example, the convergents for \(\pi\) can be calculated as follows:
+
+\begin{align}
+\pi &= [3; 7, 15, 1, 292, ...] \\
+ &\approx \frac{3 \times 1 + 0}{3 \times 0 + 1} &&= \frac{3}{1} &&= \frac{h_0}{k_0} \\
+ &\approx \frac{7 \times 3 + 1}{7 \times 1 + 0} &&= \frac{22}{7} &&= \frac{h_1}{k_1} \\
+ &\approx \frac{15 \times 22 + 3}{15 \times 7 + 1} &&= \frac{333}{106} &&= \frac{h_2}{k_2} \\
+ &\approx \frac{1 \times 333 + 22}{1 \times 106 + 7} &&= \frac{355}{113} &&= \frac{h_3}{k_3} \\
+ &\approx \frac{292 \times 355 + 333}{292 \times 113 + 106} &&= \frac{103,993}{33,102} &&= \frac{h_4}{k_4} 
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conclusion
+\section{Assignment}
+\label{Assignment}
+
+The assignment (available as a \href{https://codecheck.io/files/2301021526c10hc6gpjmpim58br3mnbmk0v}{Codecheck.io}) is to:
+\begin{enumerate}[label=\alph*)]
+  \item write a method \code{fromDouble} that calculates a continued fraction rational convergent for a value \code{x};
+  \item write a constructor that takes a \code{double} parameter and initializes the numerator and denominator to those of the convergent calculated by \code{fromDouble}.
+\end{enumerate}
+
+It may be best to use a \href{http://www.catb.org/jargon/html/R/recursion.html}{recursive} solution, where the base cases for \code{fromDouble} are:
+\begin{itemize}
+  \item no more than a specific number of convergents \code{N} must be calculated; or
+  \item the convergent denominator must be less than a specific value \code{LIM}; or
+  \item \code{h / k / x} must differ from \(1\) by no more than a specific value \code{EPS}.
+\end{itemize}
+
+A {\em stub} version of \code{fromDouble} is below in Listing \ref{fromDouble}. This version takes a parameter \code{steps} and uses it to calculate the values for the base-case parameters \code{N}, \code{LIM}, and \code{EPS}. You are not limited to that approach and can calculate the base cases however you see fit.
+
+Possible initial values for \code{fromDouble} used in a \code{Fraction} constructor (where \code{x} is the \code{double} to be approximated) are: \code{fromDouble(x, x, 0, 1, 0, 0, 1, 22, false)}\footnote{These initial values are assumed for the \href{https://codecheck.io/files/2301021526c10hc6gpjmpim58br3mnbmk0v}{Codecheck.io} \code{FractionTest} data.}.
+
+\begin{lstlisting}[caption=\code{fromDouble} method,label=fromDouble]
+    /**
+     * Return continued fraction rational convergent for x ( h, k ) such that:
+     * n >= N - 1, or k is > LIM, or h / k / x differs from 1 by less than EPS.
+     * @link http://en.wikipedia.org/wiki/Continued_fraction#Some_useful_theorems
+     * @param x original double to be approximated
+     * @param d current continued fraction denominator
+     * @param n number of iterations
+     * @param h1 last numerator
+     * @param h2 second-to-last numerator
+     * @param k1 last denominator
+     * @param k2 second-to-last denominator
+     * @param steps parameter used to set LIM, N, and EPS (on [2, 62])
+     * @param v verbose: print intermediate results, if verbose
+     * @return continued fraction rational convergent for x
+     */
+    private static Fraction fromDouble(double x, double d, int n,
+        int h1, int h2, int k1, int k2, int steps, boolean v) {
+        final int LIM = 1 << steps;
+        final int N = steps;
+        final double EPS = 1.0 / (1L << steps);
+
+        // YOUR CODE HERE
+    }
+\end{lstlisting}
+
+\section*{Appendix}
+
+This is the original student file \code{Fraction.java}. It does not include implementations of all the methods listed in the \code{\href{http://pastebin.com/ZDCKReZR}{FractionI.java}} interface. \\
+
+\begin{lstlisting}[caption=\code{Fraction.java},label=Fraction]
+/*
+ * The Fraction class based on http://skylit.com/javamethods3/studentfiles.zip
+ * where the following are also implemented:
+ * - all methods of FractionI;
+ *
+ * JM3e Chapter 10.3 - Author: Alex
+ *
+//HIDE
+ * @author David C. Petty // http://j.mp/psb_david_petty
+ //EDIT * @author YOUR NAME <your@email.address>
+ */
+
+public class Fraction implements FractionI
+{
+    /////////////////////////////// FIELDS ///////////////////////////////
+
+    private int num;
+    private int den;
+
+    //////////////////////////// CONSTRUCTORS ////////////////////////////
+
+    public Fraction() {             // no-args constructor
+        num = 0;
+        den = 1;
+    }
+
+    public Fraction(int n) {
+        num = n;
+        den = 1;
+    }
+
+    public Fraction(int num, int den) {
+        if (den == 0)
+            throw new IllegalArgumentException(
+                "Fraction construction error: denominator is 0");
+        // Otherwise... initialize fields and reduce to canonical form
+        this.num = num;
+        this.den = den;
+        this.reduce();
+    }
+
+    // Copy constructor
+    public Fraction(Fraction other) {        
+        this.num = other.num;
+        this.den = other.den;
+    }
+
+    ////////////////////////////// METHODS ///////////////////////////////
+
+    // Accessor methods
+    public int getNumerator() { return num; }
+    public int getDenominator() { return den; }
+
+    // Returns the value of this fraction as a double
+    public double doubleValue() {
+        return (double) num / (double) den;
+    }
+
+    // Returns a string representation of this fraction
+    @Override
+    public String toString() {
+        return num + "/" + den;
+    }
+
+    // Returns the sum of this fraction and other
+    public Fraction add(Fraction other) {
+        int gcd = gcd(den, other.den);
+        // Divide first to reduce overflow.
+        int newNum = other.den / gcd * num + den / gcd * other.num;
+        int newDenom = den / gcd * other.den;
+        return new Fraction(newNum, newDenom);
+    }
+
+    // Returns the sum of this fraction and m
+    public Fraction add(int m) {
+        return add(new Fraction(m));
+    }
+
+    // Returns the product of this fraction and other
+    public Fraction multiply(Fraction other) {
+        int gcd1 = gcd(num, other.den), gcd2 = gcd(other.num, den);
+        // Divide first to reduce overflow.
+        int newNum = (num / gcd1) * (other.num / gcd2);
+        int newDenom = (den / gcd2) * (other.den / gcd1);
+        return new Fraction(newNum, newDenom);
+    }
+
+    // Returns the product of this fraction and m
+    public Fraction multiply(int m) {
+        // return new Fraction(num * m, den);
+        return multiply(new Fraction(m));
+    }
+
+    ////////////////////////// PRIVATE METHODS ///////////////////////////
+
+    // Reduce this fraction to canonical form: gcd(num, den) == 1 and den > 0
+    private void reduce() {
+        if (num == 0) {
+            den = 1;
+            return;
+        }
+        
+        if (den < 0) {
+            num = -num;
+            den = -den;
+        }
+        
+        int q = gcd(num, den);
+        num /= q;
+        den /= q;
+    }
+
+    // Returns the greatest common divisor of two integers
+    private static int gcd(int n, int d) {
+        if (d == 0) return Math.abs(n); // Math.abs allows negative arguments
+        return gcd(d, n % d);
+    }
+}\end{lstlisting}
+
+This is the \code{\href{http://pastebin.com/ZDCKReZR}{FractionI.java}} interface file, including all the methods to be implemented in \code{Fraction.java}. \\
+
+\begin{lstlisting}[caption=\code{\href{http://pastebin.com/ZDCKReZR}{FractionI.java}},label=FractionI]
+/*
+ * FractionI.java
+ *
+ * Interface for Fraction.
+ *
+ * @author David C. Petty // http://j.mp/psb_david_petty
+ */
+
+public interface FractionI
+{ 
+    // public instance methods
+
+    int getNumerator();
+    int getDenominator();
+    double doubleValue();
+    String toString();
+
+    Fraction add(Fraction f);
+    Fraction add(int m);
+    Fraction multiply(Fraction f);
+    Fraction multiply(int m);
+
+    Fraction negate();
+    Fraction subtract(Fraction f);
+    Fraction subtract(int m);
+    Fraction reciprocal();
+    Fraction divide(Fraction f);
+    Fraction divide(int m);
+
+    public boolean equals(Fraction other);
+}
+\end{lstlisting}
+
+%\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\bibliography{dcpbibtex} % To update, delete *.blb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+\printindex % To update, delete *.ind
+
+\end{document}
