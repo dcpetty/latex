@@ -2,7 +2,7 @@
 
 TEX_DIRS := doc/apcs doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates
 OTHER_DIRS := apcs apcsp correspondence cv ga harvard-dce ia ig \
-	jobs overleaf pc1 princeton \
+	jobs overleaf pc1 princeton psb \
 	robotics stanford-logic uml wps MassBay
 MAKEFILE := $(realpath ./Makefile)
 
@@ -12,11 +12,11 @@ CLEAN := sh clean.sh
 all : $(TEX_DIRS)
 
 %.pdf : %.tex
-	echo "# $(PDFLATEX) $(notdir $<)"
+	@echo "# $(PDFLATEX) $(notdir $<)"
 	$(PDFLATEX) $(notdir $<)
 
 $(TEX_DIRS) $(OTHER_DIRS) : FORCE
-	echo "## make $@"
+	@echo "## make $@"
 	$(MAKE) -C $@ \
 	  --makefile=$(MAKEFILE) \
 	    $(patsubst %.tex,%.pdf,$(notdir $(wildcard $@/*.tex)))
