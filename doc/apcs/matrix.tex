@@ -1,7 +1,11 @@
 \documentclass{article}%
 \usepackage[fontsize=9.5pt]{scrextend}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+% https://tex.stackexchange.com/a/39417/241210
+\makeatletter\@namedef{ver@tabularray.sty}{}\makeatother
 \input ../../input/input-packages.tex
+\usepackage{tabularray-2021}
+%\input ../../input/input-listing-python.tex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
 \input ../../input/input-data.tex
@@ -30,6 +34,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
 \input ../../input/input-toc-idx-bib.tex
+\addbibresource{../../bib/dcpbibtex.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
 \input ../../input/exam-points-solutions.tex
@@ -176,13 +181,13 @@ An {\em \href{https://en.wikipedia.org/wiki/Invertible_matrix}{invertible}} $n \
 \end{align}
   \item The columns of $\matA$ (and $\therefore$ the rows of $\matA^T$) are linearly independent\footnote{$\therefore$ if $T(\vecx) = \matA\vecx$:
 \begin{align}
-  \matA = \begin{bmatrix}[ccc] \uparrow&\dots&\uparrow \\ \vecx_1&\dots&\vecx_n \\ \downarrow&\dots&\downarrow \\ \end{bmatrix} \implies \imag(A) = \spn\left\{ \vecx_1,\dots,\vecx_n \right\} = \RN
+  \matA = \begin{bmatrix}[ccc] \uparrow&\dots&\uparrow \\ \vecx_1&\dots&\vecx_n \\ \downarrow&\dots&\downarrow \\ \end{bmatrix} \implies \imag(A) = \spn\left\{ \vecx_1,\dots,\vecx_n \right\} = \RRN
 \end{align}}.
   \item The rows of $\matA$ (and $\therefore$ the columns of $\matA^T$) are linearly independent\footnote{$\therefore$ if $T(\vecx) = \matA\vecx$:
 \begin{align}
-  \matA = \begin{bmatrix}[ccc] \leftarrow&\vecx_1&\rightarrow \\ \vdots&\vdots&\vdots \\ \leftarrow&\vecx_n&\rightarrow \\ \end{bmatrix} \implies \imag(A) = \spn\left\{ \vecx_1,\dots,\vecx_n \right\} = \RN
+  \matA = \begin{bmatrix}[ccc] \leftarrow&\vecx_1&\rightarrow \\ \vdots&\vdots&\vdots \\ \leftarrow&\vecx_n&\rightarrow \\ \end{bmatrix} \implies \imag(A) = \spn\left\{ \vecx_1,\dots,\vecx_n \right\} = \RRN
 \end{align}}.
-  \item $\matA\vecx = \vec{b}$ has exactly one solution for each $\vec{b}$ in $\RN$ \footnote{$\therefore$ to solve 
+  \item $\matA\vecx = \vec{b}$ has exactly one solution for each $\vec{b}$ in $\RRN$ \footnote{$\therefore$ to solve 
 $\left\{ \begin{array}{rrrlr} x_1 &+2x_2 &+3x_3 &=& 18 \\ 4x_1 &+5x_2 &+6x_3 &=& 36 \\ 7x_1 &+8x_2 &&=& -9 \\ \end{array} \right\}$ for $\vecx$ where $\matA = \begin{bmatrix} 1& 2& 3\\ 4& 5& 6\\ 7& 8& 0\\ \end{bmatrix}$ and $\vec{b} = \begin{bmatrix} 18 \\ 36 \\ -9 \\ \end{bmatrix}$:
 \begin{align} \matA\vecx &= \vec{b} \\
 \matA^{-1}\matA\vecx &= \matA^{-1}\vec{b} \\
@@ -274,7 +279,7 @@ public interface FractionI
 \end{multicols}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
-\bibliography{dcpbibtex} % To update, delete *.blb
+\printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
 %\printindex % To update, delete *.ind
