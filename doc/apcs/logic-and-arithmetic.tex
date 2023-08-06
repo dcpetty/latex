@@ -1,6 +1,9 @@
 \documentclass[11pt]{article}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+% https://tex.stackexchange.com/a/39417/241210
+\makeatletter\@namedef{ver@tabularray.sty}{}\makeatother
 \input ../../input/input-packages.tex
+\usepackage{tabularray-2021}
 \SetTblrInner{colsep=0pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
@@ -8,10 +11,10 @@
 
 \def\docmath{}
 \def\docclass{APCS} % Change document class
-\def\docdate{2021--2022} % Change document date
+\def\docdate{2022--2023} % Change document date
 \def\docname{Logic and Arithmetic} % Change document name
 \def\docnumber{} % Change document number
-\def\docversion{0.8} % Change document version
+\def\docversion{0.9} % Change document version
 \def\docpoints{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
@@ -29,6 +32,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
 \input ../../input/input-toc-idx-bib.tex
+\addbibresource{../../bib/dcpbibtex.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
 \input ../../input/exam-points-solutions.tex
@@ -47,7 +51,7 @@
 \section{Introduction}
 \label{Introduction}
 
-Boolean algebra and set theory were both developed in the $19^{th}$ century as approaches to formalizing mathematics. It was only one hundred years later that these foundations were used in computers and computing (hence the book called \textit{Engines of Logic} \citep{book:engines-of-logic}).
+Boolean algebra and set theory were both developed in the $19^{th}$ century as approaches to formalizing mathematics. It was only one hundred years later that these foundations were used in computers and computing (hence the book called \textit{Engines of Logic} \parencite{book:engines-of-logic}).
 
 These notes discuss the basics of and Boolean algebra and set theory, including definitions and notation.
 
@@ -91,7 +95,7 @@ of $A = 2^{|A|}$.
 \item[subsets] The symbol `$\subset$' means `is a subset of,' `is
 contained in.' A \textit{proper subset} has zero or more elements of the set, but not the entire set. That is, \textsc{if}: $S \subset A$, \textsc{then}: $|S| < |A|$. An \textit{improper subset}, denoted `$\subseteq$,' can include the entire set, so $A \subseteq A$ is true. \includegraphics*[scale = 0.75]{../../images/venn-subset.pdf} 
 
-\item[complement] Denoted `$A'$,' `$A^c$,' `$a \notin A$' and is defined: `When all sets under consideration are\dots\ subsets of a given set $\U$, the \textit{absolute} complement of $A$ is the set of elements in $\U$ but not in $A$. The \textit{relative} complement of $A$ with respect to a set $B$, also termed the difference of sets $A$ and $B$, written $B \setminus A$, is the set of elements in $B$ but not in $A$.' \citep{wiki:complement-set-theory} (Or, $B \setminus A = \left\{ x \in B \mid x \notin A \right\}$.) \includegraphics*[scale = 0.75]{../../images/venn-complement.pdf}
+\item[complement] Denoted `$A'$,' `$A^c$,' `$a \notin A$' and is defined: `When all sets under consideration are\dots\ subsets of a given set $\U$, the \textit{absolute} complement of $A$ is the set of elements in $\U$ but not in $A$. The \textit{relative} complement of $A$ with respect to a set $B$, also termed the difference of sets $A$ and $B$, written $B \setminus A$, is the set of elements in $B$ but not in $A$.' \parencite{wiki:complement-set-theory} (Or, $B \setminus A = \left\{ x \in B \mid x \notin A \right\}$.) \includegraphics*[scale = 0.75]{../../images/venn-complement.pdf}
 
 \item[intersection] The \textit{conjunction} or intersection of two sets $A$ and $B$ is the set of elements in both $A$ and $B$ and is denoted `$A \cap B$.' \includegraphics*[scale = 0.75]{../../images/venn-2-and.pdf}
 
@@ -103,17 +107,17 @@ contained in.' A \textit{proper subset} has zero or more elements of the set, bu
 \subsection{Paradox}
 \label{Paradox}
 
-So-called \textit{\href{https://en.wikipedia.org/wiki/Naive_set_theory}{na\"ive set theory}} \citep{wiki:naive-set-theory} (discussed here) can lead to paradoxes. The most common is \textit{\href{https://en.wikipedia.org/wiki/Russell's_paradox}{Russell's paradox}} \citep{wiki:russells-paradox}, which states, `Let $R$ be the set of all sets that are not members of themselves. If $R$ is not a member of itself, then its definition dictates that it must contain itself, and if it contains itself, then it contradicts its own definition as the set of all sets that are not members of themselves.'
+So-called \textit{\href{https://en.wikipedia.org/wiki/Naive_set_theory}{na\"ive set theory}} \parencite{wiki:naive-set-theory} (discussed here) can lead to paradoxes. The most common is \textit{\href{https://en.wikipedia.org/wiki/Russell's_paradox}{Russell's paradox}} \parencite{wiki:russells-paradox}, which states, `Let $R$ be the set of all sets that are not members of themselves. If $R$ is not a member of itself, then its definition dictates that it must contain itself, and if it contains itself, then it contradicts its own definition as the set of all sets that are not members of themselves.'
 
-Another way to think of it is, the \textit{\href{https://en.wikipedia.org/wiki/Barber_paradox}{Barber paradox}} \citep{wiki:barber-paradox}: The barber is the ``...one who shaves all those, and only those, who do not shave themselves.'' The question is, does the barber shave himself?
+Another way to think of it is, the \textit{\href{https://en.wikipedia.org/wiki/Barber_paradox}{Barber paradox}} \parencite{wiki:barber-paradox}: The barber is the ``...one who shaves all those, and only those, who do not shave themselves.'' The question is, does the barber shave himself?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Boolean Algebra
 \section{Boolean algebra}
 \label{Boolean}
 
-`\textbf{\href{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra}} \citep{wiki:boolean-algebra} was introduced by George Boole in his first book \textit{The Mathematical Analysis of Logic} \citep{book:mathematical-analysis-of-logic}\dots' It is a system of algebra based on two values: \textit{true} and \textit{false} (usually $1$ and $0$ respectively) and three functions: logical \textit{conjunction} (\textsc{and}) and logical \textit{disjunction} (\textsc{or}), and logical \textit{negation} (\textsc{not}).
+`\textbf{\href{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra}} \parencite{wiki:boolean-algebra} was introduced by George Boole in his first book \textit{The Mathematical Analysis of Logic} \parencite{book:mathematical-analysis-of-logic}\dots' It is a system of algebra based on two values: \textit{true} and \textit{false} (usually $1$ and $0$ respectively) and three functions: logical \textit{conjunction} (\textsc{and}) and logical \textit{disjunction} (\textsc{or}), and logical \textit{negation} (\textsc{not}).
 
-The three logic functions (\textsc{and}, \textsc{or}, \textsc{not}) are represented by different symbols in \href{https://en.wikipedia.org/wiki/Venn_diagram}{Venn diagram}s \citep{wiki:venn-diagram}, Boolean algebra, logic, and the programming languages \href{http://python.org/}{Python} and \href{https://java.oracle.com}{Java}.
+The three logic functions (\textsc{and}, \textsc{or}, \textsc{not}) are represented by different symbols in \href{https://en.wikipedia.org/wiki/Venn_diagram}{Venn diagram}s \parencite{wiki:venn-diagram}, Boolean algebra, logic, and the programming languages \href{http://python.org/}{Python} and \href{https://java.oracle.com}{Java}.
 
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 \small{\begin{tabularx}{1.0\linewidth}{@{}Y|Y|Y|Y|Y|Y@{}}
@@ -239,7 +243,7 @@ $\begin{tblr}{X[1,c,m]|*5{|X[1,c,m]}}
 
 Arithmetic can be carried out using only logic. That is the foundation of calculation in a computer.
 
-The basic unit of information capable of distinguishing two values (\eg\ \textit{true} and \textit{false}) is the \textbf{\href{https://en.wikipedia.org/wiki/Bit}{bit}} \citep{wiki:bit} (or \textit{binary digit}) --- the answer to one yes-no question. 
+The basic unit of information capable of distinguishing two values (\eg\ \textit{true} and \textit{false}) is the \textbf{\href{https://en.wikipedia.org/wiki/Bit}{bit}} \parencite{wiki:bit} (or \textit{binary digit}) --- the answer to one yes-no question. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Positional number systems
 \subsection{Positional number systems}
@@ -248,7 +252,7 @@ The basic unit of information capable of distinguishing two values (\eg\ \textit
 \AtBeginEnvironment{tabu}{\setlength{\tabcolsep}{2pt}}
 \AtBeginEnvironment{array}{\setlength{\arraycolsep}{2pt}}
 
-A \href{https://en.wikipedia.org/wiki/Positional_notation}{positional number system} \citep{wiki:positional-notation} uses a fixed set of symbols (numerals) to represent numbers and their position within the written form to indicate their order of magnitude in the radix or base. In computing there are (typically) three radixes in use: decimal (base 10), binary (base 2), and hexadecimal (base 16). 
+A \href{https://en.wikipedia.org/wiki/Positional_notation}{positional number system} \parencite{wiki:positional-notation} uses a fixed set of symbols (numerals) to represent numbers and their position within the written form to indicate their order of magnitude in the radix or base. In computing there are (typically) three radixes in use: decimal (base 10), binary (base 2), and hexadecimal (base 16). 
 
 \href{https://en.wikipedia.org/wiki/Positional_notation#/media/File:Positional_notation_glossary-en.svg}{%
   \parbox{\linewidth}{%
@@ -323,7 +327,7 @@ To convert from decimal to hexadecimal, divide the number $D$ by the largest pow
 
 Hexadecimal (base 16) is another form of binary (base 2), because $16 = 2^{4}$ --- all of which are powers of two --- so one hex digit is the equivalent of four binary digits (bits). 
 
-To convert from binary $\xleftrightarrow{}$ hexadecimal simply break a binary number into \href{https://en.wikipedia.org/wiki/Nibble}{nybble}s \citep{wiki:nybble} (4-bits at a time) and write them as hexadecimal digits $\xleftrightarrow{}$ write the hexadecimal digits as binary nybbles following this pattern:
+To convert from binary $\xleftrightarrow{}$ hexadecimal simply break a binary number into \href{https://en.wikipedia.org/wiki/Nibble}{nybble}s \parencite{wiki:nybble} (4-bits at a time) and write them as hexadecimal digits $\xleftrightarrow{}$ write the hexadecimal digits as binary nybbles following this pattern:
 
 \begin{center}
 $\begin{tblr}{*3{X[c]|}*3{|X[c]}}
@@ -365,7 +369,7 @@ $\begin{tblr}{X[c,b]*3{X[c,b]}c*8{X[c,b]}c*2{X[c,b]}}
 
 Is there a logical operation that could be used to combine each bit? Yes! Bitwise three-input \textsc{xor} works in this example\footnote{To insure that it doesn't matter which order the carry is added, it is necessary to verify that $\left( A \xor B \right) \xor C = A \xor \left( B \xor C \right)$, the \textit{Associative Law for \textsc{xor}} of Boolean algebra.}.
 
-Here is the truth table for the $\Sigma$ and $\text{C}_{\text{out}}$ functions of a (one-bit) \href{https://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder}{full adder} \citep{wiki:adder-electronics}:
+Here is the truth table for the $\Sigma$ and $\text{C}_{\text{out}}$ functions of a (one-bit) \href{https://en.wikipedia.org/wiki/Adder_(electronics)#Full_adder}{full adder} \parencite{wiki:adder-electronics}:
 
 \footnotesize{\begin{center}
 $\begin{tblr}{X[2,c,m]|X[3,c,m]|X[2,c,m]|X[3,c,m]|X[2,c,m]|X[1,c,m]}
@@ -393,25 +397,25 @@ Here are $\Sigma$ and $\text{C}_{\text{out}}$ as functions of $\text{A}$, $\text
 \subsubsection{Bitwise operations}
 \label{Bitwise}
 
-For multi-bit cells (called bit strings or binary numerals), logical operations are defined between corresponding bits of the cells. A detailed discussion of \href{https://en.wikipedia.org/wiki/Bitwise_operation}{bitwise logical operations} is available on \href{https://en.wikipedia.org/}{Wikipedia} \citep{wiki:bitwise-operation}.
+For multi-bit cells (called bit strings or binary numerals), logical operations are defined between corresponding bits of the cells. A detailed discussion of \href{https://en.wikipedia.org/wiki/Bitwise_operation}{bitwise logical operations} is available on \href{https://en.wikipedia.org/}{Wikipedia} \parencite{wiki:bitwise-operation}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Fixed-point arithmetic
 \subsection{Fixed-point arithmetic}
 \label{Fixed-point}
-Computers often represent numbers using \href{https://en.wikipedia.org/wiki/Fixed-point_arithmetic}{fixed-point arithmetic} \citep{wiki:fixed-point-arithmetic}, \ie\ as integers. These number types differ from \href{https://en.wikipedia.org/wiki/Floating-point_arithmetic}{floating-point}\footnote{For further information, see Appendix \ref{FloatingPoint}.} \citep{wiki:floating-point-arithmetic} numbers in that:
+Computers often represent numbers using \href{https://en.wikipedia.org/wiki/Fixed-point_arithmetic}{fixed-point arithmetic} \parencite{wiki:fixed-point-arithmetic}, \ie\ as integers. These number types differ from \href{https://en.wikipedia.org/wiki/Floating-point_arithmetic}{floating-point}\footnote{For further information, see Appendix \ref{FloatingPoint}.} \parencite{wiki:floating-point-arithmetic} numbers in that:
 \begin{itemize}
 \item fixed-point numbers are exact (while floating-point numbers may be approximations of rational or irrational numbers);
-\item fixed-point numbers have `\href{https://en.wikipedia.org/wiki/Signedness}{signedness}' \citep{wiki:signedness} and can represent signed or unsigned numbers;
+\item fixed-point numbers have `\href{https://en.wikipedia.org/wiki/Signedness}{signedness}' \parencite{wiki:signedness} and can represent signed or unsigned numbers;
 \item fixed point numbers represent a finite number of different integers (with $n$ fixed digits in radix $R$ representing $R^{n}$ different integers).
 \end{itemize}
 
-In \href{https://en.wikibooks.org/wiki/Java_Programming/Primitive_Types}{Java} \citep{wiki:java-primitive-types}, there are four fixed-point data types: \code{byte} (8 bits), \code{short} (16 bits), \code{int} (32 bits), \code{long} (64 bits). The examples in this document limit themselves to 8-bit numbers, though the results are the same for any fixed-point data type.
+In \href{https://en.wikibooks.org/wiki/Java_Programming/Primitive_Types}{Java} \parencite{wiki:java-primitive-types}, there are four fixed-point data types: \code{byte} (8 bits), \code{short} (16 bits), \code{int} (32 bits), \code{long} (64 bits). The examples in this document limit themselves to 8-bit numbers, though the results are the same for any fixed-point data type.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Overflow
 \subsubsection{Overflow}
 \label{Overflow}
 
-In fixed-point arithmetic there will always be \href{https://en.wikipedia.org/wiki/Integer_overflow}{overflow} \citep{wiki:integer-overflow}, as in the (8-bit) example of $60_{16} + C0_{16}$.
+In fixed-point arithmetic there will always be \href{https://en.wikipedia.org/wiki/Integer_overflow}{overflow} \parencite{wiki:integer-overflow}, as in the (8-bit) example of $60_{16} + C0_{16}$.
 
 $\begin{tblr}{X[c,b]*3{X[c,b]}X[c,b]*9{X[c,b]}X[c,b]*3{X[c,b]}}
  & && && {\color{Red}\boxed{1}}&1&&&&&&& && {\color{Red}\boxed{1}}&& \\
@@ -455,7 +459,7 @@ There \textit{is} a way to interpret these results so that they make sense.
 \subsubsection{Two's complement}
 \label{TwosComplement}
 
-One way to implement signed arithmetic is with \textit{\href{https://en.wikipedia.org/wiki/Two's_complement}{two's complement}} \citep{wiki:twos-complement}. In $n$-bit fixed-point arithmetic the integer number line behaves as if it were a number circle,$\mod 2^{n}$. That is, all integers are non-negative and the next number after $2^{n}-1$ is \textit{zero}.
+One way to implement signed arithmetic is with \textit{\href{https://en.wikipedia.org/wiki/Two's_complement}{two's complement}} \parencite{wiki:twos-complement}. In $n$-bit fixed-point arithmetic the integer number line behaves as if it were a number circle,$\mod 2^{n}$. That is, all integers are non-negative and the next number after $2^{n}-1$ is \textit{zero}.
 
 The two's complement system breaks the number circle at a different point --- between $2^{n - 1} - 1$ and $2^{n - 1}$, treating half the integers on the number circle as negative and the other half as non-negative. Any $n$-bit integers on the \textit{unsigned} interval $[0, 2^{n}-1] \ge 2^{n-1}$ are negative and the others on $[0, 2^{n-1} - 1]$ are non-negative, as shown below.
 
@@ -464,7 +468,7 @@ The two's complement system breaks the number circle at a different point --- be
  \\Java two's complement number circle
 \end{center}\begin{multicols}{2}
 
-The two's complement of an $n$-bit binary number $m$, defined as $2^{n} - m$, can be calculated as one more than the \href{https://en.wikipedia.org/wiki/Ones'_complement}{ones' complement} \citep{wiki:ones-complement} (the bit-wise complement of the binary representation) of $m$, ignoring overflow. Calculating that $+1$ in the binary representation of $m$ by hand can be tricky, as there can be up to $m$ carries. Consequently, the preferred algorithm for calculating the two's-complement of an $n$-bit binary number $m$ is:
+The two's complement of an $n$-bit binary number $m$, defined as $2^{n} - m$, can be calculated as one more than the \href{https://en.wikipedia.org/wiki/Ones'_complement}{ones' complement} \parencite{wiki:ones-complement} (the bit-wise complement of the binary representation) of $m$, ignoring overflow. Calculating that $+1$ in the binary representation of $m$ by hand can be tricky, as there can be up to $m$ carries. Consequently, the preferred algorithm for calculating the two's-complement of an $n$-bit binary number $m$ is:
 
 \begin{quote}\dots start at the least significant bit (LSB), and copy all the zeros, working from LSB toward the most significant bit (MSB) until the first 1 is reached; then copy that 1, and [complement] all the remaining bits (Leave the MSB as a 1 if the initial number was in sign-and-magnitude representation). This shortcut allows a person to convert a number to its two's complement without first forming its ones' complement. --- \href{https://en.wikipedia.org/wiki/Two's_complement#Working_from_LSB_towards_MSB}{Wikipedia}\end{quote}
 
@@ -498,7 +502,7 @@ $\begin{tblr}{X[c,b]*{3}{X[c,b]}*{3}{X[c,b]}*{9}{X[c,b]}*{3}{X[c,b]}*{3}{X[c,b]}
 \subsection{Multiplication}
 \label{Multiplication}
 
-Multiplication is repeated addition --- as indicated by the English reading of $3 \times 4$ as, `three times four;' that is add four to itself three times. The standard \href{https://en.wikipedia.org/wiki/Multiplication_algorithm#Peasant_or_binary_multiplication}{multiplication algorithm} is a shortcut to repeated addition where, to obtain a product, '\dots multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.' \citep{wiki:multiplication-algorithm} Binary multiplication of $m \times n$ is easy, as there are only two values to multiply $m$ by in each digit of $n$: $0 \times m = 0$ and $1 \times m = m$. For example:
+Multiplication is repeated addition --- as indicated by the English reading of $3 \times 4$ as, `three times four;' that is add four to itself three times. The standard \href{https://en.wikipedia.org/wiki/Multiplication_algorithm#Peasant_or_binary_multiplication}{multiplication algorithm} is a shortcut to repeated addition where, to obtain a product, '\dots multiply the multiplicand by each digit of the multiplier and then add up all the properly shifted results.' \parencite{wiki:multiplication-algorithm} Binary multiplication of $m \times n$ is easy, as there are only two values to multiply $m$ by in each digit of $n$: $0 \times m = 0$ and $1 \times m = m$. For example:
 
 \begin{minipage}{\linewidth}
 $7_{10} \times 6_{10} = 42_{10}$
@@ -559,9 +563,9 @@ $\begin{tblr}{*{16}{X[c,b]}X[l,b]}
 \subsection{Division}
 \label{Division}
 
-Division is repeated subtraction, as described in the \href{https://en.wikipedia.org/wiki/Euclidean_division}{Euclidean algorithm} in \href{https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII1.html}{\textit{Euclid's Elements} Book VII Proposition I} \citep{book:elements-one-volume}.
+Division is repeated subtraction, as described in the \href{https://en.wikipedia.org/wiki/Euclidean_division}{Euclidean algorithm} in \href{https://mathcs.clarku.edu/~djoyce/java/elements/bookVII/propVII1.html}{\textit{Euclid's Elements} Book VII Proposition I} \parencite{book:elements-one-volume}.
 
-The long \href{https://en.wikipedia.org/wiki/Division_algorithm#Integer_division_(unsigned)_with_remainder}{division algorithm} is a shortcut to repeated subtraction where, to obtain a quotient and remainder, shift `\dots gradually from the left to the right end of the dividend, subtracting the largest possible multiple of the divisor at each stage; the multiples become the digits of the quotient, and the final difference is the remainder.' \citep{wiki:division-algorithm} Binary long division can be implemented as in the following examples (the underlined bits correspond in each row):
+The long \href{https://en.wikipedia.org/wiki/Division_algorithm#Integer_division_(unsigned)_with_remainder}{division algorithm} is a shortcut to repeated subtraction where, to obtain a quotient and remainder, shift `\dots gradually from the left to the right end of the dividend, subtracting the largest possible multiple of the divisor at each stage; the multiples become the digits of the quotient, and the final difference is the remainder.' \parencite{wiki:division-algorithm} Binary long division can be implemented as in the following examples (the underlined bits correspond in each row):
 
 \begin{minipage}{\linewidth}
 $7_{10} \div 3_{10} = 2_{10}\text{R}1_{10}\text{ (Note: }-3_{10} = 1101_{2}$\text{)}
@@ -648,7 +652,7 @@ $\begin{tblr}{*{29}{X[c,b]}}
 \section{Circuits}
 \label{Circuits}
 
-To implement logic functions in actual \textit{hardware}, designers use integrated circuits called \textit{\href{https://en.wikipedia.org/wiki/Logic_gate}{gate}s} \citep{wiki:logic-gate} and two voltage levels to represent `$0$' and `$1$.' The basics of these implement binary (two-input) logic functions (\eg\ \textsc{and}, \textsc{or}, \textsc{xor}) and the unary (one-input) logic function \textsc{not}. Symbols used on \href{https://en.wikipedia.org/wiki/Schematic#Electrical_and_electronic_industry}{schematic diagram}s of logic circuits (where lines represent electrical connections --- wires) are:
+To implement logic functions in actual \textit{hardware}, designers use integrated circuits called \textit{\href{https://en.wikipedia.org/wiki/Logic_gate}{gate}s} \parencite{wiki:logic-gate} and two voltage levels to represent `$0$' and `$1$.' The basics of these implement binary (two-input) logic functions (\eg\ \textsc{and}, \textsc{or}, \textsc{xor}) and the unary (one-input) logic function \textsc{not}. Symbols used on \href{https://en.wikipedia.org/wiki/Schematic#Electrical_and_electronic_industry}{schematic diagram}s of logic circuits (where lines represent electrical connections --- wires) are:
 
 \tikzset{dot/.style args={#1}{circle,draw=black,fill=black,inner sep=1pt,minimum size=3pt,label=#1}}
 
@@ -1214,7 +1218,7 @@ A \xor B &= \overline{\left( \overline{\left( \overline{\left( {A}\adot{B} \righ
 
 \hwnote{More \href{https://en.wikipedia.org/wiki/To_come_(publishing)}{tk} on floating point arithmetic.}
 
-The main standard for floating-point arithmetic is \href{https://en.wikipedia.org/wiki/IEEE_754}{IEEE 754} \citep{wiki:ieee-754}. This group of standards for various bit widths (\eg\ 16, 32, 64, 80, 128, 256-bit, \etc) represent numbers in scientific notation with a sign, significand, and exponent. 
+The main standard for floating-point arithmetic is \href{https://en.wikipedia.org/wiki/IEEE_754}{IEEE 754} \parencite{wiki:ieee-754}. This group of standards for various bit widths (\eg\ 16, 32, 64, 80, 128, 256-bit, \etc) represent numbers in scientific notation with a sign, significand, and exponent. 
 
 - hidden `1'
 
@@ -1264,7 +1268,7 @@ Venn diagrams
 \end{multicols}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
-\bibliography{../../bib/dcpbibtex} % To update, delete *.blb
+\printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
 \printindex % To update, delete *.ind
