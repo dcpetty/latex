@@ -23,6 +23,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
 \input ../input/input-toc-idx-bib.tex
+\addbibresource{../bib/dcpbibtex.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
 \input ../input/exam-points-solutions.tex
@@ -105,7 +106,7 @@ mathematics:\begin{align}
 \label{Conclusion}
 
 This last section provides a citation so that a bibliography is
-automatically included \citep{book:linear-algebra}.
+automatically included \parencite{book:linear-algebra}.
 
 \begin{itemize}
 \item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
@@ -121,7 +122,7 @@ This is item three\dots The quick brown fox jumps
 over the lazy dog. This is item three\dots The quick brown fox jumps over the lazy dog. This is item three\dots The quick brown fox jumps over the lazy dog. This is item three\dots The quick brown fox jumps over the lazy dog.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
-\bibliography{../bib/dcpbibtex} % To update, delete *.blb
+\printbibliography % To update, delete *.blb
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
 \printindex % To update, delete *.ind

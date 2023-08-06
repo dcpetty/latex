@@ -28,6 +28,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
 \input ../input/input-toc-idx-bib.tex
+\addbibresource{../bib/dcpbibtex.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
 \input ../input/exam-points-solutions.tex
@@ -50,7 +51,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Date
 \date{} %
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Dcoument
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
 \begin{document}
 
 \maketitle
@@ -210,12 +211,12 @@ for m, n in tests:
 \label{Conclusion}
 
 This last section provides a citation so that a bibliography is
-automatically included for \citet{book:linear-algebra} \& \citet{book:middlemarch}.
+automatically included for \parencite{book:linear-algebra} \& \parencite{book:middlemarch}.
 
 %\end{comment} %%%%%%%%%% COMMMENT
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
-\bibliography{../bib/dcpbibtex} % To update, delete *.bbl
+\printbibliography % To update, delete *.bbl
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
 %\printindex % To update, delete *.ind
