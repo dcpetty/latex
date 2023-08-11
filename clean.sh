@@ -11,8 +11,8 @@
 #
 
 dir="."
-exts="aux bbl blg cfg cut glo gls hd idx ilg ind lof log lot out toc"
-exts="${exts} dvi gz ps thm tgz zip"
+exts="aux bbl bcf blg cfg cut dvi glo gls gz hd idx ilg ind lof log lot out ps"
+exts="${exts} run.xml thm tgz toc zip"
 
 # Process command-line arguments.
 for arg in $@; do
