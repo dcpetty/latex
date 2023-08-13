@@ -1,3 +1,4 @@
+% http://tug.ctan.org/info/biblatex-cheatsheet/biblatex-cheatsheet.pdf
 % http://www.bne.es/ingles/issn010.htm The difference between ISBN & ISSN
 % http://homepage.stat.uiowa.edu/~rlenth/ALPHA/apa-tutorial.pdf APA tutorial
 % https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib natbib v. biblatex
@@ -13,7 +14,7 @@
   address = {Upper Saddle River, NJ},
   year = {2009},
   isbn = {9780136009269},
-  note = {http://isbn.nu/9780136009269},
+  url = {http://isbn.nu/9780136009269},
 }
 
 @book{book:7habits,
@@ -38,7 +39,7 @@
    address = {New York},
    year = {1871},
    isbn = {9780141439549},
-   note = {http://isbn.nu/9780141439549},
+   url = {http://isbn.nu/9780141439549},
 }
 
 @book{book:stuck-in-the-shallow-end,
@@ -48,7 +49,7 @@
    address = {Cambridge, Mass.},
    year = {2011},
    isbn = {978-0-262-51404-0},
-   note = {http://isbn.nu/978-0-262-51404-0},
+   url = {http://isbn.nu/978-0-262-51404-0},
 }
 
 @book{book:pattern-classification,
@@ -96,19 +97,19 @@
 @book{book:grading-for-equity,
   title={Grading for Equity: What It Is, Why It Matters, and How It Can Transform Schools and Classrooms},
   author={Feldman, Joe},
+  year={2018},
+  publisher={SAGE Publications},
   isbn={9781506391571},
   url={https://isbn.nu/9781506391571},
-  year={2018},
-  publisher={SAGE Publications}
 }
 
 @book{book:standards-based-learning,
   title={Standards-Based Learning in Action: Moving from Theory to Practice (A Guide to Implementing Standards-Based Grading, Instruction, and Learning)},
   author={Schimmer, Tom and Hillman, Garnet and Stalets, Mandy},
+  year={2018},
+  publisher={Solution Tree},
   isbn={9781945349010},
   url={https://isbn.nu/9781945349010},
-  year={2018},
-  publisher={Solution Tree}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PAPERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -235,7 +236,7 @@
   YEAR = {2002},
   address = {Hoboken NJ},
   isbn = {0-471-43809-X},
-  note = {http://isbn.nu/047143809X},
+  url = {http://isbn.nu/047143809X},
 }
 
 @BOOK{book:unfinished-game,
@@ -245,7 +246,7 @@
   YEAR = {2008},
   address = {New York},
   isbn = {9780465009107},
-  note = {http://isbn.nu/9780465009107},
+  url = {http://isbn.nu/9780465009107},
 }
 
 @book{book:engines-of-logic,
@@ -675,7 +676,6 @@
   lastchecked = "21:00 February 18, 2019",
 }
 
-
 % Adder (electronics). (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Adder_(electronics)&oldid=879794929
 % Wikipedia APA entry -- use AUTHOR field for subject (in {})
 @misc{wiki:adder-electronics,
@@ -762,7 +762,6 @@
   lastchecked = "21:00 February 18, 2019",
 }
 
-
 %Permutation. (2010, June 7). In Wikipedia, The Free Encyclopedia. Retrieved 13:31, June 26, 2010, from http://en.wikipedia.org/w/index.php?title=Permutation&oldid=366563313
 % Wikipedia APA entry -- use AUTHOR field for subject (in {})
 @misc{wiki:permutation,
@@ -785,3 +784,38 @@
   url = "http://en.wikipedia.org/w/index.php?title=Plagiarism&oldid=5139350",
   lastchecked = "June 27, 2004",
  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEBUG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: fix @online references & add isbn / doi
+
+@online{link:CiteDrive2022,
+    title        = {CiteDrive brings reference management to Overleaf},
+    author       = {CiteDrive, Inc},
+    year         = 2022,
+    url          = {https://www.citedrive.com/overleaf},
+    urldate      = {2023-08-12T13:00:00+04:00},
+}
+
+% @misc https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Carmichael_number&id=1151790558&wpFormIdentifier=titleform
+@misc{ enwiki:1151790558,
+    author = "{Wikipedia contributors}",
+    title = "Carmichael number --- {Wikipedia}{,} The Free Encyclopedia",
+    year = "2023",
+    howpublished = "\url{https://en.wikipedia.org/w/index.php?title=Carmichael_number&oldid=1151790558}",
+    note = "[Online; accessed 13-August-2023]",
+    url = {https://en.wikipedia.org/Carmichael_number},
+}
+
+% Wikipedia suggested updates:
+% - use @online rather than @misc
+% - add urldate (?) remove note (?)
+% @online https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Wikipedia&id=1170034581&wpFormIdentifier=titleform
+@online{ enwiki:1170034581,
+    author = "{Wikipedia contributors}",
+    title = "Wikipedia --- {Wikipedia}{,} The Free Encyclopedia",
+    year = "2023",
+    howpublished = "\url{https://en.wikipedia.org/w/index.php?title=Wikipedia&oldid=1170034581}",
+    note = "[Online; accessed 13-August-2023]",
+    url = {https://en.wikipedia.org/Wikipedia},
+    urldate = {2023-08-13},
+}
