@@ -1,8 +1,43 @@
+% https://tex.stackexchange.com/a/174626/241210
+\RequirePackage{filecontents}
+\begin{filecontents*}{\jobname.bib}
+@collection{cybeprotest,
+  editor    = {van de Donk, Wim and Brian D. Loader and Paul G. Nixon and Dieter Rucht},
+  title     = {Cyberprotest},
+  subtitle  = {New Media, Citizens and Social Movements},
+  publisher = {Routledge},
+  address   = {location},
+  date      = {2004},
+  url       = {www.jstor.com/somearticle.html},
+  urldate   = {2013-10-29},
+  isbn      = {978-0-415-29784-4},
+}
+@online{web,
+  title     = {This is the title of the webpage},
+  maintitle = {This is the title of the website},
+  date      = {2009-02},
+  url       = {http://www.example.com},
+  urldate   = {2013-08-29},
+}
+@incollection{sep-set-theory,
+  author       = {Jech, Thomas},
+  title        = {Set Theory},
+  booktitle    = {The Stanford Encyclopedia of Philosophy},
+  editor       = {Edward N. Zalta},
+  url          = {http://plato.stanford.edu/archives/win2011/entries/set-theory/},
+  urldate      = {2014-04-23},
+  year         = {2011},
+  edition      = {Winter 2011},
+}
+\end{filecontents*}
+
 \documentclass[11pt]{article}%
+%\usepackage[backend=biber,style=apa]{biblatex}
 \usepackage[backend=biber,style=authoryear]{biblatex}
 \usepackage{hyperref}
 
-\addbibresource{../../bib/dcpbibtex.bib}
+\addbibresource{../../bib/dcpbiblatex.bib}
+\addbibresource{\jobname.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
 \begin{document}
@@ -111,9 +146,12 @@
 \begin{itemize}
 
  \item \autocite{link:CiteDrive2022}
- \item \autocite[Wikipedia]{enwiki:1170034581}
- \item \autocite[Carmichael number]{enwiki:1151790558}
- 
+ \item \autocite{enwiki:1151790558}
+ \item \autocite{enwiki:13438122}
+ \item \autocite{cybeprotest}
+ \item \autocite{web}
+ \item \autocite{sep-set-theory}
+
 \end{itemize}
 
 \printbibliography
