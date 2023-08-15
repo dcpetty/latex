@@ -1,6 +1,6 @@
 % https://tex.stackexchange.com/a/174626/241210
 \RequirePackage{filecontents}
-\begin{filecontents*}{\jobname.bib}
+\begin{filecontents*}{\jobname.in}
 @collection{cybeprotest,
   editor    = {van de Donk, Wim and Brian D. Loader and Paul G. Nixon and Dieter Rucht},
   title     = {Cyberprotest},
@@ -29,6 +29,15 @@
   year         = {2011},
   edition      = {Winter 2011},
 }
+
+% https://bibtex.eu/faq/how-can-i-use-bibtex-to-cite-a-website/
+@online{link:CiteDrive2022,
+    title        = {CiteDrive brings reference management to Overleaf},
+    author       = {CiteDrive, Inc},
+    year         = 2022,
+    url          = {https://www.citedrive.com/overleaf},
+    urldate      = {2023-08-12T13:00:00+04:00},
+}
 \end{filecontents*}
 
 \documentclass[11pt]{article}%
@@ -37,7 +46,7 @@
 \usepackage{hyperref}
 
 \addbibresource{../../bib/dcpbiblatex.bib}
-\addbibresource{\jobname.bib}
+\addbibresource{\jobname.in}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
 \begin{document}
@@ -145,12 +154,12 @@
 
 \begin{itemize}
 
- \item \autocite{link:CiteDrive2022}
  \item \autocite{enwiki:1151790558}
  \item \autocite{enwiki:13438122}
  \item \autocite{cybeprotest}
  \item \autocite{web}
  \item \autocite{sep-set-theory}
+ \item \autocite{link:CiteDrive2022}
 
 \end{itemize}
 
