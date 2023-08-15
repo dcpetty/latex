@@ -88,6 +88,7 @@ _minted*
 *.lod
 *.loe
 *.lof
+*.log
 *.lol
 *.lot
 *.lox
@@ -109,6 +110,7 @@ _minted*
 *.nlg
 *.nlo
 *.nls
+*.out
 *.pax
 *.pdfpc
 *.pdfsync
@@ -123,6 +125,7 @@ _minted*
 *.sav
 *.slf[0-9]*
 *.slg
+*.slo
 *.sls
 *.slt[0-9]*
 *.snm
@@ -160,6 +163,13 @@ _minted*
 *.xwm
 *.xyc
 *.xyd
+*~[0-9]*
+acs-*.bib
+latex.out/
+pythontex-files-*/
+svg-inkscape/
+sympy-plots-for-*.tex/
+TSWLatexianTemp*
 EOM
 
 # Process command-line arguments.
@@ -168,6 +178,9 @@ while ((${#})); do
 	-d)
 		shift
 		dir="$1"
+		;;
+	-v)
+		verbose="VERBOSE"
 		;;
 	*)
 		globs="${globs} *.$1"
@@ -184,6 +197,6 @@ fi
 
 # Remove all files below ${dir} matching any glob in ${globs}.
 for glob in ${globs}; do
-	echo \# ${glob}
+	[ -n "${verbose}" ] && echo \# ${glob}
 	find ${dir} -name "${glob}" -print 2>&1 |xargs -n 1 -I {} -t rm -rf {}
 done
