@@ -1,13 +1,16 @@
 #!/usr/bin/env sh
-# Delete all extraneous TeX files from all subdirectories
 #
-# Without any command-line arguments, cleans all files in exts list below '.'.
+# Delete all extraneous TeX files from all subdirectories.
+#
+# Without any command-line arguments, cleans all files in globs list 
+# below '.'.
 #
 # Sample usage with command-line arguments:
 #
-#	% ./clean.sh -d dir pdf
+#	% ./clean.sh -d dir pdf -v
 #
-# This uses -d to select top directory and addr 'pdf' to the list of exts.
+# This uses -d to select top directory 'dir', add '*.pdf' to list of
+# globs, and (with -v) echo all globs including those that don't match.
 #
 
 dir="."
@@ -198,5 +201,6 @@ fi
 # Remove all files below ${dir} matching any glob in ${globs}.
 for glob in ${globs}; do
 	[ -n "${verbose}" ] && echo \# ${glob}
-	find ${dir} -name "${glob}" -print 2>&1 |xargs -n 1 -I {} -t rm -rf {}
+	find ${dir} -name "${glob}" -print 2>&1 \
+		|xargs -n 1 -I {} -t rm -rf {}
 done
