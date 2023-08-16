@@ -180,7 +180,7 @@ while ((${#})); do
 		dir="$1"
 		;;
 	-v)
-		verbose="VERBOSE"
+		verbose=true
 		;;
 	*)
 		globs="${globs} *.$1"
