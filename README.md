@@ -1,12 +1,12 @@
 # latex
 
-LaTeX public documents, templates, bibtex, and inputs.
+LaTeX public documents, templates, [Biber](https://biblatex-biber.sourceforge.net/) files, and inputs.
 
 ## Directories
 
 | Directories | Description |
 | --- | --- |
-| `bib` | Directory for [Bibtex](http://www.bibtex.org/) files |
+| `bib` | Directory for [BibTeX](http://www.bibtex.org/) and [BibLaTeX](https://mirror.mwt.me/ctan/macros/latex/contrib/biblatex/doc/biblatex.pdf) files |
 | `doc` | Directory for [my](https://github.com/dcpetty) working LaTeX documents |
 | `images` | Directory for images used in LaTeX documents. |
 | `input` | Directory for `\input` files used in LaTeX documents. |
@@ -25,12 +25,11 @@ LaTeX public documents, templates, bibtex, and inputs.
 
 `Makefile` (the single makefile in this project) has standard targets `all`, `clean`, and `clean-pdf`. The `all` target will build all `TEX_DIRS := doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates`. Each of these directories are also targets that can be built individually. `make clean` removes all LaTeX intermediate files in `$(TEX_DIRS)`. `make clean-pdf` additionally removes all .PDF files in `$(TEX_DIRS)` so they can be rebuilt. `make` is equivalent to `make all`. `make -s` will only echo directories and files being built.
 
-`clean.sh` can be used standalone. Run by itself (`sh clean.sh`) it removes all LaTeX intermediate files in the current working directory (`.`) and below. Invoked with command-line arguments (*e.g.* `sh clean.sh -d templates pdf txt`) it starts at the directory specified by `-d` (*i.e.* `templates`) and includes any additional extensions (*i.e.* `.pdf` &amp; `.txt`). The standard LaTeX intermediate files removed by `clean.sh` (and `clean.bat`) are those with the extensions `aux`, `bbl`, `bcf`, `blg`, `cfg`, `cut`, `dvi`, `glo`, `gls`, `gz`, `hd`, `idx`, `ilg`, `ind`, `lof`, `log`, `lot`, `out`, `ps`, `run.xml`, `thm`, `tgz`, `toc`, &amp; `zip`.
+`clean.sh` can be used standalone. Run by itself (`sh clean.sh`) it removes all LaTeX intermediate files in the current working directory (`.`) and below. Invoked with command-line arguments (*e.g.* `sh clean.sh -d templates pdf txt -v`) it starts at the directory specified by `-d` (*i.e.* `templates`), includes any additional globs (*i.e.* `*.pdf` &amp; `*.txt`), and (with `-v`) echoes all globs, whether or not there are matching files. The standard LaTeX intermediate files removed by `clean.sh` (and `clean.bat`) are those listed in [https://www.toptal.com/developers/gitignore/api/latex](https://www.toptal.com/developers/gitignore/api/latex).
 
 ## TODO
 
 - Update all documents to use `\input` files.
-- For each `.tex` file, include a corresponding `.pdf` file.
 
 <hr>
 

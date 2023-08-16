@@ -73,6 +73,7 @@ del /s *.loa
 del /s *.lod
 del /s *.loe
 del /s *.lof
+del /s *.log
 del /s *.lol
 del /s *.lot
 del /s *.lox
@@ -94,6 +95,7 @@ del /s *.newpax
 del /s *.nlg
 del /s *.nlo
 del /s *.nls
+del /s *.out
 del /s *.pax
 del /s *.pdfpc
 del /s *.pdfsync
@@ -108,6 +110,7 @@ del /s *.sagetex.scmd
 del /s *.sav
 :del /s *.slf[0-9]*
 del /s *.slg
+del /s *.slo
 del /s *.sls
 :del /s *.slt[0-9]*
 del /s *.snm
@@ -145,3 +148,10 @@ del /s *.xref
 del /s *.xwm
 del /s *.xyc
 del /s *.xyd
+:del /s *~[0-9]*
+del /s acs-*.bib
+del /s latex.out/
+del /s pythontex-files-*/
+del /s svg-inkscape/
+del /s sympy-plots-for-*.tex/
+del /s TSWLatexianTemp*
