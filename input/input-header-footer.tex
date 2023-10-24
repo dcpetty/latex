@@ -35,7 +35,7 @@
 \ifdefined\docletter % Letter template: include \def\docletter{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\hemail{\ifx\docemail\empty \else\begin{adjustbox}{max width=0.25\textwidth}\texttt{\textless\docemail\textgreater}\end{adjustbox} \fi }
 \def\femail{\ifx\docemail\empty \else\textbullet \ \linkemail\ \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone\ \fi }
 \def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone\ \fi }

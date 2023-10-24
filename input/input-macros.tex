@@ -5,6 +5,22 @@
 \newcommand{\statement}[1]{\emph{#1}}
 \newcommand{\divider}{\vskip4pt\hrule\vskip2pt}
 \newcommand{\hwnote}[1]{\begin{tcolorbox}[colback=gray!5!white,colframe=BrickRed,title=\textsc{\textbf{Note}}]\textcolor{BrickRed}{#1}\end{tcolorbox}}
+\newtcolorbox{tcbquote}[2][]{%
+    colback=gray!5!white,
+    grow to right by=-1em,
+    grow to left by=-1em, 
+    boxrule=0pt,
+    boxsep=0pt,
+    breakable,
+    enhanced jigsaw,
+    borderline west={2pt}{0pt}{gray},
+    title={#2\par},
+    colbacktitle={gray},
+    coltitle={black},
+    fonttitle={\bfseries},
+    attach title to upper={},
+    #1,
+}
 
 \def\foreign{\em}
 \def\etc{{\foreign etc.}}
