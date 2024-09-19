@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../../input/input-data.tex
+
+\def\docmath{MATH}
+\def\docclass{CLASS} % Change document class
+\def\docdate{DATE} % Change document date
+\def\docname{NAME} % Change document name
+\def\docnumber{NUMBER} % Change document number
+\def\docversion{VERSION} % Change document version
+\def\docpoints{POINTS}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../../input/input-toc-idx-bib.tex
+\addbibresource{../../bib/dcpbiblatex.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents
+%\tableofcontents % NOT in \documentclass{exam}
+
+Some text\dots \parencite{book:engines-of-logic} \& \parencite{book:middlemarch}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\printbibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+\printindex % To update, delete *.ind
+\end{document}
