@@ -29,6 +29,10 @@ clean-pdf :
 
 clean-all :
 	for DIR in $(TEX_DIRS) $(OTHER_DIRS); \
+		do echo "## $$DIR"; $(CLEAN) -d $$DIR; done
+
+clean-all-pdf :
+	for DIR in $(TEX_DIRS) $(OTHER_DIRS); \
 		do echo "## $$DIR"; $(CLEAN) -d $$DIR pdf; done
 
 FORCE :
