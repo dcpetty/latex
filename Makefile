@@ -7,7 +7,7 @@ OTHER_DIRS := apcs apcsp correspondence cv ga harvard-dce ia ig \
 MAKEFILE := $(realpath ./Makefile)
 
 PDFLATEX := texi2dvi -p -q
-CLEAN := sh clean.sh
+CLEAN := python3 clean.py
 
 all : $(TEX_DIRS)
 
