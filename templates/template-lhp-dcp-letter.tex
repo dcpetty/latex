@@ -66,17 +66,15 @@ Dear Bob:
 % \parbox[c]{9cm}{\includegraphics*[height = 2cm]{../images/sig-dcp-%david-200x150.png}\\David C. Petty} & \parbox[c]{9cm}%{\includegraphics*[height = 2cm]{../images/sig-lhp-lucy-200x150.png}\\Lucy H. Patton} 
 %\end{tabular}
 
-\vspace{1cm}
-
 Love,
 
 {\large $\Lambda, \Delta, \delta, \& \chi$}
 
 \vspace{3ex}
 
-\hbox{
-\vtop{\hsize=0.1\linewidth p.s.}%
-\vtop{\hsize=0.9\linewidth \lipsum[10]}%
-}
+\begin{minipage}[c]{0.1\linewidth}p.s.\end{minipage}
+\begin{minipage}[c]{0.9\linewidth}
+\lipsum[10]%
+\end{minipage}
 
 \end{document}
