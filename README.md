@@ -30,7 +30,7 @@ LaTeX public documents, templates, [Biber](https://biblatex-biber.sourceforge.ne
 
 `Makefile` can also build other directories (not under source control).
 
-- The `other` target will build all directories in <code>OTHER ?= apcs &#8203;apcsp &#8203;correspondence &#8203;cv &#8203;ga &#8203;harvard-dce &#8203;ia &#8203;ig &#8203;jobs &#8203;pc1 &#8203;princeton &#8203;psb &#8203;robotics &#8203;stanford-logic &#8203;uml &#8203;wps &#8203;MassBay</code>. Each of these directories are also targets that can be built individually.
+- The `other` target will build all directories in <code>OTHER ?= apcs apcsp correspondence cv ga harvard-dce ia ig jobs pc1 princeton psb robotics stanford-logic uml wps MassBay</code>. Each of these directories are also targets that can be built individually.
 - `make clean-all` removes all LaTeX intermediate files in `$(DIRS) $(OTHER)`. `make clean-all-pdf` additionally removes all .PDF files in `$(DIRS) $(OTHERS)` so they can be rebuilt. 
 
 
