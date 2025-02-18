@@ -13,10 +13,11 @@ below the current directory ('.').
 
 Sample usage with command-line arguments:
 
-    % python3 clean.py -d dir pdf -v
+    % python3 clean.py *.tex -e pdf -v
 
-This uses -d to select top directory 'dir', add '*.pdf' to the list of
-patterns, and (with -v) echo all files matched by patterns.
+This specifies which '*.tex' files should have their intermediate files cleaned,
+adds '*.pdf' to the list of patterns (with -e), and (with -v) echos all files
+matched by patterns from https://www.toptal.com/developers/gitignore/api/latex.
 """
 
 import os
@@ -68,11 +69,8 @@ def find_files_tex(tex_files, patterns, verbose=False):
         path, name = os.path.split(os.path.realpath(pathname))
         head, tail = os.path.splitext(name)
         assert tail.lower() == '.tex', f"{pathname} not .TEX"
-        # print('*', path, name, head, tail, f"{head}.*", end=' ')
         files = fnmatch.filter(os.listdir(path), f"{head}.*")
-        # print(files)    
         for pattern in patterns:
-            #if fnmatch.filter(files, pattern): print('matches:', fnmatch.filter(files, pattern))
             for filename in fnmatch.filter(files, pattern):
                 file_path = os.path.join(path, filename)
                 matches[pattern] = matches.get(pattern, list()) + [file_path]
