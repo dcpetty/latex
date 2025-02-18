@@ -22,9 +22,9 @@ LaTeX public documents, templates, [Biber](https://biblatex-biber.sourceforge.ne
 
 ## Tools
 
-`Makefile` (the single makefile in this project) uses [`latexmk`](https://www.cantab.net/users/johncollins/latexmk/) that '*&hellip;is a perl script for running LaTeX the correct number of times to resolve cross references, etc; it also runs auxiliary programs (bibtex, makeindex if necessary, and dvips and/or a previewer as requested).*' `Makefile` has standard targets `all`, `clean`, and `clean-pdf`. 
+`Makefile` (the single makefile in this project) uses [`latexmk`](https://www.cantab.net/users/johncollins/latexmk/) which '*&hellip;is a perl script for running LaTeX the correct number of times to resolve cross references, etc; it also runs auxiliary programs (bibtex, makeindex if necessary, and dvips and/or a previewer as requested).*' `Makefile` has standard targets `all`, `clean`, and `clean-pdf`. 
 
-- The `all` target (default) will build all directories in `DIRS ?= doc/apcs doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates`. Each of these directories are also targets that can be built individually. 
+- The `all` target will build all directories in `DIRS ?= doc/apcs doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates`. Each of these directories are also targets that can be built individually. 
 - `make clean` removes all LaTeX intermediate files in `$(DIRS)`. `make clean-pdf` additionally removes all .PDF files in `$(DIRS)` so they can be rebuilt. 
 - `make DIRS=example` will build any of the `example` directories in `$(DIRS)` (or `$(OTHER)`).
 - `make` is equivalent to `make all`. `make -s` will only echo directories and files being built.
@@ -35,7 +35,7 @@ LaTeX public documents, templates, [Biber](https://biblatex-biber.sourceforge.ne
 - `make clean-all` removes all LaTeX intermediate files in `$(DIRS) $(OTHER)`. `make clean-all-pdf` additionally removes all .PDF files in `$(DIRS) $(OTHERS)` so they can be rebuilt. 
 
 
-It is possible to clean up intermediate files after making with `latexmk -c -cd` or `latexmk -C -cd` (which includes 'dvi, postscript and pdf files'), but *files would all be rebuilt in the process*.
+It is possible to clean up intermediate files after making using `latexmk -c -cd` or `latexmk -C -cd` (which includes '*dvi, postscript and pdf files*'), but *all files would also be rebuilt in the process*.
 
 The `make clean*` targets use `clean.py`. The `clean.py` command-line options are listed below.
 
