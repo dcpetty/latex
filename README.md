@@ -26,6 +26,7 @@ LaTeX public documents, templates, [Biber](https://biblatex-biber.sourceforge.ne
 
 - The `all` target (default) will build all directories in `DIRS ?= doc/apcs doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates`. Each of these directories are also targets that can be built individually. 
 - `make clean` removes all LaTeX intermediate files in `$(DIRS)`. `make clean-pdf` additionally removes all .PDF files in `$(DIRS)` so they can be rebuilt. 
+- `make DIRS=example` will build any of the `example` directories in `$(DIRS)` (or `$(OTHER)`).
 - `make` is equivalent to `make all`. `make -s` will only echo directories and files being built.
 
 `Makefile` can also build other directories (not under source control).
