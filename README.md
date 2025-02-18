@@ -16,16 +16,43 @@ LaTeX public documents, templates, [Biber](https://biblatex-biber.sourceforge.ne
 
 | Files | Description |
 | --- | --- |
-| `Makefile` | [`gmake`](https://linux.die.net/man/1/gmake) file to build all .PDF files from LaTeX source. |
+| `Makefile` | [`gmake`](https://linux.die.net/man/1/gmake) file to build all .PDF files from LaTeX source using [`latexmk`](https://www.cantab.net/users/johncollins/latexmk/). |
 | `README.md` | This file. |
-| `clean.sh` | A [`sh`](https://linux.die.net/man/1/sh) script to clean up LaTeX intermediate files. (Used by `clean` and `clean-pdf` `make` targets.) |
-| `clean.bat` | A simple [`DOS`](https://www.lifewire.com/dos-commands-4070427) script to clean up LaTeX intermediate files. |
+| `clean.py` | A [Python](https://docs.python.org/3/) script to clean up LaTeX intermediate files. (Used by `clean` and `clean-pdf` `make` targets.) |
 
 ## Tools
 
-`Makefile` (the single makefile in this project) has standard targets `all`, `clean`, and `clean-pdf`. The `all` target will build all `TEX_DIRS := doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates`. Each of these directories are also targets that can be built individually. `make clean` removes all LaTeX intermediate files in `$(TEX_DIRS)`. `make clean-pdf` additionally removes all .PDF files in `$(TEX_DIRS)` so they can be rebuilt. `make` is equivalent to `make all`. `make -s` will only echo directories and files being built.
+`Makefile` (the single makefile in this project) uses [`latexmk`](https://www.cantab.net/users/johncollins/latexmk/) that '*&hellip;is a perl script for running LaTeX the correct number of times to resolve cross references, etc; it also runs auxiliary programs (bibtex, makeindex if necessary, and dvips and/or a previewer as requested).*' `Makefile` has standard targets `all`, `clean`, and `clean-pdf`. 
 
-`clean.sh` can be used standalone. Run by itself (`sh clean.sh`) it removes all LaTeX intermediate files in the current working directory (`.`) and below. Invoked with command-line arguments (*e.g.* `sh clean.sh -d templates pdf txt -v`) it starts at the directory specified by `-d` (*i.e.* `templates`), includes any additional globs (*i.e.* `*.pdf` &amp; `*.txt`), and (with `-v`) echoes all globs, whether or not there are matching files. The standard LaTeX intermediate files removed by `clean.sh` (and `clean.bat`) are those listed in [https://www.toptal.com/developers/gitignore/api/latex](https://www.toptal.com/developers/gitignore/api/latex).
+- The `all` target (default) will build all directories in `DIRS ?= doc/apcs doc/bhs doc/dlcs doc/gre doc/math doc/random doc/white-papers templates`. Each of these directories are also targets that can be built individually. 
+- `make clean` removes all LaTeX intermediate files in `$(DIRS)`. `make clean-pdf` additionally removes all .PDF files in `$(DIRS)` so they can be rebuilt. 
+- `make` is equivalent to `make all`. `make -s` will only echo directories and files being built.
+
+`Makefile` can also build other directories (not under source control).
+
+- The `other` target will build all directories in <code>OTHER ?= apcs &#8203;apcsp &#8203;correspondence &#8203;cv &#8203;ga &#8203;harvard-dce &#8203;ia &#8203;ig &#8203;jobs &#8203;pc1 &#8203;princeton &#8203;psb &#8203;robotics &#8203;stanford-logic &#8203;uml &#8203;wps &#8203;MassBay</code>. Each of these directories are also targets that can be built individually.
+- `make clean-all` removes all LaTeX intermediate files in `$(DIRS) $(OTHER)`. `make clean-all-pdf` additionally removes all .PDF files in `$(DIRS) $(OTHERS)` so they can be rebuilt. 
+
+
+It is possible to clean up intermediate files after making with `latexmk -c -cd` or `latexmk -C -cd` (which includes 'dvi, postscript and pdf files'), but *files would all be rebuilt in the process*.
+
+The `make clean*` targets use `clean.py`. The `clean.py` command-line options are listed below.
+
+<pre>~ % <span style="color: green;">python3 clean.py -h</span>
+usage: clean.py [-h] [-e EXT] [-n] [-v] [files ...]
+
+Delete extraneous TeX files from subdirectories.
+
+positional arguments:
+  files              .TEX files to clean.
+
+options:
+  -h, --help         show this help message and exit
+  -e EXT, --ext EXT  Extension(s) to add to .gitignore extension list.
+  -n, --dry-run      Log file removal without actual file deletion.
+  -v, --verbose      Print verbose output.</pre>
+
+Removed intermediate files corresponding to the .TEX `files` are those `.gitignore` files listed in [https://www.toptal.com/&#8203;developers/&#8203;gitignore/&#8203;api/&#8203;latex](https://www.toptal.com/developers/gitignore/api/latex) and those added with (zero or more) `-e EXT` command-line options.
 
 ## TODO
 
@@ -33,4 +60,4 @@ LaTeX public documents, templates, [Biber](https://biblatex-biber.sourceforge.ne
 
 <hr>
 
-[&#128279; permalink](https://dcpetty.github.io/latex/) and [&#128297; repository](https://github.com/dcpetty/latex/) for this page.
+[&#128279; permalink](https://dcpetty.dev/latex/) and [&#128297; repository](https://github.com/dcpetty/latex/) for this page.
