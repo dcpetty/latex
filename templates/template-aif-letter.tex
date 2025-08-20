@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docbhsletter{}
+\def\docname{Ansell}%
+\def\docdate{2021/07/16}%
+\def\doctitle{Education Program Manager}%
+\def\docemail{dcp@appinventorfoundation.org}%
+\def\docphone{+1.772.444.2710}%
+\def\docschool{App Inventor Foundation} % USED IN FOOTER
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\thispagestyle{first}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BHS leterhead template
+\setlength{\TPHorizModule}{.25in}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{0.25in}{0.25in} % start everything near the top-left corner
+\setlength{\parindent}{0pt}
+\begin{textblock}{32}(1,0)
+ \includegraphics*[scale = 0.40]{../images/app-inventor-HorizontalFoundationHighRes.png}
+\end{textblock}
+\begin{textblock}{32}(0,3)
+ \begin{minipage}{\linewidth}\centering
+  \LARGE\textsc{\docaif} \\
+  \large{\docaifaddress} \\
+  \large{\docaifcitystate\ \docaifzip}
+ \end{minipage}
+\end{textblock}
+\begin{tabularx}{\textwidth}{@{}lXr@{}}\\[0.25cm]
+ \large\bf\textit{Natalie Lao} && \large\bf\textit{} \\
+ \large\bf\textit{Executive Director} && \large\bf\textit{\docaifwww}
+\end{tabularx}
+
+\definecolor{navyblue}{rgb}{0.0, 0.0, 0.5}
+{\color{navyblue}\rule{\textwidth}{0.5pt}}\medskip%\docdate% wrapped \docdate
+%\medskip\docdate\medskip% wrapped \docdate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% to address & date
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lr}%
+  Seth ``Bob'' Ansell & \docdate \\
+  197 Vassal Lane \\
+  Cambridge MA 02138-6841
+\end{tabular*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% letter body
+\begin{multicols}{2}
+\lipsum[1-6]
+\end{multicols}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% closing
+\begin{paracol}{2}\switchcolumn
+Sincerely,
+
+% \includegraphics*[scale = 0.1]{../images/sig-dcp.png}  \\ % dcp signature
+ \docfrom \\
+ \doctitle\vspace{3ex}
+
+%\hbox{
+%\vtop{\hsize=0.1\linewidth p.s.}%
+%\vtop{\hsize=0.9\linewidth \lipsum[7]}%
+%}
+\end{paracol}
+
+\end{document}
