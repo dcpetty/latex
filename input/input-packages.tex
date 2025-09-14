@@ -1,7 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
-\usepackage{amsthm, appendix, array, booktabs, cancel, comment, empheq, endnotes, enumitem, float, graphicx, indentfirst, lastpage, lipsum, listings, makeidx, mathtools, multicol, multirow, palatino, paracol, setspace, standalone, tabularray, tabularx, verbatim, wrapfig}%
-\makeatletter\@ifclassloaded{exam}{}{\usepackage{fancyhdr,framed}}\makeatother%
-\makeatletter\@ifclassloaded{exam}{}{\usepackage[nottoc,notlot,notlof]{tocbibind}}\makeatother%
+\usepackage{amsthm, appendix, array, booktabs, cancel, ccicons, comment, empheq, endnotes, enumitem, float, graphicx, indentfirst, lastpage, lipsum, listings, makeidx, mathtools, multicol, multirow, palatino, paracol, setspace, standalone, tabularray, tabularx, verbatim, wrapfig}%
+% Also:
+% hyperref, geometry, xolor, tcolorbox, textpos, tikz, tkz-euclide, titlesec, eucal, mathdesign, inconsolata
+% @ifclassloaded{exam}: fancyhdr, framed, nottoc, notlot, notlof
+\makeatletter\@ifclassloaded{exam}{}{\usepackage{fancyhdr, framed}}\makeatother%
+\makeatletter\@ifclassloaded{exam}{}{\usepackage[nottoc, notlot, notlof]{tocbibind}}\makeatother%
 \usepackage{hyperref}\hypersetup{linktoc=all}
 \usepackage[paper=letterpaper, margin=0.75in, includeheadfoot, top=0.25in, bottom=0.5in, head=0.5in]{geometry}%
 \usepackage[usenames, dvipsnames]{xcolor}%
