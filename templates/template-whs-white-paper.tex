@@ -22,8 +22,8 @@
 \def\docschoolfax{(781) 721-7042} %
 
 \def\doclogofile{../images/whs-logo-1024x1024.png}
-\def\hlogo{\includegraphics*[scale = 0.05]{\doclogofile}}
-\def\doclogo{\href{http://winchesterps.org/schools/winchester_high_school/}{\includegraphics*[scale = 0.075]{../images/2013-blue-ribbon-school-1775x1775.png}}}
+\def\hlogo{\includegraphics*[height = 12mm]{\doclogofile}}
+\def\doclogo{\href{https://whs.winchesterps.org/}{\includegraphics*[height = 50mm]{../images/2013-blue-ribbon-school-1775x1775.png}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
 \input ../input/input-macros.tex
@@ -36,6 +36,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
 \input ../input/input-toc-idx-bib.tex
+\addbibresource{../bib/dcpbiblatex.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
 \input ../input/exam-points-solutions.tex
@@ -95,6 +96,52 @@
 \lipsum[1-4]
 \subsection{Grok}
 \lipsum[5-8]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% List Section
+\section{List Section}
+\label{List Section}
+
+In section \ref{List Section} there are examples of the various
+types of lists\footnote{These correspond to the {\tt \textless
+dl\textgreater}, {\tt \textless ol\textgreater}, \& {\tt \textless
+ul\textgreater}\ HTML tags.}:
+
+\begin{description}
+\item[Item 1 header] This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item[Item 2 header] This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item[Item 3 header] This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{description}
+
+\begin{enumerate}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{enumerate}
+
+\begin{itemize}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{itemize}
+
+This last paragraph provides a citation so that a bibliography is
+automatically included \cite{book:algorithms-4th-ed}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\printbibliography % To update, delete *.bbl
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+%\printindex % To update, delete *.ind
+
 \end{multicols}
 
 \end{document}

@@ -1,75 +1,59 @@
-\documentclass[11pt,twocolumn]{article}%
-\usepackage{amsmath,amsthm,array,comment,enumitem,fancyhdr,graphicx,hyperref,makeidx,palatino,verbatim}%
-\usepackage[psamsfonts]{amsfonts,amssymb,eucal}
-\usepackage{cmmib57,latexsym}% What about eufrak & euscript?
-\usepackage[paper=letterpaper, margin=3cm]{geometry}%
-\usepackage[small,compact]{titlesec}%
-%\usepackage[nottoc]{tocbibind}% Use \tableofcontents in {document} for TOC
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
-\def\docauthor{David C. Petty}%
-\def\doctitle{This is the title}%
-\def\docdate{2006/07/04}%
-\def\docemail{patent@massbay.net}%
-\def\docphone{+1.253.559.1990}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
+
+\def\docdcppaper{}
+\def\doctitle{This is the title}
+\def\docdate{2021/07/16}
+\def\docorg{MassBay Consulting}
+\def\docemail{dcp@massbay.consulting}
+\def\docphone{+1.772.444.2710}
+\def\docversion{0.1} % Change document version
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
-\def\foreign{\em}
-\def\etc{{\foreign etc.}}
-\def\eg{{\foreign e.g.}}
+\input ../input/input-macros.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers data
-\fancyhf{} % clear all header and footer fields
-\fancyhead[L]{\bf \leftmark}%
-\fancyhead[C]{\bf \includegraphics*[scale = 0.3]{../images/MassBayLogo1085x337.pdf}} %
-\fancyhead[R]{\bf \thepage} %
-\fancyfoot[L]{\scriptsize{\bf MassBay Consulting, LLC\\
-\url{http://massbay.net/}}}%
-\fancyfoot[C]{\scriptsize{\sc -- Confidential --}\\
-{\bf\docauthor \ \textbullet \ \texttt{\textless \docemail
-\textgreater} \textbullet \ \docphone}}%
-\fancyfoot[R]{\scriptsize \docdate\\\jobname.pdf}%
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0.5pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
-\setlength{\columnsep}{1cm}%
-\setlength{\parindent}{0cm}%
-\setlength{\parskip}{\baselineskip}%
-\setlist{nolistsep, itemsep=.125\baselineskip}%
-\setenumerate{leftmargin=*, label={\arabic*)}}%
-\setdescription{style=multiline, leftmargin=3cm}%
-\setitemize{leftmargin=*, label={\tiny$\blacktriangleright$}}%
-\numberwithin{equation}{section}%
-\pagestyle{fancy}%
+\input ../input/input-style.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
-\makeindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+\addbibresource{../bib/dcpbiblatex.bib}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibtex style
-\usepackage{natbib}% for \bibliographystyle{agsm}
-\bibliographystyle{alpha}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Dcoument
-\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title
-\title{{\bf \doctitle}}%
+\title{\textbf{\doctitle} \\\vskip \baselineskip \href{https://massbay.consulting/}{\includegraphics*[height = 0.75in]{../images/MassBayLogo1085x337.pdf}}}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Author(s) (including \thanks)
-\author{\docauthor %
-%\thanks{The author wishes to thank his family.}%
-\\%
-{\small \texttt{\textless\docemail\textgreater} \textbullet \ \docphone}\\%
-\href{http://massbay.net/}
-{\includegraphics*[scale=0.75]{../images/MassBayLogo1085x337.pdf}}\\%
-{\bf\sc Confidential}}%
+\def\docauthortwo{Clarence T. Fishburn}
+\def\docorgtwo{Simitongue Institute}
+\def\docemailtwo{clarence.fishburn@gmail.com}
+
+\fancyfoot[L]{\scriptsize\bf\begin{tabular}[t]{c@{\extracolsep{2em}}c} \docauthortwo & \docauthor \\ \lemail{\docemailtwo} & \lemail{\docemail}\end{tabular}}%
+
+% $^\dagger$% \thanks already uses \textasteriskcentered \textdagger \textdaggerdbl \textsection \textparagraph \textbardbl \textasteriskcentered\textasteriskcentered \textdagger\textdagger \dagger\dagger \textdaggerdbl\textdaggerdbl
+\author{\docauthortwo \thanks{The author wishes to thank poop.} \\ \docorgtwo \\ \small{\lemail{\docemailtwo}}
+ \and% Use \and to add author information
+ \docauthor \thanks{The authors also wish to thank their families.} \\ \docorg \\ \small{\lemail{\docemail}}}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Date
-\date{ } %
+\date{} %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
+\begin{document}
 
 \maketitle
 
+\begin{multicols*}{2}
 \begin{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Keywords & Abstract
@@ -78,10 +62,8 @@
 
 In this paper there are examples of all the useful things you can do
 with \LaTeX. This document includes settings and examples for using
-the following packages: {\tt amsmath, amsthm, comment, enumitem,
-fancyhdr, geometry, graphicx, hyperref, makeidx, natbib, palatino,
-titlesec, totcbibind, \& verbatim} plus the font packages: {\tt
-amsfonts,amssymb, cmmib57, eucal, (eufrak, euscript), \& latexsym}.
+the following packages: {\tt amsthm, appendix, array, booktabs, cancel, ccicons, comment, empheq, endnotes, enumitem, float, graphicx, indentfirst, lastpage, lipsum, listings, makeidx, mathtools, multicol, multirow, palatino, paracol, setspace, standalone, tabularray, tabularx, verbatim, wrapfig, hyperref, geometry, xolor, tcolorbox, textpos, tikz, tkz-euclide, titlesec, eucal, mathdesign, inconsolata}.
+
 }
 
 \end{abstract}
@@ -101,10 +83,7 @@ audiences.
 
 In this paper there are examples of all the useful things you can do
 with \LaTeX. This document includes settings and examples for using
-the following packages: {\tt amsmath, amsthm, comment, enumitem,
-fancyhdr, geometry, graphicx, hyperref, makeidx, natbib, palatino,
-titlesec, totcbibind, \& verbatim} plus the font packages: {\tt
-amsfonts,amssymb, cmmib57, eucal, (eufrak, euscript), \& latexsym}
+the following packages: {\tt amsthm, appendix, array, booktabs, cancel, ccicons, comment, empheq, endnotes, enumitem, float, graphicx, indentfirst, lastpage, lipsum, listings, makeidx, mathtools, multicol, multirow, palatino, paracol, setspace, standalone, tabularray, tabularx, verbatim, wrapfig, hyperref, geometry, xolor, tcolorbox, textpos, tikz, tkz-euclide, titlesec, eucal, mathdesign, inconsolata}.
 
 \subsection{The quick brown fox}
 \label{The quick brown fox}
@@ -130,9 +109,9 @@ ul\textgreater}\ HTML tags.}:
 \begin{description}
 \item[Item 1 header] This is item one\dots The quick brown fox jumps
 over the lazy dog.
-\item[Item 2 header] This is item one\dots The quick brown fox jumps
+\item[Item 2 header] This is item two\dots The quick brown fox jumps
 over the lazy dog.
-\item[Item 3 header] This is item one\dots The quick brown fox jumps
+\item[Item 3 header] This is item three\dots The quick brown fox jumps
 over the lazy dog.
 \end{description}
 
@@ -165,6 +144,23 @@ f(x) &= \int_{-\infty}^{+\infty} e^{i\theta} d\theta && \text{Integral} \\
 z &= 2^k-\binom{k}{1}2^{k-1}+\binom{k}{2}2^{k-2} &&\text{Binomial}
 \end{align}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% The Code Section
+\section{The Code Section}
+\label{The Code Section}
+
+\begin{lstlisting}[language=Python,caption=\code{m4tacolor.py} module,label=m4tacolor]
+# 345678901234567890123456789012345678901234567890123456789012345678901234567890
+#!/usr/local/env python3
+def gcd(m, n):
+    """Return GCD of m and n. GCD is defined for all integers."""
+    return abs(m) if n == 0 else gcd(n, m % n)          # abs allows any integer
+
+# https://en.wikipedia.org/wiki/Least_common_multiple
+def lcm(m, n):
+    """Return LCM of m and n. LCM is defined for all integers."""
+    return 0 if m * n == 0 else abs(m // gcd(m, n) * n) # abs allows any integer
+\end{lstlisting}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conclusion
 \section{Conclusion}
 \label{Conclusion}
@@ -174,9 +170,10 @@ automatically included \cite{book:knr}, \cite{book:middlemarch}, \&
 \cite{book:engines-of-logic}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
-\bibliography{../bib/dcpbiblatex} % To update, delete *.bbl
+\printbibliography % To update, delete *.bbl
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
 %\printindex % To update, delete *.ind
 
+\end{multicols*}
 \end{document}

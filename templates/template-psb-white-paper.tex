@@ -5,24 +5,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
 \input ../input/input-data.tex
 
-\def\docwpspaper{}
-\def\docauthor{David C. Petty}%
-\def\docemail{dpetty@winchesterps.org}%
-\def\docphone{+1.781.629.9778}%
+\def\docpsbpaper{}
 \def\docto{The powers that be}%
 \def\docdate{2018/07/16}%
 \def\docversion{0.1}%
 
-\def\docdistrict{Winchester Public Schools}
-\def\docschooladdress{40 Samoset Road} %
-\def\docschoolcitystate{Winchester MA} %
-\def\docschoolzip{01890-3442} %
-\def\docschoolphone{(781) 721-7004} %
-\def\docschoolfax{(781) 721-0016} %
+\def\docdistrict{}
 
-\def\doclogofile{../images/seal-winchester-ma-301x301-color.png}
-\def\hlogo{\includegraphics*[height=12mm]{\doclogofile}}
-\def\doclogo{\href{http://www.winchesterps.org/}{\includegraphics*[height = 50mm]{\doclogofile}}}
+\def\doclogofile{../images/TownOfBrooklineLogo-color-400x400.png}
+\def\hlogo{\includegraphics*[height = 12mm]{\doclogofile}}
+\def\doclogo{\href{http://www.brookline.k12.ma.us/}{\includegraphics*[height = 50mm]{\doclogofile}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
 \input ../input/input-macros.tex
@@ -85,11 +77,6 @@
 \begin{multicols}{2}
 \section{Foo}
 \lipsum[1-4]
-\begin{itemize}
-\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
-\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
-\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
-\end{itemize}
 \subsection{Bar}
 \lipsum[5-8]
 \section{Blap}
@@ -105,7 +92,7 @@
 \section{List Section}
 \label{List Section}
 
-In section \ref{List	 Section} there are examples of the various
+In section \ref{List Section} there are examples of the various
 types of lists\footnote{These correspond to the {\tt \textless
 dl\textgreater}, {\tt \textless ol\textgreater}, \& {\tt \textless
 ul\textgreater}\ HTML tags.}:
