@@ -8,8 +8,8 @@
 \def\docdcppaper{}
 \def\doctitle{This is the title}
 \def\docdate{2021/07/16}
-\def\docemail{dcp@mail.com}
-\def\docphone{+1.772.444.2710}
+\def\docorg{MassBay Consulting LLC}
+\def\docemail{dcp@massbay.consulting}
 \def\docversion{0.1} % Change document version
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
@@ -39,15 +39,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Author(s) (including \thanks)
 \def\docauthortwo{Clarence T. Fishburn}
-\def\docschooltwo{Simitongue Institute}
+\def\docorgtwo{Simitongue Institute}
 \def\docemailtwo{clarence.fishburn@gmail.com}
 
 \fancyfoot[L]{\scriptsize\bf\begin{tabular}[t]{c@{\extracolsep{2em}}c} \docauthortwo & \docauthor \\ \lemail{\docemailtwo} & \lemail{\docemail}\end{tabular}}%
 
-\author{\docauthortwo \\ \docschooltwo \\ \small{\lemail{\docemailtwo}}
- \and \docauthor$^\dagger$%
-  \thanks{$\dagger$ The authors wish to thank their families.} \\ \docschool \\ \small{\lemail{\docemail}}}%
-
+% $^\dagger$% \thanks already uses \textasteriskcentered \textdagger \textdaggerdbl \textsection \textparagraph \textbardbl \textasteriskcentered\textasteriskcentered \textdagger\textdagger \dagger\dagger \textdaggerdbl\textdaggerdbl
+\author{\docauthortwo \thanks{The author wishes to thank poop.} \\ \docorgtwo \\ \small{\lemail{\docemailtwo}}
+ \and% Use \and to add author information
+ \docauthor \thanks{The authors also wish to thank their families.} \\ \docorg \\ \small{\lemail{\docemail}}}%
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Date
 \date{} %
 
@@ -65,10 +66,7 @@
 
 In this paper there are examples of all the useful things you can do
 with \LaTeX. This document includes settings and examples for using
-the following packages: {\tt amsmath, amsthm, comment, enumitem,
-fancyhdr, geometry, graphicx, hyperref, makeidx, natbib, palatino,
-titlesec, totcbibind, \& verbatim} plus the font packages: {\tt
-amsfonts,amssymb, cmmib57, eucal, (eufrak, euscript), \& latexsym}.
+the following packages: {\tt amsthm, appendix, array, booktabs, cancel, ccicons, comment, empheq, endnotes, enumitem, float, graphicx, indentfirst, lastpage, lipsum, listings, makeidx, mathtools, multicol, multirow, palatino, paracol, setspace, standalone, tabularray, tabularx, verbatim, wrapfig, hyperref, geometry, xolor, tcolorbox, textpos, tikz, tkz-euclide, titlesec, eucal, mathdesign, inconsolata}.
 
 }
 
@@ -91,10 +89,7 @@ audiences.
 
 In this paper there are examples of all the useful things you can do
 with \LaTeX. This document includes settings and examples for using
-the following packages: {\tt amsmath, amsthm, comment, enumitem,
-fancyhdr, geometry, graphicx, hyperref, makeidx, natbib, palatino,
-titlesec, totcbibind, \& verbatim} plus the font packages: {\tt
-amsfonts,amssymb, cmmib57, eucal, (eufrak, euscript), \& latexsym}
+the following packages: {\tt amsthm, appendix, array, booktabs, cancel, ccicons, comment, empheq, endnotes, enumitem, float, graphicx, indentfirst, lastpage, lipsum, listings, makeidx, mathtools, multicol, multirow, palatino, paracol, setspace, standalone, tabularray, tabularx, verbatim, wrapfig, hyperref, geometry, xolor, tcolorbox, textpos, tikz, tkz-euclide, titlesec, eucal, mathdesign, inconsolata}.
 
 \lipsum[1]
 

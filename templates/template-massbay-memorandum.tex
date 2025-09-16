@@ -1,119 +1,128 @@
-\documentclass[10pt]{article}%
-\usepackage{amsmath,amsthm,array,comment,enumitem,fancyhdr,graphicx,hyperref,makeidx,multicol,palatino,verbatim}%
-\usepackage[psamsfonts]{amsfonts,amssymb,eucal}% ftp://ftp.ams.org/pub/tex/doc/amsfonts/amsfndoc.pdf
-\usepackage{cmmib57,latexsym}%
-\usepackage[paper=letterpaper, margin=1in, includeheadfoot, top=0.25in, bottom=0.5in, head=0.5in]{geometry}%
-\usepackage[small,compact]{titlesec}%
-%\usepackage[nottoc]{tocbibind}% Use \tableofcontents in {document} for TOC
-\usepackage{lipsum} % for dummy text only
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../input/input-packages.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% document data
-\def\docinit{\includegraphics*[scale = 0.4]{../images/massbaylogo1085x337.pdf}}%
-\def\docfrom{MassBay Consulting, LLC}%
-\def\docaddress{POBox 400222}%
-\def\doccitystate{Cambridge MA}%
-\def\doczip{02140-0003 USA}%
-\def\docemail{info@massbay.net}%
-\def\docphone{+1.253.559.1990}%
-\def\doctitle{Title}%
-\def\docauthor{David C. Petty}%
-\def\docdate{2014/07/16}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../input/input-data.tex
 
+\def\docmassbaymemorandum{}
+\def\docto{The powers that be}%
+\def\docname{This is the title}
+\def\docdate{2021/07/16}
+\def\docemail{dcp@massbay.consulting}
+\def\docphone{+1.772.444.2710}
+\def\docversion{0.1} % Change document version
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% macros
-\def\foreign{\em}
-\def\etc{{\foreign etc.}}
-\def\eg{{\foreign e.g.}}
+\def\doclogofile{../images/MassBayLogo1085x337.pdf}
+\def\hlogo{\includegraphics*[height = 12mm]{\doclogofile}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
-\def\femail{\ifx\docemail\empty \else\textbullet \ \hemail \fi }
-\def\hphone{\ifx\docphone\empty \else\docphone \fi }
-\def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone \fi }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../input/input-macros.tex
 
-\fancyhf{} % clear all header and footer fields
-\fancyhead[L]{\begin{tabular}{l}
- \docinit
- \end{tabular}} %
-\fancyhead[C]{\doctitle}
-\fancyhead[R]{\docdate\\Page \thepage} %
-\fancyfoot[C]{\scriptsize \bf \docfrom\ \textbullet \
-\docaddress\ \textbullet\ \doccitystate\ \doczip\ \femail \fphone}% remove extra space after e-mail?!
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0.5pt}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% first page header
-\fancypagestyle{first}{%
-\fancyhead{} % clear all header fields
-\renewcommand{\headrulewidth}{0pt}
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../input/input-header-footer.tex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
-\setlength{\columnsep}{1cm}%
-\setlength{\parindent}{0cm}%
-\setlength{\parskip}{\baselineskip}%
-\raggedright
-\setlist{nolistsep, itemsep=.125\baselineskip}%
-\setenumerate{leftmargin=*, label={\arabic*)}}%
-\setdescription{style=multiline, leftmargin=3cm}%
-\setitemize{leftmargin=*, label={\tiny$\blacktriangleright$}}%
-\numberwithin{equation}{section}%
-\pagestyle{fancy}%
+\input ../input/input-style.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
-\makeindex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../input/input-toc-idx-bib.tex
+\addbibresource{../bib/dcpbiblatex.bib}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibtex style
-\usepackage{natbib}% for \bibliographystyle{agsm}
-\bibliographystyle{alpha}
-
-%\input supp-vis \showmakeup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../input/exam-points-solutions.tex
+%\printanswers% to print solutions
 
 \begin{document}
-
 \thispagestyle{first}
 
 \begin{center}{\large\bf Memorandum}\end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header
-
 \begin{minipage}{.5\linewidth}
 \hbox{
 \vtop{\hsize=0.25\linewidth\bf To:}%
-\vtop{\hsize=0.75\linewidth The powers that be}%
+\vtop{\hsize=0.75\linewidth\docto}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf From:}%
+\vtop{\hsize=0.75\linewidth\docauthor}%
 }
 \hbox{
 \vtop{\hsize=0.25\linewidth\bf Subject:}%
-\vtop{\hsize=0.75\linewidth\doctitle}%
+\vtop{\hsize=0.75\linewidth\docname}%
 }
 \hbox{
 \vtop{\hsize=0.25\linewidth\bf Date:}%
 \vtop{\hsize=0.75\linewidth\docdate}%
-}
+}\ % new line
 \end{minipage}%
 \begin{minipage}{.5\linewidth}
 \begin{center}
-\includegraphics*[scale = 0.5]{../images/massbaylogo1085x337.pdf}%
+\href{https://massbay.consulting/}{\includegraphics*[height = 20mm]{\doclogofile}}%
 \end{center}
 \end{minipage}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% memo body
 \begin{multicols}{2}
-\lipsum[1-8]
+\section{Foo}
+\lipsum[1-4]
+\subsection{Bar}
+\lipsum[5-8]
+\section{Blap}
+\lipsum[1-4]
+\subsection{Frab}
+\lipsum[5-8]
+\section{Cruft}
+\lipsum[1-4]
+\subsection{Grok}
+\lipsum[5-8]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% List Section
+\section{List Section}
+\label{List Section}
+
+In section \ref{List Section} there are examples of the various
+types of lists\footnote{These correspond to the {\tt \textless
+dl\textgreater}, {\tt \textless ol\textgreater}, \& {\tt \textless
+ul\textgreater}\ HTML tags.}:
+
+\begin{description}
+\item[Item 1 header] This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item[Item 2 header] This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item[Item 3 header] This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{description}
+
+\begin{enumerate}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{enumerate}
+
+\begin{itemize}
+\item {\bf Item 1 header} --- This is item one\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 2 header} --- This is item two\dots The quick brown fox jumps
+over the lazy dog.
+\item {\bf Item 3 header} --- This is item three\dots The quick brown fox jumps
+over the lazy dog.
+\end{itemize}
+
+This last paragraph provides a citation so that a bibliography is
+automatically included \cite{book:algorithms-4th-ed}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\printbibliography % To update, delete *.bbl
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+%\printindex % To update, delete *.ind
+
 \end{multicols}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% closing
-Sincerely,
-
-\vspace{1cm}
-
-David C. Petty
-
-\vspace{3ex}
-
-\hbox{
-\vtop{\hsize=0.125\linewidth p.s.}%
-\vtop{\hsize=0.875\linewidth The quick brown fox jumps over the lazy dog.}%
-}
 
 \end{document}
