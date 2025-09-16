@@ -50,7 +50,7 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 
-%%%%%%%%%% first page header
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
 \fancypagestyle{first}{%
 \fancyhead{} % clear all header fields
 \fancyhead[L]{\begin{tabular}{ll}
@@ -74,6 +74,9 @@
 \def\femail{\ifx\docemail\empty \else\linkemail \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone \fi }
 \def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
+\def\fversionfile{\ifx\docversion\empty \else v\docversion \fi%
+\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
+}%
 
 %%%%%%%%%% all pages
 \pagestyle{fancy}
@@ -81,10 +84,45 @@
 \fancyhead[L]{\bf\rightmark}%
 \fancyhead[R]{\bf\thepage} %
 \fancyfoot[L]{\scriptsize\bf\docauthor\\\femail\fphone}%
-\fancyfoot[R]{\scriptsize\docdate\\\jobname.pdf}%
+\fancyfoot[R]{\scriptsize\docdate\\\fversionfile}%
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt}
+}
 \fi%\ifdefined\docdcppaper
+
+%%%%%%%%%%%%%%% docmassbaymemorandum OR docmassbaypaper %%%%%%%%%%%%%%
+\ifboolexpr{test{\ifdef{\docmassbaymemorandum}} or test{\ifdef{\docmassbaypaper}}}{ % massbay memorandum / paper template: include \def\docmassbaymemorandum{} OR \def\docmassbaypaper{} in document
+
+%%%%%%%%%% header & footer data
+\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\femail{\ifx\docemail\empty \else\linkemail \fi }
+\def\hphone{\ifx\docphone\empty \else\docphone \fi }
+\def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
+\def\fversionfile{\ifx\docversion\empty \else v\docversion \fi%
+\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
+}%
+
+%%%%%%%%%% all pages
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[L]{\bf\rightmark}%
+\fancyhead[R]{\bf\thepage} %
+\fancyfoot[L]{\scriptsize\bf\docauthor\\\femail\fphone}%
+\fancyfoot[R]{\scriptsize\docdate\\\fversionfile}%
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
+\fancypagestyle{first}{%
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt}
+}
+}{}%\ifboolexpr{test{\ifdef{\docmassbaymemorandum}} or test{\ifdef{\docmassbaypaper}}}
 
 %%%%%%%%%%%%%%%%%%%% docbhsletter OR docpsbletter %%%%%%%%%%%%%%%%%%%%
 \ifboolexpr{test{\ifdef{\docbhsletter}} or test{\ifdef{\docpsbletter}}}{ % bhs / psb letter article template: include \def\docbhsletter{} OR \def\docpsbletter{} in document
@@ -104,7 +142,7 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 
-%%%%%%%%%% first page header
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
 \fancypagestyle{first}{%
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt}
@@ -129,7 +167,7 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 
-%%%%%%%%%% first page header
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
 \fancypagestyle{first}{%
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt}
@@ -146,7 +184,7 @@
 \def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
 \def\fdistrictschool{\ifx\docdistrict\empty \ifx\docschool\empty \else\docschool\ \textbullet \fi\else\docdistrict\ \textbullet \fi}
 \def\fversionfile{\ifx\docversion\empty \else v\docversion \fi%
-%\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
+\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
 }%
 
 %%%%%%%%%% all pages
@@ -161,7 +199,7 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 
-%%%%%%%%%% first page header
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
 \fancypagestyle{first}{%
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt}
@@ -178,7 +216,7 @@
 \def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
 \def\fdistrictschool{\ifx\docdistrict\empty \ifx\docschool\empty \else\docschool\ \textbullet \fi\else\docdistrict\ \textbullet \fi}
 \def\fversionfile{\ifx\docversion\empty \else v\docversion \fi%
-%\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
+\ifx\docversion\empty \else\ \textbullet\ \fi\jobname.pdf%
 }%
 
 %%%%%%%%%% all pages
@@ -193,7 +231,7 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 
-%%%%%%%%%% first page header
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
 \fancypagestyle{first}{%
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt}
@@ -216,9 +254,9 @@
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
 
-%%%%%%%%%% first page header
+%%%%%%%%%% first page header (use \thispagestyle{first} after \begin{document})
 \fancypagestyle{first}{% for this to take effect, add \thispagestyle{first}
-%\fancyhead{} % clear all header fields
+\fancyhead{} % clear all header fields
 \fancyhead[R]{\bf\baselineskip=1.2\baselineskip\docblock} %
 }
 \fi%\ifdefined\docmath
