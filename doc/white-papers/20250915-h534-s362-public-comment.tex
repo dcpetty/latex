@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../../input/input-packages.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../../input/input-data.tex
+
+\def\docmassbaymemorandum{}
+\def\docto{Joint Committee on Education}%
+\def\docname{This is the title}
+\def\docdate{2025/09/15}
+\def\docemail{dcp@acm.org}
+\def\docphone{}
+\def\docversion{0.1} % Change document version
+
+\def\doclogofile{../images/MassBayLogo1085x337.pdf}
+\def\hlogo{\includegraphics*[height = 12mm]{\doclogofile}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../../input/input-macros.tex
+
+\definecolor{rebeccapurple}{rgb}{0.4, 0.2, 0.6}
+\newtcolorbox{sidebarquote}[2][]{%
+  enhanced,
+  boxrule=0pt,
+  colback=rebeccapurple!5!white, % Light purple background
+  breakable,
+  sharp corners,
+  borderline west={2pt}{0pt}{rebeccapurple!80!black}, % Thick left border
+  colbacktitle=rebeccapurple!80!black, % Optional: title bar
+  fonttitle=\bfseries\upshape,
+  #1
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../../input/input-toc-idx-bib.tex
+\addbibresource{../bib/dcpbiblatex.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\thispagestyle{first}
+
+\begin{center}{\large\bf Memorandum}\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header
+\begin{minipage}{.5\linewidth}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf To:}%
+\vtop{\hsize=0.75\linewidth\docto}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf From:}%
+\vtop{\hsize=0.75\linewidth\docauthor}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Subject:}%
+\vtop{\hsize=0.75\linewidth\docname}%
+}
+\hbox{
+\vtop{\hsize=0.25\linewidth\bf Date:}%
+\vtop{\hsize=0.75\linewidth\docdate}%
+}\ % new line
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{center}
+%\href{https://massbay.consulting/}{\includegraphics*[height = 20mm]{\doclogofile}}%
+\end{center}
+\end{minipage}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% memo body
+\begin{multicols}{2}
+\section{Statement}
+\label{Statement}
+
+I am writing to the \textit{Joint Committee on Education of the The 194th General Court of the Commonwealth of Massachusetts} in support of \href{https://malegislature.gov/Bills/194/H534}{H.534} \& \href{https://malegislature.gov/Bills/194/S362}{S.362} --- \textbf{An Act to expand access to computer science coursework}. The act states (in part):
+
+\begin{sidebarquote}%[title={An Act to expand access to computer science coursework}]
+
+SECTION 1. Chapter 71 of the General Laws is hereby amended by adding the following new section:-
+
+Section 100. Computer Science Education
+
+(a) Every public high school in the commonwealth shall offer not less than 1 foundational computer science course and ensure that every student has the option to access such course within a 4-year course of study.
+
+(b) A foundational computer science course offered pursuant to this section shall include rigorous mathematical or scientific concepts and be consistent with standards adopted by the board.
+
+SECTION 2. The department of elementary and secondary education shall develop a micro-credentialing process that would allow educators and other persons interested in teaching foundational computer science at the high school level to demonstrate competency in the specific digital literacy and computer science subject matter knowledge requirements that correspond with the aspects of the digital literacy and computer science curriculum that would be taught in a foundational computer science course as described in section 100 of chapter 71, as inserted by section 1. %The micro-credentialing process shall be made available to all educators currently in the process of meeting the requirements for the digital literacy and computer science 5-12 license and all others interested in teaching such coursework; provided, however, that completion of the foundational computer science micro-credentialing process would qualify such person so credentialed to teach 1 or more foundational computer science courses as described in said section 100 of said chapter 71, as so inserted, for a period not to exceed 5 years without having to achieve any other teacher certification requirements except for those determined by the department to be minimally necessary for said role. The requirements met by a person who has achieved a micro-credential may be applied toward the requirements necessary for achieving full certification to teach computer science.
+
+[...]
+
+SECTION 3. Section 1 shall take effect for school years beginning on or after July 1, 2026.
+\end{sidebarquote}
+
+
+This last paragraph provides a citation so that a bibliography is
+automatically included \cite{book:algorithms-4th-ed}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\printbibliography % To update, delete *.bbl
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
+%\printindex % To update, delete *.ind
+
+\end{multicols}
+
+\end{document}

@@ -21,7 +21,18 @@
     attach title to upper={},
     #1,
 }
-
+\definecolor{rebeccapurple}{rgb}{0.4, 0.2, 0.6}
+\newtcolorbox{sidebarquote}[2][]{%
+  enhanced,
+  boxrule=0pt,
+  colback=rebeccapurple!5!white, % Light purple background
+  breakable,
+  sharp corners,
+  borderline west={2pt}{0pt}{rebeccapurple!80!black}, % Thick left border
+  colbacktitle=rebeccapurple!80!black, % Optional: title bar
+  fonttitle=\bfseries\upshape,
+  #1
+}
 \def\foreign{\em}
 \def\etc{{\foreign etc.}}
 \def\eg{{\foreign e.g.}}
