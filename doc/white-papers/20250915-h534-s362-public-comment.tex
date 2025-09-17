@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}%
+\documentclass[12pt]{article}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
 \input ../../input/input-packages.tex
 
@@ -6,8 +6,8 @@
 \input ../../input/input-data.tex
 
 \def\docmassbaymemorandum{}
-\def\docto{Joint Committee on Education}%
-\def\docname{This is the title}
+\def\docto{MA Joint Committee on Education}%
+\def\docname{Testimony in favor of \href{https://malegislature.gov/Bills/194/H534}{H.534} \& \href{https://malegislature.gov/Bills/194/S362}{S.362}}
 \def\docdate{2025/09/15}
 \def\docemail{dcp@acm.org}
 \def\docphone{}
@@ -19,28 +19,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
 \input ../../input/input-macros.tex
 
-\definecolor{rebeccapurple}{rgb}{0.4, 0.2, 0.6}
-\newtcolorbox{sidebarquote}[2][]{%
-  enhanced,
-  boxrule=0pt,
-  colback=rebeccapurple!5!white, % Light purple background
-  breakable,
-  sharp corners,
-  borderline west={2pt}{0pt}{rebeccapurple!80!black}, % Thick left border
-  colbacktitle=rebeccapurple!80!black, % Optional: title bar
-  fonttitle=\bfseries\upshape,
-  #1
-}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
 \input ../../input/input-header-footer.tex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
 \input ../../input/input-style.tex
 
+\newcounter{daggerfootnote}
+\newcommand*{\daggerfootnote}[1]{%
+ \setcounter{daggerfootnote}{\value{footnote}}%
+ \renewcommand*{\thefootnote}{\fnsymbol{footnote}}%
+ \footnote[2]{#1}%
+ \setcounter{footnote}{\value{daggerfootnote}}%
+ \renewcommand*{\thefootnote}{\arabic{footnote}}%
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
 \input ../../input/input-toc-idx-bib.tex
-\addbibresource{../bib/dcpbiblatex.bib}
+\addbibresource{../../bib/dcpbiblatex.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
 \input ../../input/exam-points-solutions.tex
@@ -49,7 +45,9 @@
 \begin{document}
 \thispagestyle{first}
 
-\begin{center}{\large\bf Memorandum}\end{center}
+\begin{center}{\LARGE\bf Memorandum
+\daggerfootnote{The views expressed here are solely those of the author and do not necessarily reflect the views of their employer or affiliated institutions.}
+}\end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% header
 \begin{minipage}{.5\linewidth}
@@ -77,11 +75,16 @@
 \end{minipage}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% memo body
-\begin{multicols}{2}
+%\begin{multicols}{2}
 \section{Statement}
 \label{Statement}
 
-I am writing to the \textit{Joint Committee on Education of the The 194th General Court of the Commonwealth of Massachusetts} in support of \href{https://malegislature.gov/Bills/194/H534}{H.534} \& \href{https://malegislature.gov/Bills/194/S362}{S.362} --- \textbf{An Act to expand access to computer science coursework}. The act states (in part):
+This is written testimony in support of \href{https://malegislature.gov/Bills/194/H534}{H.534} \& \href{https://malegislature.gov/Bills/194/S362}{S.362} --- \textbf{An Act to expand access to computer science coursework} to the \textit{Joint Committee on Education of the The 194th General Court of the Commonwealth of Massachusetts}. I urge the committee to vote in favor of these acts.
+
+\section{The Act}
+\label{The Act}
+
+The act states (in part):
 
 \begin{sidebarquote}%[title={An Act to expand access to computer science coursework}]
 
@@ -100,9 +103,40 @@ SECTION 2. The department of elementary and secondary education shall develop a 
 SECTION 3. Section 1 shall take effect for school years beginning on or after July 1, 2026.
 \end{sidebarquote}
 
+\section{Discussion}
+\label{Discussion}
 
-This last paragraph provides a citation so that a bibliography is
-automatically included \cite{book:algorithms-4th-ed}.
+Computing education is more than learning to code --- it is a transformative approach that equips students with essential skills for today's world. High-quality computing instruction encourages cross-curricular thinking, connecting concepts in science, mathematics, engineering, and the arts and humanities. It fosters open-ended inquiry, iterative problem-solving, and creativity, inviting students to ask meaningful questions and design solutions through hands-on projects. By making and reflecting on real-world artifacts, students build technical proficiency and develop resilience, collaboration, and the ability to analyze and synthesize information --- skills foundational for lifelong learning and tackling society's most pressing challenges.
+
+Access to computing education is not shared equally across all demographic groups or schools in Massachusetts, leaving many students --- particularly those from underrepresented or underserved communities --- without the foundational skills needed for the modern workforce. This legislation is a crucial step forward, ensuring every public-high-school student can learn foundational computer science --- empowering them to become \textit{makers} and not just \textit{users} of technology. In requiring all public high schools to offer at least one rigorous computer-science course, this legislation is a vital first step toward equitably preparing students for a broad range of future careers.
+
+Beyond technical knowledge, computer science education fosters critical problem-solving, logical reasoning, creativity, and collaboration --- skills valuable across the curriculum, not just for coding. These abilities help students to tackle complex challenges, think analytically, and adapt to new situations. Expanding access to computer science prepares students not only for technology careers, but also equips them with lifelong skills essential for success in a rapidly changing world.
+
+This legislation also addresses the challenge of qualified instruction by creating a micro-credentialing process for educators. This innovative approach is not just for teaching the proposed foundational computer-science courses, but also supports the broader Massachusetts Digital Literacy and Computer Science (\href{https://www.doe.mass.edu/frameworks/dlcs.pdf}{DLCS}) frameworks. By enabling educators to demonstrate their competency in digital literacy and computer science, the credentialing process expands the pool of qualified instructors who can deliver high-quality instruction aligned with DLCS standards, without unnecessary barriers. This flexibility will accelerate the growth of computer science programs statewide and ensure that instruction remains consistent with Massachusetts' educational goals.
+
+Passing \href{https://malegislature.gov/Bills/194/H534}{H.534} and \href{https://malegislature.gov/Bills/194/S362}{S.362} is a first necessary step towards empowering students, strengthening our workforce, and ensuring Massachusetts remains a leader in education and innovation. I urge the legislature to support these important measures.
+
+\section{Background}
+\label{Background}
+
+I am writing this endorsement of \href{https://malegislature.gov/Bills/194/H534}{H.534} \& \href{https://malegislature.gov/Bills/194/S362}{S.362} based on my \href{https://dcpetty.dev/cv/}{background} and experience as an educator, curriculum developer, and contributor to education policy. 
+
+\begin{itemize}
+\item For twenty years I was an educator teaching computing, robotics, engineering, and mathematics in Massachusetts public high schools.
+\item For six years I was co-president of the \href{https://csteachers.org}{Computer Science Teachers Association}, \href{https://community.csteachers.org/cstamassachusetts/}{Greater Boston} chapter and co-founder of the CSTA New England Regional Conference (2017–).
+\item I was a member of the Massachusetts Department of Elementary and Secondary Education (\href{https://www.doe.mass.edu/}{DESE}) Curriculum Framework for Digital Literacy and Computer Science (\href{https://www.doe.mass.edu/stem/dlcs/}{DLCS}) Review / Implementation Panels (2015–2017) --- a co-author of \textit{\href{https://www.doe.mass.edu/frameworks/dlcs.pdf}{Massachusetts Curriculum Framework: DLCS K-12}}.
+\item I was a member of the DESE DLCS MassCore Working Group (2018). 
+\item I was a co-author of the \textit{\href{https://www.doe.mass.edu/stem/dlcs/curriculum-guide.pdf}{Massachusetts DLCS Curriculum Guide}} (2021–2025) and the \textit{\href{https://edc.org/resources/massachusetts-k-12-computer-science-curriculum-guide/}{Massachusetts K–12 Computer Science Curriculum Guide}} (2017).
+\item I was a member of the Massachusetts Tests for Educator Licensure (\href{https://www.doe.mass.edu/mtel/}{MTEL}) DLCS Content Advisory Committee (2021–2022).
+\item I am currently Education Program Manager at the \href{https://appinventorfoundation.org/}{App Inventor Foundation} --- \textit{``Our mission is to empower people across the globe to create apps that improve their lives and uplift their communities.''}
+\end{itemize}
+
+My background and experience --- and my observation of the effect that computing education has had on the over 2,000 students I have taught --- prompts me to write in wholehearted support of \href{https://malegislature.gov/Bills/194/H534}{H.534} \& \href{https://malegislature.gov/Bills/194/S362}{S.362} as a necessary first step towards access to these valuable curricula and habits of mind for every public-high-school student in Massachusetts.
+
+\section{Submission}
+\label{Submission}
+
+This written testimony submitted on \docdate\ to Fiona Bruce-Baiden \texttt{\href{mailto:jointcommittee.education@malegislature.gov}{<jointcommittee.education\allowbreak @malegislature.gov>}} and Dennis Burke \texttt{\href{mailto:Dennis.Burke\allowbreak @masenate.gov}{<Dennis.Burke@masenate.gov>}} including \textit{EDUCATION COMMITTEE TESTIMONY H.534 / S.362} in the subject line.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
 \printbibliography % To update, delete *.bbl
@@ -110,6 +144,6 @@ automatically included \cite{book:algorithms-4th-ed}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Index
 %\printindex % To update, delete *.ind
 
-\end{multicols}
+%\end{multicols}
 
 \end{document}
