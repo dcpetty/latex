@@ -35,7 +35,7 @@
 \ifdefined\docletter % Letter template: include \def\docletter{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\begin{adjustbox}{max width=0.25\textwidth}\texttt{\textless\docemail\textgreater}\end{adjustbox} \fi }
+\def\hemail{\ifx\docemail\empty \else\begin{adjustbox}{max width=0.33\textwidth}\linkemail\end{adjustbox} \fi }
 \def\femail{\ifx\docemail\empty \else\textbullet \ \linkemail\ \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone\ \fi }
 \def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone\ \fi }
@@ -58,10 +58,10 @@
  \hskip 1cm \ & \docaddress
  \end{tabular}} %
 \fancyhead[C]{\begin{tabular}{c}
- {\small}\hemail\\\doccitystate % Readded \hemail
+ \ifboolexpr{test{\ifdefempty{\docphone}}}{}{\hemail}\\\doccitystate % Readded \hemail
  \end{tabular}} %
 \fancyhead[R]{\begin{tabular}{r}
- \hphone\\\doczip % Readded \hphone
+ \ifboolexpr{test{\ifdefempty{\docphone}}}{\hemail}{\hphone}\\\doczip % Readded \hphone
  \end{tabular}} %
 }
 \fi%\ifdefined\docletter
@@ -70,7 +70,7 @@
 \ifdefined\docdcppaper % dcp paper article template: include \def\docdcppaper{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\hemail{\ifx\docemail\empty \else\linkemail \fi }
 \def\femail{\ifx\docemail\empty \else\linkemail \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone \fi }
 \def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
@@ -99,7 +99,7 @@
 \ifboolexpr{test{\ifdef{\docmassbaymemorandum}} or test{\ifdef{\docmassbaypaper}}}{ % massbay memorandum / paper template: include \def\docmassbaymemorandum{} OR \def\docmassbaypaper{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\hemail{\ifx\docemail\empty \else\linkemail \fi }
 \def\femail{\ifx\docemail\empty \else\linkemail \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone \fi }
 \def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
@@ -128,7 +128,7 @@
 \ifboolexpr{test{\ifdef{\docbhsletter}} or test{\ifdef{\docpsbletter}}}{ % bhs / psb letter article template: include \def\docbhsletter{} OR \def\docpsbletter{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\hemail{\ifx\docemail\empty \else\linkemail\ \fi }
 \def\femail{\ifx\docemail\empty \else\textbullet \ \linkemail\ \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone\ \fi }
 \def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone\ \fi }
@@ -153,7 +153,7 @@
 \ifboolexpr{test{\ifdef{\docwhsletter}} or test{\ifdef{\docwpsletter}}}{ % whs / wps letter article template: include \def\docwhsletter{} OR \def\docwpsletter{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\hemail{\ifx\docemail\empty \else\linkemail\ \fi }
 \def\femail{\ifx\docemail\empty \else\textbullet \ \linkemail\ \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone\ \fi }
 \def\fphone{\ifx\docphone\empty \else\textbullet \ \hphone\ \fi }
@@ -178,7 +178,7 @@
 \ifboolexpr{test{\ifdef{\docbhspaper}} or test{\ifdef{\docpsbpaper}}}{ % bhs / psb paper article template: include \def\docbhspaper{} OR \def\docpsbpaper{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\hemail{\ifx\docemail\empty \else\linkemail \fi }
 \def\femail{\ifx\docemail\empty \else\linkemail \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone \fi }
 \def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
@@ -210,7 +210,7 @@
 \ifboolexpr{test{\ifdef{\docwhspaper}} or test{\ifdef{\docwpspaper}}}{ % whs / wps paper article template: include \def\docwhspaper{} OR \def\docwpspaper{} in document
 
 %%%%%%%%%% header & footer data
-\def\hemail{\ifx\docemail\empty \else\texttt{\textless\docemail\textgreater} \fi }
+\def\hemail{\ifx\docemail\empty \else\linkemail \fi }
 \def\femail{\ifx\docemail\empty \else\linkemail \fi }
 \def\hphone{\ifx\docphone\empty \else\docphone \fi }
 \def\fphone{\ifx\docphone\empty \else\ifx\docemail\empty \else\ \textbullet\ \fi\hphone \fi }
