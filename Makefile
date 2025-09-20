@@ -5,6 +5,9 @@ DIRS ?= doc/apcs doc/bhs doc/dlcs doc/gre doc/math doc/random \
 	doc/white-papers templates
 OTHER ?= apcs apcsp correspondence cv ga harvard-dce ia ig \
 	jobs pc1 psb princeton robotics stanford-logic uml wps MassBay
+INPUT := $(wildcard $(dir $(realpath $(lastword $(MAKEFILE_LIST))))input/input-*.tex)
+#$(info INPUT: $(INPUT))
+
 MAKEFILE := $(realpath ./Makefile)
 
 PDFLATEX := texi2dvi -p -q
@@ -16,7 +19,14 @@ CLEANPDF := python3 clean.py -e pdf
 
 all : $(DIRS)
 
-other: $(OTHER)
+other : $(OTHER)
+
+$(INPUT) : ;	# never rebuild $(INPUT)
+
+# Making %.tex targets dependent on $(INPUT) yields circular deps.
+# Also, changing any input-*.tex will lead to total rebuilds.
+#%.tex : $(INPUT)
+#	@: $(info $(notdir $*) based on INPUT recipe)
 
 %.pdf : %.tex
 	@echo "##################################################"
@@ -34,7 +44,7 @@ $(sort $(DIRS) $(OTHER)) : FORCE
 	  --makefile=$(MAKEFILE) \
 	    $(patsubst %.tex,%.pdf,$(notdir $(wildcard $@/*.tex)))
 
-# Using latexmk for $(CLEAN)
+# Using clean.py for $(CLEAN)
 
 clean :
 	@for DIR in $(DIRS); do \
