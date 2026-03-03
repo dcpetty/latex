@@ -172,7 +172,7 @@ Breaking down the components for $FVIFA = \frac{\left( 1 + I \right)^{N} - 1}{I}
 \item $\div I$ (The Accumulation Scaling): Dividing by the rate converts that growth into the total sum of the periodic stream.
 \end{itemize}
 
-Real-world use: ``If I save \$100 a month for 10 years at 5\%, what is my total balance?'' $FV=P \times FVIFA$
+Real-world use: ``If I save \$100 a month for 10 years at 5\%, what is my total balance?'' $FV = P \times FVIFA$
 
 \subsubsection{PVIFA}\label{sec:pvifa}
 
@@ -185,6 +185,8 @@ Breaking down the components for the $PVIFA$:
 
 \item $\div I$ (The Present Value Scaling): This scales that difference into the total "lump sum" equivalent you would need today to generate those future payments.
 \end{itemize}
+
+Real-world use: ``If I pay \$2,000 a month for 30 years at 6\%, how much house can I buy today?'' $PV = P \times PVIFA$
 
 Rewriting \eqref{eqn:fv}, \eqref{eqn:pv}, \eqref{eqn:pmt-fv}, and \eqref{eqn:pmt-pv} in terms of these simplifying functions yields:
 
@@ -262,7 +264,7 @@ def calcI(n, pmt, pv, fv, m=100000):
 TODO
 \begin{itemize}
 \item Describe under what circumstances $I$ \& $N$ calculations fail.
-\item Add calculations for \textit{total interest} (\texttt{\href{https://support.google.com/docs/answer/3093211}{CUMIPMT}}) and \textit{total principle} (\texttt{\href{https://support.google.com/docs/answer/3093159}{CUMPRINC}}) --- and other useful calculations?
+\item Add calculations for \textit{total interest} (\texttt{\href{https://support.google.com/docs/answer/3093211}{CUMIPMT}}) and \textit{total principle} (\texttt{\href{https://support.google.com/docs/answer/3093159}{CUMPRINC}}) --- and other useful calculations ($ACC$, $FVIFA$, $PVIFA$)?
 \end{itemize}
 }
 
