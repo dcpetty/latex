@@ -140,13 +140,19 @@ There is no closed-form algebraic solution for $I$. It can be calculated using t
 
 \subsection{Simplifying functions}\label{sec:simplifying}
 
-Other simplifying functions that encapsulate other common financial vocabulary ($ACC(I, N)$\footnote{interest \underline{ACC}umulation factor}, $FVIFA(I, N)$\footnote{\underline{F}uture \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}, and $PVIFA(I, N)$\footnote{\underline{P}resent \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}) are found as multipliers in \eqref{eqn:tvm}, \eqref{eqn:fv}, and \eqref{eqn:pv}.
+Other simplifying functions that encapsulate common financial vocabulary ($ACC(I, N)$\footnote{interest \underline{ACC}umulation factor}, $FVIFA(I, N)$\footnote{\underline{F}uture \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}, and $PVIFA(I, N)$\footnote{\underline{P}resent \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}) are found as multipliers in \eqref{eqn:tvm}, \eqref{eqn:fv}, and \eqref{eqn:pv}.
 
 \begin{align}
-\Aboxed{ACC(I, N) &= \left( 1 + I \right)^{N}} \label{eqn:acc}\\
+\Aboxed{ACC(I, N) &= \left( 1 + I \right)^{N}} \label{eqn:acc} 
+\end{align}
+
+\begin{align}
 FVIFA(I, N) &= \frac{\left( 1 + I \right)^{N} - 1}{I} \\
-\Aboxed{FVIFA(I, N) &= \frac{ACC(I, N) - 1}{I}} \label{eqn:fvifa}\\
- &= PVIFA(I, N) \times ACC(I, N) \\
+\Aboxed{FVIFA(I, N) &= \frac{ACC(I, N) - 1}{I}} \label{eqn:fvifa} \\
+ &= PVIFA(I, N) \times ACC(I, N)
+\end{align}
+
+\begin{align}
 PVIFA(I, N) &= \frac{1 - \left( 1 + I \right)^{-N}}{I} \\
  &= \frac{\left( 1 + I \right)^{N} \left(1 - \left( 1 + I \right)^{-N}\right)}{\left( 1 + I \right)^{N} \left( I \right)} \\
   &= \frac{\left( 1 + I \right)^{N}  - 1}{\left( 1 + I \right)^{N} \left( I \right)} \\
