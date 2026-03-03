@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+\input ../../input/input-packages.tex
+\usepackage{needspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document data
+\input ../../input/input-data.tex
+
+\def\dochomework{}
+\def\hw{Financial calculations} % Change document homework header
+\def\docdate{2026/03/01} % Change document date
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Macros
+\input ../../input/input-macros.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Headers & footers
+\input ../../input/input-header-footer.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document style
+\input ../../input/input-style.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents / index / bibliography
+\input ../../input/input-toc-idx-bib.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Points and solutions
+\input ../../input/exam-points-solutions.tex
+%\printanswers% to print solutions
+
+\begin{document}
+\setlength{\baselineskip}{1.2\baselineskip}%
+\begin{multicols*}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\prob{Exercise (1)}
+\begin{center}\includegraphics[width=2in]{../../images/aif-logo-white.png}\end{center}
+
+\section{Background}\label{sec:background}
+\statement{What are the mathematics behind the financial calculations of the \href{https://h10032.www1.hp.com/ctg/Manual/c00363319.pdf}{HP 12c financial calculator} or \href{https://support.google.com/docs/table/25273}{Google Sheets financial formulas}?}
+
+The goal of this exercise is to implement an \href{https://appinventor.mit.edu/}{MIT App Inventor} app to mimic the behavior of the \href{https://h10032.www1.hp.com/ctg/Manual/c00363319.pdf}{HP 12c}. This calculator has many financial calculations available, but the basic operation includes five buttons in the top row to calculate \textit{\texttt{n}}, \texttt{i}, \texttt{PV}, \texttt{PMT}, or \texttt{FV}, given the values of the other four\footnote{
+These correspond to the \href{https://support.google.com/docs/table/25273}{Google Sheets} functions:
+\begin{itemize}
+ \item\href{https://support.google.com/docs/answer/3093183}{\texttt{NPER(rate, payment\_amount, present\_value, [future\_value], [end\_or\_beginning])}}
+ \item\href{https://support.google.com/docs/answer/3093257}{\texttt{RATE(number\_of\_periods, payment\_per\_period, present\_value, [future\_value], [end\_or\_beginning], [rate\_guess])}}
+ \item\href{https://support.google.com/docs/answer/3093243}{\texttt{PV(rate, number\_of\_periods, payment\_amount, [future\_value], [end\_or\_beginning])}}
+ \item\href{https://support.google.com/docs/answer/3093185}{\texttt{PMT(rate, number\_of\_periods, present\_value, [future\_value], [end\_or\_beginning])}}
+ \item\href{https://support.google.com/docs/answer/3093224}{\texttt{FV(rate, number\_of\_periods, payment\_amount, [present\_value], [end\_or\_beginning])}}
+\end{itemize}}.
+
+\section{Equations}\label{sec:equations}
+The basic loan and annuity calculations with regular fixed periodic payments / deposits and a fixed periodic interest rate involve the following variables:
+
+\begin{center}
+\setlength{\extrarowheight}{1.5pt}
+\begin{tabularx}{0.95\columnwidth}{|c|X|} \hline
+$N$ & number of payments / deposits  \\ \hline
+$I$ & fixed periodic interest rate \\ \hline
+$PV$ & present value of the loan / annuity \\ \hline
+$P$ & fixed periodic payment / deposit amount \\ \hline
+$FV$ & future value of the loan / annuity \\ \hline
+\end{tabularx}
+\end{center}
+
+Derevation of the \textbf{\href{https://en.wikipedia.org/wiki/Time_value_of_money}{Time Value of Money}} formula \eqref{eqn:tvm-master} shows the relationship between the three terms: the future value $FV$, the exponential growth of $PV$ over $N$ periods and the adjusted exponential growth for each periodic deposit $P$ over $N$ periods --- \textit{deposited at the end}\footnote{Annuities with end-of-period deposits are called \textit{ordinary annuities} (also `annuity immediate') marked as END; annuities with beginning-of-period deposits are called `annuity due' marked as BGN. The formulas for beginning-of-period annuities must include an additional factor of $\left(1 + I\right)$. For beginning-of-period payments, substitute $P' = P \left(1 + I\right)$ for $P$ in \eqref{eqn:tvm-master}.} of each period --- when the interest is also applied. 
+
+\begin{align}
+0 &= \underbrace{FV}_{label} + \underbrace{\left[ PV \left( 1 + I \right)^{N} \right] \label{eqn:tvm-master}}_{label} \\
+ &+ \underbrace{\left[ P + P \left( 1 + I \right)^{1} + P \left( 1 + I \right)^{2} + \cdots + P \left( 1 + I \right)^{N - 1} \right]}_{label} \nonumber \\
+ &= FV + \left[ PV \left( 1 + I \right)^{N} \right] \\
+ &+ P \left[ \left( 1 + I \right)^{0} + \left( 1 + I \right)^{1} + \left( 1 + I \right)^{2} + \cdots + \left( 1 + I \right)^{N - 1} \right] \nonumber \\
+ &= FV + \left[ PV \left( 1 + I \right)^{N} \right] + P \left[ \sum_{k=0}^{N - 1} \left( 1 + I \right)^{k} \right] \label{eqn:tvm-sum}
+\end{align}
+
+The third term in \eqref{eqn:tvm-sum} is a \href{https://en.wikipedia.org/wiki/Geometric_series#Convergence_of_the_series_and_its_proof}{\textit{geometric series}} whose sum $S_{n}$ is given by \eqref{eqn:series}.
+
+\begin{align}
+S_{n} \equiv& \sum_{k=0}^{n} r^{k} = \frac{\left( 1 - r^{n + 1} \right)}{\left( 1 - r \right)} &&= \frac{\left( r^{n + 1} - 1 \right)}{\left( r - 1 \right)} \label{eqn:series} %\\
+% & \sum_{k=1}^{n} r^{k} = \frac{r \left( 1 - r^{n} \right)}{\left( 1 - r \right)} &&= \frac{r \left( r^{n} - 1 \right)}{\left( r - 1 \right)}
+\end{align}
+
+Substituting $r = \left( 1 + I \right)$ and $n = \left( N - 1 \right)$ into \eqref{eqn:series} for the right-most bracketed expression of \eqref{eqn:tvm} yields:
+
+\begin{align}
+0 &= FV + \left[ PV \left( 1 + I \right)^{N} \right] + P \left[ \sum_{k=0}^{N - 1} \left( 1 + I \right)^{k} \right] \\
+0 &= FV + \left[ PV \left( 1 + I \right)^{N} \right] + P \left[ \frac{\left( \left( 1 + I \right)^{\left( N - 1 \right) + 1} - 1 \right)}{\left( \left( 1 + I \right) - 1 \right)} \right] \\
+\Aboxed{0 &= FV + \left[ PV \left( 1 + I \right)^{N} \right] + P \left[\frac{\left( 1 + I \right)^{N} - 1}{I} \right]} \label{eqn:tvm}
+\end{align}
+
+The \textbf{\href{https://en.wikipedia.org/wiki/Time_value_of_money}{Time Value of Money}} formula \eqref{eqn:tvm} is a balanced financial transaction. The sum of the present values of all cash flows must balance and equal zero. In \eqref{eqn:tvm} $I > 0$ and $N > 0$, but $FV$, $PV$ and $P$ can be positive or negative. That implies a \textit{cash flow sign convention}: think of it as your pocket being the center of the universe. If money leaves your pocket (investments, payments), it is negative. If money enters your pocket (loans received, withdrawals), it is positive.
+
+\subsection{Future value}\label{sec:fv}
+
+Solving \eqref{eqn:tvm} for $FV$ yields \eqref{eqn:fv}.
+
+\begin{align}
+\Aboxed{FV &= -\left[ \left[ PV \left( 1 + I \right)^{N} \right] + P \left[\frac{\left( 1 + I \right)^{N} - 1}{I} \right] \right]} \label{eqn:fv}
+\end{align}
+
+\subsection{Present value}\label{sec:pv}
+
+Solving \eqref{eqn:tvm} for $PV$ yields \eqref{eqn:pv}.
+
+\begin{align}
+PV &= -\left[ \frac{FV + P \left[\frac{\left( 1 + I \right)^{N} - 1}{I} \right]}{\left( 1 + I \right)^{N}} \right] \\
+ &= -\left[ \frac{FV}{\left( 1 + I \right)^{N}} + \frac{P}{\left( 1 + I \right)^{N}} \left[\frac{\left( 1 + I \right)^{N} - 1}{I} \right] \right] \\
+\Aboxed{PV &= -\left[ \frac{FV}{\left( 1 + I \right)^{N}} + P \left[\frac{1 - \left( 1 + I \right)^{-N}}{I} \right] \right]} \label{eqn:pv}
+\end{align}
+
+\subsection{Payment}\label{sec:pmt}
+
+Solving \eqref{eqn:fv} for $P$ yields \eqref{eqn:pmt-fv}.
+
+\begin{align}
+\Aboxed{P &= -\left[ \frac{FV + \left[ PV \left( 1 + I \right)^{N} \right]}{\left[\frac{\left( 1 + I \right)^{N} - 1}{I} \right]} \right]} \label{eqn:pmt-fv}
+\end{align}
+
+Solving \eqref{eqn:pv} for $P$ yields \eqref{eqn:pmt-pv}.
+
+\begin{align}
+\Aboxed{PMT &= -\left[ \frac{\left[ FV \left( 1 + I \right)^{-N} \right] + PV}{\left[\frac{1 - \left( 1 + I \right)^{-N}}{I} \right]} \right]} \label{eqn:pmt-pv}
+\end{align}
+
+\subsection{Number of periods}\label{sec:nper}
+
+Solving \eqref{eqn:tvm} for $N$ yields \eqref{eqn:nper}.
+
+\begin{align}
+0 &= FV + PV \left( 1 + I \right)^{N} + \frac{P \left( 1 + I \right)^{N}}{I} - \frac{P}{I} \\
+\frac{P}{I} - FV &= \frac{P \left( 1 + I \right)^{N}}{I} + PV \left( 1 + I \right)^{N} \\
+P - FV \times I &= P \left( 1 + I \right)^{N} + PV \times I \left( 1 + I \right)^{N} \\
+P - FV \times I &= \left[ P + PV \times I \right ] \left( 1 + I \right)^{N} \\
+\frac{P - FV \times I}{P + PV \times I} &= \left( 1 + I \right)^{N} \\
+\ln\left[ \frac{P - FV \times I}{P + PV \times I} \right] &= \ln\left[ \left( 1 + I \right)^{N} \right] = N \ln\left[ 1 + I \right] \\
+\Aboxed{N &= \frac{\ln\left[ \frac{P - FV \times I}{P + PV \times I} \right]}{\ln\left[ 1 + I \right]}} \label{eqn:nper}
+\end{align}
+
+\subsection{Interest rate}\label{sec:int}
+
+There is no closed-form algebraic solution for $I$. It can be calculated using the \href{https://en.wikipedia.org/wiki/Newton's_method}{Newton-Raphson method} to find the root of the \textbf{\href{https://en.wikipedia.org/wiki/Time_value_of_money}{Time Value of Money}} formula \eqref{eqn:tvm}. Another approach --- since we will ultimately implement this in a \href{https://appinventor.mit.edu/}{MIT App Inventor} app to mimic the behavior of the \href{https://h10032.www1.hp.com/ctg/Manual/c00363319.pdf}{HP 12c} and don't necessarily want to include lessons on the \href{https://en.wikipedia.org/wiki/Newton's_method}{Newton-Raphson method} --- is to exhaustively test interest rates to an order of magnitude $M$ to find one closest to the root of \eqref{eqn:tvm}. See section \ref{sec:implementation}.
+
+\subsection{Simplifying functions}\label{sec:simplifying}
+
+Other simplifying functions that encapsulate other common financial vocabulary are found as multipliers in \eqref{eqn:tvm}, \eqref{eqn:fv}, and \eqref{eqn:pv}.
+
+\begin{align}
+ACC\footnote{interest \underline{ACC}umulation factor}(I, N) &= \boxed{\left( 1 + I \right)^{N}} \label{eqn:acc}\\
+FVIFA\footnote{\underline{F}uture \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}(I, N) &= \frac{\left( 1 + I \right)^{N} - 1}{I} \\
+ &= \boxed{ \frac{ACC(I, N) - 1}{I}} \label{eqn:fvifa}\\
+ &= PVIFA(I, N) \times ACC(I, N) \\
+PVIFA\footnote{\underline{P}resent \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}(I, N) &= \frac{1 - \left( 1 + I \right)^{-N}}{I} \\
+ &= \frac{\left( 1 + I \right)^{N} \left(1 - \left( 1 + I \right)^{-N}\right)}{\left( 1 + I \right)^{N} \left( I \right)} \\
+  &= \frac{\left( 1 + I \right)^{N}  - 1}{\left( 1 + I \right)^{N} \left( I \right)} \\
+ &= \boxed{\frac{ACC(I, N) - 1}{ACC(I, N) \left( I \right)}} \label{eqn:pvifa} \\
+ &= FVIFA(I, N) \div ACC(I, N)
+\end{align}
+
+\subsubsection{FVIFA}\label{sec:fvifa}
+
+Breaking down the components for $FVIFA = \frac{\left( 1 + I \right)^{N} - 1}{I}$:
+
+\begin{itemize}
+\item $\left(1+I\right)^{N}$ (The Growth Engine): This represents how much \$1 would grow if left alone for $N$ periods.
+
+\item $-1$ (The Principal Removal): We subtract $1$ to isolate the "growth" or "spread" created by the series of payments rather than just a single lump sum.
+
+\item $\div I$ (The Accumulation Scaling): Dividing by the rate converts that growth into the total sum of the periodic stream.
+\end{itemize}
+
+Real-world use: ``If I save \$100 a month for 10 years at 5\%, what is my total balance?'' $FV=P \times FVIFA$
+
+\subsubsection{PVIFA}\label{sec:pvifa}
+
+Breaking down the components for the $PVIFA$:
+
+\begin{itemize}
+\item $\left(1+I\right)^{-N}$ (The Discount Factor): This tells you the value of \$1 received $N$ periods in the future. Because the exponent is negative, the value is always less than \$1.
+
+\item $1-(...)$ (The Inverse Relationship): This calculates the "missing" interest --- the difference between the total face value of the payments and their current discounted value.
+
+\item $\div I$ (The Present Value Scaling): This scales that difference into the total "lump sum" equivalent you would need today to generate those future payments.
+\end{itemize}
+
+Rewriting \eqref{eqn:fv}, \eqref{eqn:pv}, \eqref{eqn:pmt-fv}, and \eqref{eqn:pmt-pv} in terms of these simplifying functions yields:
+
+\begin{align}
+FV &= -\left[ PV \times ACC(I, N) + P \times FVIFA(I, N) \right] \\
+PV &= -\left[ FV \div ACC(I, N) + P \times PVIFA(I, N) \right] \\
+PMT &= -\left[ \frac{FV + PV \times ACC(I, N)}{FVIFA(I, N)} \right] \\
+ &= -\left[ \frac{FV \div ACC(I, N) + PV}{PVIFA(I, N)} \right]
+\end{align}
+
+\section{Scenarios}\label{sec:scenarios}
+
+These are common financial scenarios under the assumptions that $I > 0$ and $N > 0$. Also, to maintain these assumptions when \textit{calculating} $I$ or $N$, it must also be the case that $PV$, $P$, and $FV$ cannot all have the same sign. 
+
+\end{multicols*}
+
+\begin{center}
+\setlength{\extrarowheight}{1.5pt}
+\begin{tabularx}{0.95\columnwidth}{|l|c|c|c|X|} \hline
+\textbf{Scenario} & \textbf{PV} & \textbf{P} & \textbf{FV} & \textbf{Logical Interpretation} \\ \hline
+`Black Hole` & $\le 0$ & $< 0$ & $< 0$ & Error: Money is paid at every stage while remaining in debt. \\ \hline
+Savings Goal & $\le 0$ & $< 0$ & $> 0$ & Invested a lump sum (or zero); make monthly deposits; withdraw a lump sum later. \\ \hline
+Payout Annuity & $< 0$ & $> 0$ & $\le 0$ & Invested a lump sum; receive a regular ``salary'' back; to a residual debt (or zero). \\ \hline
+Endowed Annuity & $< 0$ & $> 0$ & $\ge 0$ & Invested a lump sum; receive a regular ``salary'' back; to a residual balance (or zero). \\ \hline
+Standard Loan & $> 0$ & $< 0$ & $\le 0$ & Received a lump sum; making monthly payments to a balloon payment (or zero). \\ \hline
+Incentived Lease & $\ge 0$ & $< 0$ & $> 0$ & Received a lump sum (or 0); paid rent; received a deposit back. \\ \hline
+Reverse Mortgage & $\ge 0$ & $> 0$ & $< 0$ &  Received a lump sum (or 0) AND monthly checks; balance owed later. \\ \hline
+`Money Tree' & $ > 0$ & $ > 0$ & $ > 0$ &  Error: Money is received at every stage without cost. \\ \hline
+\end{tabularx}
+\end{center}
+
+\begin{multicols*}{2}
+
+\subsection{Sample implementation}\label{sec:implementation}
+
+This is a sample \href{https://docs.python.org/3/}{Python} implementation of these financial formulas using end-of-period (`annuity immediate`) calculations. Either of the \texttt{calcPMT} functions can be used as they are equivalent. The \texttt{calcI} function iterates over all possible values in order-of-magnitude \texttt{m} on $(0, 1]$ and picks the best one.
+
+\begin{lstlisting}[language=Python]
+# Sample calculations for time value of money (TVM)
+acc = lambda i, n: (1 + i) ** n
+FVIFA = lambda i, n: (acc(i, n) - 1) / i        # PVIFA(i, n) * acc(i, n)
+PVIFA = lambda i, n: (1 - 1 / acc(i, n)) / i    # FVIFA(i, n) / acc(i, n)
+
+calcN = lambda i, pv, pmt, fv: \
+    math.log((pmt - fv * i) / (pmt + i * pv)) / math.log(1 + i)
+calcPV = lambda n, i, pmt, fv: -fv / acc(i, n) - pmt * PVIFA(i, n)
+calcPMT = lambda n, i, pv, fv: (-fv / acc(i, n) - pv) / PVIFA(i, n)
+calcPMT = lambda n, i, pv, fv: (-fv - pv * acc(i, n)) / FVIFA(i, n)
+calcFV = lambda n, i, pv, pmt: -pv * acc(i, n) - pmt * FVIFA(i, n)
+
+def calcI(n, pmt, pv, fv, m=5):
+    """Return value of i = step / 10 ** m for which calcFV(n, i, pv, pmt)
+    is closest to fv. Check all steps decimal values of i."""
+    candidates = \
+        { abs(fv - calcFV(n, step / 10 ** m, pv, pmt)): step / 10 ** m
+            for step in range(1, 10 ** m + 1) }
+    return candidates[min(candidates)]
+\end{lstlisting}
+
+\divider
+\hwnote{
+TODO
+\begin{itemize}
+\item Describe under what circumstances $I$ \& $N$ calculations fail.
+\item Add calculations for \textit{total interest} and \textit{total principle} --- and other useful calculations?
+\end{itemize}
+}
+
+\end{multicols*}
+\end{document}

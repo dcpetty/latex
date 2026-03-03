@@ -1,0 +1,27 @@
+\documentclass{standalone}
+% No need to load packages here if they are in the main doc, 
+% but good for standalone compilation.
+\usepackage{hyperref, tabularray}
+
+\begin{document}
+% 'tblr' is the tabularray version of tabularx
+\begin{tblr}{
+  width = \linewidth,
+  colspec = {@{} l X[m, c] r @{}},
+  column{2} = {font=\ttfamily},
+}
+ US Representative Ayanna Pressley & <\href{mailto:sarah.groh@mail.house.gov}{sarah.groh@mail.house.gov}> & +1.202.225.9322 \\
+ US Senator Ed Markey & <\href{mailto:giselle\_barry@markey.senate.gov}{giselle\_barry@markey.senate.gov}> & +1.202.228.2072 \\
+ US Senator Elizabeth Warren & <\href{mailto:elizabeth\_warren@warren.senate.gov}{elizabeth\_warren@warren.senate.gov}> & +1.202.224.8525 \\
+\end{tblr}
+\end{document}
+
+%\documentclass{standalone}
+%\usepackage{tabularx,hyperref}
+%\begin{document}
+%\begin{tabularx}{\textwidth}{lXr}
+% US Representative Ayanna Pressley & \texttt{<\href{mailto:sarah.groh@mail.house.gov}{sarah.groh@mail.house.gov}>} & +1.202.225.9322 \\
+% US Senator Ed Markey & \texttt{<\href{mailto:giselle\_barry@markey.senate.gov}{giselle\_barry@markey.senate.gov}>} & +1.202.228.2072 \\
+% US Senator Elizabeth Warren & \texttt{<\href{mailto:elizabeth\_warren@warren.senate.gov}{elizabeth\_warren@warren.senate.gov}>} & +1.202.224.8525 \\
+%\end{tabularx}
+%\end{document}
