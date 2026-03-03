@@ -5,7 +5,6 @@
 % @ifclassloaded{exam}: fancyhdr, framed, nottoc, notlot, notlof
 \makeatletter\@ifclassloaded{exam}{}{\usepackage{fancyhdr, framed}}\makeatother%
 \makeatletter\@ifclassloaded{exam}{}{\usepackage[nottoc, notlot, notlof]{tocbibind}}\makeatother%
-\usepackage{hyperref}\hypersetup{linktoc=all}
 \usepackage[paper=letterpaper, margin=0.75in, includeheadfoot, top=0.25in, bottom=0.5in, head=0.5in]{geometry}%
 \usepackage[usenames, dvipsnames]{xcolor}%
 \usepackage[most]{tcolorbox}% after xcolor
@@ -28,3 +27,4 @@
 \usepackage[charter]{mathdesign}
 %\usepackage{XCharter}% https://tex.stackexchange.com/a/548607
 \usepackage{inconsolata}
+\usepackage{hyperref}\hypersetup{linktoc=all}
