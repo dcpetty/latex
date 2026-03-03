@@ -61,7 +61,7 @@ $P$ & fixed periodic payment / deposit amount \\ \hline
 \end{tabularx}
 \end{center}
 
-Derevation of the \textbf{\href{https://en.wikipedia.org/wiki/Time_value_of_money}{Time Value of Money}} formula \eqref{eqn:tvm-master} shows the relationship between the three terms: the future value $FV$, the exponential growth of $PV$ over $N$ periods and the adjusted exponential growth for each periodic deposit $P$ over $N$ periods --- \textit{deposited at the end}\footnote{Annuities with end-of-period deposits are called \textit{ordinary annuities} (also `annuity immediate') marked as END; annuities with beginning-of-period deposits are called `annuity due' marked as BGN. The formulas for beginning-of-period annuities must include an additional factor of $\left(1 + I\right)$. For beginning-of-period payments, substitute $P' = P \left(1 + I\right)$ for $P$ in \eqref{eqn:tvm-master}.} of each period --- when the interest is also applied. 
+Derevation of the \textbf{\href{https://en.wikipedia.org/wiki/Time_value_of_money}{Time Value of Money}} formula \eqref{eqn:tvm-master} shows the relationship between the three terms: the future value $FV$, the exponential growth of $PV$ over $N$ periods and the adjusted exponential growth for each periodic deposit $P$ over $N$ periods --- \textit{deposited at the end}\footnote{Annuities with end-of-period deposits are called \textit{ordinary annuities} (also `annuity immediate') marked as END; annuities with beginning-of-period deposits are called `annuity due' marked as BGN. The formulas for beginning-of-period annuities must include an additional factor of $\left(1 + I\right)$. For beginning-of-period payments, substitute $P' = P \left(1 + I\right)$ for $P$ in \eqref{eqn:tvm-master}.} of each period, when the interest is also applied. 
 
 \begin{align}
 0 &= \underbrace{FV}_{\text{Future Value}} + \underbrace{\left[ PV \left( 1 + I \right)^{N} \right] \label{eqn:tvm-master}}_{\text{Present Value exponential growth}} \\
@@ -117,7 +117,7 @@ Solving \eqref{eqn:fv} for $P$ yields \eqref{eqn:pmt-fv}.
 Solving \eqref{eqn:pv} for $P$ yields \eqref{eqn:pmt-pv}.
 
 \begin{align}
-\Aboxed{PMT &= -\left[ \frac{\left[ FV \left( 1 + I \right)^{-N} \right] + PV}{\left[\frac{1 - \left( 1 + I \right)^{-N}}{I} \right]} \right]} \label{eqn:pmt-pv}
+\Aboxed{P &= -\left[ \frac{\left[ FV \left( 1 + I \right)^{-N} \right] + PV}{\left[\frac{1 - \left( 1 + I \right)^{-N}}{I} \right]} \right]} \label{eqn:pmt-pv}
 \end{align}
 
 \subsection{Number of periods}\label{sec:nper}
@@ -140,17 +140,17 @@ There is no closed-form algebraic solution for $I$. It can be calculated using t
 
 \subsection{Simplifying functions}\label{sec:simplifying}
 
-Other simplifying functions that encapsulate other common financial vocabulary are found as multipliers in \eqref{eqn:tvm}, \eqref{eqn:fv}, and \eqref{eqn:pv}.
+Other simplifying functions that encapsulate other common financial vocabulary ($ACC(I, N)$\footnote{interest \underline{ACC}umulation factor}, $FVIFA(I, N)$\footnote{\underline{F}uture \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}, and $PVIFA(I, N)$\footnote{\underline{P}resent \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}) are found as multipliers in \eqref{eqn:tvm}, \eqref{eqn:fv}, and \eqref{eqn:pv}.
 
 \begin{align}
-ACC\footnote{interest \underline{ACC}umulation factor}(I, N) &= \boxed{\left( 1 + I \right)^{N}} \label{eqn:acc}\\
-FVIFA\footnote{\underline{F}uture \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}(I, N) &= \frac{\left( 1 + I \right)^{N} - 1}{I} \\
- &= \boxed{ \frac{ACC(I, N) - 1}{I}} \label{eqn:fvifa}\\
+\Aboxed{ACC(I, N) &= \left( 1 + I \right)^{N}} \label{eqn:acc}\\
+FVIFA(I, N) &= \frac{\left( 1 + I \right)^{N} - 1}{I} \\
+\Aboxed{FVIFA(I, N) &= \frac{ACC(I, N) - 1}{I}} \label{eqn:fvifa}\\
  &= PVIFA(I, N) \times ACC(I, N) \\
-PVIFA\footnote{\underline{P}resent \underline{V}alue \underline{I}nterest \underline{F}actor of \underline{A}nnuity}(I, N) &= \frac{1 - \left( 1 + I \right)^{-N}}{I} \\
+PVIFA(I, N) &= \frac{1 - \left( 1 + I \right)^{-N}}{I} \\
  &= \frac{\left( 1 + I \right)^{N} \left(1 - \left( 1 + I \right)^{-N}\right)}{\left( 1 + I \right)^{N} \left( I \right)} \\
   &= \frac{\left( 1 + I \right)^{N}  - 1}{\left( 1 + I \right)^{N} \left( I \right)} \\
- &= \boxed{\frac{ACC(I, N) - 1}{ACC(I, N) \left( I \right)}} \label{eqn:pvifa} \\
+\Aboxed{PVIFA(I, N) &= \frac{ACC(I, N) - 1}{ACC(I, N) \left( I \right)}} \label{eqn:pvifa} \\
  &= FVIFA(I, N) \div ACC(I, N)
 \end{align}
 
