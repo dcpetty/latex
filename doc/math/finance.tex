@@ -55,17 +55,17 @@ The basic loan and annuity calculations with regular fixed periodic payments / d
 \begin{tabularx}{0.95\columnwidth}{|c|X|} \hline
 $N$ & number of payments / deposits  \\ \hline
 $I$ & fixed periodic interest rate \\ \hline
+$FV$ & future value of the loan / annuity \\ \hline
 $PV$ & present value of the loan / annuity \\ \hline
 $P$ & fixed periodic payment / deposit amount \\ \hline
-$FV$ & future value of the loan / annuity \\ \hline
 \end{tabularx}
 \end{center}
 
 Derevation of the \textbf{\href{https://en.wikipedia.org/wiki/Time_value_of_money}{Time Value of Money}} formula \eqref{eqn:tvm-master} shows the relationship between the three terms: the future value $FV$, the exponential growth of $PV$ over $N$ periods and the adjusted exponential growth for each periodic deposit $P$ over $N$ periods --- \textit{deposited at the end}\footnote{Annuities with end-of-period deposits are called \textit{ordinary annuities} (also `annuity immediate') marked as END; annuities with beginning-of-period deposits are called `annuity due' marked as BGN. The formulas for beginning-of-period annuities must include an additional factor of $\left(1 + I\right)$. For beginning-of-period payments, substitute $P' = P \left(1 + I\right)$ for $P$ in \eqref{eqn:tvm-master}.} of each period --- when the interest is also applied. 
 
 \begin{align}
-0 &= \underbrace{FV}_{label} + \underbrace{\left[ PV \left( 1 + I \right)^{N} \right] \label{eqn:tvm-master}}_{label} \\
- &+ \underbrace{\left[ P + P \left( 1 + I \right)^{1} + P \left( 1 + I \right)^{2} + \cdots + P \left( 1 + I \right)^{N - 1} \right]}_{label} \nonumber \\
+0 &= \underbrace{FV}_{\text{Future Value}} + \underbrace{\left[ PV \left( 1 + I \right)^{N} \right] \label{eqn:tvm-master}}_{\text{Present Value exponential growth}} \\
+ &+ \underbrace{\left[ P + P \left( 1 + I \right)^{1} + P \left( 1 + I \right)^{2} + \cdots + P \left( 1 + I \right)^{N - 1} \right]}_{\text{Periodic payment exponential growth over $N$ periods}} \nonumber \\
  &= FV + \left[ PV \left( 1 + I \right)^{N} \right] \\
  &+ P \left[ \left( 1 + I \right)^{0} + \left( 1 + I \right)^{1} + \left( 1 + I \right)^{2} + \cdots + \left( 1 + I \right)^{N - 1} \right] \nonumber \\
  &= FV + \left[ PV \left( 1 + I \right)^{N} \right] + P \left[ \sum_{k=0}^{N - 1} \left( 1 + I \right)^{k} \right] \label{eqn:tvm-sum}
@@ -231,11 +231,24 @@ calcFV = lambda n, i, pv, pmt: -pv * acc(i, n) - pmt * FVIFA(i, n)
 
 def calcI(n, pmt, pv, fv, m=5):
     """Return value of i = step / 10 ** m for which calcFV(n, i, pv, pmt)
-    is closest to fv. Check all steps decimal values of i."""
+    is closest to fv. Check all steps decimal values of i.
+    This approach uses a dictionary."""
     candidates = \
         { abs(fv - calcFV(n, step / 10 ** m, pv, pmt)): step / 10 ** m
-            for step in range(1, 10 ** m + 1) }
+            for step in range(-(10 ** m) - 1, 10 ** m + 1) if step != 0 }
     return candidates[min(candidates)]
+
+def calcI(n, pmt, pv, fv, m=100000):
+    """Return value of i = step / m for which calcFV(n, i, pv, pmt) is
+    closest to fv. Check all 2 x steps decimal values of i on [-m, +m].
+    This approach uses iteration."""
+    minI, minDiff = math.inf, math.inf
+    for step in range(-m - 1, +m + 1):
+        if step != 0:
+            i, diff = step / m, abs(fv - calcFV(n, step / m, pv, pmt)) 
+            if diff < minDiff:
+                minI, minDiff = step / m, diff
+    return minI
 \end{lstlisting}
 
 \divider
@@ -243,7 +256,7 @@ def calcI(n, pmt, pv, fv, m=5):
 TODO
 \begin{itemize}
 \item Describe under what circumstances $I$ \& $N$ calculations fail.
-\item Add calculations for \textit{total interest} and \textit{total principle} --- and other useful calculations?
+\item Add calculations for \textit{total interest} (\texttt{\href{https://support.google.com/docs/answer/3093211}{CUMIPMT}}) and \textit{total principle} (\texttt{\href{https://support.google.com/docs/answer/3093159}{CUMPRINC}}) --- and other useful calculations?
 \end{itemize}
 }
 
