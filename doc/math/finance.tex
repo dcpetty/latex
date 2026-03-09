@@ -224,7 +224,8 @@ Reverse Mortgage & $\ge 0$ & $> 0$ & $< 0$ &  Received a lump sum (or 0) AND mon
 
 This is a sample \href{https://docs.python.org/3/}{Python} implementation of these financial formulas using end-of-period (`annuity immediate`) calculations. Either of the \texttt{calcPMT} functions can be used as they are equivalent. The \texttt{calcI} function iterates over all possible values in order-of-magnitude \texttt{m} on $(0, 1]$ and picks the best one.
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python,style=colorEX]
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
 # Sample calculations for time value of money (TVM)
 acc = lambda i, n: (1 + i) ** n
 FVIFA = lambda i, n: (acc(i, n) - 1) / i        # PVIFA(i, n) * acc(i, n)
@@ -269,4 +270,7 @@ TODO
 }
 
 \end{multicols*}
+
+%\lstinputlisting[language=Python,style=colorEX, extendedchars=false]{/Users/dcp/Downloads/interest.py}
+
 \end{document}
