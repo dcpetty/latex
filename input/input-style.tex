@@ -52,8 +52,9 @@
 
 % Conditional sizing in multicols and multicols*.
 \lstdefinestyle{standard}{
-  basicstyle=\singlespacing\ttfamily\small,
-  numberstyle=\ttfamily\small,
+  % Using \small gives 80 columns in standard columns.
+  basicstyle=\singlespacing\ttfamily\scriptsize,
+  numberstyle=\ttfamily\scriptsize,
   frame=single,
 }
 \lstdefinestyle{narrow}{
