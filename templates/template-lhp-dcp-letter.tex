@@ -72,9 +72,12 @@ Love,
 
 \vspace{3ex}
 
-\begin{minipage}[c]{0.1\linewidth}p.s.\end{minipage}
+\begin{minipage}[c]{0.1\linewidth}
+  p.s.
+\end{minipage}% <-- % Glue to prevent a phantom space
 \begin{minipage}[c]{0.9\linewidth}
-\lipsum[10]%
+  \vspace{0pt} % Aligns table top when using [t] or [b]
+  \lipsum[10]%
 \end{minipage}
 
 \end{document}
