@@ -59,7 +59,6 @@ Removed intermediate files corresponding to the .TEX `files` are those `.gitigno
 
 - Update all documents to use `\input` files.
 
-![code300](./images/codi300.png)
 <hr>
 
 [&#128279; permalink](https://dcpetty.dev/latex/) and [&#128297; repository](https://github.com/dcpetty/latex/) for this page.
