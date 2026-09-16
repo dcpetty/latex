@@ -1,6 +1,6 @@
 % https://tex.stackexchange.com/a/174626/241210
 \RequirePackage{filecontents}
-\begin{filecontents*}{\jobname.in}
+\begin{filecontents*}[overwrite]{\jobname.in}
 @collection{cybeprotest,
   editor    = {van de Donk, Wim and Brian D. Loader and Paul G. Nixon and Dieter Rucht},
   title     = {Cyberprotest},
@@ -41,11 +41,15 @@
 \end{filecontents*}
 
 \documentclass[11pt]{article}%
-%\usepackage[backend=biber,style=apa]{biblatex}
-\usepackage[backend=biber,style=authoryear]{biblatex}
-\usepackage{hyperref}
+\usepackage{hyperref}\hypersetup{linktoc=all}
+\usepackage{csquotes}
+%\usepackage[backend=biber,style=authoryear]{biblatex}
+\usepackage[backend=biber,style=apa]{biblatex}
+\usepackage{xurl}
+\DeclareLanguageMapping{english}{english-apa}
 
 \addbibresource{../../bib/dcpbiblatex.bib}
+\addbibresource{../../bib/maibiber.bib}
 \addbibresource{\jobname.in}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
@@ -55,28 +59,28 @@
 
 \begin{itemize}
 
- \item \parencite{book:linear-algebra}
- \item \parencite{book:7habits}
- \item \parencite{book:supreme-identity}
- \item \parencite{book:middlemarch}
- \item \parencite{book:stuck-in-the-shallow-end}
- \item \parencite{book:pattern-classification}
- \item \parencite{book:pattern-recognition-machine-learning}
- \item \parencite{book:machine-learning}
- \item \parencite{book:cellular-automata-machines}
- \item \parencite{book:elements-one-volume}
- \item \parencite{book:grading-for-equity}
- \item \parencite{book:standards-based-learning}
- \item \parencite{book:knr}
- \item \parencite{book:rcm}
- \item \parencite{book:ccm}
- \item \parencite{book:cmtw}
- \item \parencite{book:gcs}
- \item \parencite{book:geometry}
- \item \parencite{book:ac}
- \item \parencite{book:unfinished-game}
- \item \parencite{book:engines-of-logic}
- \item \parencite{book:mathematical-analysis-of-logic}
+ \item \autocite{book:linear-algebra}
+ \item \autocite{book:7habits}
+ \item \autocite{book:supreme-identity}
+ \item \autocite{book:middlemarch}
+ \item \autocite{book:stuck-in-the-shallow-end}
+ \item \autocite{book:pattern-classification}
+ \item \autocite{book:pattern-recognition-machine-learning}
+ \item \autocite{book:machine-learning}
+ \item \autocite{book:cellular-automata-machines}
+ \item \autocite{book:elements-one-volume}
+ \item \autocite{book:grading-for-equity}
+ \item \autocite{book:standards-based-learning}
+ \item \autocite{book:knr}
+ \item \autocite{book:rcm}
+ \item \autocite{book:ccm}
+ \item \autocite{book:cmtw}
+ \item \autocite{book:gcs}
+ \item \autocite{book:geometry}
+ \item \autocite{book:ac}
+ \item \autocite{book:unfinished-game}
+ \item \autocite{book:engines-of-logic}
+ \item \autocite{book:mathematical-analysis-of-logic}
 
 \end{itemize}
 
@@ -84,10 +88,10 @@
 
 \begin{itemize}
 
- \item \parencite{cacm:wing06}
- \item \parencite{paper:cornellhmm}
- \item \parencite{DBLP:journals/corr/cs-NE-0308031}
- \item \parencite{paper:deCampos09}
+ \item \autocite{cacm:wing06}
+ \item \autocite{paper:cornellhmm}
+ \item \autocite{DBLP:journals/corr/cs-NE-0308031}
+ \item \autocite{paper:deCampos09}
 
 \end{itemize}
 
@@ -95,17 +99,18 @@
 
 \begin{itemize}
 
- \item \parencite{web:chars-74k}
- \item \parencite{web:chars-74k-hand-drawn}
- \item \parencite{web:equation-editor}
- \item \parencite{web:history-binomial}
- \item \parencite{web:license-maker}
- \item \parencite{web:ecs}
- \item \parencite{web:pact-adp}
- \item \parencite{web:pact-ce21-2013}
- \item \parencite{web:7-big-ideas}
- \item \parencite{web:5-cs}
- \item \parencite{web:national-imperative-k12-csed}
+ \item \autocite{web:chars-74k}
+ \item \autocite{web:chars-74k-hand-drawn}
+ \item \autocite{web:equation-editor}
+ \item \autocite{web:history-binomial}
+ \item \autocite{web:license-maker}
+ \item \autocite{web:ecs-v5}
+ \item \autocite{web:ecs-v10}
+ \item \autocite{web:pact-adp}
+ \item \autocite{web:pact-ce21-2013}
+ \item \autocite{web:7-big-ideas}
+ \item \autocite{web:5-cs}
+ \item \autocite{web:national-imperative-k12-csed}
 
 \end{itemize}
 
@@ -113,40 +118,40 @@
 
 \begin{itemize}
 
- \item \parencite{wiki:boolean-algebra}
- \item \parencite{wiki:venn-diagram}
- \item \parencite{wiki:complement-set-theory}
- \item \parencite{wiki:naive-set-theory}
- \item \parencite{wiki:russells-paradox}
- \item \parencite{wiki:barber-paradox}
- \item \parencite{wiki:positional-notation}
- \item \parencite{wiki:binary-operation}
- \item \parencite{wiki:unary-operation}
- \item \parencite{wiki:infix-notation}
- \item \parencite{wiki:polish-notation}
- \item \parencite{wiki:bit}
- \item \parencite{wiki:nybble}
- \item \parencite{wiki:twos-complement}
- \item \parencite{wiki:ones-complement}
- \item \parencite{wiki:signedness}
- \item \parencite{wiki:integer-overflow}
- \item \parencite{wiki:fixed-point-arithmetic}
- \item \parencite{wiki:floating-point-arithmetic}
- \item \parencite{wiki:ieee-754}
- \item \parencite{wiki:logic-gate}
- \item \parencite{wiki:nand-logic}
- \item \parencite{wiki:nor-logic}
- \item \parencite{wiki:bitwise-operation}
- \item \parencite{wiki:functional-completeness}
- \item \parencite{wiki:adder-electronics}
- \item \parencite{wiki:multiplication-algorithm}
- \item \parencite{wiki:division-algorithm}
- \item \parencite{wiki:combination}
- \item \parencite{wiki:combinatorics}
- \item \parencite{wiki:hungarian-algorithm}
- \item \parencite{wiki:java-primitive-types}
- \item \parencite{wiki:permutation}
- \item \parencite{wiki:plagiarism}
+ \item \autocite{wiki:boolean-algebra}
+ \item \autocite{wiki:venn-diagram}
+ \item \autocite{wiki:complement-set-theory}
+ \item \autocite{wiki:naive-set-theory}
+ \item \autocite{wiki:russells-paradox}
+ \item \autocite{wiki:barber-paradox}
+ \item \autocite{wiki:positional-notation}
+ \item \autocite{wiki:binary-operation}
+ \item \autocite{wiki:unary-operation}
+ \item \autocite{wiki:infix-notation}
+ \item \autocite{wiki:polish-notation}
+ \item \autocite{wiki:bit}
+ \item \autocite{wiki:nybble}
+ \item \autocite{wiki:twos-complement}
+ \item \autocite{wiki:ones-complement}
+ \item \autocite{wiki:signedness}
+ \item \autocite{wiki:integer-overflow}
+ \item \autocite{wiki:fixed-point-arithmetic}
+ \item \autocite{wiki:floating-point-arithmetic}
+ \item \autocite{wiki:ieee-754}
+ \item \autocite{wiki:logic-gate}
+ \item \autocite{wiki:nand-logic}
+ \item \autocite{wiki:nor-logic}
+ \item \autocite{wiki:bitwise-operation}
+ \item \autocite{wiki:functional-completeness}
+ \item \autocite{wiki:adder-electronics}
+ \item \autocite{wiki:multiplication-algorithm}
+ \item \autocite{wiki:division-algorithm}
+ \item \autocite{wiki:combination}
+ \item \autocite{wiki:combinatorics}
+ \item \autocite{wiki:hungarian-algorithm}
+ \item \autocite{wiki:java-primitive-types}
+ \item \autocite{wiki:permutation}
+ \item \autocite{wiki:plagiarism}
 
 \end{itemize}
 
@@ -161,6 +166,79 @@
  \item \autocite{sep-set-theory}
  \item \autocite{link:CiteDrive2022}
 
+\end{itemize}
+
+\section{\href{https://appinventor.mit.edu/explore/research}{MIT App Inventor Research}}
+
+\begin{itemize}
+
+ \item \autocite{mai:yuan2025meng}
+ \item \autocite{mai:patton2025aptly}
+ \item \autocite{mai:ravi2024datacomes}
+ \item \autocite{mai:higman2024json}
+ \item \autocite{mai:granquist2024aiaugmented}
+ \item \autocite{mai:elhashemy2024curious}
+ \item \autocite{mai:kim2024appplanner}
+ \item \autocite{mai:kim2024advancing}
+ \item \autocite{mai:granquist2023aiaugmented}
+ \item \autocite{mai:yoo2023mindpalette}
+ \item \autocite{mai:iniego2023altrubot}
+ \item \autocite{mai:elhashemy2023empowering}
+ \item \autocite{mai:tian2023statefulconvoblocks}
+ \item \autocite{mai:pang2023edulearn}
+ \item \autocite{mai:pang2023eaai}
+ \item \autocite{mai:du2023sigcse}
+ \item \autocite{mai:pang2022iceri}
+ \item \autocite{mai:zhou2023learning}
+ \item \autocite{mai:vanbrummelen2023weird}
+ \item \autocite{mai:kim2022speak}
+ \item \autocite{mai:vanbrummelen2022learning}
+ \item \autocite{mai:shone2022exploring}
+ \item \autocite{mai:adebayo2022towards}
+ \item \autocite{mai:shone2022yes}
+ \item \autocite{mai:hsu2021selfefficacy}
+ \item \autocite{mai:zhu2021teaching}
+ \item \autocite{mai:hsu2021effects}
+ \item \autocite{mai:zhu2021creating}
+ \item \autocite{mai:yu2021facemesh}
+ \item \autocite{mai:dunand2021developing}
+ \item \autocite{mai:lin2021engaging}
+ \item \autocite{mai:vanbrummelen2021alexa}
+ \item \autocite{mai:hsu2021behavioral}
+ \item \autocite{mai:lao2020reorienting}
+ \item \autocite{mai:weng2020examining}
+ \item \autocite{mai:vanbrummelen2020convo}
+ \item \autocite{mai:lin2020zhorai}
+ \item \autocite{mai:vanbrummelen2020learning}
+ \item \autocite{mai:bhatia2020using}
+ \item \autocite{mai:lao2020usingtransfer}
+ \item \autocite{mai:lao2020experiences}
+ \item \autocite{mai:martin2020panel}
+ \item \autocite{mai:vanbrummelen2020teaching}
+ \item \autocite{mai:zhou2020designing}
+ \item \autocite{mai:vanbrummelen2019conversational}
+ \item \autocite{mai:vanbrummelen2019popstar}
+ \item \autocite{mai:patton2019enhancing}
+ \item \autocite{mai:patton2019exploring}
+ \item \autocite{mai:patton2019realtime}
+ \item \autocite{mai:tang2019pic}
+ \item \autocite{mai:lao2019deep}
+ \item \autocite{mai:vanbrummelen2019conversationalagents}
+ \item \autocite{mai:tissenbaum2019from}
+ \item \autocite{mai:zhu2019educational}
+ \item \autocite{mai:tang2019empowering}
+ \item \autocite{mai:chan2019building}
+ \item \autocite{mai:patton2019mitappinventor}
+ \item \autocite{mai:tissenbaum2018reducing}
+ \item \autocite{mai:patton2018panel}
+ \item \autocite{mai:patton2018research}
+ \item \autocite{mai:patton2018json}
+ \item \autocite{mai:xi2018blocksbased}
+ \item \autocite{mai:vanbrummelen2018whatsconversational}
+ \item \autocite{mai:kong2018tools}
+ \item \autocite{mai:sherman2018technovation}
+ \item \autocite{mai:tang2018constrained}
+ 
 \end{itemize}
 
 \printbibliography
