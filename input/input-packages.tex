@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
 \usepackage{amsthm, appendix, array, booktabs, cancel, ccicons, comment, empheq, endnotes, enumitem, etoolbox, float, graphicx, indentfirst, lastpage, lipsum, listings, makeidx, mathtools, multicol, multirow, palatino, paracol, setspace, standalone, tabularray, tabularx, verbatim, wrapfig}%
 % Also:
-% hyperref, geometry, xolor, tcolorbox, textpos, tikz, tkz-euclide, titlesec, eucal, mathdesign, inconsolata
+% geometry, xolor, tcolorbox, textpos, tikz, tkz-euclide, titlesec, hyperref, csquotes, inconsolata, eucal, mathdesign,
 % @ifclassloaded{exam}: fancyhdr, framed, nottoc, notlot, notlof
 \makeatletter\@ifclassloaded{exam}{}{\usepackage{fancyhdr, framed}}\makeatother%
 \makeatletter\@ifclassloaded{exam}{}{\usepackage[nottoc, notlot, notlof]{tocbibind}}\makeatother%
@@ -14,6 +14,8 @@
 \usetikzlibrary{circuits.logic.US,circuits.logic.IEC,}%
 \usepackage{tkz-euclide}
 \usepackage[small,compact]{titlesec}%
+\usepackage{hyperref}\hypersetup{linktoc=all}
+\usepackage{csquotes}
 % \begin{empheq}[box=\fbox]{align} f(x) = 47x \end{empheq} % EMPHEQ example
 %\usepackage{showframe}
 
@@ -28,4 +30,3 @@
 \usepackage{eucal}% https://texdoc.org/serve/amsfndoc.pdf/0
 \usepackage[charter]{mathdesign}
 %\usepackage{XCharter}% https://tex.stackexchange.com/a/548607
-\usepackage{hyperref}\hypersetup{linktoc=all}
