@@ -41,6 +41,7 @@
 \end{filecontents*}
 
 \documentclass[11pt]{article}%
+\usepackage{multicol}
 \usepackage{hyperref}\hypersetup{linktoc=all}
 \usepackage{csquotes}
 %\usepackage[backend=biber,style=authoryear]{biblatex}
@@ -54,6 +55,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document
 \begin{document}
+
+\begin{multicols}{2}
 
 \section{Books}
 
@@ -172,49 +175,57 @@
 
 \begin{itemize}
 
+ \item \autocite{mai:lee2026google}
+ \item \autocite{mai:zamanova2026visual}
+ \item \autocite{mai:kim2026futuremakers}
+ \item \autocite{mai:afrida2026ai-driven}
  \item \autocite{mai:yuan2025meng}
  \item \autocite{mai:patton2025aptly}
  \item \autocite{mai:ravi2024datacomes}
  \item \autocite{mai:higman2024json}
- \item \autocite{mai:granquist2024aiaugmented}
- \item \autocite{mai:elhashemy2024curious}
+ \item \autocite{mai:granquist2024meng}
+ \item \autocite{mai:elhashemy2024minfo}
  \item \autocite{mai:kim2024appplanner}
  \item \autocite{mai:kim2024advancing}
  \item \autocite{mai:granquist2023aiaugmented}
  \item \autocite{mai:yoo2023mindpalette}
  \item \autocite{mai:iniego2023altrubot}
  \item \autocite{mai:elhashemy2023empowering}
- \item \autocite{mai:tian2023statefulconvoblocks}
+ \item \autocite{mai:tian2023bah}
  \item \autocite{mai:pang2023edulearn}
  \item \autocite{mai:pang2023eaai}
  \item \autocite{mai:du2023sigcse}
- \item \autocite{mai:pang2022iceri}
  \item \autocite{mai:zhou2023learning}
- \item \autocite{mai:vanbrummelen2023weird}
- \item \autocite{mai:kim2022speak}
  \item \autocite{mai:vanbrummelen2022learning}
+ \item \autocite{mai:vanbrummelen2023weird}
+ \item \autocite{mai:du2023widening}
+ \item \autocite{mai:kim2022speak}
+ \item \autocite{mai:pang2022iceri}
  \item \autocite{mai:shone2022exploring}
- \item \autocite{mai:adebayo2022towards}
+ \item \autocite{mai:adebayo2022phd}
+ \item \autocite{mai:vanbrummelen2022phd}
  \item \autocite{mai:shone2022yes}
- \item \autocite{mai:hsu2021selfefficacy}
+ \item \autocite{mai:pang2022meng}
+ \item \autocite{mai:harkavy2022meng}
  \item \autocite{mai:zhu2021teaching}
  \item \autocite{mai:hsu2021effects}
- \item \autocite{mai:zhu2021creating}
- \item \autocite{mai:yu2021facemesh}
- \item \autocite{mai:dunand2021developing}
+ \item \autocite{mai:hsu2021selfefficacy}
+ \item \autocite{mai:zhu2021meng}
+ \item \autocite{mai:yu2021meng}
+ \item \autocite{mai:dunand2021meng}
  \item \autocite{mai:lin2021engaging}
  \item \autocite{mai:vanbrummelen2021alexa}
+ \item \autocite{mai:vanbrummelen2020teaching}
  \item \autocite{mai:hsu2021behavioral}
- \item \autocite{mai:lao2020reorienting}
- \item \autocite{mai:weng2020examining}
+ \item \autocite{mai:lao2020phd}
+ \item \autocite{mai:weng2020meng}
  \item \autocite{mai:vanbrummelen2020convo}
  \item \autocite{mai:lin2020zhorai}
  \item \autocite{mai:vanbrummelen2020learning}
- \item \autocite{mai:bhatia2020using}
+ \item \autocite{mai:bhatia2020meng}
  \item \autocite{mai:lao2020usingtransfer}
  \item \autocite{mai:lao2020experiences}
  \item \autocite{mai:martin2020panel}
- \item \autocite{mai:vanbrummelen2020teaching}
  \item \autocite{mai:zhou2020designing}
  \item \autocite{mai:vanbrummelen2019conversational}
  \item \autocite{mai:vanbrummelen2019popstar}
@@ -225,21 +236,68 @@
  \item \autocite{mai:lao2019deep}
  \item \autocite{mai:vanbrummelen2019conversationalagents}
  \item \autocite{mai:tissenbaum2019from}
- \item \autocite{mai:zhu2019educational}
- \item \autocite{mai:tang2019empowering}
- \item \autocite{mai:chan2019building}
+ \item \autocite{mai:zhu2019meng}
+ \item \autocite{mai:tang2019meng}
+ \item \autocite{mai:chan2019meng}
+ \item \autocite{mai:vanbrummelen2019ms}
+ \item \autocite{mai:clarke2019meng}
  \item \autocite{mai:patton2019mitappinventor}
  \item \autocite{mai:tissenbaum2018reducing}
+ \item \autocite{mai:lao2018clouddb}
  \item \autocite{mai:patton2018panel}
  \item \autocite{mai:patton2018research}
  \item \autocite{mai:patton2018json}
  \item \autocite{mai:xi2018blocksbased}
  \item \autocite{mai:vanbrummelen2018whatsconversational}
  \item \autocite{mai:kong2018tools}
+ \item \autocite{mai:tseng2018designbased}
+ \item \autocite{mai:tang2018meng}
+ \item \autocite{mai:prutz2018democratizing}
+ \item \autocite{mai:prutz2018expanding}
+ \item \autocite{mai:wang2018creatinglog}
  \item \autocite{mai:sherman2018technovation}
- \item \autocite{mai:tang2018constrained}
- 
+ \item \autocite{mai:tissenbaum2017critical}
+ \item \autocite{mai:kong2017curriculum}
+ \item \autocite{mai:ruan2017evaluations}
+ \item \autocite{mai:bau2017learnable}
+ \item \autocite{mai:tissenbaum2017off}
+ \item \autocite{mai:lao2017clouddb}
+ \item \autocite{mai:lao2017meng}
+ \item \autocite{mai:deng2017group}
+ \item \autocite{mai:tang2017customized}
+ \item \autocite{mai:deng2017enabling}
+ \item \autocite{mai:patton2017collaborative}
+ \item \autocite{mai:campbell2017extending}
+ \item \autocite{mai:giurleo2017keyboard}
+ \item \autocite{mai:im2017userdefined}
+ \item \autocite{mai:li2016meng}
+ \item \autocite{mai:colter2016meng}
+ \item \autocite{mai:xie2016meng}
+ \item \autocite{mai:tsai2016meng}
+ \item \autocite{mai:asmus2016meng}
+ \item \autocite{mai:xie2015measuring}
+ \item \autocite{mai:morelli2015analyzing}
+ \item \autocite{mai:turbak2014events}
+ \item \autocite{mai:miao2014meng}
+ \item \autocite{mai:wolber2014democratizing}
+ \item \autocite{mai:schiller2014live}
+ \item \autocite{mai:shih2013understanding}
+ \item \autocite{mai:zhang2013no}
+ \item \autocite{mai:shih2013democratizing}
+ \item \autocite{mai:morelli2013teaching}
+ \item \autocite{mai:pokress2013mit}
+ \item \autocite{mai:shih2013unlocking}
+ \item \autocite{mai:hsu2013mobile}
+ \item \autocite{mai:bhagi2012meng}
+ \item \autocite{mai:turbak2012blocks}
+ \item \autocite{mai:margulieux2012subgoal}
+ \item \autocite{mai:saigal2011saathimobile}
+ \item \autocite{mai:magnuson2010meng}
+ \item \autocite{mai:saigal2010meng}
+
 \end{itemize}
+
+\end{multicols}
 
 \printbibliography
 
