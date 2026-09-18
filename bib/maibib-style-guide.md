@@ -1,4 +1,4 @@
-# Style Guide for `maibiber.bib`
+# Style Guide for `maibib.bib`
 
 This documents the conventions this bibliography follows, evolved over the course of building and reconciling it. Apply these when adding, correcting, or reconciling any future entry.
 
