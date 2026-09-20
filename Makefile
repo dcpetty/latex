@@ -4,7 +4,7 @@
 DIRS ?= doc/apcs doc/bhs doc/dlcs doc/gre doc/math doc/random \
 	doc/white-papers templates
 OTHER ?= apcs apcsp correspondence cv ga harvard-dce ia ig \
-	jobs pc1 psb princeton robotics stanford-logic uml wps MassBay
+	jobs mit pc1 psb princeton robotics stanford-logic uml wps MassBay
 INPUT := $(wildcard $(dir $(realpath $(lastword $(MAKEFILE_LIST))))input/input-*.tex)
 #$(info INPUT: $(INPUT))
 BIBFILES := $(wildcard $(dir $(realpath $(lastword $(MAKEFILE_LIST))))bib/*.bib)
