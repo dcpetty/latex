@@ -34,7 +34,16 @@ $(INPUT) : ;	# never rebuild $(INPUT)
 	@echo "#"
 	@echo "# $(notdir $<)"
 	@echo "#"
-	$(PDFLATEX) $(notdir $<)
+	$(PDFLATEX) $(notdir $<) || true
+	@if grep -q "^!" $(basename $<).log 2>/dev/null; then \
+		echo ""; \
+		echo "##################################################"; \
+		echo "#"; \
+		echo "# TEX ERROR (grep -A 3 \"^!\" $(basename $<).log)"; \
+		echo "#"; \
+		grep -A 3 "^!" $(basename $<).log; \
+		exit 1; \
+	fi
 
 $(sort $(DIRS) $(OTHER)) : FORCE
 	@echo "##################################################"
