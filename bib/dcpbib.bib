@@ -6,6 +6,10 @@
 % http://homepage.stat.uiowa.edu/~rlenth/ALPHA/apa-tutorial.pdf APA tutorial
 % https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib natbib v. biblatex
 % To update, delete *.bbl
+% Used with: 
+% \usepackage[backend=biber,style=apa,annotation=false]{biblatex}
+% \usepackage{xurl}
+% \DeclareLanguageMapping{english}{english-apa}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 6.S952 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -14,7 +18,7 @@
     title   = "Quantum nonlocality --- {Wikipedia}{,} The Free Encyclopedia",
     year    = "2026",
     url     = "https://en.wikipedia.org/w/index.php?title=Quantum_nonlocality&oldid=1374827206",
-    urldate = "2026-09-30",
+    urldate = "2026-10-02",
     note    = "Relevant section: \#Einstein,\_Podolsky\_and\_Rosen.",
 }
 
@@ -25,7 +29,6 @@
   volume  = {math.HO/0411418},
   year    = {2004},
   url     = {https://arxiv.org/abs/math/0411418v3},
-  urldate = "2026-09-30",
 }
 
 @article{paper:einstein_1935,
@@ -83,6 +86,19 @@
   url     = {https://personal.utdallas.edu/~son051000/chem3322/sci_amer_interactionfree.pdf},
   urldate={2026-09-30},
   note    = {Original publisher's copy is paywalled at \url{https://www.scientificamerican.com/article/quantum-seeing-in-the-dark/}.},
+}
+
+@book{book:spinors-and-space-time-1,
+   author = {Penrose, Roger and Rindler, Wolfgang},
+   title = {Spinors and Space-Time},
+   subtitle = {Vol. 1. {T}wo-Spinor Calculus and Relativistic Fields},
+   publisher = {Cambridge University Press},
+   address = {Cambridge, UK},
+   date = {1984},
+   isbn = {9780521245272},
+   url = {https://isbn.nu/9780521245272},
+   urldate = {2026-09-30},
+   note = {Appendix: Diagrammatic notation, pp. 424--434},
 }
 
 @book{book:qed,
@@ -158,6 +174,17 @@
   publisher    =  {Metaphysics Research Lab, Stanford University},
   url          =  {https://plato.stanford.edu/cgi-bin/encyclopedia/archinfo.cgi?entry=qm},
   urldate      =  {2026-09-09},
+}
+
+@book{book:quantum-mechanics-and-experience,
+   author = {Albert, David Z.},
+   title = {Quantum Mechanics and Experience},
+   publisher = {Harvard University Press},
+   address = {Cambridge, MA},
+   year = {1992},
+   isbn = {9780674741126},
+   url = {https://isbn.nu/9780674741126},
+   urldate = {2026-09-09},
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BOOKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -302,7 +329,7 @@
   volume    = {cs.NE/0308031},
   year      = {2003},
   url       = {http://arxiv.org/abs/cs.NE/0308031},
-  bibsource = {DBLP, http://dblp.uni-trier.de}
+  annotation = {DBLP, http://dblp.uni-trier.de}
 }
 
 @InProceedings{paper:deCampos09,
@@ -480,7 +507,7 @@
   version = "10.0",
   url = "https://www.exploringcs.org/wp-content/uploads/2025/09/ECS-v10.pdf",
   urldate = "2026-09-15",
-  note = "\textcopyright{} University of Oregon, 2025. Labeled a \enquote{teacher copy} intended solely for individual classroom use; do not copy or distribute without written permission from \href{https://exploringcs.org/}{ECS}.",
+  note = "\textcopyright{} University of Oregon, 2025. Labeled a 'teacher copy' intended solely for individual classroom use; do not copy or distribute without written permission from \url{https://exploringcs.org/}.",
  }
 
 %Center for Technology in Learning at SRI International. (2013). Draft assessment design patterns, ecs computational thinking practices. Retrieved 23:07, August 10, 2013, from http://pact.sri.com/?page id=832
