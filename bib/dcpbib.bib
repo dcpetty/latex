@@ -6,20 +6,60 @@
 % http://homepage.stat.uiowa.edu/~rlenth/ALPHA/apa-tutorial.pdf APA tutorial
 % https://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib natbib v. biblatex
 % To update, delete *.bbl
-% Used with: 
+%
+% Used with:
 % \usepackage[backend=biber,style=apa,annotation=false]{biblatex}
 % \usepackage{xurl}
 % \DeclareLanguageMapping{english}{english-apa}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 6.S952 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+@incollection{paper:everett_1973,
+  author    = {Everett, III, Hugh},
+  title     = {The Theory of the Universal Wave Function},
+  booktitle = {The Many-Worlds Interpretation of Quantum Mechanics},
+  editor    = {DeWitt, Bryce S. and Graham, Neill},
+  series    = {Princeton Series in Physics},
+  publisher = {Princeton University Press},
+  address   = {Princeton, NJ},
+  date      = {1973},
+  pages     = {3--140},
+  doi       = {10.1515/9781400868056},
+  url       = {https://calisphere.org/item/ark:/81235/d8kp7v50b},
+  urldate   = {2026-10-07},
+  note      = {Chapter 1 (Introduction)},
+}
+
+@article{paper:zurek_2002,
+  author    = {Zurek, Wojciech H.},
+  title     = {Decoherence and the Transition from Quantum to Classical---{R}evisited},
+  journal   = {Los Alamos Science},
+  volume    = {27},
+  date      = {2002},
+  url       = {https://arxiv.org/abs/quant-ph/0306072},
+  urldate   = {2026-10-07},
+}
+
+@article{paper:deutsch_1985,
+  author    = {Deutsch, David},
+  title     = {Quantum Theory as a Universal Physical Theory},
+  journal   = {International Journal of Theoretical Physics},
+  volume    = {24},
+  number    = {1},
+  date      = {1985-01},
+  pages     = {1--41},
+  doi       = {10.1007/BF00670071},
+  url       = {https://boulderschool.yale.edu/sites/default/files/files/Deutsch.pdf},
+  urldate   = {2026-10-07},
+}
+
 @misc{wiki:quantum-nonlocality,
     author  = "{Wikipedia contributors}",
     title   = "Quantum nonlocality --- {Wikipedia}{,} The Free Encyclopedia",
-    year    = "2026",
+    date    = "2026-09-14",
     url     = "https://en.wikipedia.org/w/index.php?title=Quantum_nonlocality&oldid=1374827206",
     urldate = "2026-10-02",
-    note    = "Relevant section: \#Einstein,\_Podolsky\_and\_Rosen.",
+    note    = "Relevant section: \#Einstein,\_Podolsky\_and\_Rosen",
 }
 
 @article{paper:chaitin_2004,
@@ -43,7 +83,7 @@
   doi     = {10.1103/PhysRev.47.777},
   url     = {https://www.informationphilosopher.com/solutions/scientists/einstein/Einstein-Podolsky-Rosen.pdf},
   urldate = {2026-09-30},
-  note    = {Original publisher's copy is paywalled at \url{https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777}.},
+  note    = {Original publisher's copy is paywalled at \url{https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777}},
 }
 
 @article{paper:bell_1992,
@@ -56,7 +96,7 @@
   pages   = {1201-1215},
   url     = {https://personal.lse.ac.uk/ROBERT49/teaching/partiii/pdf/BellSixPossibleWorldsQmMechsFdnsPhysics1992.pdf},
   urldate = {2026-09-30},
-  note    = {Originally delivered as an essay at Nobel Symposium 65 (1986) and first published in \emph{Possible Worlds in Humanities, Arts and Sciences} (1989); this is the 1992 journal republication.},
+  note    = {Originally delivered as an essay at Nobel Symposium 65 (1986) and first published in \emph{Possible Worlds in Humanities, Arts and Sciences} (1989); this is the 1992 journal republication},
 }
 
 @article{paper:bennett_1993,
@@ -71,7 +111,7 @@
   doi     = {10.1103/PhysRevLett.70.1895},
   url     = {https://people.disim.univaq.it/~serva/teaching/Bennet.1993.pdf},
   urldate={2026-09-30},
-  note    = {Original publisher's copy is paywalled at \url{https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.70.1895}.},
+  note    = {Original publisher's copy is paywalled at \url{https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.70.1895}},
 }
 
 @article{paper:kwiat_1996,
@@ -85,7 +125,7 @@
   pages   = {72-78},
   url     = {https://personal.utdallas.edu/~son051000/chem3322/sci_amer_interactionfree.pdf},
   urldate={2026-09-30},
-  note    = {Original publisher's copy is paywalled at \url{https://www.scientificamerican.com/article/quantum-seeing-in-the-dark/}.},
+  note    = {Original publisher's copy is paywalled at \url{https://www.scientificamerican.com/article/quantum-seeing-in-the-dark/}},
 }
 
 @book{book:spinors-and-space-time-1,
@@ -96,6 +136,7 @@
    address = {Cambridge, UK},
    date = {1984},
    isbn = {9780521245272},
+   doi = {10.1017/CBO9780511564048.007},
    url = {https://isbn.nu/9780521245272},
    urldate = {2026-09-30},
    note = {Appendix: Diagrammatic notation, pp. 424--434},
@@ -110,7 +151,7 @@
   isbn = {9780691164090},
   url = {https://press.princeton.edu/books/paperback/9780691164090/qed},
   urldate={2026-09-23},
-  note = {Introduction by A. Zee. Princeton Science Library edition; originally published 1988.},
+  note = {Introduction by A. Zee; Princeton Science Library edition; originally published 1988},
 }
 
 @article{paper:taylor_1998,
@@ -270,13 +311,16 @@
 }
 
 @book{book:elements-one-volume,
-   title={Euclid's Elements: All Thirteen Books Complete in One Volume},
-   author={Euclides and Densmore, Dana and Heath, {\relax Sir T}homas Little},
-   year={2002},
-   publisher={Green Lion Press},
-   isbn={9781888009194},
-   lccn={2002107461},
-   url={https://books.google.com/books?id=cveqQgAACAAJ},
+   author = {Euclid},
+   editor = {Densmore, Dana},
+   translator = {Heath, Thomas Little},
+   title = {Euclid's Elements: All Thirteen Books Complete in One Volume},
+   edition = {2},
+   publisher = {Green Lion Press},
+   address = {Santa Fe, NM},
+   date = {2003},
+   isbn = {9781888009194},
+   url = {https://isbn.nu/9781888009194},
 }
 
 @book{book:grading-for-equity,
@@ -322,7 +366,7 @@
   url = {http://www.cs.cornell.edu/Courses/cs4758/2012sp/materials/hmm_paper_rabiner.pdf},
 }
 
-@article{DBLP:journals/corr/cs-NE-0308031,
+@article{paper:gershenson_2003,
   author    = {Carlos Gershenson},
   title     = {Artificial Neural Networks for Beginners},
   journal   = {CoRR},
@@ -347,7 +391,7 @@
   title = "The Chars74K dataset",
   year = "2009",
   url = "http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/",
-  lastchecked = "19:18, June 27, 2010",
+  urldate = "2010-06-27",
  }
 
 %T. E. de Campos, B. R. Babu and M. Varma. (2009). The Chars74K dataset. Retrieved 19:18, June 10, 2013, from http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/EnglishHnd.tgz
@@ -356,7 +400,7 @@
   title = "Chars74K hand-drawn characters",
   year = "2009",
   url = "http://www.ee.surrey.ac.uk/CVSSP/demos/chars74k/EnglishHnd.tgz",
-  lastchecked = "19:18, June 27, 2010",
+  urldate = "2010-06-27",
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SOFTWARE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -464,13 +508,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% WWW %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Bateman, W., & Mayer, S. (2010). The Online LaTeX Equation Editor (version 2.98). http://www.codecogs.com/components/equationeditor/equationeditor.php
+% Bateman, W., & Mayer, S. (2005). The Online LaTeX Equation Editor. https://editor.codecogs.com/
 @misc{web:equation-editor,
   author = "Will Bateman and Steve Mayer",
   title = "The Online {\LaTeX} Equation Editor",
-  year = "2010",
-  url = "http://www.codecogs.com/components/equationeditor/equationeditor.php",
-  lastchecked = "version 2.98",
+  year = "2005",
+  url = "https://editor.codecogs.com/",
+  urldate = "2026-10-10",
  }
 
 %Hubbard, M., & Roby, T. (2008). History. Retrieved 17:32, June 27, 2010, from http://binomial.csueastbay.edu/History.html
@@ -479,15 +523,16 @@
   title = "History",
   year = "2008",
   url = "http://binomial.csueastbay.edu/History.html",
-  lastchecked = "17:32, June 27, 2010",
+  urldate = "2010-06-27",
  }
 
-%Poskanzer, J. (2009). Acme license maker. http://www.acme.com/licensemaker/
+% Poskanzer, J. (2009). Acme license maker. http://www.acme.com/licensemaker/
 @misc{web:license-maker,
   author = "Jef Poskanzer",
   title = "Acme License Maker",
   year = "2009",
   url = "http://www.acme.com/licensemaker/",
+  urldate = "2026-10-10",
  }
 
 %Goode, J., & Chapman, G. (2013). Exploring computer science. Retrieved 20:10, August 5, 2013, from http://www.exploringcs.org/wp-content/uploads/2010/08/ExploringComputerScience-v5.0.pdf
@@ -496,7 +541,7 @@
   title = "Exploring Computer Science",
   year = "2013",
   url = "http://www.exploringcs.org/wp-content/uploads/2010/08/ExploringComputerScience-v5.0.pdf",
-  lastchecked = "20:10, August 5, 2013",
+  urldate = "2013-08-05",
  }
 
 %Chapman, G., Goode, J., & Jayathirtha, G. (2025). Exploring computer science. Retrieved 18:10, September 15, 2026, from https://www.exploringcs.org/wp-content/uploads/2025/09/ECS-v10.pdf
@@ -507,7 +552,7 @@
   version = "10.0",
   url = "https://www.exploringcs.org/wp-content/uploads/2025/09/ECS-v10.pdf",
   urldate = "2026-09-15",
-  note = "\textcopyright{} University of Oregon, 2025. Labeled a 'teacher copy' intended solely for individual classroom use; do not copy or distribute without written permission from \url{https://exploringcs.org/}.",
+  note = "\textcopyright{} University of Oregon, 2025; labeled a `teacher copy' intended solely for individual classroom use; do not copy or distribute without written permission from \url{https://exploringcs.org/}",
  }
 
 %Center for Technology in Learning at SRI International. (2013). Draft assessment design patterns, ecs computational thinking practices. Retrieved 23:07, August 10, 2013, from http://pact.sri.com/?page id=832
@@ -516,16 +561,7 @@
   title = "Draft Assessment Design Patterns, {ECS} Computational Thinking Practices",
   year = "2013",
   url = "http://pact.sri.com/?page_id=832",
-  lastchecked = "23:07, August 10, 2013",
- }
-
-%Snow, D. (2013, November 15-16). PACT presentation materials from CE21 2013. Retrieved 23:47, August 10, 2013, from http://pact.sri.com/?page id=1285
-@misc{web:pact-ce21-2013,
-  author = "David Snow",
-  title = "{PACT} presentation materials from {CE21} 2013",
-  date = "2013-11-15/2013-11-16",
-  url = "http://pact.sri.com/?page_id=1285",
-  lastchecked = "23:47, August 10, 2013",
+  urldate = "2013-08-10",
  }
 
 %Snyder, L., Astrachan, O., & Briggs, A. (2013). Seven big ideas of computer science. Retrieved 18:18, August 5, 2013, from http://csprinciples.cs.washington.edu/sevenbigideas.html
@@ -534,7 +570,7 @@
   title = "Seven Big Ideas of Computer Science",
   year = "2013",
   url = "http://csprinciples.cs.washington.edu/sevenbigideas.html",
-  lastchecked = "18:18, August 5, 2013",
+  urldate = "2013-08-05",
  }
 
 %Seehorn, D., Carey, S., Fuschetto, B., Moix, I. L. D., O'Grady-Cunniff, D., Owens, B. B., . . . Verno, A. (2011). CTSA k-12 computer science standards. Retrieved 18:50, August 5, 2013, from http://csta.acm.org/Curriculum/sub/K12Standards.html
@@ -543,7 +579,7 @@
   title = "{CSTA} K-12 Computer Science Standards",
   year = "2011",
   url = "http://csta.acm.org/Curriculum/sub/K12Standards.html",
-  lastchecked = "18:50, August 5, 2013",
+  urldate = "2013-08-05",
  }
 
 %Stephenson, C. (2012, November 15). The national imperative for k12 computer science education. Retrieved 22:44, August 20, 2013, from http://www.csta.acm.org/AdvocacyOutreach/sub/PresentationFiles/MicrosoftPanel Stephenson.pdf
@@ -554,468 +590,350 @@
   month = "11",
   day = "15",
   url = "http://www.csta.acm.org/Advocacy_Outreach/sub/PresentationFiles/MicrosoftPanel_Stephenson.pdf",
-  lastchecked = "22:44, August 20, 2013",
+  urldate = "2013-08-20",
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% WIKIPEDIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Boolean algebra. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 18). Boolean algebra. In Wikipedia, The Free Encyclopedia. Retrieved 00:08, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881
 @misc{wiki:boolean-algebra,
-       author = "{Boolean algebra}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Boolean algebra --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-18",
+    url     = "https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881",
+    urldate = "2019-02-18",
 }
 
-
-% Venn diagram. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Venn_diagram&oldid=881835160
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 5). Venn diagram. In Wikipedia, The Free Encyclopedia. Retrieved 00:10, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Venn_diagram&oldid=881835160
 @misc{wiki:venn-diagram,
-       author = "{Venn diagram}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Venn_diagram&oldid=881835160",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Venn diagram --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-05",
+    url     = "https://en.wikipedia.org/w/index.php?title=Venn_diagram&oldid=881835160",
+    urldate = "2019-02-18",
 }
 
 
-% Complement (set theory). (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Complement_(set_theory)&oldid=877236947
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 7). Complement (set theory). In Wikipedia, The Free Encyclopedia. Retrieved 00:11, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Complement_(set_theory)&oldid=877236947
 @misc{wiki:complement-set-theory,
-       author = "{Complement (set theory)}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Complement_(set_theory)&oldid=877236947",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Complement (set theory) --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-07",
+    url     = "https://en.wikipedia.org/w/index.php?title=Complement_(set_theory)&oldid=877236947",
+    urldate = "2019-02-18",
 }
 
 
-% Naive set theory. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Naive_set_theory&oldid=878461198
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 14). Naive set theory. In Wikipedia, The Free Encyclopedia. Retrieved 00:11, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Naive_set_theory&oldid=878461198
 @misc{wiki:naive-set-theory,
-       author = "{Naive set theory}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Naive_set_theory&oldid=878461198",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Naive set theory --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-14",
+    url     = "https://en.wikipedia.org/w/index.php?title=Naive_set_theory&oldid=878461198",
+    urldate = "2019-02-18",
 }
 
 
-% Russell's paradox. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Russell's_paradox&oldid=872268102
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2018, December 6). Russell's paradox. In Wikipedia, The Free Encyclopedia. Retrieved 00:12, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Russell's_paradox&oldid=872268102
 @misc{wiki:russells-paradox,
-       author = "{Russell's paradox}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Russell's_paradox&oldid=872268102",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Russell's paradox --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2018-12-06",
+    url     = "https://en.wikipedia.org/w/index.php?title=Russell's_paradox&oldid=872268102",
+    urldate = "2019-02-18",
 }
 
 
-% Barber paradox. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Barber_paradox&oldid=883712357
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 17). Barber paradox. In Wikipedia, The Free Encyclopedia. Retrieved 00:14, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Barber_paradox&oldid=883712357
 @misc{wiki:barber-paradox,
-       author = "{Barber paradox}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Barber_paradox&oldid=883712357",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Barber paradox --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-17",
+    url     = "https://en.wikipedia.org/w/index.php?title=Barber_paradox&oldid=883712357",
+    urldate = "2019-02-18",
 }
 
 
-% Positional notation. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Positional_notation&oldid=877761722
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 10). Positional notation. In Wikipedia, The Free Encyclopedia. Retrieved 00:15, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Positional_notation&oldid=877761722 
 @misc{wiki:positional-notation,
-       author = "{Positional notation}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Positional_notation&oldid=877761722",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Positional notation --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-10",
+    url     = "https://en.wikipedia.org/w/index.php?title=Positional_notation&oldid=877761722",
+    urldate = "2019-02-18",
 }
 
 
-% Binary operation. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Binary_operation&oldid=882927455
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 12). Binary operation. In Wikipedia, The Free Encyclopedia. Retrieved 00:16, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Binary_operation&oldid=882927455
 @misc{wiki:binary-operation,
-       author = "{Binary operation}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Binary_operation&oldid=882927455",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Binary operation --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-12",
+    url     = "https://en.wikipedia.org/w/index.php?title=Binary_operation&oldid=882927455",
+    urldate = "2019-02-18",
 }
 
-
-% Unary operation. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Unary_operation&oldid=876888704
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 5). Unary operation. In Wikipedia, The Free Encyclopedia. Retrieved 00:16, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Unary_operation&oldid=876888704
 @misc{wiki:unary-operation,
-       author = "{Unary operation}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Unary_operation&oldid=876888704",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Unary operation --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-05",
+    url     = "https://en.wikipedia.org/w/index.php?title=Unary_operation&oldid=876888704",
+    urldate = "2019-02-18",
 }
 
-
-% Infix notation. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Infix_notation&oldid=795311885
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2017, August 13). Infix notation. In Wikipedia, The Free Encyclopedia. Retrieved 00:18, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Infix_notation&oldid=795311885
 @misc{wiki:infix-notation,
-       author = "{Infix notation}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Infix_notation&oldid=795311885",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Infix notation --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2017-08-13",
+    url     = "https://en.wikipedia.org/w/index.php?title=Infix_notation&oldid=795311885",
+    urldate = "2019-02-18",
 }
 
-
-% Polish notation. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Polish_notation&oldid=880582128
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 28). Polish notation. In Wikipedia, The Free Encyclopedia. Retrieved 00:18, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Polish_notation&oldid=880582128
 @misc{wiki:polish-notation,
-       author = "{Polish notation}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Polish_notation&oldid=880582128",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Polish notation --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-28",
+    url     = "https://en.wikipedia.org/w/index.php?title=Polish_notation&oldid=880582128",
+    urldate = "2019-02-18",
 }
 
-
-% Bit. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Bit&oldid=880961230
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 30). Bit. In Wikipedia, The Free Encyclopedia. Retrieved 00:19, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Bit&oldid=880961230
 @misc{wiki:bit,
-       author = "{Bit}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Bit&oldid=880961230",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Bit --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-30",
+    url     = "https://en.wikipedia.org/w/index.php?title=Bit&oldid=880961230",
+    urldate = "2019-02-18",
 }
 
-
-% Nybble. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Nybble&oldid=883088049
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 13). Nibble. In Wikipedia, The Free Encyclopedia. Retrieved 00:20, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Nibble&oldid=883088049
 @misc{wiki:nybble,
-       author = "{Nybble}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Nybble&oldid=883088049",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Nibble --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-13",
+    url     = "https://en.wikipedia.org/w/index.php?title=Nibble&oldid=883088049",
+    urldate = "2019-02-18",
 }
 
-
-% Two's complement. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Two's_complement&oldid=882476598
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 9). Two's complement. In Wikipedia, The Free Encyclopedia. Retrieved 00:21, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Two's_complement&oldid=882476598
 @misc{wiki:twos-complement,
-       author = "{Two's complement}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Two's_complement&oldid=882476598",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Two's complement --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-09",
+    url     = "https://en.wikipedia.org/w/index.php?title=Two's_complement&oldid=882476598",
+    urldate = "2019-02-18",
 }
 
-
-% Ones' complement. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Ones'_complement&oldid=872645202
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2018, December 8). Ones' complement. In Wikipedia, The Free Encyclopedia. Retrieved 00:21, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Ones'_complement&oldid=872645202
 @misc{wiki:ones-complement,
-       author = "{Ones' complement}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Ones'_complement&oldid=872645202",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Ones' complement --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2018-12-08",
+    url     = "https://en.wikipedia.org/w/index.php?title=Ones'_complement&oldid=872645202",
+    urldate = "2019-02-18",
 }
 
-
-% Signedness. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Signedness&oldid=792830866
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2017, July 29). Signedness. In Wikipedia, The Free Encyclopedia. Retrieved 00:22, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Signedness&oldid=792830866
 @misc{wiki:signedness,
-       author = "{Signedness}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Signedness&oldid=792830866",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Signedness --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2017-07-29",
+    url     = "https://en.wikipedia.org/w/index.php?title=Signedness&oldid=792830866",
+    urldate = "2019-02-18",
 }
 
-
-% Integer overflow. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Integer_overflow&oldid=880564879
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 28). Integer overflow. In Wikipedia, The Free Encyclopedia. Retrieved 00:23, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Integer_overflow&oldid=880564879
 @misc{wiki:integer-overflow,
-       author = "{Integer overflow}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Integer_overflow&oldid=880564879",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Integer overflow --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-28",
+    url     = "https://en.wikipedia.org/w/index.php?title=Integer_overflow&oldid=880564879",
+    urldate = "2019-02-18",
 }
 
-
-% Fixed-point arithmetic. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Fixed-point_arithmetic&oldid=874423261
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2018, December 19). Fixed-point arithmetic. In Wikipedia, The Free Encyclopedia. Retrieved 00:24, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Fixed-point_arithmetic&oldid=874423261
 @misc{wiki:fixed-point-arithmetic,
-       author = "{Fixed-point arithmetic}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Fixed-point_arithmetic&oldid=874423261",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Fixed-point arithmetic --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2018-12-19",
+    url     = "https://en.wikipedia.org/w/index.php?title=Fixed-point_arithmetic&oldid=874423261",
+    urldate = "2019-02-18",
 }
 
-
-% Floating-point arithmetic. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Floating-point_arithmetic&oldid=883934950
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 18). Floating-point arithmetic. In Wikipedia, The Free Encyclopedia. Retrieved 00:25, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Floating-point_arithmetic&oldid=883934950
 @misc{wiki:floating-point-arithmetic,
-       author = "{Floating-point arithmetic}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Floating-point_arithmetic&oldid=883934950",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Floating-point arithmetic --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-18",
+    url     = "https://en.wikipedia.org/w/index.php?title=Floating-point_arithmetic&oldid=883934950",
+    urldate = "2019-02-18",
 }
 
-
-% IEEE 754. (2019, February 28). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 22:00 February 28, 2019, from https://en.wikipedia.org/w/index.php?title=IEEE_754&oldid=883044346
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 12). IEEE 754. In Wikipedia, The Free Encyclopedia. Retrieved 00:26, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=IEEE_754&oldid=883044346
 @misc{wiki:ieee-754,
-       author = "{IEEE 754}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "28",
-          url = "https://en.wikipedia.org/w/index.php?title=IEEE_754&oldid=883044346",
-  lastchecked = "22:00 February 28, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "{IEEE} 754 --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-12",
+    url     = "https://en.wikipedia.org/w/index.php?title=IEEE_754&oldid=883044346",
+    urldate = "2019-02-18",
 }
 
-% Logic gate. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Logic_gate&oldid=883992939
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 18). Logic gate. In Wikipedia, The Free Encyclopedia. Retrieved 00:27, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Logic_gate&oldid=883992939
 @misc{wiki:logic-gate,
-       author = "{Logic gate}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Logic_gate&oldid=883992939",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Logic gate --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-18",
+    url     = "https://en.wikipedia.org/w/index.php?title=Logic_gate&oldid=883992939",
+    urldate = "2019-02-18",
 }
 
-
-% NAND logic. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=NAND_logic&oldid=874024831
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2018, December 16). NAND logic. In Wikipedia, The Free Encyclopedia. Retrieved 00:28, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=NAND_logic&oldid=874024831
 @misc{wiki:nand-logic,
-       author = "{NAND logic}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=NAND_logic&oldid=874024831",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "{NAND} logic --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2018-12-16",
+    url     = "https://en.wikipedia.org/w/index.php?title=NAND_logic&oldid=874024831",
+    urldate = "2019-02-18",
 }
 
-
-% NOR logic. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=NOR_logic&oldid=882243128
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 7). NOR logic. In Wikipedia, The Free Encyclopedia. Retrieved 00:28, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=NOR_logic&oldid=882243128
 @misc{wiki:nor-logic,
-       author = "{NOR logic}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=NOR_logic&oldid=882243128",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "{NOR} logic --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-07",
+    url     = "https://en.wikipedia.org/w/index.php?title=NOR_logic&oldid=882243128",
+    urldate = "2019-02-18",
 }
 
-
-% Bitwise operation. (2019, February 28). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 22:00 February 28, 2019, from https://en.wikipedia.org/w/index.php?title=Bitwise_operation&oldid=882396419
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 8). Bitwise operation. In Wikipedia, The Free Encyclopedia. Retrieved 00:29, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Bitwise_operation&oldid=882396419
 @misc{wiki:bitwise-operation,
-       author = "{Bitwise operation}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "28",
-          url = "https://en.wikipedia.org/w/index.php?title=Bitwise_operation&oldid=882396419",
-  lastchecked = "22:00 February 28, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Bitwise operation --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-08",
+    url     = "https://en.wikipedia.org/w/index.php?title=Bitwise_operation&oldid=882396419",
+    urldate = "2019-02-18",
 }
 
-% Functional completeness. (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Functional_completeness&oldid=881651954
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 3). Functional completeness. In Wikipedia, The Free Encyclopedia. Retrieved 00:30, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Functional_completeness&oldid=881651954
 @misc{wiki:functional-completeness,
-       author = "{Functional completeness}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Functional_completeness&oldid=881651954",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Functional completeness --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-03",
+    url     = "https://en.wikipedia.org/w/index.php?title=Functional_completeness&oldid=881651954",
+    urldate = "2019-02-18",
 }
 
-% Adder (electronics). (2019, February 18). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 21:00 February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Adder_(electronics)&oldid=879794929
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, January 23). Adder (electronics). In Wikipedia, The Free Encyclopedia. Retrieved 00:31, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Adder_(electronics)&oldid=879794929
 @misc{wiki:adder-electronics,
-       author = "{Adder (electronics)}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "18",
-          url = "https://en.wikipedia.org/w/index.php?title=Adder_(electronics)&oldid=879794929",
-  lastchecked = "21:00 February 18, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Adder (electronics) --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-01-23",
+    url     = "https://en.wikipedia.org/w/index.php?title=Adder_(electronics)&oldid=879794929",
+    urldate = "2019-02-18",
 }
 
-% Multiplication algorithm. (2019, February 20). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 12:00 February 20, 2019, from https://en.wikipedia.org/w/index.php?title=Multiplication_algorithm&oldid=875028575
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2018, December 23). Multiplication algorithm. In Wikipedia, The Free Encyclopedia. Retrieved 00:32, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Multiplication_algorithm&oldid=875028575 
 @misc{wiki:multiplication-algorithm,
-       author = "{Multiplication algorithm}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "20",
-          url = "https://en.wikipedia.org/w/index.php?title=Multiplication_algorithm&oldid=875028575",
-  lastchecked = "12:00 February 20, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Multiplication algorithm --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2018-12-23",
+    url     = "https://en.wikipedia.org/w/index.php?title=Multiplication_algorithm&oldid=875028575",
+    urldate = "2019-02-18",
 }
 
-% Division algorithm. (2019, February 20). *In {W}ikipedia{,} The Free Encyclopedia*. Retrieved 12:00 February 20, 2019, from https://en.wikipedia.org/w/index.php?title=Division_algorithm&oldid=883467096
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2019, February 15). Division algorithm. In Wikipedia, The Free Encyclopedia. Retrieved 00:33, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Division_algorithm&oldid=883467096
 @misc{wiki:division-algorithm,
-       author = "{Division algorithm}",
-        title = "In {W}ikipedia{,} The Free Encyclopedia",
-         year = "2019",
-        month = "2",
-          day = "20",
-          url = "https://en.wikipedia.org/w/index.php?title=Division_algorithm&oldid=883467096",
-  lastchecked = "12:00 February 20, 2019",
+    author  = "{Wikipedia contributors}",
+    title   = "Division algorithm --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2019-02-15",
+    url     = "https://en.wikipedia.org/w/index.php?title=Division_algorithm&oldid=883467096",
+    urldate = "2019-02-18",
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% WIKIPEDIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%Combination. (2010, June 14). In Wikipedia, The Free Encyclopedia. Retrieved 13:35, June 27, 2010, from http://en.wikipedia.org/w/index.php?title=Combination&oldid=367895591
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
-@misc{wiki:combination,
-  author = "{Combination}",
-  title = "In {W}ikipedia{,} The Free Encyclopedia",
-  year = "2010",
-  month = "6",
-  day = "14",
-  url = "http://en.wikipedia.org/w/index.php?title=Combination&oldid=367895591",
-  lastchecked = "13:35, June 27, 2010",
- }
-
-%Combinatorics. (2010, June 19). In Wikipedia, The Free Encyclopedia. Retrieved 13:24, June 26, 2010, from http://en.wikipedia.org/w/index.php?title=Combinatorics&oldid=368950754
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
-@misc{wiki:combinatorics,
-  author = "Combinatorics",
-  title = "In {W}ikipedia{,} The Free Encyclopedia",
-  year = "2010",
-  month = "6",
-  day = "19",
-  url = "http://en.wikipedia.org/w/index.php?title=Combinatorics&oldid=368950754",
-  lastchecked = "13:24, June 26, 2010",
- }
-
-%Hungarian algorithm. (2013, May 2). In Wikipedia, The Free Encyclopedia. Retrieved 20:40, June 17, 2013, from http://en.wikipedia.org/w/index.php?title=Hungarian_algorithm&oldid=553176136
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
-@misc{wiki:hungarian-algorithm,
-  author = "{Hungarian algorithm}",
-  title = "In {W}ikipedia{,} The Free Encyclopedia",
-  year = "2013",
-  month = {5},
-  day = "2",
-  url = "http://en.wikipedia.org/w/index.php?title=Hungarian_algorithm&oldid=553176136",
-  lastchecked = "20:40, June 17, 2013",
- }
-
-% Java Programming / Primitive Types. (2018, November 27). *Wikibooks, The Free Textbook Project*. Retrieved 21:00 February 18, 2019 from https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137
-% Wikibooks APA entry -- use AUTHOR field for subject (in {})
-@misc{wiki:java-primitive-types,
-       author = "{Java Programming / Primitive Types}",
-        title = "In {W}ikibooks{,} The Free Textbook Project",
-         year = "2018",
-        month = "11",
-          day = "27",
-          url = "https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137",
-  lastchecked = "21:00 February 18, 2019",
-}
-
-%Permutation. (2010, June 7). In Wikipedia, The Free Encyclopedia. Retrieved 13:31, June 26, 2010, from http://en.wikipedia.org/w/index.php?title=Permutation&oldid=366563313
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2010, June 7). Permutation. In Wikipedia, The Free Encyclopedia. Retrieved 00:43, October 26, 2010, from https://en.wikipedia.org/w/index.php?title=Permutation&oldid=366563313
 @misc{wiki:permutation,
-  author = "{Permutation}",
-  title = "In {W}ikipedia{,} The Free Encyclopedia",
-  year = "2010",
-  month = "6",
-  day = "10",
-  url = "http://en.wikipedia.org/w/index.php?title=Permutation&oldid=366563313",
-  lastchecked = "13:31, June 26, 2010",
- }
+    author  = "{Wikipedia contributors}",
+    title   = "Permutation --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2010-06-07",
+    url     = "https://en.wikipedia.org/w/index.php?title=Permutation&oldid=366563313",
+    urldate = "2010-10-26",
+}
 
-% Wikipedia APA entry -- use AUTHOR field for subject (in {})
+% Wikipedia contributors. (2010, June 14). Combination. In Wikipedia, The Free Encyclopedia. Retrieved 00:34, October 26, 2010, from https://en.wikipedia.org/w/index.php?title=Combination&oldid=367895591
+@misc{wiki:combination,
+    author  = "{Wikipedia contributors}",
+    title   = "Combination --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2010-06-14",
+    url     = "https://en.wikipedia.org/w/index.php?title=Combination&oldid=367895591",
+    urldate = "2010-10-26",
+}
+
+% Wikipedia contributors. (2010, June 19). Combinatorics. In Wikipedia, The Free Encyclopedia. Retrieved 00:36, October 26, 2010, from https://en.wikipedia.org/w/index.php?title=Combinatorics&oldid=368950754
+@misc{wiki:combinatorics,
+    author  = "{Wikipedia contributors}",
+    title   = "Combinatorics --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2010-06-19",
+    url     = "https://en.wikipedia.org/w/index.php?title=Combinatorics&oldid=368950754",
+    urldate = "2010-10-26",
+}
+
+% Wikipedia contributors. (2013, May 2). Hungarian algorithm. In Wikipedia, The Free Encyclopedia. Retrieved 00:39, June 17, 2013, from https://en.wikipedia.org/w/index.php?title=Hungarian_algorithm&oldid=553176136
+@misc{wiki:hungarian-algorithm,
+    author  = "{Wikipedia contributors}",
+    title   = "Hungarian algorithm --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2013-05-02",
+    url     = "https://en.wikipedia.org/w/index.php?title=Hungarian_algorithm&oldid=553176136",
+    urldate = "2013-06-17",
+}
+
+% Wikipedia contributors. (2004, July 22). Plagiarism. In Wikipedia, The Free Encyclopedia. Retrieved 00:48, July 27, 2004, from https://en.wikipedia.org/w/index.php?title=Plagiarism&oldid=5139350
 @misc{wiki:plagiarism,
-  author = "Plagiarism",
-  title = "In {W}ikipedia{,} The Free Encyclopedia",
-  year = "2004",
-  month = "6",
-  day = "16",
-  url = "http://en.wikipedia.org/w/index.php?title=Plagiarism&oldid=5139350",
-  lastchecked = "June 27, 2004",
- }
+    author  = "{Wikipedia contributors}",
+    title   = "Plagiarism --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2004-07-22",
+    url     = "https://en.wikipedia.org/w/index.php?title=Plagiarism&oldid=5139350",
+    urldate = "2004-07-27",
+}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEBUG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO: fix ATonline references & add isbn / doi
+% "Java Programming/Primitive Types." Wikibooks. 27 Nov 2018, 23:18 UTC. <https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137> 18 Feb 2019, 00:40. 
+@misc{wiki:java-primitive-types,
+    author  = "{Wikibooks contributors}",
+    title   = "Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project",
+    date    = "2018-11-27",
+    url     = "https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137",
+    urldate = "2019-02-18",
+}
 
-% ATmisc https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Carmichael_number&id=1151790558&wpFormIdentifier=titleform
-@misc{ enwiki:1151790558,
-    author = "{Wikipedia contributors}",
-    title = "Carmichael number --- {Wikipedia}{,} The Free Encyclopedia",
-    year = "2023",
-    howpublished = "\url{https://en.wikipedia.org/w/index.php?title=Carmichael_number&oldid=1151790558}",
-    note = "[Online; accessed 13-August-2023]",
- }
+% Wikipedia contributors. (2023, April 26). Carmichael number. In Wikipedia, The Free Encyclopedia. Retrieved 00:51, August 13, 2023, from https://en.wikipedia.org/w/index.php?title=Carmichael_number&oldid=1151790558
+@misc{wiki:carmichael-number,
+    author  = "{Wikipedia contributors}",
+    title   = "Carmichael number --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2023-04-26",
+    url     = "https://en.wikipedia.org/w/index.php?title=Carmichael_number&oldid=1151790558",
+    urldate = "2023-08-13",
+}
 
+% Wikipedia contributors. (2026, October 10). Wikipedia. In Wikipedia, The Free Encyclopedia. Retrieved 00:54, October 11, 2026, from https://en.wikipedia.org/w/index.php?title=Wikipedia&oldid=1379559220
+%
 % Wikipedia format suggested updates:
-% - use ATonline rather than ATmisc
-% - remove author, note
-% - change title to maintitle
-% - add title = "Wikipedia", url, urldate, month
-% ATonline https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Wikipedia&id=1170034581&wpFormIdentifier=titleform
-@online{ enwiki:13438122,
-    author = "{Wikipedia contributors}",
-    maintitle = "Wikipedia --- {Wikipedia}{,} The Free Encyclopedia",
-    year = "2005",
-    howpublished = "\url{https://en.wikipedia.org/w/index.php?title=Wikipedia&oldid=13438122}",
-    note = "[Online; accessed 14-August-2023]",
-    title = "Wikipedia",
-    url = {https://en.wikipedia.org/Wikipedia},
-    urldate = {2023-08-14T02:30:00},
-    month = {8},
+% - Click 'Cite this page', add comment from APA style, copy BibTeX entry:
+%     @misc{ enwiki:1379559220,
+%       author = "{Wikipedia contributors}",
+%       title = "Wikipedia --- {Wikipedia}{,} The Free Encyclopedia",
+%       year = "2026",
+%       url = "https://en.wikipedia.org/w/index.php?title=Wikipedia&oldid=1379559220",
+%       note = "[Online; accessed 11-October-2026]"
+%     }
+% - change tag to @misc{wiki:wikipedia
+% - change year to date with complete date from first parenthetical.
+% - change note to urldate with only ISO 8601 date.
+@misc{wiki:wikipedia,
+    author  = "{Wikipedia contributors}",
+    title   = "Wikipedia --- {Wikipedia}{,} The Free Encyclopedia",
+    date    = "2026-10-10",
+    url     = "https://en.wikipedia.org/w/index.php?title=Wikipedia&oldid=1379559220",
+    urldate = "2026-10-11",
 }
