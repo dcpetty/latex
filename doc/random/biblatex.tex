@@ -42,10 +42,11 @@
 
 \documentclass[11pt]{article}%
 \usepackage{multicol}
+\usepackage[margin=1.0in]{geometry}
 \usepackage{hyperref}\hypersetup{linktoc=all}
 \usepackage{csquotes}
 %\usepackage[backend=biber,style=authoryear]{biblatex}
-\usepackage[backend=biber,style=apa]{biblatex}
+\usepackage[backend=biber,style=apa,annotation=false]{biblatex}
 \usepackage{xurl}
 \DeclareLanguageMapping{english}{english-apa}
 
@@ -57,6 +58,29 @@
 \begin{document}
 
 \begin{multicols}{2}
+
+\section{6.S952}
+
+\begin{itemize}
+
+ \item \autocite{paper:everett_1973}
+ \item \autocite{paper:zurek_2002}
+ \item \autocite{paper:deutsch_1985}
+ \item \autocite{wiki:quantum-nonlocality}
+ \item \autocite{paper:chaitin_2004}
+ \item \autocite{paper:einstein_1935}
+ \item \autocite{paper:bell_1992}
+ \item \autocite{paper:bennett_1993}
+ \item \autocite{paper:kwiat_1996}
+ \item \autocite{book:spinors-and-space-time-1}
+ \item \autocite{book:qed}
+ \item \autocite{paper:taylor_1998}
+ \item \autocite{paper:cariglia_2015}
+ \item \autocite{paper:cleve_1998}
+ \item \autocite{paper:sep-qm}
+ \item \autocite{book:quantum-mechanics-and-experience}
+
+\end{itemize}
 
 \section{Books}
 
@@ -74,10 +98,45 @@
  \item \autocite{book:elements-one-volume}
  \item \autocite{book:grading-for-equity}
  \item \autocite{book:standards-based-learning}
+
+\end{itemize}
+
+\section{Papers}
+
+\begin{itemize}
+
+ \item \autocite{cacm:wing06}
+ \item \autocite{paper:cornellhmm}
+ \item \autocite{paper:gershenson_2003}
+ \item \autocite{paper:decampos09}
+ \item \autocite{web:chars-74k}
+ \item \autocite{web:chars-74k-hand-drawn}
+
+\end{itemize}
+
+\section{Software}
+
+\begin{itemize}
+
  \item \autocite{book:knr}
+ \item \autocite{book:algorithms-4th-ed}
+
+\end{itemize}
+
+\section{Teaching}
+
+\begin{itemize}
+
  \item \autocite{book:rcm}
  \item \autocite{book:ccm}
  \item \autocite{book:cmtw}
+
+\end{itemize}
+
+\section{Mathematics}
+
+\begin{itemize}
+
  \item \autocite{book:gcs}
  \item \autocite{book:geometry}
  \item \autocite{book:ac}
@@ -87,32 +146,16 @@
 
 \end{itemize}
 
-\section{Papers}
+\section{WWW}
 
 \begin{itemize}
 
- \item \autocite{paper:cleve_1998}
- \item \autocite{paper:sep-qm}
- \item \autocite{cacm:wing06}
- \item \autocite{paper:cornellhmm}
- \item \autocite{DBLP:journals/corr/cs-NE-0308031}
- \item \autocite{paper:deCampos09}
-
-\end{itemize}
-
-\section{Links}
-
-\begin{itemize}
-
- \item \autocite{web:chars-74k}
- \item \autocite{web:chars-74k-hand-drawn}
  \item \autocite{web:equation-editor}
  \item \autocite{web:history-binomial}
  \item \autocite{web:license-maker}
  \item \autocite{web:ecs-v5}
  \item \autocite{web:ecs-v10}
  \item \autocite{web:pact-adp}
- \item \autocite{web:pact-ce21-2013}
  \item \autocite{web:7-big-ideas}
  \item \autocite{web:5-cs}
  \item \autocite{web:national-imperative-k12-csed}
@@ -151,12 +194,14 @@
  \item \autocite{wiki:adder-electronics}
  \item \autocite{wiki:multiplication-algorithm}
  \item \autocite{wiki:division-algorithm}
+ \item \autocite{wiki:permutation}
  \item \autocite{wiki:combination}
  \item \autocite{wiki:combinatorics}
  \item \autocite{wiki:hungarian-algorithm}
- \item \autocite{wiki:java-primitive-types}
- \item \autocite{wiki:permutation}
  \item \autocite{wiki:plagiarism}
+ \item \autocite{wiki:java-primitive-types}
+ \item \autocite{wiki:carmichael-number}
+ \item \autocite{wiki:wikipedia}
 
 \end{itemize}
 
@@ -164,8 +209,6 @@
 
 \begin{itemize}
 
- \item \autocite{enwiki:1151790558}
- \item \autocite{enwiki:13438122}
  \item \autocite{cybeprotest}
  \item \autocite{web}
  \item \autocite{sep-set-theory}
@@ -173,7 +216,9 @@
 
 \end{itemize}
 
-\section{\href{https://appinventor.mit.edu/explore/research}{MIT App Inventor Research}}
+\section{\href{https://appinventor.mit.edu/explore/research}{MIT App Inventor}}
+
+\subsection{2026}
 
 \begin{itemize}
 
@@ -181,14 +226,35 @@
  \item \autocite{mai:zamanova2026visual}
  \item \autocite{mai:kim2026futuremakers}
  \item \autocite{mai:afrida2026ai-driven}
+
+\end{itemize}
+
+\subsection{2025}
+
+\begin{itemize}
+
  \item \autocite{mai:yuan2025meng}
  \item \autocite{mai:patton2025aptly}
+
+\end{itemize}
+
+\subsection{2024}
+
+\begin{itemize}
+
  \item \autocite{mai:ravi2024datacomes}
  \item \autocite{mai:higman2024json}
  \item \autocite{mai:granquist2024meng}
  \item \autocite{mai:elhashemy2024minfo}
  \item \autocite{mai:kim2024appplanner}
  \item \autocite{mai:kim2024advancing}
+
+\end{itemize}
+
+\subsection{2023}
+
+\begin{itemize}
+
  \item \autocite{mai:granquist2023aiaugmented}
  \item \autocite{mai:yoo2023mindpalette}
  \item \autocite{mai:iniego2023altrubot}
@@ -201,6 +267,13 @@
  \item \autocite{mai:vanbrummelen2022learning}
  \item \autocite{mai:vanbrummelen2023weird}
  \item \autocite{mai:du2023widening}
+
+\end{itemize}
+
+\subsection{2022}
+
+\begin{itemize}
+
  \item \autocite{mai:kim2022speak}
  \item \autocite{mai:pang2022iceri}
  \item \autocite{mai:shone2022exploring}
@@ -209,6 +282,13 @@
  \item \autocite{mai:shone2022yes}
  \item \autocite{mai:pang2022meng}
  \item \autocite{mai:harkavy2022meng}
+
+\end{itemize}
+
+\subsection{2021}
+
+\begin{itemize}
+
  \item \autocite{mai:zhu2021teaching}
  \item \autocite{mai:hsu2021effects}
  \item \autocite{mai:hsu2021selfefficacy}
@@ -219,6 +299,13 @@
  \item \autocite{mai:vanbrummelen2021alexa}
  \item \autocite{mai:vanbrummelen2020teaching}
  \item \autocite{mai:hsu2021behavioral}
+
+\end{itemize}
+
+\subsection{2020}
+
+\begin{itemize}
+
  \item \autocite{mai:lao2020phd}
  \item \autocite{mai:weng2020meng}
  \item \autocite{mai:vanbrummelen2020convo}
@@ -229,6 +316,13 @@
  \item \autocite{mai:lao2020experiences}
  \item \autocite{mai:martin2020panel}
  \item \autocite{mai:zhou2020designing}
+
+\end{itemize}
+
+\subsection{2019}
+
+\begin{itemize}
+
  \item \autocite{mai:vanbrummelen2019conversational}
  \item \autocite{mai:vanbrummelen2019popstar}
  \item \autocite{mai:patton2019enhancing}
@@ -244,6 +338,13 @@
  \item \autocite{mai:vanbrummelen2019ms}
  \item \autocite{mai:clarke2019meng}
  \item \autocite{mai:patton2019mitappinventor}
+
+\end{itemize}
+
+\subsection{2018}
+
+\begin{itemize}
+
  \item \autocite{mai:tissenbaum2018reducing}
  \item \autocite{mai:lao2018clouddb}
  \item \autocite{mai:patton2018panel}
@@ -258,6 +359,13 @@
  \item \autocite{mai:prutz2018expanding}
  \item \autocite{mai:wang2018creatinglog}
  \item \autocite{mai:sherman2018technovation}
+
+\end{itemize}
+
+\subsection{2017}
+
+\begin{itemize}
+
  \item \autocite{mai:tissenbaum2017critical}
  \item \autocite{mai:kong2017curriculum}
  \item \autocite{mai:ruan2017evaluations}
@@ -272,17 +380,45 @@
  \item \autocite{mai:campbell2017extending}
  \item \autocite{mai:giurleo2017keyboard}
  \item \autocite{mai:im2017userdefined}
+
+\end{itemize}
+
+\subsection{2016}
+
+\begin{itemize}
+
  \item \autocite{mai:li2016meng}
  \item \autocite{mai:colter2016meng}
  \item \autocite{mai:xie2016meng}
  \item \autocite{mai:tsai2016meng}
  \item \autocite{mai:asmus2016meng}
+
+\end{itemize}
+
+\subsection{2015}
+
+\begin{itemize}
+
  \item \autocite{mai:xie2015measuring}
  \item \autocite{mai:morelli2015analyzing}
+
+\end{itemize}
+
+\subsection{2014}
+
+\begin{itemize}
+
  \item \autocite{mai:turbak2014events}
  \item \autocite{mai:miao2014meng}
  \item \autocite{mai:wolber2014democratizing}
  \item \autocite{mai:schiller2014live}
+
+\end{itemize}
+
+\subsection{2013}
+
+\begin{itemize}
+
  \item \autocite{mai:shih2013understanding}
  \item \autocite{mai:zhang2013no}
  \item \autocite{mai:shih2013democratizing}
@@ -290,10 +426,31 @@
  \item \autocite{mai:pokress2013mit}
  \item \autocite{mai:shih2013unlocking}
  \item \autocite{mai:hsu2013mobile}
+
+\end{itemize}
+
+\subsection{2012}
+
+\begin{itemize}
+
  \item \autocite{mai:bhagi2012meng}
  \item \autocite{mai:turbak2012blocks}
  \item \autocite{mai:margulieux2012subgoal}
+
+\end{itemize}
+
+\subsection{2011}
+
+\begin{itemize}
+
  \item \autocite{mai:saigal2011saathimobile}
+
+\end{itemize}
+
+\subsection{2010}
+
+\begin{itemize}
+
  \item \autocite{mai:magnuson2010meng}
  \item \autocite{mai:saigal2010meng}
 
