@@ -10,8 +10,6 @@ These styles assume the `.tex` files include:
 ```
 Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `biblatex`. `annotation=false` is required: `biblatex-apa` prints the `annotation` field by default, as a line under the reference.
 
-*Snapshot when this was written (re-run the checks to refresh):* 90 entries — 48 `@misc` (37 `wiki:` and 11 `web:`), 26 `@book`, 13 `@article`, 2 `@incollection`, 1 `@inproceedings`.
-
 ## File organization
 
 - A header comment states the required preamble ("Used with:" block, as above).
@@ -55,7 +53,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 
 ## Dates
 
-- `date` (ISO 8601, as precise as known) is preferred. Use `year` only when nothing more precise is known. All 37 `wiki:` entries carry a full `date`.
+- `date` (ISO 8601, as precise as known) is preferred. Use `year` only when nothing more precise is known. All `wiki:` entries carry a full `date`.
 - `urldate` is a **plain `YYYY-MM-DD`, never a time of day**: APA prints only the date, and hand-typed times proved unreliable. When a source stamps retrieval in UTC (Wikipedia), `urldate` is the date in that stamp. When adding an entry, use the date the user gives.
 - **Chronology invariant:** a publication or revision date must not be later than `urldate`. A violation means a typo (it caught `wiki:plagiarism`: retrieved "June 27" before its July 22 revision).
 - **`lastchecked` is not a biblatex field** (it comes from `urlbst`); biber ignores it and APA never prints it. Always use `urldate`.
@@ -66,7 +64,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 - Every `url` gets a `urldate`.
 - **DOI plus free copy:** when a DOI exists, keep it *and* a `url` to a public copy with `urldate`. `biblatex-apa` prints only the DOI, so the free link is stored but hidden. Prefer free copies (arXiv, a university course page, an archive) over paywalled ones; never fabricate a DOI or a link.
 - A `note` may explain a paywall (`Original publisher's copy is paywalled at \url{...}`).
-- Books use `url = {https://isbn.nu/<isbn13>}` (10 of the 11 book URLs; `book:qed` uses the publisher's page).
+- Books use `url = {https://isbn.nu/<isbn>}`, with an ISBN-10 or an ISBN-13 (`book:qed` uses the publisher's page).
 - Wikipedia links are `https://en.wikipedia.org/w/index.php?title=X&oldid=N` permalinks; the `oldid` pins the exact revision.
 - The place of publication is `location`.
 
@@ -77,11 +75,11 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 ```bibtex
 % Wikipedia contributors. (2019, February 18). Boolean algebra. In Wikipedia, The Free Encyclopedia. Retrieved 00:08, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881
 @misc{wiki:boolean-algebra,
-    author  = "{Wikipedia contributors}",
-    title   = "Boolean algebra --- {Wikipedia}{,} The Free Encyclopedia",
-    date    = "2019-02-18",
-    url     = "https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881",
-    urldate = "2019-02-18",
+    author  = {{Wikipedia contributors}},
+    title   = {Boolean algebra --- {Wikipedia}{,} The Free Encyclopedia},
+    date    = {2019-02-18},
+    url     = {https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881},
+    urldate = {2019-02-18},
 }
 ```
 
@@ -92,14 +90,14 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 ```bibtex
 % "Java Programming/Primitive Types." Wikibooks. 27 Nov 2018, 23:18 UTC. <https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137> 18 Feb 2019, 00:40. 
 @misc{wiki:java-primitive-types,
-    author  = "{Wikibooks contributors}",
-    title   = "Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project",
-    date    = "2018-11-27",
-    url     = "https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137",
-    urldate = "2019-02-18",
+    author  = {{Wikibooks contributors}},
+    title   = {Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project},
+    date    = {2018-11-27},
+    url     = {https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137},
+    urldate = {2019-02-18},
 }
 ```
-- **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic (35 of 37 are checkable; `wiki:quantum-nonlocality` has no comment and the Wikibooks entry's is MLA-style).
+- **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic. The exceptions are `wiki:quantum-nonlocality` (no comment) and Wikibooks entries (their comments are MLA-style).
 - Side effect: every entry shares the author "Wikipedia contributors", so entries cited together get year letters (2019a, 2019b ...) and in-text citations change.
 - Verification is against the pasted comment strings, never against the live page.
 
@@ -107,7 +105,7 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 
 - `note` is reader-facing only. It prints in square brackets after the title. **No trailing period** (APA adds its own; a period inside prints as ".]."). Several sentences are joined with semicolons.
 - Allowed in `note`: `\textcopyright{}`, `\url{...}` (biblatex always loads `url.sty`), `\emph{}`. Not allowed: `\href`, `\enquote` (they need `hyperref`/`csquotes`).
-- Avoid `annotation`; it prints under APA unless `annotation=false`. Put provenance in a comment line above the entry instead. (One remains: `paper:gershenson_2003`.)
+- Avoid `annotation`; it prints under APA unless `annotation=false`. Put provenance in a comment line above the entry instead. (Some entries could have annotations.)
 
 ## Formatting
 
@@ -115,12 +113,12 @@ The file has several legacy style families; **match the neighbouring entries** a
 
 | Family | Style |
 |---|---|
-| `wiki:` | 4-space indent, double-quoted, `=` aligned |
-| `web:` | 2-space indent, double-quoted |
-| `paper:` | 2-space indent, braces, mostly aligned |
-| `book:` | 3-space indent, braces, single space before `=` |
+| `wiki:` | 4-space indent, `=` aligned |
+| `web:` | 2-space indent |
+| `paper:` | 2-space indent, mostly aligned |
+| `book:` | 3-space indent, single space before `=` |
 
-Field names and entry types are lowercase, with one field per line and a closing brace on its own line. Delimiters (braces or double quotes) and indentation still differ by family, as above.
+Field names and entry types are lowercase. Every value is brace-delimited (`{...}`, never double quotes), with one field per line and a closing brace on its own line. Indentation still differs by family, as above.
 
 ## Worked examples
 
@@ -178,5 +176,4 @@ Field names and entry types are lowercase, with one field per line and a closing
 
 - **Missing `urldate` on a `url`:** `paper:chaitin_2004`, `paper:cornellhmm`, `paper:gershenson_2003`, `cacm:wing06`, and 8 books (`linear-algebra`, `middlemarch`, `stuck-in-the-shallow-end`, `elements-one-volume`, `grading-for-equity`, `standards-based-learning`, `ac`, `unfinished-game`).
 - **No `url` at all:** 15 books.
-- **Stray fields:** `abstract` (`cacm:wing06`), `howpublished` (`paper:sep-qm`), `version` (`web:ecs-v10`, not printed), and one `annotation` (`paper:gershenson_2003`).
-- **Provenance:** the 2019 Wikipedia batch's retrieval stamps are minute-level UTC; the earlier hand-typed 2010 and 2013 `web:` dates have not been independently checked.
+- **Stray fields:** `abstract` (`cacm:wing06`), `howpublished` (`paper:sep-qm`), `version` (`web:ecs-v5` and `web:ecs-v10`, not printed), and one `annotation` (`paper:gershenson_2003`).
