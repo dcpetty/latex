@@ -15,7 +15,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 - A header comment states the required preamble ("Used with:" block, as above).
 - Sections are introduced by one banner each: `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NAME %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%` (at least five `%` on each side). Current order: `6.S952`, `BOOKS`, `PAPERS`, `SOFTWARE`, `TEACHING`, `MATHEMATICS`, `WWW`, `WIKIPEDIA`.
 - **Every entry belongs to the nearest banner above it**, so an entry sits where its banner puts it (`book:knr` is under `SOFTWARE`). To change an entry's section, move the entry.
-- New course readings go **directly under the `6.S952` banner** (so that section is newest-first). Other sections have no required order.
+- New course readings go under the `6.S952` banner in newest-last order. Other sections have no required order.
 - **Comment lines directly above an entry belong to it and are kept** when the entry's code is edited or converted. Deleting an entry deletes its own comment line.
 - Comments are never edited just to tidy them. Typical comments: a human-readable citation string (Wikipedia's "Cite this page" APA string, or an older APA line above a `web:` or `paper:` entry) and `TODO` notes.
 
@@ -174,6 +174,6 @@ Field names and entry types are lowercase. Every value is brace-delimited (`{...
 
 ## Known gaps (not yet normalized)
 
-- **Missing `urldate` on a `url`:** `paper:chaitin_2004`, `paper:cornellhmm`, `paper:gershenson_2003`, `cacm:wing06`, and 8 books (`linear-algebra`, `middlemarch`, `stuck-in-the-shallow-end`, `elements-one-volume`, `grading-for-equity`, `standards-based-learning`, `ac`, `unfinished-game`).
+- **Missing `urldate` on a `url`:** `paper:cornellhmm`, `paper:gershenson_2003`, `cacm:wing06`, and 8 books (`linear-algebra`, `middlemarch`, `stuck-in-the-shallow-end`, `elements-one-volume`, `grading-for-equity`, `standards-based-learning`, `ac`, `unfinished-game`).
 - **No `url` at all:** 15 books.
 - **Stray fields:** `abstract` (`cacm:wing06`), `howpublished` (`paper:sep-qm`), `version` (`web:ecs-v5` and `web:ecs-v10`, not printed), and one `annotation` (`paper:gershenson_2003`).
