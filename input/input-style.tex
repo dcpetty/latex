@@ -33,6 +33,50 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% tcolorbox style
 \tcbset{colback=white,boxrule=1pt,sharp corners=all}
 
+% Shared quotebox styles
+\tcbset{
+  quotebox style/.style={
+    enhanced,
+    colback=gray!10!white,
+    colframe=gray!40!black,
+    leftrule=4mm, rightrule=0mm, toprule=0mm, bottomrule=0mm,
+    boxrule=0.25mm, arc=0mm,
+    left=2mm, right=2mm, top=1mm, bottom=1mm,
+    no shadow,
+  },
+  quotebox title style/.style={
+    colbacktitle=gray!20!white,
+    coltitle=black,
+    fonttitle=\bfseries,
+    titlerule=0.25mm,
+    titlerule style={gray!40!black},
+  },
+}
+
+% Body only quotebox
+\newtcolorbox{qb@plain}{quotebox style}
+
+% Title + body quotebox
+\newtcolorbox{qb@titled}[1]{quotebox style, quotebox title style, title={#1}}
+
+% Title only quotebox: no padding, no rule, so no empty body area
+\newtcolorbox{qb@titleonly}[1]{
+  quotebox style, quotebox title style, title={#1},
+  top=0pt, bottom=0pt, boxsep=0pt, titlerule=0pt,
+}
+
+\NewDocumentEnvironment{quotebox}{g +b}
+  {}
+  {%
+    \IfValueTF{#1}
+      {\IfBlankTF{#2}
+        {\begin{qb@titleonly}{#1}\end{qb@titleonly}}
+        {\begin{qb@titled}{#1}#2\end{qb@titled}}}
+      {\IfBlankTF{#2}
+        {}
+        {\begin{qb@plain}#2\end{qb@plain}}}%
+  }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Listing style
 % General Setting of listings
 \lstset{
