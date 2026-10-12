@@ -5,7 +5,8 @@ The [BibLaTeX](https://tug.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.p
 - [`dcpbib.bib`](https://github.com/dcpetty/latex/blob/main/bib/dcpbib.bib) &mdash; [BibLaTeX](https://tug.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf) citations of [dcp](https://dcpetty.dev/).
 - [`maibib.bib`](https://github.com/dcpetty/latex/blob/main/bib/maibib.bib) &mdash; [BibLaTeX](https://tug.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf) citations of [MIT App Inventor](https://appinventor.mit.edu/explore/research).
 
-The [`Makefile`](https://www.gnu.org/software/make/manual/make.html) in this repository uses the [`biber`](https://mirror.latigo.net/ctan/biblio/biber/base/documentation/biber.pdf) backend.
+The [`Makefile`](https://www.gnu.org/software/make/manual/make.html) in this repository uses the [`biber`](https://mirror.latigo.net/ctan/biblio/biber/base/documentation/biber.pdf) backend. There are also style guides used to check [`dcpbib.bib`](https://dcpetty.dev/latex/bib/dcpbib-style-guide.html) &amp; [`maibib.bib`](https://dcpetty.dev/latex/bib/maibib-style-guide.html) when entries are added.)
+
 
 <hr>
 
