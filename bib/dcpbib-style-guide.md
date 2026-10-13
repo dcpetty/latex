@@ -75,26 +75,28 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 ```bibtex
 % Wikipedia contributors. (2019, February 18). Boolean algebra. In Wikipedia, The Free Encyclopedia. Retrieved 00:08, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881
 @misc{wiki:boolean-algebra,
-    author  = {{Wikipedia contributors}},
-    title   = {Boolean algebra --- {Wikipedia}{,} The Free Encyclopedia},
-    date    = {2019-02-18},
-    url     = {https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881},
-    urldate = {2019-02-18},
+    author     = {{Wikipedia contributors}},
+    title      = {Boolean algebra --- {Wikipedia}{,} The Free Encyclopedia},
+    shorttitle = {Boolean algebra},
+    date       = {2019-02-18},
+    url        = {https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881},
+    urldate    = {2019-02-18},
 }
 ```
 
-- `author` = `{Wikipedia contributors}`; `title` = `<topic> --- {Wikipedia}{,} The Free Encyclopedia`, where the topic is the article title **at that revision** (Nibble, not Nybble).
+- `author` = `{Wikipedia contributors}`; `title` = `<topic> --- {Wikipedia}{,} The Free Encyclopedia`, where the topic is the article title **at that revision** (Nibble, not Nybble); `shorttitle` = the topic alone, i.e. the `title` without its ` --- ...` tail (it is what the `\titlecite` command prints).
 - `date` = the full revision date from the string's first parenthetical; `urldate` = the date of its "Retrieved" stamp; `url` = the https permalink from the string; no `month`, `day`, `lastchecked` or `year`.
 - **Wikibooks pages** use `{Wikibooks contributors}` and `{Wikibooks}{,} The Free Textbook Project`, and may have an MLA-style comment:
 
 ```bibtex
 % "Java Programming/Primitive Types." Wikibooks. 27 Nov 2018, 23:18 UTC. <https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137> 18 Feb 2019, 00:40. 
 @misc{wiki:java-primitive-types,
-    author  = {{Wikibooks contributors}},
-    title   = {Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project},
-    date    = {2018-11-27},
-    url     = {https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137},
-    urldate = {2019-02-18},
+    author     = {{Wikibooks contributors}},
+    title      = {Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project},
+    shorttitle = {Java Programming / Primitive Types},
+    date       = {2018-11-27},
+    url        = {https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137},
+    urldate    = {2019-02-18},
 }
 ```
 - **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic. The exceptions are `wiki:quantum-nonlocality` (no comment) and Wikibooks entries (their comments are MLA-style).
@@ -113,7 +115,7 @@ The file has several legacy style families; **match the neighbouring entries** a
 
 | Family | Style |
 |---|---|
-| `wiki:` | 4-space indent, `=` aligned |
+| `wiki:` | 4-space indent, `=` aligned to the `shorttitle` column |
 | `web:` | 2-space indent |
 | `paper:` | 2-space indent, mostly aligned |
 | `book:` | 3-space indent, single space before `=` |

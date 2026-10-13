@@ -14,5 +14,17 @@
 \DeclareLanguageMapping{english}{english-apa}
 %\addbibresource{../bib/dcpbib.bib}
 
+% Mostly for Wikipedia entries, \titlecite can be used to cite the shorttitle (or the title if it's missing) in lieu of the uniform 'Wikipedia contributors' author in \autocite. 
+\DeclareCiteCommand{\titlecite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \iffieldundef{shorttitle}
+     {\thefield{title}}
+     {\thefield{shorttitle}}%
+   \addcomma\space
+   \printtext[bibhyperref]{\thefield{year}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
 %\bibliography{../bib/dcpbib} % To update, delete *.blb
