@@ -32,8 +32,8 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 
 ## Entry types
 
-- `@misc` for web pages; `@book`; `@article`; `@incollection` (a titled chapter in an edited volume, e.g. Everett 1973); `@inproceedings`. Entry types are lowercase.
-- arXiv-only preprints are `@article` with `journal = {CoRR}`, the arXiv id as `volume`, and the abs page as `url`.
+- `@misc` for web pages; `@book`; `@article`; `@incollection` (a titled chapter in an edited volume, e.g. Everett 1973); `@inbook` (a titled chapter of an authored book, with no editor); `@inproceedings`. Entry types are lowercase.
+- arXiv-only preprints are `@article` with `journal = {CoRR}`, the arXiv id as `volume`, arXiv's own DOI (`10.48550/arXiv.<id>`, e.g. `10.48550/arXiv.math/0411418`) as `doi`, and the abs page as `url`.
 - **Roles stay distinct.** `author` / `editor` / `translator` are different fields: Euclid is the author, Densmore the editor, Heath the translator. A catalogue export that lists everyone as author is wrong; check the title page or a library (MARC) record.
 - **Multi-volume works:** the whole set is one entry with `volumes = {1--2}` (prints "Vols. 1–2"). A single volume is `title` plus `subtitle = {Vol. 1. {T}wo-Spinor Calculus ...}`; the `maintitle` + `volume` form prints the volume number twice and leaves a stray space, so avoid it.
 - **A part of an authored book** is cited through the volume: put the part in `note` (`Appendix: Diagrammatic notation, pp. 424--434`) and use the part's DOI if one exists.
@@ -115,7 +115,7 @@ Every entry uses the same layout:
 
 - Fields are indented **2 spaces**, one field per line.
 - The `=` signs line up: the key is padded to **10 characters**, then ` = ` and the value, so the `=` sits at column 13.
-- A key longer than 10 characters is **not** padded, so its `=` is simply misaligned (only `howpublished` today).
+- A key longer than 10 characters is **not** padded, so its `=` is simply misaligned (`howpublished` and `organization` today).
 - Field names and entry types are lowercase.
 - Every value is brace-delimited (`{...}`, never double quotes).
 - The closing brace is on its own line.
