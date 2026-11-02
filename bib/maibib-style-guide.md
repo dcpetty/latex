@@ -86,7 +86,7 @@ This documents the conventions this bibliography follows, evolved over the cours
 
 ## Formatting
 
-- Field lines are indented **4 spaces**, with every `=` at **column 17**: the longest field name in the vocabulary (`journaltitle`, 12 characters) plus one space. This holds for every field of every entry, even entries that lack that field.
+- Field lines are indented **2 spaces**, with every `=` at **column 15**: the longest field name in the vocabulary (`journaltitle`, 12 characters) plus one space. This holds for every field of every entry, even entries that lack that field.
 - Values use `{braces}`, field names are lowercase, and the closing brace is on its own line.
 
 ## Reconciliation workflow (when a real external citation turns up)
@@ -109,7 +109,7 @@ This documents the conventions this bibliography follows, evolved over the cours
 - A "stray junk" scan for text sitting outside any `@entry{}` block, and no `@` in the header comment.
 - Duplicate keys within the file and against `dcpbib.bib`.
 - `biber --tool maibib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, **not** the file: `rm -Rf "$(biber --cache)"`.
-- Practice scans: no `note` ends in a period; no non-ASCII characters; no `\enquote`/`\url{`; no unescaped `_` outside `url`/`doi`/`eprint`; every `=` at column 17; every `urldate` a plain date; every `@thesis` has a `type`.
+- Practice scans: no `note` ends in a period; no non-ASCII characters; no `\enquote`/`\url{`; no unescaped `_` outside `url`/`doi`/`eprint`; every field line indented 2 spaces with its `=` at column 15; every `urldate` a plain date; every `@thesis` has a `type`.
 - Watch for str_replace boundary mistakes (deleting an adjacent entry's header while using it as a unique anchor) — catch immediately via the checks above, fix and acknowledge rather than silently patch.
 
 ## Scope discipline
