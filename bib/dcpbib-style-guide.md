@@ -77,12 +77,12 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 ```bibtex
 % Wikipedia contributors. (2019, February 18). Boolean algebra. In Wikipedia, The Free Encyclopedia. Retrieved 00:08, February 18, 2019, from https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881
 @misc{wiki:boolean-algebra,
-  author     = {{Wikipedia contributors}},
-  title      = {Boolean algebra --- {Wikipedia}{,} The Free Encyclopedia},
-  shorttitle = {Boolean algebra},
-  date       = {2019-02-18},
-  url        = {https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881},
-  urldate    = {2019-02-18},
+  author       = {{Wikipedia contributors}},
+  title        = {Boolean algebra --- {Wikipedia}{,} The Free Encyclopedia},
+  shorttitle   = {Boolean algebra},
+  date         = {2019-02-18},
+  url          = {https://en.wikipedia.org/w/index.php?title=Boolean_algebra&oldid=883953881},
+  urldate      = {2019-02-18},
 }
 ```
 
@@ -93,12 +93,12 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 ```bibtex
 % "Java Programming/Primitive Types." Wikibooks. 27 Nov 2018, 23:18 UTC. <https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137> 18 Feb 2019, 00:40. 
 @misc{wiki:java-primitive-types,
-  author     = {{Wikibooks contributors}},
-  title      = {Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project},
-  shorttitle = {Java Programming / Primitive Types},
-  date       = {2018-11-27},
-  url        = {https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137},
-  urldate    = {2019-02-18},
+  author       = {{Wikibooks contributors}},
+  title        = {Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project},
+  shorttitle   = {Java Programming / Primitive Types},
+  date         = {2018-11-27},
+  url          = {https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137},
+  urldate      = {2019-02-18},
 }
 ```
 - **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic. The exceptions are `wiki:quantum-nonlocality` (no comment) and Wikibooks entries (their comments are MLA-style).
@@ -115,9 +115,7 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 
 Every entry uses the same layout:
 
-- Fields are indented **2 spaces**, one field per line.
-- The `=` signs line up: the key is padded to **10 characters**, then ` = ` and the value, so the `=` sits at column 13.
-- A key longer than 10 characters is **not** padded, so its `=` is simply misaligned (`howpublished`, `organization` and `institution` today).
+- One field per line. Field lines are indented **2 spaces**, with every `=` at **column 15**: the longest field name in the vocabulary (`howpublished` and `organization`, 12 characters) plus one space. This holds for every field of every entry, even entries that lack those fields: shorter names are padded with spaces, then ` = ` and the value. No field name is longer than 12 characters, so no key is an exception.
 - Field names and entry types are lowercase.
 - Every value is brace-delimited (`{...}`, never double quotes).
 - The closing brace is on its own line.
@@ -127,30 +125,30 @@ Every entry uses the same layout:
 
 ```bibtex
 @article{paper:deutsch_1985,
-  author     = {Deutsch, David},
-  title      = {Quantum Theory as a Universal Physical Theory},
-  journal    = {International Journal of Theoretical Physics},
-  volume     = {24},
-  number     = {1},
-  date       = {1985-01},
-  pages      = {1--41},
-  doi        = {10.1007/BF00670071},
-  url        = {https://boulderschool.yale.edu/sites/default/files/files/Deutsch.pdf},
-  urldate    = {2026-10-07},
+  author       = {Deutsch, David},
+  title        = {Quantum Theory as a Universal Physical Theory},
+  journal      = {International Journal of Theoretical Physics},
+  volume       = {24},
+  number       = {1},
+  date         = {1985-01},
+  pages        = {1--41},
+  doi          = {10.1007/BF00670071},
+  url          = {https://boulderschool.yale.edu/sites/default/files/files/Deutsch.pdf},
+  urldate      = {2026-10-07},
 }
 ```
 ```bibtex
 @book{book:elements-one-volume,
-  author     = {Euclid},
-  editor     = {Densmore, Dana},
-  translator = {Heath, Thomas Little},
-  title      = {Euclid's Elements: All Thirteen Books Complete in One Volume},
-  edition    = {2},
-  publisher  = {Green Lion Press},
-  location   = {Santa Fe, NM},
-  date       = {2003},
-  isbn       = {9781888009194},
-  url        = {https://isbn.nu/9781888009194},
+  author       = {Euclid},
+  editor       = {Densmore, Dana},
+  translator   = {Heath, Thomas Little},
+  title        = {Euclid's Elements: All Thirteen Books Complete in One Volume},
+  edition      = {2},
+  publisher    = {Green Lion Press},
+  location     = {Santa Fe, NM},
+  date         = {2003},
+  isbn         = {9781888009194},
+  url          = {https://isbn.nu/9781888009194},
 }
 ```
 
@@ -172,7 +170,7 @@ Every entry uses the same layout:
 
 - Entry count; braces balanced **outside comments** (count them there, so a stray brace in a comment cannot hide a real imbalance); stray text outside any entry; duplicate keys within the file and against `maibib.bib`.
 - `biber --tool dcpbib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, not the file: `rm -Rf "$(biber --cache)"`.
-- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every `=` at column 13 except the keys longer than 10 characters.
+- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every field line indented 2 spaces with its `=` at column 15.
 - `6.S952` sessions: dividers numbered consecutively from `01` and all in the same shape; no `6.S952` entry before the first divider; the whole section ascending by `urldate`; only the newest session empty.
 - A test render of each changed entry.
 
