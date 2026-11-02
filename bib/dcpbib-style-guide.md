@@ -15,9 +15,10 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 - A header comment states the required preamble ("Used with:" block, as above).
 - Sections are introduced by one banner each: `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NAME %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%` (at least five `%` on each side). Current order: `6.S952`, `BOOKS`, `PAPERS`, `SOFTWARE`, `TEACHING`, `MATHEMATICS`, `WWW`, `WIKIPEDIA`.
 - **Every entry belongs to the nearest banner above it**, so an entry sits where its banner puts it (`book:knr` is under `SOFTWARE`). To change an entry's section, move the entry.
-- New course readings go under the `6.S952` banner in newest-last order. Other sections have no required order.
+- New course readings go in `6.S952`, in newest-last order, under the latest `Session NN` divider (see below). Other sections have no required order.
+- **Session dividers (`6.S952` only).** The section is split into class sessions by standalone comment lines of one fixed shape, `% ---------------------------- Session 01 ----------------------------` (28 hyphens each side, a two-digit number). Dividers are numbered consecutively from `01`. Each has a blank line below it, so it belongs to no entry. Every `6.S952` entry sits under one. The whole section stays in ascending `urldate` order, so a new session's divider goes after the previous session's last entry. A session need not share one `urldate`, because `urldate` is the retrieval date, not the session date. Only the newest session may be empty: its divider is a placeholder for readings still to come.
 - **Comment lines directly above an entry belong to it and are kept** when the entry's code is edited or converted. Deleting an entry deletes its own comment line.
-- Comments are never edited just to tidy them. Typical comments: a human-readable citation string (Wikipedia's "Cite this page" APA string, or an older APA line above a `web:` or `paper:` entry) and `TODO` notes.
+- Comments are never edited just to tidy them. Typical comments: a human-readable citation string (Wikipedia's "Cite this page" APA string, or an older APA line above a `web:` or `paper:` entry), `TODO` notes, and the `Session NN` dividers in `6.S952`.
 
 ## Citation keys
 
@@ -32,7 +33,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 
 ## Entry types
 
-- `@misc` for web pages; `@book`; `@article`; `@incollection` (a titled chapter in an edited volume, e.g. Everett 1973); `@inbook` (a titled chapter of an authored book, with no editor); `@inproceedings`. Entry types are lowercase.
+- `@misc` for web pages; `@book`; `@article`; `@incollection` (a titled chapter in an edited volume, e.g. Everett 1973); `@inbook` (a titled chapter of an authored book, with no editor); `@inproceedings`; `@thesis` (a doctoral dissertation, with `type = {Doctoral dissertation}` and the awarding university in `institution`). Entry types are lowercase.
 - arXiv-only preprints are `@article` with `journal = {CoRR}`, the arXiv id as `volume`, arXiv's own DOI (`10.48550/arXiv.<id>`, e.g. `10.48550/arXiv.math/0411418`) as `doi`, and the abs page as `url`.
 - **Roles stay distinct.** `author` / `editor` / `translator` are different fields: Euclid is the author, Densmore the editor, Heath the translator. A catalogue export that lists everyone as author is wrong; check the title page or a library (MARC) record.
 - **Multi-volume works:** the whole set is one entry with `volumes = {1--2}` (prints "Vols. 1–2"). A single volume is `title` plus `subtitle = {Vol. 1. {T}wo-Spinor Calculus ...}`; the `maintitle` + `volume` form prints the volume number twice and leaves a stray space, so avoid it.
@@ -48,7 +49,8 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 
 - Input in normal Title Case; `biblatex-apa` sentence-cases it. **A capital after a colon is automatic**; after a period, an em dash `---`, a `?` or a `;` the next word is lowercased, so protect it: `Vol. 1. {T}wo-Spinor ...`, `Quantum to Classical---{R}evisited`.
 - Protect acronyms and proper nouns: `{IEEE}`, `{NAND}`, `{QED}`, `{F}eynman's`. When a Wikipedia topic moves into a title, protect its acronyms too (`{IEEE} 754`).
-- **ASCII only** (the file has no non-ASCII characters). Apostrophes are plain `'` (never U+2019); an opening single quote is a backtick (`` `teacher copy' ``); dashes are `---`; page ranges use `--`. Accented letters use LaTeX escapes (`Cr\'epeau`).
+- **ASCII only** (the file has no non-ASCII characters). Apostrophes are plain `'` (never U+2019); an opening single quote is a backtick (`` `teacher copy' ``); dashes are `---`; page ranges use `--`. Accented letters use LaTeX escapes with the accent braced, the traditional BibTeX form (`Cr{\'e}peau`, `Schr{\"o}dinger`).
+- **Non-English titles:** keep the title in its own language and spelling, and set `langid` (`langid = {german}`, `langid = {french}`). Without it `biblatex-apa` sentence-cases the title and lowercases German nouns. Put the English translation of the title in `note`: it prints in square brackets, as APA marks a translated title (`note = {On the theory of the energy distribution law of the normal spectrum}`). Cite the original-language work, and say where a translation is in the `note` or the `url`.
 - Typos in a source's own metadata are corrected, not copied.
 
 ## Dates
@@ -115,7 +117,7 @@ Every entry uses the same layout:
 
 - Fields are indented **2 spaces**, one field per line.
 - The `=` signs line up: the key is padded to **10 characters**, then ` = ` and the value, so the `=` sits at column 13.
-- A key longer than 10 characters is **not** padded, so its `=` is simply misaligned (`howpublished` and `organization` today).
+- A key longer than 10 characters is **not** padded, so its `=` is simply misaligned (`howpublished`, `organization` and `institution` today).
 - Field names and entry types are lowercase.
 - Every value is brace-delimited (`{...}`, never double quotes).
 - The closing brace is on its own line.
@@ -170,7 +172,8 @@ Every entry uses the same layout:
 
 - Entry count; braces balanced **outside comments** (count them there, so a stray brace in a comment cannot hide a real imbalance); stray text outside any entry; duplicate keys within the file and against `maibib.bib`.
 - `biber --tool dcpbib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, not the file: `rm -Rf "$(biber --cache)"`.
-- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only.
+- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every `=` at column 13 except the keys longer than 10 characters.
+- `6.S952` sessions: dividers numbered consecutively from `01` and all in the same shape; no `6.S952` entry before the first divider; the whole section ascending by `urldate`; only the newest session empty.
 - A test render of each changed entry.
 
 ## Known gaps (not yet normalized)
