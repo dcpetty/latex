@@ -18,7 +18,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 - New course readings go in `6.S952`, in newest-last order, under the latest `Session NN` divider (see below). Other sections have no required order.
 - **Session dividers (`6.S952` only).** The section is split into class sessions by standalone comment lines of one fixed shape, `% ---------------------------- Session 01 ----------------------------` (28 hyphens each side, a two-digit number). Dividers are numbered consecutively from `01`. Each has a blank line below it, so it belongs to no entry. Every `6.S952` entry sits under one. The whole section stays in ascending `urldate` order, so a new session's divider goes after the previous session's last entry. A session need not share one `urldate`, because `urldate` is the retrieval date, not the session date. Only the newest session may be empty: its divider is a placeholder for readings still to come.
 - **Comment lines directly above an entry belong to it and are kept** when the entry's code is edited or converted. Deleting an entry deletes its own comment line.
-- Comments are never edited just to tidy them. Typical comments: a human-readable citation string (Wikipedia's "Cite this page" APA string, or an older APA line above a `web:` or `paper:` entry), `TODO` notes, and the `Session NN` dividers in `6.S952`.
+- Comments are never edited just to tidy them, with one exception: trailing whitespace is removed from every line, comments included. Typical comments: a human-readable citation string (Wikipedia's "Cite this page" APA string, or an older APA line above a `web:` or `paper:` entry), `TODO` notes, and the `Session NN` dividers in `6.S952`.
 
 ## Citation keys
 
@@ -92,7 +92,7 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 - **Wikibooks pages** use `{Wikibooks contributors}` and `{Wikibooks}{,} The Free Textbook Project`, and may have an MLA-style comment:
 
 ```bibtex
-% "Java Programming/Primitive Types." Wikibooks. 27 Nov 2018, 23:18 UTC. <https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137> 18 Feb 2019, 00:40. 
+% "Java Programming/Primitive Types." Wikibooks. 27 Nov 2018, 23:18 UTC. <https://en.wikibooks.org/w/index.php?title=Java_Programming/Primitive_Types&oldid=3491137> 18 Feb 2019, 00:40.
 @misc{wiki:java-primitive-types,
   author       = {{Wikibooks contributors}},
   title        = {Java Programming / Primitive Types --- {Wikibooks}{,} The Free Textbook Project},
@@ -171,7 +171,7 @@ Every entry uses the same layout:
 
 - Entry count; braces balanced **outside comments** (count them there, so a stray brace in a comment cannot hide a real imbalance); stray text outside any entry; duplicate keys within the file and against `maibib.bib`.
 - `biber --tool dcpbib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, not the file: `rm -Rf "$(biber --cache)"`.
-- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every field line indented 2 spaces with its `=` at column 15; every `note` that translates a title starts with `Translation: `.
+- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every field line indented 2 spaces with its `=` at column 15; every `note` that translates a title starts with `Translation: `; no line ends in whitespace.
 - `6.S952` sessions: dividers numbered consecutively from `01` and all in the same shape; no `6.S952` entry before the first divider; the whole section ascending by `urldate`; only the newest session empty.
 - A test render of each changed entry.
 
