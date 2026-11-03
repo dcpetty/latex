@@ -50,7 +50,8 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 - Input in normal Title Case; `biblatex-apa` sentence-cases it. **A capital after a colon is automatic**; after a period, an em dash `---`, a `?` or a `;` the next word is lowercased, so protect it: `Vol. 1. {T}wo-Spinor ...`, `Quantum to Classical---{R}evisited`.
 - Protect acronyms and proper nouns: `{IEEE}`, `{NAND}`, `{QED}`, `{F}eynman's`. When a Wikipedia topic moves into a title, protect its acronyms too (`{IEEE} 754`).
 - **ASCII only** (the file has no non-ASCII characters). Apostrophes are plain `'` (never U+2019); an opening single quote is a backtick (`` `teacher copy' ``); dashes are `---`; page ranges use `--`. Accented letters use LaTeX escapes with the accent braced, the traditional BibTeX form (`Cr{\'e}peau`, `Schr{\"o}dinger`).
-- **Non-English titles:** keep the title in its own language and spelling, and set `langid` (`langid = {german}`, `langid = {french}`). Without it `biblatex-apa` sentence-cases the title and lowercases German nouns. Put the English translation of the title in `note`: it prints in square brackets, as APA marks a translated title (`note = {On the theory of the energy distribution law of the normal spectrum}`). Cite the original-language work, and say where a translation is in the `note` or the `url`.
+- **Non-English titles:** keep the title in its own language and spelling, and set `langid` (`langid = {german}`, `langid = {french}`). Without it `biblatex-apa` sentence-cases the title and lowercases German nouns. Cite the original-language work, and say where a translation is in the `note` or the `url`.
+- **Translation notes:** the English translation of a non-English title goes in `note`, prefixed `Translation: ` (`note = {Translation: On the theory of the energy distribution law of the normal spectrum}`); it prints in square brackets, as APA marks a translated title. Anything else the note says follows the translation, joined by a semicolon. A note that only states a language, such as `In Indonesian`, is not a translation and takes no prefix.
 - Typos in a source's own metadata are corrected, not copied.
 
 ## Dates
@@ -170,7 +171,7 @@ Every entry uses the same layout:
 
 - Entry count; braces balanced **outside comments** (count them there, so a stray brace in a comment cannot hide a real imbalance); stray text outside any entry; duplicate keys within the file and against `maibib.bib`.
 - `biber --tool dcpbib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, not the file: `rm -Rf "$(biber --cache)"`.
-- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every field line indented 2 spaces with its `=` at column 15.
+- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every field line indented 2 spaces with its `=` at column 15; every `note` that translates a title starts with `Translation: `.
 - `6.S952` sessions: dividers numbered consecutively from `01` and all in the same shape; no `6.S952` entry before the first divider; the whole section ascending by `urldate`; only the newest session empty.
 - A test render of each changed entry.
 

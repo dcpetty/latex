@@ -41,13 +41,15 @@ This documents the conventions this bibliography follows, evolved over the cours
 - A capital after a **colon** is automatic. After a period, an em dash, a `?` or a `;` the next word is lowercased, so protect it if it must stay capital.
 - A title that genuinely changed between preprint and publication uses the published version.
 - Typos in the *source's own* metadata (IEEE's "humman-computer," ACM's "Proceeding" missing an "s") are corrected, not propagated.
+- **Translation notes:** the English translation of a non-English title goes in `note`, prefixed `Translation: ` (`note = {Translation: My first apps}`); it prints in square brackets, as APA marks a translated title. Anything else the note says follows the translation, joined by a semicolon. A note that only states a language, such as `In Indonesian`, is not a translation and takes no prefix.
 
 ## Quoting and characters
 
-- **The file is ASCII-only and contains almost no embedded LaTeX**: the only commands allowed are `\url{...}` in a `note` or `annotation` (see below) and four `\texttt{}` in annotations, which never print.
+- **The file is ASCII-only and contains almost no embedded LaTeX**: the only commands allowed are `\url{...}` in a `note` or `annotation` (see below), braced accent escapes (see the next point), and four `\texttt{}` in annotations, which never print.
+- **Accents:** accented letters are written as LaTeX escapes with the accent braced, the traditional BibTeX form: `G{\'o}mez`, `Sh{\=o}ya`, `Edi{\c{c}}{\~o}es Acad{\^e}micas`. Each escape sits in its own brace group, with its letter inside it. It is never left bare (`G\'omez`) and never replaced by a literal accented character, because the file is ASCII-only. The rule covers every field: author and publisher names, titles and notes, and the macrons of a Hepburn romanization.
 - Double quotes are plain ``` ``like this'' ```; an opening single quote is a backtick (`` `x' ``). **No `\enquote{}`**, so `csquotes` is not required, and never literal curly-quote characters or other Unicode lookalikes: they look identical in review but are different characters (they once broke a `listings` block and invalidated Racket syntax).
 - **`\url{...}` is allowed** in a `note` or `annotation`: biblatex always loads `url.sty`, so it needs no extra package. In a `note`, which prints, prefer it: with `xurl` loaded it breaks across lines where a bare URL does not. A bare URL in an `annotation` is also fine. Commands that need another package (`\href` needs `hyperref`, `\enquote` needs `csquotes`) stay forbidden.
-- Bare text in a `note` or `annotation` is not protected, so its special characters must be escaped: `\_` for an underscore (an unescaped one raises "Missing $" wherever the text is typeset), and likewise `\%`, `\#`, `\&`. Inside `\url{...}` only `%` and `#` still need the backslash (`\%`, `\#`; unescaped they stop the build); `_`, `&`, `~`, `?` and `=` work as typed. Imported BibTeX is normalized the same way: strip its LaTeX, keeping only `\url{}`.
+- Bare text in a `note` or `annotation` is not protected, so its special characters must be escaped: `\_` for an underscore (an unescaped one raises "Missing $" wherever the text is typeset), and likewise `\%`, `\#`, `\&`. Inside `\url{...}` only `%` and `#` still need the backslash (`\%`, `\#`; unescaped they stop the build); `_`, `&`, `~`, `?` and `=` work as typed. Imported BibTeX is normalized the same way: strip its LaTeX, keeping only `\url{}` and the braced accent escapes (a bare escape such as `\'e` is braced, and a literal accented letter is replaced by its escape).
 
 ## Dates and venues
 
@@ -109,7 +111,7 @@ This documents the conventions this bibliography follows, evolved over the cours
 - A "stray junk" scan for text sitting outside any `@entry{}` block, and no `@` in the header comment.
 - Duplicate keys within the file and against `dcpbib.bib`.
 - `biber --tool maibib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, **not** the file: `rm -Rf "$(biber --cache)"`.
-- Practice scans: no `note` ends in a period; no non-ASCII characters; no `\enquote`, and no LaTeX command in a `note` or `annotation` other than `\url{}` (and the four `\texttt{}`); no unescaped `_` outside the `url`/`doi`/`eprint` fields and `\url{}`; no unescaped `%` or `#` anywhere outside those fields; every field line indented 2 spaces with its `=` at column 15; every `urldate` a plain date; every `@thesis` has a `type`.
+- Practice scans: no `note` ends in a period; no non-ASCII characters; every accent escape braced (`{\'e}`, never `\'e`); no `\enquote`, and no LaTeX command in a `note` or `annotation` other than `\url{}`, braced accent escapes and the four `\texttt{}`; no unescaped `_` outside the `url`/`doi`/`eprint` fields and `\url{}`; no unescaped `%` or `#` anywhere outside those fields; every field line indented 2 spaces with its `=` at column 15; every `urldate` a plain date; every `note` that translates a title starts with `Translation: `; every `@thesis` has a `type`.
 - Watch for str_replace boundary mistakes (deleting an adjacent entry's header while using it as a unique anchor) — catch immediately via the checks above, fix and acknowledge rather than silently patch.
 
 ## Scope discipline
