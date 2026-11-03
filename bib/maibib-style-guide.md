@@ -44,10 +44,10 @@ This documents the conventions this bibliography follows, evolved over the cours
 
 ## Quoting and characters
 
-- **The file is ASCII-only and contains no embedded LaTeX** (the exceptions are four `\texttt{}` in annotations, which never print).
+- **The file is ASCII-only and contains almost no embedded LaTeX**: the only commands allowed are `\url{...}` in a `note` or `annotation` (see below) and four `\texttt{}` in annotations, which never print.
 - Double quotes are plain ``` ``like this'' ```; an opening single quote is a backtick (`` `x' ``). **No `\enquote{}`**, so `csquotes` is not required, and never literal curly-quote characters or other Unicode lookalikes: they look identical in review but are different characters (they once broke a `listings` block and invalidated Racket syntax).
-- **No `\url{}`.** URLs written into a `note` or `annotation` are plain text.
-- Bare text is not protected by `\url{}`, so special characters in `note`/`annotation` must be escaped: `\_` for an underscore (an unescaped one raises "Missing $" wherever the text is typeset), and likewise `\%`, `\#`, `\&`. Imported BibTeX is normalized the same way: strip its LaTeX.
+- **`\url{...}` is allowed** in a `note` or `annotation`: biblatex always loads `url.sty`, so it needs no extra package. In a `note`, which prints, prefer it: with `xurl` loaded it breaks across lines where a bare URL does not. A bare URL in an `annotation` is also fine. Commands that need another package (`\href` needs `hyperref`, `\enquote` needs `csquotes`) stay forbidden.
+- Bare text in a `note` or `annotation` is not protected, so its special characters must be escaped: `\_` for an underscore (an unescaped one raises "Missing $" wherever the text is typeset), and likewise `\%`, `\#`, `\&`. Inside `\url{...}` only `%` and `#` still need the backslash (`\%`, `\#`; unescaped they stop the build); `_`, `&`, `~`, `?` and `=` work as typed. Imported BibTeX is normalized the same way: strip its LaTeX, keeping only `\url{}`.
 
 ## Dates and venues
 
@@ -72,7 +72,7 @@ This documents the conventions this bibliography follows, evolved over the cours
 - `note`: renders in the printed bibliography (in brackets after the title) — reserved for content a reader would find meaningful (status like "Demo abstract," "Poster," advisor credit, special-issue context).
 - **A `note` has no trailing period** — APA adds its own, and a period inside prints as ".]." Several sentences are joined with semicolons.
 - `annotation`: never printed **provided `annotation=false` is loaded** — reserved for our own bookkeeping (sourcing decisions, verification status, discrepancies with the source page, key-naming rationale).
-- Because annotations are not printed, URLs inside them are bare text and would not wrap if the option were ever turned off: keep them out of `note`.
+- Keep URLs that only document sourcing in `annotation`, not `note`; a `note` takes a URL only when a reader would find it meaningful. Because annotations are not printed, a bare URL there is harmless, but writing it `\url{...}` keeps it correct and wrapping if the option is ever turned off.
 - A sentence doing both jobs gets **split**, not merged or discarded.
 - Anything that only makes sense with reference to the file itself ("above," "this file") belongs in `annotation`, phrased for a future maintainer reading raw source.
 
@@ -109,7 +109,7 @@ This documents the conventions this bibliography follows, evolved over the cours
 - A "stray junk" scan for text sitting outside any `@entry{}` block, and no `@` in the header comment.
 - Duplicate keys within the file and against `dcpbib.bib`.
 - `biber --tool maibib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, **not** the file: `rm -Rf "$(biber --cache)"`.
-- Practice scans: no `note` ends in a period; no non-ASCII characters; no `\enquote`/`\url{`; no unescaped `_` outside `url`/`doi`/`eprint`; every field line indented 2 spaces with its `=` at column 15; every `urldate` a plain date; every `@thesis` has a `type`.
+- Practice scans: no `note` ends in a period; no non-ASCII characters; no `\enquote`, and no LaTeX command in a `note` or `annotation` other than `\url{}` (and the four `\texttt{}`); no unescaped `_` outside the `url`/`doi`/`eprint` fields and `\url{}`; no unescaped `%` or `#` anywhere outside those fields; every field line indented 2 spaces with its `=` at column 15; every `urldate` a plain date; every `@thesis` has a `type`.
 - Watch for str_replace boundary mistakes (deleting an adjacent entry's header while using it as a unique anchor) — catch immediately via the checks above, fix and acknowledge rather than silently patch.
 
 ## Scope discipline
