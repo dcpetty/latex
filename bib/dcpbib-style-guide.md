@@ -27,13 +27,13 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 | `wiki:` | Wikipedia and Wikibooks pages | topic slug: `wiki:carmichael-number` |
 | `web:` | other web pages | slug: `web:ecs-v10` |
 | `book:` | books | descriptive slug: `book:quantum-mechanics-and-experience`; a volume adds `-1` |
-| `paper:` | papers and chapters | `paper:lastname_year`: `paper:bell_1992` |
+| `paper:` | papers, chapters, and unpublished manuscripts or notes | `paper:lastname_year`: `paper:bell_1992` |
 
 - Tool-generated keys are replaced by the shapes above: DBLP's `DBLP:journals/corr/...` became `paper:gershenson_2003`; Wikipedia's `enwiki:<revision id>` became `wiki:<topic-slug>`.
 
 ## Entry types
 
-- `@misc` for web pages; `@book`; `@article`; `@incollection` (a titled chapter in an edited volume, e.g. Everett 1973); `@inbook` (a titled chapter of an authored book, with no editor); `@inproceedings`; `@thesis` (a doctoral dissertation, with `type = {Doctoral dissertation}` and the awarding university in `institution`). Entry types are lowercase.
+- `@misc` for web pages and Wikipedia entries, and for unpublished manuscripts or notes hosted online (`paper:mccarthy_1979`, `paper:hestenes_1997`). Those carry a `paper:<surname>_<year>` key, an `organization` (the hosting archive or the author's institution), and `note = {Unpublished manuscript}` or `Unpublished note`. The other types are `@book`; `@article`; `@incollection` (a titled chapter in an edited volume, e.g. Everett 1973); `@inbook` (a titled chapter of an authored book, with no editor); `@inproceedings`; `@thesis` (a doctoral dissertation, with `type = {Doctoral dissertation}` and the awarding university in `institution`). Entry types are lowercase.
 - arXiv-only preprints are `@article` with `journal = {CoRR}`, the arXiv id as `volume`, arXiv's own DOI (`10.48550/arXiv.<id>`, e.g. `10.48550/arXiv.math/0411418`) as `doi`, and the abs page as `url`.
 - **Roles stay distinct.** `author` / `editor` / `translator` are different fields: Euclid is the author, Densmore the editor, Heath the translator. A catalogue export that lists everyone as author is wrong; check the title page or a library (MARC) record.
 - **Multi-volume works:** the whole set is one entry with `volumes = {1--2}` (prints "Vols. 1–2"). A single volume is `title` plus `subtitle = {Vol. 1. {T}wo-Spinor Calculus ...}`; the `maintitle` + `volume` form prints the volume number twice and leaves a stray space, so avoid it.
