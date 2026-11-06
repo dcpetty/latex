@@ -49,7 +49,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 
 - Input in normal Title Case; `biblatex-apa` sentence-cases it. **A capital after a colon is automatic**; after a period, an em dash `---`, a `?` or a `;` the next word is lowercased, so protect it: `Vol. 1. {T}wo-Spinor ...`, `Quantum to Classical---{R}evisited`.
 - Protect acronyms and proper nouns: `{IEEE}`, `{NAND}`, `{QED}`, `{F}eynman's`. When a Wikipedia topic moves into a title, protect its acronyms too (`{IEEE} 754`).
-- **ASCII only** (the file has no non-ASCII characters). Apostrophes are plain `'` (never U+2019); an opening single quote is a backtick (`` `teacher copy' ``); dashes are `---`; page ranges use `--`. Accented letters use LaTeX escapes with the accent braced, the traditional BibTeX form (`Cr{\'e}peau`, `Schr{\"o}dinger`).
+- **ASCII only** (the file has no non-ASCII characters). Apostrophes are plain `'` (never U+2019); an opening single quote is a backtick (`` `teacher copy' ``); dashes are `---`; page ranges use `--`. An en dash in a title, whether it joins names (`Klein--{G}ordon equation`) or marks a range (`{K}--12`), is also `--`. Capitals beside it must be protected, because sentence-casing otherwise lowercases them (Klein–gordon, k–12). Accented letters use LaTeX escapes with the accent braced, the traditional BibTeX form (`Cr{\'e}peau`, `Schr{\"o}dinger`).
 - **Non-English titles:** keep the title in its own language and spelling, and set `langid` (`langid = {german}`, `langid = {french}`). Without it `biblatex-apa` sentence-cases the title and lowercases German nouns. Cite the original-language work, and say where a translation is in the `note` or the `url`.
 - **Translation notes:** the English translation of a non-English title goes in `note`, prefixed `Translation: ` (`note = {Translation: On the theory of the energy distribution law of the normal spectrum}`); it prints in square brackets, as APA marks a translated title. Anything else the note says follows the translation, joined by a semicolon. A note that only states a language, such as `In Indonesian`, is not a translation and takes no prefix.
 - Typos in a source's own metadata are corrected, not copied.
@@ -68,7 +68,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 - **DOI plus free copy:** when a DOI exists, keep it *and* a `url` to a public copy with `urldate`. `biblatex-apa` prints only the DOI, so the free link is stored but hidden. Prefer free copies (arXiv, a university course page, an archive) over paywalled ones; never fabricate a DOI or a link.
 - A `note` may explain a paywall (`Original publisher's copy is paywalled at \url{...}`).
 - Books use `url = {https://isbn.nu/<isbn>}`, with an ISBN-10 or an ISBN-13 (`book:qed` uses the publisher's page).
-- Wikipedia links are `https://en.wikipedia.org/w/index.php?title=X&oldid=N` permalinks; the `oldid` pins the exact revision.
+- Wikipedia links are `https://en.wikipedia.org/w/index.php?title=X&oldid=N` permalinks; the `oldid` pins the exact revision. The title part is written in ASCII without percent-encoding (see the dash rule under `wiki:` entries).
 - The place of publication is `location`.
 
 ## Wikipedia and Wikibooks entries (`wiki:`)
@@ -89,6 +89,7 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 
 - `author` = `{Wikipedia contributors}`; `title` = `<topic> --- {Wikipedia}{,} The Free Encyclopedia`, where the topic is the article title **at that revision** (Nibble, not Nybble); `shorttitle` = the topic alone, i.e. the `title` without its ` --- ...` tail (it is what the `\titlecite` command prints).
 - `date` = the full revision date from the string's first parenthetical; `urldate` = the date of its "Retrieved" stamp; `url` = the https permalink from the string; no `month`, `day`, `lastchecked` or `year`.
+- **Dashes and percent-encoding.** The file is ASCII-only, so a pasted string that contains an en dash is stored with a plain hyphen, and a percent-encoded dash in its URL (`%E2%80%93`) becomes a plain hyphen as well. The comment and the entry's `url` then agree exactly (`...title=Klein-Gordon_equation&oldid=1382440703`); Wikipedia redirects the hyphenated title, and the `oldid` still pins the revision. The entry's `title` and `shorttitle` keep the real dash as `--`: `Klein--{G}ordon equation`.
 - **Wikibooks pages** use `{Wikibooks contributors}` and `{Wikibooks}{,} The Free Textbook Project`, and may have an MLA-style comment:
 
 ```bibtex
@@ -102,7 +103,7 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
   urldate      = {2019-02-18},
 }
 ```
-- **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic. The exceptions are `wiki:quantum-nonlocality` (no comment) and Wikibooks entries (their comments are MLA-style).
+- **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic. When comparing the topic, a hyphen and an en dash (`--`) count as the same character and braces are ignored (comment `Klein-Gordon equation`, entry `Klein--{G}ordon equation`). The exceptions are `wiki:quantum-nonlocality` (no comment) and Wikibooks entries (their comments are MLA-style).
 - Side effect: every entry shares the author "Wikipedia contributors", so entries cited together get year letters (2019a, 2019b ...) and in-text citations change.
 - Verification is against the pasted comment strings, never against the live page.
 
@@ -171,7 +172,7 @@ Every entry uses the same layout:
 
 - Entry count; braces balanced **outside comments** (count them there, so a stray brace in a comment cannot hide a real imbalance); stray text outside any entry; duplicate keys within the file and against `maibib.bib`.
 - `biber --tool dcpbib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, not the file: `rm -Rf "$(biber --cache)"`.
-- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment; ASCII only; every field line indented 2 spaces with its `=` at column 15; every `note` that translates a title starts with `Translation: `; no line ends in whitespace.
+- Chronology (revision/publication date ≤ `urldate`); every `wiki:` entry versus its comment (a hyphen and an en dash count alike); ASCII only; every field line indented 2 spaces with its `=` at column 15; every `note` that translates a title starts with `Translation: `; no line ends in whitespace.
 - `6.S952` sessions: dividers numbered consecutively from `01` and all in the same shape; no `6.S952` entry before the first divider; the whole section ascending by `urldate`; only the newest session empty.
 - A test render of each changed entry.
 
