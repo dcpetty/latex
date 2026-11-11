@@ -32,7 +32,7 @@ The file has two parts, in this order: the **research papers**, then the **books
 
 - Full names preferred over bare initials wherever confirmed by a real source.
 - A name correction found via one paper (e.g., "Fang" → "Frances" Zhang, "Nicole" → "H. Nicole" Pang) gets **propagated** to that person's other appearances in the file, not just the triggering entry.
-- File-wide majority form wins over a single outlier source — "Abelson, Hal" everywhere, even when one source says "H. Abelson."
+- File-wide majority form wins over a single outlier source: a person is written one way everywhere, even when one source gives only initials.
 - Author *order* can legitimately differ between preprint and final publication — trust the published version.
 
 ## Titles
@@ -49,7 +49,7 @@ The file has two parts, in this order: the **research papers**, then the **books
 
 ## Quoting and characters
 
-- **The file is ASCII-only and contains almost no embedded LaTeX**: the only commands allowed are `\url{...}` in a `note` or `annotation` (see below), braced accent escapes (see the next point), and four `\texttt{}` in annotations, which never print.
+- **The file is ASCII-only and contains almost no embedded LaTeX**: the only commands allowed are `\url{...}` in a `note` or `annotation` (see below), braced accent escapes (see the next point), and `\texttt{}` in annotations, which never print.
 - **Accents:** accented letters are written as LaTeX escapes with the accent braced, the traditional BibTeX form: `G{\'o}mez`, `Sh{\=o}ya`, `Edi{\c{c}}{\~o}es Acad{\^e}micas`. Each escape sits in its own brace group, with its letter inside it. It is never left bare (`G\'omez`) and never replaced by a literal accented character, because the file is ASCII-only. The rule covers every field: author and publisher names, titles and notes, and the macrons of a Hepburn romanization.
 - Double quotes are plain ``` ``like this'' ```; an opening single quote is a backtick (`` `x' ``). **No `\enquote{}`**, so `csquotes` is not required, and never literal curly-quote characters or other Unicode lookalikes: they look identical in review but are different characters (they once broke a `listings` block and invalidated Racket syntax).
 - **`\url{...}` is allowed** in a `note` or `annotation`: biblatex always loads `url.sty`, so it needs no extra package. In a `note`, which prints, prefer it: with `xurl` loaded it breaks across lines where a bare URL does not. A bare URL in an `annotation` is also fine. Commands that need another package (`\href` needs `hyperref`, `\enquote` needs `csquotes`) stay forbidden.
@@ -66,7 +66,7 @@ The file has two parts, in this order: the **research papers**, then the **books
 
 ## URLs
 
-- Every entry gets `url` + `urldate`. The few with no public link at all (6) carry an `annotation` explaining why.
+- Every entry gets `url` + `urldate`. The few with no public link at all carry an `annotation` explaining why.
 - **Free access beats "official" access** — a ResearchGate or arXiv mirror is preferred over a paywalled IEEE/Springer link, even when the paywalled one is more "canonical."
 - A real `doi` is kept regardless of which `url` we point to. **When both are present APA prints only the DOI**, so the free link is stored but hidden; it is visible only on entries with no DOI.
 - Published-but-arXiv-sourced papers keep **both** the `eprint`/`eprinttype` fields and the full venue data.
@@ -84,7 +84,7 @@ The file has two parts, in this order: the **research papers**, then the **books
 
 ## Entry-type choices
 
-The file uses eight entry types. Choose by what the work is, not by where MIT lists it. Fields are described in the next section.
+The file uses the entry types below. Choose by what the work is, not by where MIT lists it. Fields are described in the next section.
 
 - `@inproceedings`: a paper, abstract, poster or talk in conference proceedings. It carries `booktitle` (the proceedings) and, as the source gives them, `editor`, `series`, `volume`, `pages` and `doi`.
 - `@article`: a journal article, with `journaltitle` and usually `volume`, `number` and `pages`.
@@ -92,13 +92,13 @@ The file uses eight entry types. Choose by what the work is, not by where MIT li
 - `@book`: an authored book, including books in other languages and self-published ones. It carries `publisher`, `isbn` and, when the book has one, `subtitle`. `date` is the year only, because APA prints only the year for a book. A non-English book also carries `langid` and a `Translation:` note (see Titles).
 - `@collection`: an edited volume cited as a whole. It takes `editor` in place of `author` and is otherwise like `@book`, plus a `doi` when it has one.
 - `@thesis`: always carries `type`: `mathesis` (M.Eng./M.S.), `bathesis`, or `phdthesis`, together with `institution`; it prints as `[Master's thesis, <institution>]`. The key's degree suffix and the `type` agree.
-- `@report`: term papers, student research papers and informal institutional reports. A `type` prints in parentheses after the title: term papers carry `type = {Term Paper}`, and Research Science Institute papers carry `type = {Research Paper}`. A genuine institutional report (the Technovation analysis) carries no `type`, because `@report` already says so.
+- `@report`: term papers, student research papers and informal institutional reports. A `type` prints in parentheses after the title: term papers carry `type = {Term Paper}`, and Research Science Institute papers carry `type = {Research Paper}`. A genuine institutional report carries no `type`, because `@report` already says so.
 - `@unpublished`: preprints, submitted work, demos and posters, with a `note` giving the status.
 - Not used: `@inbook`, and `@misc`, which has no rendered `publisher` field (use `organization`, or switch type if `publisher` is genuinely right).
 
 ## Fields
 
-Thirty-two fields are in use. "Printed" says what `biblatex-apa` does with the field in the reference list (tested by removing the field from a real entry). Values are always brace-delimited, and field names are lowercase.
+These fields are in use. "Printed" says what `biblatex-apa` does with the field in the reference list (tested by removing the field from a real entry). Values are always brace-delimited, and field names are lowercase.
 
 | Field | Used by | What it holds, and how it is written | Printed |
 |---|---|---|---|
@@ -133,7 +133,7 @@ Thirty-two fields are in use. "Printed" says what `biblatex-apa` does with the f
 | `note` | any type | Reader-facing text (see `note` vs. `annotation`). | Yes, in brackets after the title |
 | `annotation` | any type | Our own bookkeeping (see `note` vs. `annotation`). | Never, with `annotation=false` |
 | `keywords` | `@inproceedings`, `@article` | The source's own keywords, copied as the source writes them (comma- or semicolon-separated). | No |
-| `langid` | `@book` | The language of a non-English entry: `german`, `spanish`, `portuguese`, `indonesian`, `italian`, `japanese`, `korean`, `malay`. It is not printed, but it stops APA from re-casing the title (without it "Meine ersten Apps" prints as "Meine ersten apps"). It goes with a `Translation:` note. | No, but it protects the title's capitals |
+| `langid` | `@book` | The language of a non-English entry, as a babel language name, such as `german`. It is not printed, but it stops APA from re-casing the title and lowercasing its capitals. It goes with a `Translation:` note. | No, but it protects the title's capitals |
 
 ## Formatting
 
@@ -161,7 +161,7 @@ Thirty-two fields are in use. "Printed" says what `biblatex-apa` does with the f
 - Duplicate keys within the file and against `dcpbib.bib`.
 - Section comments: both header banners are 70 characters and every section banner is exactly 53; the research years descend and each research entry's `date` year matches its banner; the books sections follow MIT's page order and each book's `langid` matches its section (none for ENGLISH and RESEARCH).
 - `biber --tool maibib.bib` with no warnings. A crash with exit code 25 and an empty `.blg` points to a corrupted biber cache, **not** the file: `rm -Rf "$(biber --cache)"`.
-- Practice scans: no `note` ends in a period; no non-ASCII characters; every accent escape braced (`{\'e}`, never `\'e`); no `\enquote`, and no LaTeX command in a `note` or `annotation` other than `\url{}`, braced accent escapes and the four `\texttt{}`; no unescaped `_` outside the `url`/`doi`/`eprint` fields and `\url{}`; no unescaped `%` or `#` anywhere outside those fields; every field line indented 2 spaces with its `=` at column 15; every `urldate` a plain date; every `note` that translates a title starts with `Translation: `; every title with a `langid` of `japanese`, `korean` or `chinese` is in sentence case; no line ends in whitespace; every `@thesis` has a `type`.
+- Practice scans: no `note` ends in a period; no non-ASCII characters; every accent escape braced (`{\'e}`, never `\'e`); no `\enquote`, and no LaTeX command in a `note` or `annotation` other than `\url{}`, braced accent escapes and `\texttt{}` in annotations; no unescaped `_` outside the `url`/`doi`/`eprint` fields and `\url{}`; no unescaped `%` or `#` anywhere outside those fields; every field line indented 2 spaces with its `=` at column 15; every `urldate` a plain date; every `note` that translates a title starts with `Translation: `; every title with a `langid` of `japanese`, `korean` or `chinese` is in sentence case; no line ends in whitespace; every `@thesis` has a `type`.
 - Watch for str_replace boundary mistakes (deleting an adjacent entry's header while using it as a unique anchor) — catch immediately via the checks above, fix and acknowledge rather than silently patch.
 
 ## Scope discipline

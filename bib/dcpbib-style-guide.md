@@ -8,13 +8,13 @@ These styles assume the `.tex` files include:
 \usepackage{xurl}
 \DeclareLanguageMapping{english}{english-apa}
 ```
-Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `biblatex`. `annotation=false` is required: `biblatex-apa` prints the `annotation` field by default, as a line under the reference.
+Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `biblatex`. `annotation=false` is required: `biblatex-apa` prints the `annotation` field by default, as a line under the reference. The file's own bookkeeping lives in `annotation`, so without the option it would appear in the printed bibliography.
 
 ## File organization
 
 - A header comment states the required preamble ("Used with:" block, as above).
 - Sections are introduced by one banner each: `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% NAME %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%` (at least five `%` on each side). Current order: `6.S952`, `BOOKS`, `PAPERS`, `SOFTWARE`, `TEACHING`, `MATHEMATICS`, `WWW`, `WIKIPEDIA`.
-- **Every entry belongs to the nearest banner above it**, so an entry sits where its banner puts it (`book:knr` is under `SOFTWARE`). To change an entry's section, move the entry.
+- **Every entry belongs to the nearest banner above it**, so an entry sits where its banner puts it. To change an entry's section, move the entry.
 - New course readings go in `6.S952`, in newest-last order, under the latest `Session NN` divider (see below). Other sections have no required order.
 - **Session dividers (`6.S952` only).** The section is split into class sessions by standalone comment lines of one fixed shape, `% ---------------------------- Session 01 ----------------------------` (28 hyphens each side, a two-digit number). Dividers are numbered consecutively from `01`. Each has a blank line below it, so it belongs to no entry. Every `6.S952` entry sits under one. The whole section stays in ascending `urldate` order, so a new session's divider goes after the previous session's last entry. A session need not share one `urldate`, because `urldate` is the retrieval date, not the session date. Only the newest session may be empty: its divider is a placeholder for readings still to come.
 - **Comment lines directly above an entry belong to it and are kept** when the entry's code is edited or converted. Deleting an entry deletes its own comment line.
@@ -24,25 +24,25 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 
 | Prefix | Used for | Shape |
 |---|---|---|
-| `wiki:` | Wikipedia and Wikibooks pages | topic slug: `wiki:carmichael-number` |
-| `web:` | other web pages | slug: `web:ecs-v10` |
-| `book:` | books | descriptive slug: `book:quantum-mechanics-and-experience`; a volume adds `-1` |
-| `paper:` | papers, chapters, and unpublished manuscripts or notes | `paper:lastname_year`: `paper:bell_1992` |
+| `wiki:` | Wikipedia and Wikibooks pages | `wiki:<topic-slug>` |
+| `web:` | other web pages | `web:<slug>` |
+| `book:` | books | `book:<descriptive-slug>`; a volume adds `-<n>` |
+| `paper:` | papers, chapters, and unpublished manuscripts or notes | `paper:<lastname>_<year>` |
 
-- Tool-generated keys are replaced by the shapes above: DBLP's `DBLP:journals/corr/...` became `paper:gershenson_2003`; Wikipedia's `enwiki:<revision id>` became `wiki:<topic-slug>`.
+- Tool-generated keys (DBLP's `DBLP:...`, Wikipedia's `enwiki:<revision id>`) are replaced by the shapes above.
 
 ## Entry types
 
-- `@misc` for web pages and Wikipedia entries, and for unpublished manuscripts or notes hosted online (`paper:mccarthy_1979`, `paper:hestenes_1997`). Those carry a `paper:<surname>_<year>` key, an `organization` (the hosting archive or the author's institution), and `note = {Unpublished manuscript}` or `Unpublished note`. The other types are `@book`; `@article`; `@incollection` (a titled chapter in an edited volume, e.g. Everett 1973); `@inbook` (a titled chapter of an authored book, with no editor); `@inproceedings`; `@thesis` (a doctoral dissertation, with `type = {Doctoral dissertation}` and the awarding university in `institution`). Entry types are lowercase.
+- `@misc` for web pages and Wikipedia entries, and for unpublished manuscripts or notes hosted online. Those carry a `paper:<surname>_<year>` key, an `organization` (the hosting archive or the author's institution), and `note = {Unpublished manuscript}` or `Unpublished note`. The other types are `@book`; `@article`; `@incollection` (a titled chapter in an edited volume); `@inbook` (a titled chapter of an authored book, with no editor); `@inproceedings`; `@thesis` (a doctoral dissertation, with `type = {Doctoral dissertation}` and the awarding university in `institution`). Entry types are lowercase.
 - arXiv-only preprints are `@article` with `journal = {CoRR}`, the arXiv id as `volume`, arXiv's own DOI (`10.48550/arXiv.<id>`, e.g. `10.48550/arXiv.math/0411418`) as `doi`, and the abs page as `url`.
 - **Roles stay distinct.** `author` / `editor` / `translator` are different fields: Euclid is the author, Densmore the editor, Heath the translator. A catalogue export that lists everyone as author is wrong; check the title page or a library (MARC) record.
-- **Multi-volume works:** the whole set is one entry with `volumes = {1--2}` (prints "Vols. 1–2"). A single volume is `title` plus `subtitle = {Vol. 1. {T}wo-Spinor Calculus ...}`; the `maintitle` + `volume` form prints the volume number twice and leaves a stray space, so avoid it.
+- **Multi-volume works:** the whole set is one entry with `volumes = {1--2}` (prints "Vols. 1–2"). A single volume is `title` plus `subtitle = {Vol. 1. <volume title>}`; the `maintitle` + `volume` form prints the volume number twice and leaves a stray space, so avoid it.
 - **A part of an authored book** is cited through the volume: put the part in `note` (`Appendix: Diagrammatic notation, pp. 424--434`) and use the part's DOI if one exists.
 
 ## Names
 
 - New entries use `Last, First`; corporate authors are braced (`{Center for Technology in Learning at SRI International}`). Legacy entries use `First Last` strings; both parse.
-- English forms of ancient names (`Euclid`, not `Euclides`). Suffixes use the three-part form: `Everett, III, Hugh`.
+- English forms of ancient names (`Euclid`, not `Euclides`). Suffixes use the three-part form: `Last, Suffix, First`.
 - A name correction found in one entry is applied wherever that person appears.
 
 ## Titles
@@ -58,7 +58,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 
 - `date` (ISO 8601, as precise as known) is preferred. Use `year` only when nothing more precise is known. All `wiki:` entries carry a full `date`.
 - `urldate` is a **plain `YYYY-MM-DD`, never a time of day**: APA prints only the date, and hand-typed times proved unreliable. When a source stamps retrieval in UTC (Wikipedia), `urldate` is the date in that stamp. When adding an entry, use the date the user gives.
-- **Chronology invariant:** a publication or revision date must not be later than `urldate`. A violation means a typo (it caught `wiki:plagiarism`: retrieved "June 27" before its July 22 revision).
+- **Chronology invariant:** a publication or revision date must not be later than `urldate`. A violation means a typo.
 - **`lastchecked` is not a biblatex field** (it comes from `urlbst`); biber ignores it and APA never prints it. Always use `urldate`.
 - `version` is stored but not printed for `@misc`; do not use it to carry a date.
 
@@ -67,7 +67,7 @@ Nothing in the file needs `hyperref` or `csquotes`; `xurl` must load *after* `bi
 - Every `url` gets a `urldate`.
 - **DOI plus free copy:** when a DOI exists, keep it *and* a `url` to a public copy with `urldate`. `biblatex-apa` prints only the DOI, so the free link is stored but hidden. Prefer free copies (arXiv, a university course page, an archive) over paywalled ones; never fabricate a DOI or a link.
 - A `note` may explain a paywall (`Original publisher's copy is paywalled at \url{...}`).
-- Books use `url = {https://isbn.nu/<isbn>}`, with an ISBN-10 or an ISBN-13 (`book:qed` uses the publisher's page).
+- Books use `url = {https://isbn.nu/<isbn>}`, with an ISBN-10 or an ISBN-13 (an occasional book uses the publisher's page).
 - Wikipedia links are `https://en.wikipedia.org/w/index.php?title=X&oldid=N` permalinks; the `oldid` pins the exact revision. The title part is written in ASCII without percent-encoding (see the dash rule under `wiki:` entries).
 - The place of publication is `location`.
 
@@ -103,7 +103,7 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
   urldate      = {2019-02-18},
 }
 ```
-- **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic. When comparing the topic, a hyphen and an en dash (`--`) count as the same character and braces are ignored (comment `Klein-Gordon equation`, entry `Klein--{G}ordon equation`). The exceptions are `wiki:quantum-nonlocality` (no comment) and Wikibooks entries (their comments are MLA-style).
+- **Check:** every entry must agree with its own comment on date, `urldate`, URL and topic. When comparing the topic, a hyphen and an en dash (`--`) count as the same character and braces are ignored. The exceptions are a wiki entry that has no comment and Wikibooks entries (their comments are MLA-style).
 - Side effect: every entry shares the author "Wikipedia contributors", so entries cited together get year letters (2019a, 2019b ...) and in-text citations change.
 - Verification is against the pasted comment strings, never against the live page.
 
@@ -111,7 +111,10 @@ Source of truth is Wikipedia's own "Cite this page" APA string, kept as the comm
 
 - `note` is reader-facing only. It prints in square brackets after the title. **No trailing period** (APA adds its own; a period inside prints as ".]."). Several sentences are joined with semicolons.
 - Allowed in `note`: `\textcopyright{}`, `\url{...}` (biblatex always loads `url.sty`), `\emph{}`. Not allowed: `\href`, `\enquote` (they need `hyperref`/`csquotes`).
-- Avoid `annotation`; it prints under APA unless `annotation=false`. Put provenance in a comment line above the entry instead. (Some entries could have annotations.)
+- `annotation`: never printed, **provided `annotation=false` is loaded** (see the preamble). It is reserved for the file's own bookkeeping: a source credit, or a link to related material such as a course or companion page.
+- Keep URLs that only document sourcing in `annotation`, not `note`; a `note` takes a URL only when a reader would find it meaningful (a paywall, a free copy). Because annotations are not printed, a bare URL there is harmless, but writing it `\url{...}` keeps it correct and wrapping if the option is ever turned off. `\href` and `\enquote` stay forbidden in both fields.
+- Bare text in a `note` or `annotation` is not protected, so its special characters must be escaped: `\_`, `\%`, `\#`, `\&`. Inside `\url{...}` only `%` and `#` still need the backslash.
+- A comment line above the entry is still the place for a pasted citation string (Wikipedia's "Cite this page" line, an older APA line) and for `TODO` notes. A comment is text, not data, so it does not replace an annotation.
 
 ## Formatting
 
@@ -178,6 +181,6 @@ Every entry uses the same layout:
 
 ## Known gaps (not yet normalized)
 
-- **Missing `urldate` on a `url`:** `paper:cornellhmm`, `paper:gershenson_2003`, `cacm:wing06`, and 8 books (`linear-algebra`, `middlemarch`, `stuck-in-the-shallow-end`, `elements-one-volume`, `grading-for-equity`, `standards-based-learning`, `ac`, `unfinished-game`).
-- **No `url` at all:** 15 books.
-- **Stray fields:** `abstract` (`cacm:wing06`), `howpublished` (`paper:sep-qm`), `version` (`web:ecs-v5` and `web:ecs-v10`, not printed), and one `annotation` (`paper:gershenson_2003`).
+- **Missing `urldate` on a `url`:** a few papers and several books.
+- **No `url` at all:** some books.
+- **Stray fields:** `abstract`, `howpublished` and `version` (not printed) on a few entries.
