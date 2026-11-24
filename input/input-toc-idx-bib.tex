@@ -9,22 +9,56 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibtex style
 %\bibliographystyle{newapa} % http://homepage.stat.uiowa.edu/~rlenth/ALPHA/apa-tutorial.pdf
 %\bibliographystyle{apacite} % http://mirrors.ctan.org/biblio/bibtex/contrib/apacite/apacite.pdf
-\usepackage[backend=biber,style=apa,annotation=false]{biblatex}
+% Default: APA. For the physics style ([1] labels, initials first), put \def\bibphys{} before \input of this file.
+\ifdefined\bibphys
+  \usepackage[backend=biber,style=phys,biblabel=brackets,articletitle=true,sorting=none,autocite=plain]{biblatex}
+\else
+  \usepackage[backend=biber,style=apa,annotation=false]{biblatex}
+  \DeclareLanguageMapping{english}{english-apa}
+\fi
 \usepackage{xurl}
-\DeclareLanguageMapping{english}{english-apa}
 %\addbibresource{../bib/dcpbib.bib}
 
 % Mostly for Wikipedia entries, \titlecite can be used to cite the shorttitle (or the title if it's missing) in lieu of the uniform 'Wikipedia contributors' author in \autocite. 
-\DeclareCiteCommand{\titlecite}[\mkbibparens]
+% APA: (shorttitle, year). With \bibphys (numbered labels): shorttitle [N].
+\ifdefined\bibphys
+  \newcommand*{\titlecitewrap}[1]{#1}
+\else
+  \newcommand*{\titlecitewrap}[1]{\mkbibparens{#1}}
+\fi
+\DeclareCiteCommand{\titlecite}[\titlecitewrap]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \iffieldundef{shorttitle}
      {\thefield{title}}
      {\thefield{shorttitle}}%
-   \addcomma\space
-   \printtext[bibhyperref]{\thefield{year}}}
+   \iffieldundef{labelnumber}
+     {\addcomma\space
+      \printtext[bibhyperref]{\thefield{year}}}
+     {\space\mkbibbrackets{\printtext[bibhyperref]{\printfield{labelnumber}}}}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+
+% phys only: print notes at the end of each entry, in brackets, and link the titles of books, misc entries, theses, etc.
+\ifdefined\bibphys
+  % The note is captured in \begentry, which every driver runs after all \AtEveryBibitem hooks, so that
+  % \AtEveryBibitem{\clearfield{note}} in a main file suppresses notes in this mode too.
+  \renewbibmacro*{begentry}{%
+    \global\undef\bibnote
+    \iffieldundef{note}{}{\savefield{note}{\bibnote}}%
+    \clearfield{note}}
+  \renewbibmacro*{finentry}{%
+    \ifdef{\bibnote}{\addspace\mkbibbrackets{\bibnote}}{}%
+    \finentry}
+  \DeclareFieldFormat[book,collection,misc,report]{title}{%
+    \iffieldundef{doi}
+      {\iffieldundef{url}{\mkbibemph{#1}}{\href{\thefield{url}}{\mkbibemph{#1}}}}
+      {\href{https://doi.org/\thefield{doi}}{\mkbibemph{#1}}}}
+  \DeclareFieldFormat[thesis,unpublished]{title}{%
+    \iffieldundef{doi}
+      {\iffieldundef{url}{\mkbibquote{#1\isdot}}{\href{\thefield{url}}{\mkbibquote{#1\isdot}}}}
+      {\href{https://doi.org/\thefield{doi}}{\mkbibquote{#1\isdot}}}}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
 %\bibliography{../bib/dcpbib} % To update, delete *.blb
